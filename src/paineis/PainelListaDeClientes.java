@@ -41,11 +41,11 @@ public class PainelListaDeClientes extends javax.swing.JPanel {
     public PainelListaDeClientes() {
         initComponents();
         refreshTable();
-        duploClick();
 
         if (PainelCriarOrcamento.jTextFieldNomeCliente != null) {
             PassarClienteParaOrc();
         }
+        duploClick();
 
     }
 

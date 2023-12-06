@@ -27,11 +27,13 @@ import java.awt.Container;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.List;
+import javax.swing.JTable;
 import model.Fornecedores;
 import table.FornecedoresTabela;
 import table.FornecedoresTabelaRenderer;
 import static paineis.PainelCriarCadastroFornecedores.comboBoxGrupo1Fornecedores;
 import static paineis.PainelCriarCadastroFornecedores.comboBoxTipoFornecedores;
+import static paineis.PainelEntradaDeMaterial.textFieldFornecedor;
 
 public class PainelListaDeFornecedores extends javax.swing.JPanel {
 
@@ -40,6 +42,9 @@ public class PainelListaDeFornecedores extends javax.swing.JPanel {
     public PainelListaDeFornecedores() {
         initComponents();
         refreshTable();
+        if (textFieldFornecedor != null) {
+            passarClienteParaOrc();
+        }
         duploClick();
     }
 
@@ -167,7 +172,7 @@ public class PainelListaDeFornecedores extends javax.swing.JPanel {
                         Fornecedores fornecedor = fornecedoresDAO.findById(idFornecedorSelecionado);
                         if (fornecedor != null) {
                             // Preencher os componentes com os detalhes do fornecedor selecionado
-                            PreencherFornecedores(fornecedor);
+                            preencherFornecedores(fornecedor);
                         }
                     }
                 }
@@ -175,7 +180,7 @@ public class PainelListaDeFornecedores extends javax.swing.JPanel {
         });
     }
 
-    private void PreencherFornecedores(Fornecedores fornecedor) {
+    private void preencherFornecedores(Fornecedores fornecedor) {
 
         Container container = this.getParent();
         container.remove(this);
@@ -206,6 +211,27 @@ public class PainelListaDeFornecedores extends javax.swing.JPanel {
         textFieldEmailFornecedores.setText(fornecedor.getEmailFornecedores());
         textFieldSiteFornecedores.setText(fornecedor.getSiteFornecedores());
         jTextAreaThorvi.setText(fornecedor.getObservacoesFornecedores());
+    }
+
+    public final void passarClienteParaOrc() {
+
+        TabelaListaFornecedores.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (e.getClickCount() == 2) {
+                    JTable target = (JTable) e.getSource();
+                    int row = target.getSelectedRow();
+                    int column = 1;
+
+                    if (row != -1) {
+                        Object value = target.getValueAt(row, column);
+                        if (value != null) {
+                            textFieldFornecedor.setText(value.toString());
+                        }
+                    }
+                }
+            }
+        });
     }
 
 }
