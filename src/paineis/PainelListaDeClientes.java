@@ -29,6 +29,7 @@ import java.awt.Container;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.List;
+import javax.swing.JDialog;
 import javax.swing.JTable;
 import model.Clientes;
 import table.ClientesTabela;
@@ -41,11 +42,7 @@ public class PainelListaDeClientes extends javax.swing.JPanel {
     public PainelListaDeClientes() {
         initComponents();
         refreshTable();
-
-        if (PainelCriarOrcamento.jTextFieldNomeCliente != null) {
-            PassarClienteParaOrc();
-        }
-        duploClick();
+        duploClickClientes();
 
     }
 
@@ -126,7 +123,7 @@ public class PainelListaDeClientes extends javax.swing.JPanel {
         });
     }
 
-    private void duploClick() {
+    private void duploClickClientes() {
 
         TabelaListaDeClientes.addMouseListener(new MouseAdapter() {
             @Override
@@ -177,5 +174,26 @@ public class PainelListaDeClientes extends javax.swing.JPanel {
         textFieldEmailClientes.setText(clientes.getEmailClientes());
         textFieldSiteClientes.setText(clientes.getSiteClientes());
         jTextAreaClientes.setText(clientes.getObservacoesClientes());
+    }
+
+    public static final void passarClienteParaOrc(JDialog dialog) {
+        TabelaListaDeClientes.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (e.getClickCount() == 2) {
+                    JTable target = (JTable) e.getSource();
+                    int row = target.getSelectedRow();
+                    int column = 1;
+
+                    if (row != -1) {
+                        Object value = target.getValueAt(row, column);
+                        if (value != null) {
+                            jTextFieldNomeCliente.setText(value.toString());
+                            dialog.dispose();
+                        }
+                    }
+                }
+            }
+        });
     }
 }

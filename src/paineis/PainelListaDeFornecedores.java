@@ -27,6 +27,7 @@ import java.awt.Container;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.List;
+import javax.swing.JDialog;
 import javax.swing.JTable;
 import model.Fornecedores;
 import table.FornecedoresTabela;
@@ -42,10 +43,8 @@ public class PainelListaDeFornecedores extends javax.swing.JPanel {
     public PainelListaDeFornecedores() {
         initComponents();
         refreshTable();
-        if (textFieldFornecedor != null) {
-            passarClienteParaOrc();
-        }
-        duploClick();
+        duploClickFornecedor();
+
     }
 
     @SuppressWarnings("unchecked")
@@ -159,7 +158,7 @@ public class PainelListaDeFornecedores extends javax.swing.JPanel {
 
     }
 
-    private void duploClick() {
+    private void duploClickFornecedor() {
 
         TabelaListaFornecedores.addMouseListener(new MouseAdapter() {
             @Override
@@ -213,7 +212,7 @@ public class PainelListaDeFornecedores extends javax.swing.JPanel {
         jTextAreaThorvi.setText(fornecedor.getObservacoesFornecedores());
     }
 
-    public final void passarClienteParaOrc() {
+    public static final void passarFornecedorParaEntradaMat(JDialog dialog) {
 
         TabelaListaFornecedores.addMouseListener(new MouseAdapter() {
             @Override
@@ -227,11 +226,12 @@ public class PainelListaDeFornecedores extends javax.swing.JPanel {
                         Object value = target.getValueAt(row, column);
                         if (value != null) {
                             textFieldFornecedor.setText(value.toString());
+                            dialog.dispose();
+
                         }
                     }
                 }
             }
         });
     }
-
 }

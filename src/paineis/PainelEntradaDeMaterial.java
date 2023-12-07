@@ -10,7 +10,7 @@ import java.util.Calendar;
 import java.util.Date;
 import javax.swing.BorderFactory;
 import javax.swing.DefaultCellEditor;
-import javax.swing.JFrame;
+import javax.swing.JDialog;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.Timer;
@@ -410,6 +410,8 @@ public class PainelEntradaDeMaterial extends javax.swing.JPanel {
 
     private void editorCedulas() {
 
+        TableEntradaMat.getColumnModel().getColumn(1).setCellEditor(new CustomPainelEntradaMaterialCellEditor(null));
+
         TableEntradaMat.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
             @Override
             public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
@@ -472,40 +474,38 @@ public class PainelEntradaDeMaterial extends javax.swing.JPanel {
         };
 
         TableEntradaMat.setDefaultEditor(Object.class, customEditor);
-        TableEntradaMat.getColumnModel().getColumn(1).setCellEditor(new CustomPainelEntradaMaterialCellEditor());
 
     }
 
-    public void showListFornecedores() {
-
+    public static void showListFornecedores() {
         PainelListaDeFornecedores customPanelFornecedores = new paineis.PainelListaDeFornecedores();
 
-        JFrame frame = new JFrame("Lista de Clientes");
-        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        frame.getContentPane().add(customPanelFornecedores);
-        frame.pack();
-        frame.setLocationRelativeTo(null);
-        frame.setAlwaysOnTop(true);
-        frame.setVisible(true);
+        JDialog dialog = new JDialog();
+        dialog.setTitle("Lista de Fornecedores");
+        dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+        dialog.getContentPane().add(customPanelFornecedores);
+        dialog.pack();
+        dialog.setLocationRelativeTo(null);
+        dialog.setModal(true);
+        PainelListaDeFornecedores.passarFornecedorParaEntradaMat(dialog);
+        dialog.setVisible(true);
 
         textFieldFornecedor.getDocument().addDocumentListener(new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent e) {
-                frame.dispose();
+                dialog.dispose();
             }
 
             @Override
             public void removeUpdate(DocumentEvent e) {
-                frame.dispose();
+                dialog.dispose();
             }
 
             @Override
             public void changedUpdate(DocumentEvent e) {
-                frame.dispose();
+                dialog.dispose();
             }
-
         });
-
     }
 
     private void dataHoraLocal() {

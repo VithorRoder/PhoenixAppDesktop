@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-import javax.swing.JFrame;
+import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
 import javax.swing.event.DocumentEvent;
@@ -25,7 +25,6 @@ public class PainelCriarOrcamento extends javax.swing.JPanel {
 
     public PainelCriarOrcamento() {
         initComponents();
-
         addRemovePainel();
         KeyF1();
         showDataHora();
@@ -449,32 +448,32 @@ public class PainelCriarOrcamento extends javax.swing.JPanel {
 
         PainelListaDeClientes customPanelClientes = new paineis.PainelListaDeClientes();
 
-        JFrame frame = new JFrame("Lista de Clientes");
-        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        frame.getContentPane().add(customPanelClientes);
-        frame.pack();
-        frame.setLocationRelativeTo(null);
-        frame.setAlwaysOnTop(true);
-        frame.setVisible(true);
+        JDialog dialog = new JDialog();
+        dialog.setTitle("Lista de Fornecedores");
+        dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+        dialog.getContentPane().add(customPanelClientes);
+        dialog.pack();
+        dialog.setLocationRelativeTo(null);
+        dialog.setModal(true);
+        PainelListaDeClientes.passarClienteParaOrc(dialog);
+        dialog.setVisible(true);
 
         jTextFieldNomeCliente.getDocument().addDocumentListener(new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent e) {
-                frame.dispose();
+                dialog.dispose();
             }
 
             @Override
             public void removeUpdate(DocumentEvent e) {
-                frame.dispose();
+                dialog.dispose();
             }
 
             @Override
             public void changedUpdate(DocumentEvent e) {
-                frame.dispose();
+                dialog.dispose();
             }
-
         });
-
     }
 
     private void showDataHora() {

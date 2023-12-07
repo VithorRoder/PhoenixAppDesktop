@@ -1,20 +1,20 @@
 package paineis;
 
+import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.JDialog;
 import javax.swing.JTable;
-import javax.swing.event.MouseInputAdapter;
 import javax.swing.table.DefaultTableModel;
+import static paineis.PainelEntradaDeMaterial.TableEntradaMat;
 
 public class PainelListaEstoque extends javax.swing.JPanel {
 
-    private int ultimaLinhaClicadaListaEstoque = -1;
-    private int ultimaLinhaClicadaEntradaMat = -1;
+    public int ultimaLinhaClicadaListaEstoque = -1;
+    public int ultimaLinhaClicadaEntradaMat = -1;
 
     public PainelListaEstoque() {
         initComponents();
-        if (PainelEntradaDeMaterial.TableEntradaMat != null) {
-            configurarDoubleClick();
-        }
+
     }
 
     @SuppressWarnings("unchecked")
@@ -131,23 +131,35 @@ public class PainelListaEstoque extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 
-    public void transferirValoresParaTabelaEntradaMat(int linhaSelecionadaEstoque) {
+    public final void transferirValoresParaTabelaEntradaMat(int linhaSelecionadaEstoque) {
         DefaultTableModel modeloTabelaListaEstoque = (DefaultTableModel) TableListaEstoque.getModel();
         DefaultTableModel modeloTabelaEntradaMat = (DefaultTableModel) PainelEntradaDeMaterial.TableEntradaMat.getModel();
 
-        if (ultimaLinhaClicadaEntradaMat >= 0 && ultimaLinhaClicadaEntradaMat < modeloTabelaEntradaMat.getRowCount()) {
-            if (linhaSelecionadaEstoque >= 0 && linhaSelecionadaEstoque < modeloTabelaListaEstoque.getRowCount()) {
-                Object valorColuna1 = modeloTabelaListaEstoque.getValueAt(linhaSelecionadaEstoque, 1);
-                Object valorColuna2 = modeloTabelaListaEstoque.getValueAt(linhaSelecionadaEstoque, 2);
+        if (ultimaLinhaClicadaListaEstoque >= 0 && ultimaLinhaClicadaListaEstoque < modeloTabelaListaEstoque.getRowCount()) {
+            if (ultimaLinhaClicadaEntradaMat >= 0 && ultimaLinhaClicadaEntradaMat < modeloTabelaEntradaMat.getRowCount()) {
+                Object valorColuna1 = modeloTabelaListaEstoque.getValueAt(ultimaLinhaClicadaListaEstoque, 1);
+                Object valorColuna2 = modeloTabelaListaEstoque.getValueAt(ultimaLinhaClicadaListaEstoque, 2);
 
                 modeloTabelaEntradaMat.setValueAt(valorColuna1, ultimaLinhaClicadaEntradaMat, 1);
                 modeloTabelaEntradaMat.setValueAt(valorColuna2, ultimaLinhaClicadaEntradaMat, 2);
+
             }
         }
     }
 
-    private void configurarDoubleClick() {
-        TableListaEstoque.addMouseListener(new MouseInputAdapter() {
+    public final void configurarDoubleClick(JDialog dialog) {
+        TableEntradaMat.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (e.getClickCount() == 1) {
+                    JTable target = (JTable) e.getSource();
+                    ultimaLinhaClicadaEntradaMat = target.getSelectedRow();
+                    //System.out.println("EntradaMat: " + ultimaLinhaClicadaEntradaMat);
+                }
+            }
+        });
+
+        TableListaEstoque.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 if (e.getClickCount() == 2) {
@@ -155,17 +167,7 @@ public class PainelListaEstoque extends javax.swing.JPanel {
                     ultimaLinhaClicadaListaEstoque = target.getSelectedRow();
                     transferirValoresParaTabelaEntradaMat(ultimaLinhaClicadaListaEstoque);
                     //System.out.println("ListaEstoque: " + ultimaLinhaClicadaListaEstoque);
-                }
-            }
-        });
-
-        PainelEntradaDeMaterial.TableEntradaMat.addMouseListener(new MouseInputAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                if (e.getClickCount() == 1) {
-                    JTable target = (JTable) e.getSource();
-                    ultimaLinhaClicadaEntradaMat = target.getSelectedRow();
-                    //System.out.println("EntradaMat: " + ultimaLinhaClicadaEntradaMat);
+                    dialog.dispose();
                 }
             }
         });
