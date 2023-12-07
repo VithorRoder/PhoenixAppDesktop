@@ -154,7 +154,6 @@ public class PainelListaEstoque extends javax.swing.JPanel {
                 if (e.getClickCount() == 1) {
                     JTable target = (JTable) e.getSource();
                     ultimaLinhaClicadaEntradaMat = target.getSelectedRow();
-                    //System.out.println("EntradaMat: " + ultimaLinhaClicadaEntradaMat);
                 }
             }
         });
@@ -166,7 +165,6 @@ public class PainelListaEstoque extends javax.swing.JPanel {
                     JTable target = (JTable) e.getSource();
                     ultimaLinhaClicadaListaEstoque = target.getSelectedRow();
                     transferirValoresParaTabelaEntradaMat(ultimaLinhaClicadaListaEstoque);
-                    //System.out.println("ListaEstoque: " + ultimaLinhaClicadaListaEstoque);
                     dialog.dispose();
                 }
             }
