@@ -31,9 +31,11 @@ public class LoginController {
     private final PainelPrincipalLogin painelPrincipal;
     private PainelBemVindo panelBemVindo;
 
+    @SuppressWarnings("LeakingThisInConstructor")
     public LoginController(PainelPrincipalLogin painelPrincipal, PainelBemVindo panelBemVindo) {
         this.painelPrincipal = painelPrincipal;
         this.panelBemVindo = panelBemVindo;
+        this.panelBemVindo.setController(this);
 
     }
 
