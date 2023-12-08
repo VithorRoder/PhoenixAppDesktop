@@ -37,7 +37,7 @@ public class ProgramFrame extends javax.swing.JFrame {
 
         initComponents();
 
-        controller = new LoginController(new PainelPrincipalLogin(), new PainelBemVindo());
+        this.controller = new LoginController(new PainelPrincipalLogin(), new PainelBemVindo());
 
         Image icon = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/png/iconePhoenix.png"));
         setIconImage(icon);
@@ -702,10 +702,6 @@ public class ProgramFrame extends javax.swing.JFrame {
     public static javax.swing.JMenu jMenuSubstratosAcabamentos;
     public static javax.swing.JMenu jMenuTipoOrcamento;
     // End of variables declaration//GEN-END:variables
-
-    public final void setController(LoginController controller) {
-        this.controller = controller;
-    }
 
     public void mostrapainel() {
         if (Controladorjmenubar.usuarioAutenticado == true) {

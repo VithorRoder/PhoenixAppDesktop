@@ -366,7 +366,7 @@ public final class PainelTabelaCriarOrcDef extends javax.swing.JPanel {
     }
 
     public void LimiteCaracteresCedulaCor() {
-        int colunaParaLimitar = 4;
+        int colunaParaLimitar = 4; // Coluna da Tabela
         TableColumnModel columnModel = TabelaCriarOrc.getColumnModel();
         TableColumn coluna = columnModel.getColumn(colunaParaLimitar);
         coluna.setCellEditor(new CustomCellEditor(3)); // limite de caracteres

@@ -28,13 +28,13 @@ import paineis.PainelPrincipalLogin;
 
 public class LoginController {
 
-    private final PainelPrincipalLogin view;
+    private final PainelPrincipalLogin painelPrincipal;
     private PainelBemVindo panelBemVindo;
 
-    public LoginController(PainelPrincipalLogin view, PainelBemVindo panelBemVindo) {
-        this.view = view;
+    public LoginController(PainelPrincipalLogin painelPrincipal, PainelBemVindo panelBemVindo) {
+        this.painelPrincipal = painelPrincipal;
         this.panelBemVindo = panelBemVindo;
-        this.panelBemVindo.setController(this);
+
     }
 
     public void setPanelBemVindo(PainelBemVindo panelBemVindo) {
@@ -43,9 +43,9 @@ public class LoginController {
 
     public void autenticar() throws SQLException {
         // buscar um usuário da view.
-        String usuario = view.getjFormattedTextField1usuariologin().getText();
+        String usuario = painelPrincipal.getjFormattedTextField1usuariologin().getText();
         @SuppressWarnings("deprecation")
-        String senha = view.getjPasswordField1senhalogin().getText();
+        String senha = painelPrincipal.getjPasswordField1senhalogin().getText();
         Usuario usuarioAutenticar = new Usuario(usuario, senha);
 
         // verificar se existe no banco de dados.
@@ -77,8 +77,8 @@ public class LoginController {
             jMenuCriarCadastroDeFornecedores.setEnabled(true);
             jMenuListaDeFornecedores.setEnabled(true);
 
-            Container parent = view.getParent();
-            parent.remove(view);
+            Container parent = painelPrincipal.getParent();
+            parent.remove(painelPrincipal);
             parent.add(panelBemVindo);
             parent.revalidate();
             parent.repaint();
@@ -112,8 +112,8 @@ public class LoginController {
         jMenuCriarCadastroDeFornecedores.setEnabled(false);
         jMenuListaDeFornecedores.setEnabled(false);
 
-        view.getjFormattedTextField1usuariologin().setText("");
-        view.getjPasswordField1senhalogin().setText("");
+        painelPrincipal.getjFormattedTextField1usuariologin().setText("");
+        painelPrincipal.getjPasswordField1senhalogin().setText("");
 
         JOptionPane.showMessageDialog(null, "Usuário deslogado", "Logout", JOptionPane.INFORMATION_MESSAGE);
     }

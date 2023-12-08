@@ -1,22 +1,23 @@
 package paineis;
 
 import util.CustomPainelEntradaMaterialCellEditor;
-import java.awt.Color;
-import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import javax.swing.BorderFactory;
-import javax.swing.DefaultCellEditor;
 import javax.swing.JDialog;
-import javax.swing.JTable;
-import javax.swing.JTextField;
 import javax.swing.Timer;
-import javax.swing.border.Border;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
+import java.awt.Color;
+import java.awt.Component;
+import java.util.Arrays;
+import javax.swing.BorderFactory;
+import javax.swing.DefaultCellEditor;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.border.Border;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.TableCellEditor;
 
@@ -50,6 +51,7 @@ public class PainelEntradaDeMaterial extends javax.swing.JPanel {
         jFormattedTextField5 = new javax.swing.JFormattedTextField();
         jButton1 = new javax.swing.JButton();
         jformatedTextFieldPreco1 = new util.JformatedTextFieldPreco();
+        jButton2 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         TableEntradaMat = new javax.swing.JTable();
@@ -133,6 +135,13 @@ public class PainelEntradaDeMaterial extends javax.swing.JPanel {
             }
         });
 
+        jButton2.setText("Limpar Campos");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -159,21 +168,27 @@ public class PainelEntradaDeMaterial extends javax.swing.JPanel {
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jFormattedTextField5)
                     .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(49, 49, 49)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(49, 49, 49)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jFormattedTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jFormattedTextFieldDataENF, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jFormattedTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jFormattedTextFieldDataENF, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jformatedTextFieldPreco1, javax.swing.GroupLayout.DEFAULT_SIZE, 123, Short.MAX_VALUE)
-                    .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(105, Short.MAX_VALUE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jformatedTextFieldPreco1, javax.swing.GroupLayout.DEFAULT_SIZE, 123, Short.MAX_VALUE)
+                            .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton2)
+                        .addContainerGap())))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -207,8 +222,11 @@ public class PainelEntradaDeMaterial extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jFormattedTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jFormattedTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
         jPanel2.setBackground(new java.awt.Color(204, 204, 204));
@@ -369,7 +387,7 @@ public class PainelEntradaDeMaterial extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void TableEntradaMatFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TableEntradaMatFocusLost
-        TableEntradaMat.clearSelection();
+        cancelarCursorTabela();
     }//GEN-LAST:event_TableEntradaMatFocusLost
 
     private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
@@ -380,10 +398,15 @@ public class PainelEntradaDeMaterial extends javax.swing.JPanel {
         showListFornecedores();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        LimparCampos();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JTable TableEntradaMat;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private util.JButtonRedondoCriarForncecedores jButtonRedondoCriarForncecedoresCancelar2;
     private util.JButtonRedondoCriarForncecedores jButtonRedondoCriarForncecedoresDeletar;
     private util.JButtonRedondoCriarForncecedores jButtonRedondoCriarForncecedoresSalvar;
@@ -412,6 +435,7 @@ public class PainelEntradaDeMaterial extends javax.swing.JPanel {
 
         TableEntradaMat.getColumnModel().getColumn(1).setCellEditor(new CustomPainelEntradaMaterialCellEditor(null));
 
+        // altera a cor quando a celula é selecionada
         TableEntradaMat.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
             @Override
             public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
@@ -428,9 +452,25 @@ public class PainelEntradaDeMaterial extends javax.swing.JPanel {
             }
         });
 
+        // Altera a cor quando a celula está sendo editada
+        TableCellEditor customEditor = new DefaultCellEditor(new JTextField()) {
+            @Override
+            public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column) {
+                JTextField editorComponent = (JTextField) super.getTableCellEditorComponent(table, value, isSelected, row, column);
+
+                Color corDeFundo = new Color(0, 0, 180, 80);
+                Border mesmaCorDeFundo = BorderFactory.createLineBorder(corDeFundo, 2);
+                editorComponent.setBorder(mesmaCorDeFundo);
+                editorComponent.setBackground(corDeFundo);
+
+                return editorComponent;
+            }
+        };
+
+        TableEntradaMat.setDefaultEditor(Object.class, customEditor);
+
         // Colunas para alterar a cor de fundo
         int[] columnsToColor = {2, 4, 6, 9};
-
         DefaultTableCellRenderer blackBackgroundRenderer = new DefaultTableCellRenderer() {
             @Override
             public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
@@ -458,22 +498,6 @@ public class PainelEntradaDeMaterial extends javax.swing.JPanel {
                 }
             });
         }
-
-        TableCellEditor customEditor = new DefaultCellEditor(new JTextField()) {
-            @Override
-            public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column) {
-                JTextField editorComponent = (JTextField) super.getTableCellEditorComponent(table, value, isSelected, row, column);
-
-                Color corDeFundo = new Color(0, 0, 180, 80);
-                Border mesmaCorDeFundo = BorderFactory.createLineBorder(corDeFundo, 2);
-                editorComponent.setBorder(mesmaCorDeFundo);
-                editorComponent.setBackground(corDeFundo);
-
-                return editorComponent;
-            }
-        };
-
-        TableEntradaMat.setDefaultEditor(Object.class, customEditor);
 
     }
 
@@ -525,6 +549,41 @@ public class PainelEntradaDeMaterial extends javax.swing.JPanel {
         public void actionPerformed(ActionEvent e) {
             Calendar now = Calendar.getInstance();
             labelHora.setText(String.format("%1$tH:%1$tM %1$Tp", now));
+        }
+    }
+
+    public void LimparCampos() {
+
+        TableEntradaMat.clearSelection();
+
+        int rowCount = TableEntradaMat.getRowCount();
+        int colCount = TableEntradaMat.getColumnCount();
+
+        for (int i = 0; i < rowCount; i++) {
+            for (int j = 0; j < colCount; j++) {
+                TableEntradaMat.setValueAt(null, i, j);
+            }
+        }
+        int selectedRow = TableEntradaMat.getSelectedRow();
+        if (selectedRow != -1) {
+            for (int i = 0; i < TableEntradaMat.getColumnCount(); i++) {
+                TableEntradaMat.setValueAt(null, i, i);
+            }
+        }
+
+    }
+
+    public void cancelarCursorTabela() {
+
+        if (TableEntradaMat.isEditing()) {
+            int[] editableColumns = {1, 2, 3, 4, 5, 6};
+            int selectedColumn = TableEntradaMat.getEditingColumn();
+            if (selectedColumn >= 0 && Arrays.stream(editableColumns).anyMatch(c -> c == selectedColumn)) {
+                TableCellEditor cellEditor = TableEntradaMat.getCellEditor();
+                if (cellEditor != null) {
+                    cellEditor.stopCellEditing();
+                }
+            }
         }
     }
 
