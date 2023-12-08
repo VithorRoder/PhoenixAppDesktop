@@ -560,7 +560,7 @@ public class PainelEntradaDeMaterial extends javax.swing.JPanel {
         int colCount = TableEntradaMat.getColumnCount();
 
         for (int i = 0; i < rowCount; i++) {
-            for (int j = 0; j < colCount; j++) {
+            for (int j = 1; j < colCount; j++) {
                 TableEntradaMat.setValueAt(null, i, j);
             }
         }
@@ -576,9 +576,9 @@ public class PainelEntradaDeMaterial extends javax.swing.JPanel {
     public void cancelarCursorTabela() {
 
         if (TableEntradaMat.isEditing()) {
-            int[] editableColumns = {1, 2, 3, 4, 5, 6};
+            int[] editableColumns = {1, 2, 3, 4, 5, 6, 7, 8, 9};
             int selectedColumn = TableEntradaMat.getEditingColumn();
-            if (selectedColumn >= 0 && Arrays.stream(editableColumns).anyMatch(c -> c == selectedColumn)) {
+            if (selectedColumn >= 1 && Arrays.stream(editableColumns).anyMatch(c -> c == selectedColumn)) {
                 TableCellEditor cellEditor = TableEntradaMat.getCellEditor();
                 if (cellEditor != null) {
                     cellEditor.stopCellEditing();
