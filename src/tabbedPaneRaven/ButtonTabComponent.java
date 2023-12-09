@@ -53,7 +53,7 @@ public class ButtonTabComponent extends JPanel {
 
         public TabButton() {
             int size = 20;
-            ImageIcon icon = new ImageIcon(getClass().getResource("/Pngs/remove.png"));
+            ImageIcon icon = new ImageIcon(getClass().getResource("/png/removeTabbed.png"));
             setIcon(icon);
             setPreferredSize(new Dimension(size, size));
             setToolTipText("close this tab");
