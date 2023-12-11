@@ -48,15 +48,17 @@ public class TabbedPaneCustomUI extends BasicTabbedPaneUI {
 
     @Override
     protected void paintTabArea(Graphics g, int tabPlacement, int selectedIndex) {
-        Graphics2D g2 = (Graphics2D) g.create();
-        g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-        for (int i = tabPane.getTabCount() - 1; i >= 0; i--) {
-            if (i != selectedIndex) {
-                paintTabBackground(g2, i, false);
+        if (tabPane.getTabCount() > 0) {
+            Graphics2D g2 = (Graphics2D) g.create();
+            g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+            for (int i = tabPane.getTabCount() - 1; i >= 0; i--) {
+                if (i != selectedIndex) {
+                    paintTabBackground(g2, i, false);
+                }
             }
+            paintTabBackground(g2, selectedIndex, true);
+            g2.dispose();
         }
-        paintTabBackground(g2, selectedIndex, true);
-        g2.dispose();
         super.paintTabArea(g, tabPlacement, selectedIndex);
     }
 
