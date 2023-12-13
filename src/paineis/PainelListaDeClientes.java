@@ -102,27 +102,6 @@ public class PainelListaDeClientes extends javax.swing.JPanel {
         }
     }
 
-    public final void PassarClienteParaOrc() {
-
-        TabelaListaDeClientes.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                if (e.getClickCount() == 2) {
-                    JTable target = (JTable) e.getSource();
-                    int row = target.getSelectedRow();
-                    int column = 1;
-
-                    if (row != -1) {
-                        Object value = target.getValueAt(row, column);
-                        if (value != null) {
-                            jTextFieldNomeCliente.setText(value.toString());
-                        }
-                    }
-                }
-            }
-        });
-    }
-
     private void duploClickClientes() {
 
         TabelaListaDeClientes.addMouseListener(new MouseAdapter() {
