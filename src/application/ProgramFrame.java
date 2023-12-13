@@ -27,7 +27,10 @@ import javax.swing.UIManager;
 import javax.swing.UIManager.LookAndFeelInfo;
 import javax.swing.UnsupportedLookAndFeelException;
 
-//@author Vithor Roder
+/**
+ *
+ * @author VithorRoder
+ */
 public class ProgramFrame extends javax.swing.JFrame {
 
     public LoginController controller;
