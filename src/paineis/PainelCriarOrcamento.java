@@ -25,6 +25,8 @@ public class PainelCriarOrcamento extends javax.swing.JPanel {
 
     public PainelCriarOrcamento() {
         initComponents();
+        PainelTabelaCriarOrcDef teste = new PainelTabelaCriarOrcDef();
+        teste.preencherColunaZero();
         addRemovePainel();
         KeyF1();
         showDataHora();
@@ -163,7 +165,7 @@ public class PainelCriarOrcamento extends javax.swing.JPanel {
         );
         jPanelTABLayout.setVerticalGroup(
             jPanelTABLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 287, Short.MAX_VALUE)
+            .addGap(0, 305, Short.MAX_VALUE)
         );
 
         jTabbedPaneOrc.addTab("Tab DEF", jPanelTAB);
@@ -281,13 +283,13 @@ public class PainelCriarOrcamento extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
                         .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelTituloOrcc, javax.swing.GroupLayout.DEFAULT_SIZE, 66, Short.MAX_VALUE)
+                            .addComponent(jLabelTituloOrcc, javax.swing.GroupLayout.DEFAULT_SIZE, 62, Short.MAX_VALUE)
                             .addComponent(jLabelNomeCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -304,8 +306,8 @@ public class PainelCriarOrcamento extends javax.swing.JPanel {
                     .addComponent(jButtonRemoverItem, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonAdicionarItem, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTabbedPaneOrc, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
+                .addComponent(jTabbedPaneOrc, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -390,6 +392,7 @@ public class PainelCriarOrcamento extends javax.swing.JPanel {
         jTabbedPaneOrc.addTab("Tab " + proximoNumeroAba, novoPainel);
         jTabbedPaneOrc.setSelectedIndex(jTabbedPaneOrc.getTabCount() - 1);
         proximoNumeroAba++;
+        novoPainel.preencherColunaZero();
 
     }
 
@@ -488,6 +491,7 @@ public class PainelCriarOrcamento extends javax.swing.JPanel {
     private void addRemovePainel() {
         listaPaineis = new ArrayList<>();
         PainelTabelaCriarOrcDef novoPainel = new PainelTabelaCriarOrcDef();
+        novoPainel.preencherColunaZero();
 
         listaPaineis.add(novoPainel);
 

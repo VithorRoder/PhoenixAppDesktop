@@ -29,6 +29,7 @@ public final class PainelTabelaCriarOrcDef extends javax.swing.JPanel {
 
     public PainelTabelaCriarOrcDef() {
         initComponents();
+        preencherColunaZero();
         refreshComboBox();
         editorCelulasColor();
     }
@@ -98,24 +99,32 @@ public final class PainelTabelaCriarOrcDef extends javax.swing.JPanel {
         TabelaCriarOrc.setForeground(new java.awt.Color(0, 0, 0));
         TabelaCriarOrc.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {"01", null, null, null, null, null, null, null},
+                {"02", null, null, null, null, null, null, null},
+                {"03", null, null, null, null, null, null, null},
+                {"04", null, null, null, null, null, null, null},
+                {"05", null, null, null, null, null, null, null},
+                {"06", null, null, null, null, null, null, null},
+                {"07", null, null, null, null, null, null, null},
+                {"08", null, null, null, null, null, null, null},
+                {"09", null, null, null, null, null, null, null},
+                {"10", null, null, null, null, null, null, null},
+                {"11", null, null, null, null, null, null, null},
+                {"12", null, null, null, null, null, null, null},
+                {"13", null, null, null, null, null, null, null}
             },
             new String [] {
-                "Planos(Quantidade)", "Medida(LxA)", "Montagem", "Páginas", "cor", "Material", "Máquina/Impressora"
+                "", "Planos(Quantidade)", "Medida(LxA)", "Montagem", "Páginas", "cor", "Material", "Máquina/Impressora"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, true, true, true, true, true, true, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         TabelaCriarOrc.setGridColor(new java.awt.Color(204, 204, 204));
         TabelaCriarOrc.setName(""); // NOI18N
         TabelaCriarOrc.setRowHeight(22);
@@ -139,25 +148,28 @@ public final class PainelTabelaCriarOrcDef extends javax.swing.JPanel {
         });
         ScrollTabelaModOrc.setViewportView(TabelaCriarOrc);
         if (TabelaCriarOrc.getColumnModel().getColumnCount() > 0) {
-            TabelaCriarOrc.getColumnModel().getColumn(0).setMinWidth(150);
-            TabelaCriarOrc.getColumnModel().getColumn(0).setPreferredWidth(150);
-            TabelaCriarOrc.getColumnModel().getColumn(0).setMaxWidth(150);
-            TabelaCriarOrc.getColumnModel().getColumn(1).setMinWidth(100);
-            TabelaCriarOrc.getColumnModel().getColumn(1).setPreferredWidth(100);
-            TabelaCriarOrc.getColumnModel().getColumn(1).setMaxWidth(100);
-            TabelaCriarOrc.getColumnModel().getColumn(2).setMinWidth(80);
-            TabelaCriarOrc.getColumnModel().getColumn(2).setPreferredWidth(80);
-            TabelaCriarOrc.getColumnModel().getColumn(2).setMaxWidth(80);
+            TabelaCriarOrc.getColumnModel().getColumn(0).setMinWidth(25);
+            TabelaCriarOrc.getColumnModel().getColumn(0).setPreferredWidth(25);
+            TabelaCriarOrc.getColumnModel().getColumn(0).setMaxWidth(25);
+            TabelaCriarOrc.getColumnModel().getColumn(1).setMinWidth(150);
+            TabelaCriarOrc.getColumnModel().getColumn(1).setPreferredWidth(150);
+            TabelaCriarOrc.getColumnModel().getColumn(1).setMaxWidth(150);
+            TabelaCriarOrc.getColumnModel().getColumn(2).setMinWidth(100);
+            TabelaCriarOrc.getColumnModel().getColumn(2).setPreferredWidth(100);
+            TabelaCriarOrc.getColumnModel().getColumn(2).setMaxWidth(100);
             TabelaCriarOrc.getColumnModel().getColumn(3).setMinWidth(80);
             TabelaCriarOrc.getColumnModel().getColumn(3).setPreferredWidth(80);
             TabelaCriarOrc.getColumnModel().getColumn(3).setMaxWidth(80);
             TabelaCriarOrc.getColumnModel().getColumn(4).setMinWidth(80);
             TabelaCriarOrc.getColumnModel().getColumn(4).setPreferredWidth(80);
             TabelaCriarOrc.getColumnModel().getColumn(4).setMaxWidth(80);
-            TabelaCriarOrc.getColumnModel().getColumn(5).setMinWidth(120);
-            TabelaCriarOrc.getColumnModel().getColumn(5).setPreferredWidth(120);
+            TabelaCriarOrc.getColumnModel().getColumn(5).setMinWidth(80);
+            TabelaCriarOrc.getColumnModel().getColumn(5).setPreferredWidth(80);
+            TabelaCriarOrc.getColumnModel().getColumn(5).setMaxWidth(80);
             TabelaCriarOrc.getColumnModel().getColumn(6).setMinWidth(120);
             TabelaCriarOrc.getColumnModel().getColumn(6).setPreferredWidth(120);
+            TabelaCriarOrc.getColumnModel().getColumn(7).setMinWidth(120);
+            TabelaCriarOrc.getColumnModel().getColumn(7).setPreferredWidth(120);
         }
 
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
@@ -319,7 +331,7 @@ public final class PainelTabelaCriarOrcDef extends javax.swing.JPanel {
 
     public void editCelulasTab() {
         if (TabelaCriarOrc.isEditing()) {
-            int[] editableColumns = {0, 1, 2, 3, 4, 5, 6};
+            int[] editableColumns = {1, 2, 3, 4, 5, 6};
             int selectedColumn = TabelaCriarOrc.getEditingColumn();
             if (selectedColumn >= 0 && Arrays.stream(editableColumns).anyMatch(c -> c == selectedColumn)) {
                 TableCellEditor cellEditor = TabelaCriarOrc.getCellEditor();
@@ -366,10 +378,19 @@ public final class PainelTabelaCriarOrcDef extends javax.swing.JPanel {
     }
 
     public void LimiteCaracteresCedulaCor() {
-        int colunaParaLimitar = 4; // Coluna da Tabela
+        int colunaParaLimitar = 5; // Coluna da Tabela
         TableColumnModel columnModel = TabelaCriarOrc.getColumnModel();
         TableColumn coluna = columnModel.getColumn(colunaParaLimitar);
         coluna.setCellEditor(new CustomCellEditor(3)); // limite de caracteres
+    }
+
+    public void preencherColunaZero() {
+        DefaultTableModel model = (DefaultTableModel) TabelaCriarOrc.getModel();
+
+        // Adicione os valores na coluna 0 da tabela
+        for (int i = 0; i < model.getRowCount(); i++) {
+            model.setValueAt(String.format("%02d", i + 1), i, 0); // Preenche a coluna com valores de 01 a 13
+        }
     }
 
     public void AtualizarTipoOrcComboBox() {
@@ -434,49 +455,26 @@ public final class PainelTabelaCriarOrcDef extends javax.swing.JPanel {
 
         ///////////  Linha 01  ////////////
         for (int row = 0; row < Math.min(model.getRowCount(), 1); row++) {
-            model.setValueAt(Planos, row, 0);
-        }
-        for (int row = 0; row < Math.min(model.getRowCount(), 1); row++) {
-            model.setValueAt(Medida, row, 1);
-        }
-        for (int row = 0; row < Math.min(model.getRowCount(), 1); row++) {
-            model.setValueAt(Montagem, row, 2);
-        }
-        for (int row = 0; row < Math.min(model.getRowCount(), 1); row++) {
-            model.setValueAt(Paginas, row, 3);
-        }
-        for (int row = 0; row < Math.min(model.getRowCount(), 1); row++) {
-            model.setValueAt(Cor, row, 4);
-        }
-        for (int row = 0; row < Math.min(model.getRowCount(), 1); row++) {
-            model.setValueAt(Material, row, 5);
-        }
-        for (int row = 0; row < Math.min(model.getRowCount(), 1); row++) {
-            model.setValueAt(MaquinasImpressoras, row, 6);
+            model.setValueAt(Planos, row, 1);
+            model.setValueAt(Medida, row, 2);
+            model.setValueAt(Montagem, row, 3);
+            model.setValueAt(Paginas, row, 4);
+            model.setValueAt(Cor, row, 5);
+            model.setValueAt(Material, row, 6);
+            model.setValueAt(MaquinasImpressoras, row, 7);
         }
 
         ///////////  Linha 02  ////////////
         for (int row = 1; row < Math.min(model.getRowCount(), 2); row++) {
-            model.setValueAt(Planos2, row, 0);
+            model.setValueAt(Planos2, row, 1);
+            model.setValueAt(Medida2, row, 2);
+            model.setValueAt(Montagem2, row, 3);
+            model.setValueAt(Paginas2, row, 4);
+            model.setValueAt(Cor2, row, 5);
+            model.setValueAt(Material2, row, 6);
+            model.setValueAt(MaquinasImpressoras2, row, 7);
         }
-        for (int row = 1; row < Math.min(model.getRowCount(), 2); row++) {
-            model.setValueAt(Medida2, row, 1);
-        }
-        for (int row = 1; row < Math.min(model.getRowCount(), 2); row++) {
-            model.setValueAt(Montagem2, row, 2);
-        }
-        for (int row = 1; row < Math.min(model.getRowCount(), 2); row++) {
-            model.setValueAt(Paginas2, row, 3);
-        }
-        for (int row = 1; row < Math.min(model.getRowCount(), 2); row++) {
-            model.setValueAt(Cor2, row, 4);
-        }
-        for (int row = 1; row < Math.min(model.getRowCount(), 2); row++) {
-            model.setValueAt(Material2, row, 5);
-        }
-        for (int row = 1; row < Math.min(model.getRowCount(), 2); row++) {
-            model.setValueAt(MaquinasImpressoras2, row, 6);
-        }
+        preencherColunaZero();
     }
 
 }

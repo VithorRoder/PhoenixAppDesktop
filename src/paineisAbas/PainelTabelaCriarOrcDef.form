@@ -202,7 +202,22 @@
                   <Color blue="0" green="0" red="0" type="rgb"/>
                 </Property>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="7" rowCount="13">
+                  <Table columnCount="8" rowCount="13">
+                    <Column editable="false" title="" type="java.lang.Object">
+                      <Data value="01"/>
+                      <Data value="02"/>
+                      <Data value="03"/>
+                      <Data value="04"/>
+                      <Data value="05"/>
+                      <Data value="06"/>
+                      <Data value="07"/>
+                      <Data value="08"/>
+                      <Data value="09"/>
+                      <Data value="10"/>
+                      <Data value="11"/>
+                      <Data value="12"/>
+                      <Data value="13"/>
+                    </Column>
                     <Column editable="true" title="Planos(Quantidade)" type="java.lang.Object"/>
                     <Column editable="true" title="Medida(LxA)" type="java.lang.Object"/>
                     <Column editable="true" title="Montagem" type="java.lang.Object"/>
@@ -214,6 +229,11 @@
                 </Property>
                 <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                   <TableColumnModel selectionModel="0">
+                    <Column maxWidth="25" minWidth="25" prefWidth="25" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
                     <Column maxWidth="150" minWidth="150" prefWidth="150" resizable="true">
                       <Title/>
                       <Editor/>
