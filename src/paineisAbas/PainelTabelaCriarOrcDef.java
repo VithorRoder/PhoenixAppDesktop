@@ -111,7 +111,9 @@ public final class PainelTabelaCriarOrcDef extends javax.swing.JPanel {
                 {"10", null, null, null, null, null, null, null},
                 {"11", null, null, null, null, null, null, null},
                 {"12", null, null, null, null, null, null, null},
-                {"13", null, null, null, null, null, null, null}
+                {"13", null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
                 "", "Planos(Quantidade)", "Medida(LxA)", "Montagem", "Páginas", "cor", "Material", "Máquina/Impressora"
@@ -389,7 +391,18 @@ public final class PainelTabelaCriarOrcDef extends javax.swing.JPanel {
 
         // Adicione os valores na coluna 0 da tabela
         for (int i = 0; i < model.getRowCount(); i++) {
-            model.setValueAt(String.format("%02d", i + 1), i, 0); // Preenche a coluna com valores de 01 a 13
+            model.setValueAt(String.format("%02d", i + 1), i, 0);
+        }
+        // Desativar a seleção de coluna 
+        int[] columnNotSelectable = {0};
+        for (int columnIndex : columnNotSelectable) {
+            TabelaCriarOrc.getColumnModel().getColumn(columnIndex).setCellRenderer(new DefaultTableCellRenderer() {
+                @Override
+                public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+                    Component component = super.getTableCellRendererComponent(table, value, false, false, row, column);
+                    return component;
+                }
+            });
         }
     }
 
