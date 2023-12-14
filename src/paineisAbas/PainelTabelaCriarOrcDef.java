@@ -28,44 +28,9 @@ public final class PainelTabelaCriarOrcDef extends javax.swing.JPanel {
     private static final String SQL_FIND_PRECOMIN = "SELECT descricao_interna, valor_min FROM tipo_orcamento ORDER BY descricao_interna";
 
     public PainelTabelaCriarOrcDef() {
-
         initComponents();
-
         refreshComboBox();
-
-        TabelaCriarOrc.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
-            @Override
-            public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
-                Component component = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
-
-                if (isSelected && hasFocus) {
-                    Color lightBlue = new Color(0, 0, 180, 80);
-                    component.setBackground(lightBlue); // Defina a cor desejada para a célula selecionada
-                } else {
-                    component.setBackground(table.getBackground());
-                }
-
-                return component;
-            }
-        });
-
-        TableCellEditor customEditor = new DefaultCellEditor(new JTextField()) {
-            @Override
-            public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column) {
-                JTextField editorComponent = (JTextField) super.getTableCellEditorComponent(table, value, isSelected, row, column);
-
-                Color corDeFundo = new Color(0, 0, 180, 80);
-                Border mesmaCorDeFundo = BorderFactory.createLineBorder(corDeFundo, 2);
-                editorComponent.setBorder(mesmaCorDeFundo);
-                editorComponent.setBackground(corDeFundo);
-
-                return editorComponent;
-            }
-        };
-
-        TabelaCriarOrc.setDefaultEditor(Object.class, customEditor);
-        LimiteCaracteresCedulaCor();
-
+        editorCelulasColor();
     }
 
     @SuppressWarnings("unchecked")
@@ -363,6 +328,41 @@ public final class PainelTabelaCriarOrcDef extends javax.swing.JPanel {
                 }
             }
         }
+    }
+
+    public void editorCelulasColor() {
+        TabelaCriarOrc.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
+            @Override
+            public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+                Component component = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+
+                if (isSelected && hasFocus) {
+                    Color lightBlue = new Color(0, 0, 180, 80);
+                    component.setBackground(lightBlue); // Defina a cor desejada para a célula selecionada
+                } else {
+                    component.setBackground(table.getBackground());
+                }
+
+                return component;
+            }
+        });
+
+        TableCellEditor customEditor = new DefaultCellEditor(new JTextField()) {
+            @Override
+            public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column) {
+                JTextField editorComponent = (JTextField) super.getTableCellEditorComponent(table, value, isSelected, row, column);
+
+                Color corDeFundo = new Color(0, 0, 180, 80);
+                Border mesmaCorDeFundo = BorderFactory.createLineBorder(corDeFundo, 2);
+                editorComponent.setBorder(mesmaCorDeFundo);
+                editorComponent.setBackground(corDeFundo);
+
+                return editorComponent;
+            }
+        };
+
+        TabelaCriarOrc.setDefaultEditor(Object.class, customEditor);
+        LimiteCaracteresCedulaCor();
     }
 
     public void LimiteCaracteresCedulaCor() {
