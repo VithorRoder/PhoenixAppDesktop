@@ -1,6 +1,5 @@
 package paineis;
 
-import static paineis.PainelCriarOrcamento.jTextFieldNomeCliente;
 import static paineisAbas.PainelDadosClientes.comboBoxGrupo1Clientes;
 import static paineisAbas.PainelDadosClientes.comboBoxGrupo2Clientes;
 import static paineisAbas.PainelDadosClientes.jTextAreaClientes;
@@ -32,6 +31,7 @@ import java.util.List;
 import javax.swing.JDialog;
 import javax.swing.JTable;
 import model.Clientes;
+import static paineis.PainelCriarOrcamento.jTextFieldNomeCliente;
 import table.ClientesTabela;
 import table.ClientesTabelaRenderer;
 
