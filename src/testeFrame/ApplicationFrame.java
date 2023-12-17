@@ -688,58 +688,82 @@ public class ApplicationFrame extends javax.swing.JFrame {
 
     public static void showPainelListaFornecedores() {
 
-        int quantidadeAbasPainelListaDeFornecedores = 0;
+        int quantidadeAbasPainelListaFornecedores = 0;
+        String nomeAba = "PainelListaFornecedores_1"; // Nome padrão para a primeira aba
 
         // Conta a quantidade de abas do Painel Lista de Fornecedores abertas
         for (int i = 0; i < tabbedPaneCustom1.getTabCount(); i++) {
             if (tabbedPaneCustom1.getComponentAt(i) instanceof PainelListaDeFornecedores) {
-                quantidadeAbasPainelListaDeFornecedores++;
+                quantidadeAbasPainelListaFornecedores++;
             }
         }
 
-        // Verifica se o limite de abas do Painel Lista de Fornecedores foi atingido
-        if (quantidadeAbasPainelListaDeFornecedores < MAX_GLOBAL_PANEL_TABS) {
+        // Verifica se o limite de abas do Painel Lista de Fornecedores foi atingido.
+        if (quantidadeAbasPainelListaFornecedores < MAX_GLOBAL_PANEL_TABS) {
             int totalAbas = tabbedPaneCustom1.getTabCount();
 
             // Verifica se o limite global de abas foi atingido
             if (totalAbas >= MAX_GLOBAL_TABS) {
                 JOptionPane.showMessageDialog(null, "Limite máximo de abas atingido.", "Aviso", JOptionPane.WARNING_MESSAGE);
             } else {
-                // Cria uma nova instância de PainelListaDeFornececedores para cada aba
-                PainelListaDeFornecedores novoPainelListaFornecedores = new PainelListaDeFornecedores();
-                tabbedPaneCustom1.addTab("Fornecedores", null, novoPainelListaFornecedores, "Lista de Fornecedores");
-                tabbedPaneCustom1.setSelectedComponent(novoPainelListaFornecedores);
+                // Cria uma nova instância de PainelListaDeFornecedores para cada aba
+                PainelListaDeFornecedores novoPainelListaDeFornecedores = new PainelListaDeFornecedores();
+                tabbedPaneCustom1.addTab("Lista de Fornecedores", null, novoPainelListaDeFornecedores, "Lista de Fornecedores");
+                tabbedPaneCustom1.setSelectedComponent(novoPainelListaDeFornecedores);
+
+                // Salva o nome associado ao índice da aba
+                int indexNovaAba = tabbedPaneCustom1.indexOfComponent(novoPainelListaDeFornecedores);
+                nomeAba = "PainelListaFornecedores_" + (indexNovaAba + 1);
             }
         } else {
+            // Se atingiu o limite de abas, seleciona uma aba existente
+            for (int i = 0; i < tabbedPaneCustom1.getTabCount(); i++) {
+                if (tabbedPaneCustom1.getComponentAt(i) instanceof PainelListaDeFornecedores) {
+                    tabbedPaneCustom1.setSelectedIndex(i);
+                    break;
+                }
+            }
             JOptionPane.showMessageDialog(null, "Limite de abas do Painel Lista de Fornecedores.", "Aviso", JOptionPane.WARNING_MESSAGE);
         }
     }
 
     public static void showPainelCriarFornecedores() {
 
-        int quantidadeAbasPainelCadastroDeFornecedores = 0;
+        int quantidadeAbasPainelCriarFornecedores = 0;
+        String nomeAba = "PainelCriarFornecedores_1"; // Nome padrão para a primeira aba
 
         // Conta a quantidade de abas do Painel Cadastro de Fornecedores abertas
         for (int i = 0; i < tabbedPaneCustom1.getTabCount(); i++) {
             if (tabbedPaneCustom1.getComponentAt(i) instanceof PainelCriarCadastroFornecedores) {
-                quantidadeAbasPainelCadastroDeFornecedores++;
+                quantidadeAbasPainelCriarFornecedores++;
             }
         }
 
-        // Verifica se o limite de abas do Painel Cadastro de Fornecedores foi atingido
-        if (quantidadeAbasPainelCadastroDeFornecedores < MAX_GLOBAL_PANEL_TABS) {
+        // Verifica se o limite de abas do Painel Cadastro de Fornecedores foi atingido.
+        if (quantidadeAbasPainelCriarFornecedores < MAX_GLOBAL_PANEL_TABS) {
             int totalAbas = tabbedPaneCustom1.getTabCount();
 
             // Verifica se o limite global de abas foi atingido
             if (totalAbas >= MAX_GLOBAL_TABS) {
                 JOptionPane.showMessageDialog(null, "Limite máximo de abas atingido.", "Aviso", JOptionPane.WARNING_MESSAGE);
             } else {
-                // Cria uma nova instância de PainelCriarCadastroDeFornececedores para cada aba
-                PainelCriarCadastroFornecedores novoPainelCadastroFornecedores = new PainelCriarCadastroFornecedores();
-                tabbedPaneCustom1.addTab("Cadastro de Fornecedores", null, novoPainelCadastroFornecedores, "Cadastro de Fornecedores");
-                tabbedPaneCustom1.setSelectedComponent(novoPainelCadastroFornecedores);
+                // Cria uma nova instância de PainelListaDeFornecedores para cada aba
+                PainelCriarCadastroFornecedores novoPainelCadastroDeFornecedores = new PainelCriarCadastroFornecedores();
+                tabbedPaneCustom1.addTab("Cadastro de Fornecedores", null, novoPainelCadastroDeFornecedores, "Cadastro de Fornecedores");
+                tabbedPaneCustom1.setSelectedComponent(novoPainelCadastroDeFornecedores);
+
+                // Salva o nome associado ao índice da aba
+                int indexNovaAba = tabbedPaneCustom1.indexOfComponent(novoPainelCadastroDeFornecedores);
+                nomeAba = "PainelCriarFornecedores_" + (indexNovaAba + 1);
             }
         } else {
+            // Se atingiu o limite de abas, seleciona uma aba existente
+            for (int i = 0; i < tabbedPaneCustom1.getTabCount(); i++) {
+                if (tabbedPaneCustom1.getComponentAt(i) instanceof PainelCriarCadastroFornecedores) {
+                    tabbedPaneCustom1.setSelectedIndex(i);
+                    break;
+                }
+            }
             JOptionPane.showMessageDialog(null, "Limite de abas do Painel Cadastro de Fornecedores.", "Aviso", JOptionPane.WARNING_MESSAGE);
         }
     }
@@ -776,6 +800,7 @@ public class ApplicationFrame extends javax.swing.JFrame {
     public static void showPainelCriarCadastroClientes() {
 
         int quantidadeAbasPainelCriarCadastroClientes = 0;
+        String nomeAba = "PainelCriarCadastroClientes_1"; // Nome padrão para a primeira aba
 
         // Conta a quantidade de abas do Painel Cadastro de Clientes abertas
         for (int i = 0; i < tabbedPaneCustom1.getTabCount(); i++) {
@@ -784,7 +809,7 @@ public class ApplicationFrame extends javax.swing.JFrame {
             }
         }
 
-        // Verifica se o limite de abas do Painel Tipos de Orçamentos foi atingido
+        // Verifica se o limite de abas do Painel Criar Cadastro de Clientes foi atingido.
         if (quantidadeAbasPainelCriarCadastroClientes < MAX_GLOBAL_PANEL_TABS) {
             int totalAbas = tabbedPaneCustom1.getTabCount();
 
@@ -796,37 +821,60 @@ public class ApplicationFrame extends javax.swing.JFrame {
                 PainelCriarCadastroClientes novoPainelCriarCadastroClientes = new PainelCriarCadastroClientes();
                 tabbedPaneCustom1.addTab("Cadastro de Cliente", null, novoPainelCriarCadastroClientes, "Cadastro de Clientes");
                 tabbedPaneCustom1.setSelectedComponent(novoPainelCriarCadastroClientes);
+
+                // Salva o nome associado ao índice da aba
+                int indexNovaAba = tabbedPaneCustom1.indexOfComponent(novoPainelCriarCadastroClientes);
+                nomeAba = "PainelCriarCadastroClientes_" + (indexNovaAba + 1);
             }
         } else {
+            // Se atingiu o limite de abas, seleciona uma aba existente
+            for (int i = 0; i < tabbedPaneCustom1.getTabCount(); i++) {
+                if (tabbedPaneCustom1.getComponentAt(i) instanceof PainelCriarCadastroClientes) {
+                    tabbedPaneCustom1.setSelectedIndex(i);
+                    break;
+                }
+            }
             JOptionPane.showMessageDialog(null, "Limite de abas do Painel Criar Cadastro de Clientes.", "Aviso", JOptionPane.WARNING_MESSAGE);
         }
     }
 
     public static void showPainelListaDeClientes() {
 
-        int quantidadeAbasPainelListaDeClientes = 0;
+        int quantidadeAbasPainelCriarListaClientes = 0;
+        String nomeAba = "PainelCriarListaClientes_1"; // Nome padrão para a primeira aba
 
         // Conta a quantidade de abas do Painel Lista de Clientes abertas
         for (int i = 0; i < tabbedPaneCustom1.getTabCount(); i++) {
             if (tabbedPaneCustom1.getComponentAt(i) instanceof PainelListaDeClientes) {
-                quantidadeAbasPainelListaDeClientes++;
+                quantidadeAbasPainelCriarListaClientes++;
             }
         }
 
-        // Verifica se o limite de abas do Painel Tipos de Orçamentos foi atingido
-        if (quantidadeAbasPainelListaDeClientes < MAX_GLOBAL_PANEL_TABS) {
+        // Verifica se o limite de abas do Painel Lista de Clientes foi atingido
+        if (quantidadeAbasPainelCriarListaClientes < MAX_GLOBAL_PANEL_TABS) {
             int totalAbas = tabbedPaneCustom1.getTabCount();
 
             // Verifica se o limite global de abas foi atingido
             if (totalAbas >= MAX_GLOBAL_TABS) {
                 JOptionPane.showMessageDialog(null, "Limite máximo de abas atingido.", "Aviso", JOptionPane.WARNING_MESSAGE);
             } else {
-                // Cria uma nova instância de PainelTiposDeOrcamento para cada aba
-                PainelListaDeClientes novoPainelListaDeClientes = new PainelListaDeClientes();
-                tabbedPaneCustom1.addTab("Lista de Clientes", null, novoPainelListaDeClientes, "Lista de Clientes");
-                tabbedPaneCustom1.setSelectedComponent(novoPainelListaDeClientes);
+                // Cria uma nova instância de PainelCriarCadastroClientes para cada aba
+                PainelListaDeClientes novoPaineListaDeClientes = new PainelListaDeClientes();
+                tabbedPaneCustom1.addTab("Lista de Cliente", null, novoPaineListaDeClientes, "Lista de Clientes");
+                tabbedPaneCustom1.setSelectedComponent(novoPaineListaDeClientes);
+
+                // Salva o nome associado ao índice da aba
+                int indexNovaAba = tabbedPaneCustom1.indexOfComponent(novoPaineListaDeClientes);
+                nomeAba = "PainelCriarListaClientes_" + (indexNovaAba + 1);
             }
         } else {
+            // Se atingiu o limite de abas, seleciona uma aba existente
+            for (int i = 0; i < tabbedPaneCustom1.getTabCount(); i++) {
+                if (tabbedPaneCustom1.getComponentAt(i) instanceof PainelListaDeClientes) {
+                    tabbedPaneCustom1.setSelectedIndex(i);
+                    break;
+                }
+            }
             JOptionPane.showMessageDialog(null, "Limite de abas do Painel Lista de Clientes.", "Aviso", JOptionPane.WARNING_MESSAGE);
         }
     }
@@ -1034,6 +1082,4 @@ public class ApplicationFrame extends javax.swing.JFrame {
         }
     }
 
-//            ApplicationFrame.tabbedPaneCustom1.remove(this);
-//            ApplicationFrame.showPainelListaFornecedores();
 }

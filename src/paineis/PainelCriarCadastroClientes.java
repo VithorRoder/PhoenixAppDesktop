@@ -25,9 +25,9 @@ import static paineisAbas.PainelDadosClientes.textFieldSiteClientes;
 import static paineisAbas.PainelDadosClientes.textFieldUfClientes;
 import paineisAbas.PainelProducaoClientes;
 import controller.ClientesController;
-import java.awt.Container;
 import javax.swing.JOptionPane;
 import model.Clientes;
+import testeFrame.ApplicationFrame;
 
 public class PainelCriarCadastroClientes extends javax.swing.JPanel {
 
@@ -71,11 +71,8 @@ public class PainelCriarCadastroClientes extends javax.swing.JPanel {
     public void cancelarAlteraçãoClientes() {
         int opcao = JOptionPane.showConfirmDialog(null, "Deseja Cancelar Alteração ?", "Cancelar Alteração", JOptionPane.YES_NO_OPTION);
         if (opcao == JOptionPane.YES_OPTION) {
-            Container container = this.getParent();
-            container.remove(this);
-            container.add(new PainelListaDeClientes());
-            container.revalidate();
-            container.repaint();
+            ApplicationFrame.tabbedPaneCustom1.remove(this);
+            ApplicationFrame.showPainelListaDeClientes();
         }
     }
 
@@ -97,11 +94,8 @@ public class PainelCriarCadastroClientes extends javax.swing.JPanel {
             if (idClientes != null) {
                 new ClientesController().excluirClientes(idClientes);
                 JOptionPane.showMessageDialog(this, "Valor removido com sucesso!");
-                Container container = this.getParent();
-                container.remove(this);
-                container.add(new PainelListaDeClientes());
-                container.revalidate();
-                container.repaint();
+                ApplicationFrame.tabbedPaneCustom1.remove(this);
+                ApplicationFrame.showPainelListaDeClientes();
             } else {
                 JOptionPane.showMessageDialog(this, "Código do Cliente é Nulo !", "Código Vazio", JOptionPane.ERROR_MESSAGE);
             }
@@ -181,11 +175,8 @@ public class PainelCriarCadastroClientes extends javax.swing.JPanel {
             result = new ClientesController().addClientes(clientes);
             JOptionPane.showMessageDialog(this, result == 1 ? "Valor inserido com sucesso!" : "Falha ao inserir valor!");
 
-            Container container = this.getParent();
-            container.remove(this);
-            container.add(new PainelListaDeClientes());
-            container.revalidate();
-            container.repaint();
+            ApplicationFrame.tabbedPaneCustom1.remove(this);
+            ApplicationFrame.showPainelListaDeClientes();
         } else {
 
             clientes.setIdCliente(idClientes);
@@ -193,11 +184,8 @@ public class PainelCriarCadastroClientes extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, result == 1 ? "Valor Alterado Com Sucesso!" : "Falha ao alterar valor!");
             idClientes = null;
 
-            Container container = this.getParent();
-            container.remove(this);
-            container.add(new PainelListaDeClientes());
-            container.revalidate();
-            container.repaint();
+            ApplicationFrame.tabbedPaneCustom1.remove(this);
+            ApplicationFrame.showPainelListaDeClientes();
         }
 
     }

@@ -452,7 +452,9 @@ public class PainelCriarOrcamento extends javax.swing.JPanel {
         PainelListaDeClientes customPanelClientes = new paineis.PainelListaDeClientes();
 
         JDialog dialog = new JDialog();
-        dialog.setTitle("Lista de Fornecedores");
+        dialog.setTitle("Lista de Clientes");
+        customPanelClientes.jButtonAlterarClientes.setVisible(false);
+        customPanelClientes.jButtonAlterarClientes.setEnabled(false);
         dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
         dialog.getContentPane().add(customPanelClientes);
         dialog.pack();

@@ -2,13 +2,13 @@ package paineis;
 
 import util.ValidadorLimite;
 import controller.FornecedoresController;
-import java.awt.Container;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import model.Fornecedores;
+import testeFrame.ApplicationFrame;
 
 public class PainelCriarCadastroFornecedores extends javax.swing.JPanel {
 
@@ -661,22 +661,16 @@ public class PainelCriarCadastroFornecedores extends javax.swing.JPanel {
             result = new FornecedoresController().addFornecedores(fornecedores);
             JOptionPane.showMessageDialog(this, result == 1 ? "Valor inserido com sucesso!" : "Falha ao inserir valor!");
 
-            Container container = this.getParent();
-            container.remove(this);
-            container.add(new PainelListaDeFornecedores());
-            container.revalidate();
-            container.repaint();
+            ApplicationFrame.tabbedPaneCustom1.remove(this);
+            ApplicationFrame.showPainelListaFornecedores();
         } else {
             fornecedores.setIdFornecedores(idFornecedores);
             result = new FornecedoresController().alterarFornecedores(fornecedores);
             JOptionPane.showMessageDialog(this, result == 1 ? "Valor Alterado Com Sucesso!" : "Falha ao alterar valor!");
             idFornecedores = null;
 
-            Container container = this.getParent();
-            container.remove(this);
-            container.add(new PainelListaDeFornecedores());
-            container.revalidate();
-            container.repaint();
+            ApplicationFrame.tabbedPaneCustom1.remove(this);
+            ApplicationFrame.showPainelListaFornecedores();
         }
 
     }
@@ -699,11 +693,8 @@ public class PainelCriarCadastroFornecedores extends javax.swing.JPanel {
             if (idFornecedores != null) {
                 new FornecedoresController().excluirFornecedores(idFornecedores);
                 JOptionPane.showMessageDialog(this, "Valor removido com sucesso!");
-                Container container = this.getParent();
-                container.remove(this);
-                container.add(new PainelListaDeFornecedores());
-                container.revalidate();
-                container.repaint();
+                ApplicationFrame.tabbedPaneCustom1.remove(this);
+                ApplicationFrame.showPainelListaFornecedores();
             } else {
                 JOptionPane.showMessageDialog(this, "Código do Fornecedor é Nulo !", "Código Vazio", JOptionPane.ERROR_MESSAGE);
             }
@@ -714,11 +705,8 @@ public class PainelCriarCadastroFornecedores extends javax.swing.JPanel {
 
         int opcao = JOptionPane.showConfirmDialog(this, "Deseja Cancelar Alteração ?", "Cancelar Alteração", JOptionPane.YES_NO_OPTION);
         if (opcao == JOptionPane.YES_OPTION) {
-            Container container = this.getParent();
-            container.remove(this);
-            container.add(new PainelListaDeFornecedores());
-            container.revalidate();
-            container.repaint();
+            ApplicationFrame.tabbedPaneCustom1.remove(this);
+            ApplicationFrame.showPainelListaFornecedores();
         }
     }
 

@@ -24,7 +24,6 @@ import static paineisAbas.PainelDadosClientes.textFieldSiteClientes;
 import static paineisAbas.PainelDadosClientes.textFieldUfClientes;
 import controller.ClientesController;
 import dao.ClientesDAO2;
-import java.awt.Container;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.List;
@@ -34,6 +33,7 @@ import model.Clientes;
 import static paineis.PainelCriarOrcamento.jTextFieldNomeCliente;
 import table.ClientesTabela;
 import table.ClientesTabelaRenderer;
+import testeFrame.ApplicationFrame;
 
 public class PainelListaDeClientes extends javax.swing.JPanel {
 
@@ -42,7 +42,6 @@ public class PainelListaDeClientes extends javax.swing.JPanel {
     public PainelListaDeClientes() {
         initComponents();
         refreshTable();
-        duploClickClientes();
 
     }
 
@@ -53,6 +52,7 @@ public class PainelListaDeClientes extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         TabelaListaDeClientes = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
+        jButtonAlterarClientes = new javax.swing.JButton();
 
         TabelaListaDeClientes.setAutoCreateRowSorter(true);
         TabelaListaDeClientes.setModel(new javax.swing.table.DefaultTableModel(
@@ -70,25 +70,46 @@ public class PainelListaDeClientes extends javax.swing.JPanel {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Lista de Clientes");
 
+        jButtonAlterarClientes.setBackground(new java.awt.Color(153, 153, 153));
+        jButtonAlterarClientes.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jButtonAlterarClientes.setText("Alterar");
+        jButtonAlterarClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAlterarClientesActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1257, Short.MAX_VALUE)
             .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jButtonAlterarClientes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 470, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButtonAlterarClientes, javax.swing.GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonAlterarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAlterarClientesActionPerformed
+        duploClickClientes();
+    }//GEN-LAST:event_jButtonAlterarClientesActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JTable TabelaListaDeClientes;
+    public javax.swing.JButton jButtonAlterarClientes;
     public static javax.swing.JLabel jLabel1;
     public static javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
@@ -104,32 +125,23 @@ public class PainelListaDeClientes extends javax.swing.JPanel {
 
     private void duploClickClientes() {
 
-        TabelaListaDeClientes.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                if (e.getClickCount() == 2) {
-                    int rowIndex = TabelaListaDeClientes.getSelectedRow();
-                    if (rowIndex != -1) {
-                        Long idClienteSelecionado = (Long) TabelaListaDeClientes.getValueAt(rowIndex, 0);
-                        ClientesDAO2 clientesDAO = new ClientesDAO2();
-                        Clientes clientes = clientesDAO.findById(idClienteSelecionado);
-                        if (clientes != null) {
-                            // Preencher os componentes com os detalhes do cliente selecionado
-                            PreencherClientes(clientes);
-                        }
-                    }
-                }
+        int rowIndex = TabelaListaDeClientes.getSelectedRow();
+        if (rowIndex != -1) {
+            Long idClienteSelecionado = (Long) TabelaListaDeClientes.getValueAt(rowIndex, 0);
+            ClientesDAO2 clientesDAO = new ClientesDAO2();
+            Clientes clientes = clientesDAO.findById(idClienteSelecionado);
+            if (clientes != null) {
+                // Preencher os componentes com os detalhes do cliente selecionado
+                PreencherClientes(clientes);
             }
-        });
+        }
+
     }
 
     private void PreencherClientes(Clientes clientes) {
 
-        Container container = this.getParent();
-        container.remove(this);
-        container.add(new PainelCriarCadastroClientes());
-        container.revalidate();
-        container.repaint();
+        ApplicationFrame.tabbedPaneCustom1.remove(this);
+        ApplicationFrame.showPainelCriarCadastroClientes();
 
         labelCodigoClientes.setText(String.valueOf(clientes.getIdCliente()));
         labelDataClientes.setText(clientes.getDataCadastroClientes());

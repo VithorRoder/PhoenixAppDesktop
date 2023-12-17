@@ -506,6 +506,8 @@ public class PainelEntradaDeMaterial extends javax.swing.JPanel {
 
         JDialog dialog = new JDialog();
         dialog.setTitle("Lista de Fornecedores");
+        customPanelFornecedores.jButtonAlterarFornecedores.setVisible(false);
+        customPanelFornecedores.jButtonAlterarFornecedores.setEnabled(false);
         dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
         dialog.getContentPane().add(customPanelFornecedores);
         dialog.pack();

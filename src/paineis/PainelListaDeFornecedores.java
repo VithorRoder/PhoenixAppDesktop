@@ -23,7 +23,6 @@ import static paineis.PainelCriarCadastroFornecedores.textFieldSiteFornecedores;
 import static paineis.PainelCriarCadastroFornecedores.textFieldUfFornecedores;
 import controller.FornecedoresController;
 import dao.FornecedoresDAO2;
-import java.awt.Container;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.List;
@@ -35,6 +34,7 @@ import table.FornecedoresTabelaRenderer;
 import static paineis.PainelCriarCadastroFornecedores.comboBoxGrupo1Fornecedores;
 import static paineis.PainelCriarCadastroFornecedores.comboBoxTipoFornecedores;
 import static paineis.PainelEntradaDeMaterial.textFieldFornecedor;
+import testeFrame.ApplicationFrame;
 
 public class PainelListaDeFornecedores extends javax.swing.JPanel {
 
@@ -43,7 +43,6 @@ public class PainelListaDeFornecedores extends javax.swing.JPanel {
     public PainelListaDeFornecedores() {
         initComponents();
         refreshTable();
-        duploClickFornecedor();
 
     }
 
@@ -54,6 +53,7 @@ public class PainelListaDeFornecedores extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         TabelaListaFornecedores = new javax.swing.JTable();
+        jButtonAlterarFornecedores = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 30)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -124,25 +124,46 @@ public class PainelListaDeFornecedores extends javax.swing.JPanel {
             TabelaListaFornecedores.getColumnModel().getColumn(5).setMaxWidth(220);
         }
 
+        jButtonAlterarFornecedores.setBackground(new java.awt.Color(153, 153, 153));
+        jButtonAlterarFornecedores.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jButtonAlterarFornecedores.setText("Alterar");
+        jButtonAlterarFornecedores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAlterarFornecedoresActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1141, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jButtonAlterarFornecedores, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 502, Short.MAX_VALUE))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButtonAlterarFornecedores, javax.swing.GroupLayout.DEFAULT_SIZE, 63, Short.MAX_VALUE)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonAlterarFornecedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAlterarFornecedoresActionPerformed
+        duploClickFornecedor();
+    }//GEN-LAST:event_jButtonAlterarFornecedoresActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JTable TabelaListaFornecedores;
+    public javax.swing.JButton jButtonAlterarFornecedores;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
@@ -160,32 +181,22 @@ public class PainelListaDeFornecedores extends javax.swing.JPanel {
 
     private void duploClickFornecedor() {
 
-        TabelaListaFornecedores.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                if (e.getClickCount() == 2) {
-                    int rowIndex = TabelaListaFornecedores.getSelectedRow();
-                    if (rowIndex != -1) {
-                        Long idFornecedorSelecionado = (Long) TabelaListaFornecedores.getValueAt(rowIndex, 0);
-                        FornecedoresDAO2 fornecedoresDAO = new FornecedoresDAO2();
-                        Fornecedores fornecedor = fornecedoresDAO.findById(idFornecedorSelecionado);
-                        if (fornecedor != null) {
-                            // Preencher os componentes com os detalhes do fornecedor selecionado
-                            preencherFornecedores(fornecedor);
-                        }
-                    }
-                }
+        int rowIndex = TabelaListaFornecedores.getSelectedRow();
+        if (rowIndex != -1) {
+            Long idFornecedorSelecionado = (Long) TabelaListaFornecedores.getValueAt(rowIndex, 0);
+            FornecedoresDAO2 fornecedoresDAO = new FornecedoresDAO2();
+            Fornecedores fornecedor = fornecedoresDAO.findById(idFornecedorSelecionado);
+            if (fornecedor != null) {
+                // Preencher os componentes com os detalhes do fornecedor selecionado
+                preencherFornecedores(fornecedor);
             }
-        });
+        }
     }
 
     private void preencherFornecedores(Fornecedores fornecedor) {
 
-        Container container = this.getParent();
-        container.remove(this);
-        container.add(new PainelCriarCadastroFornecedores());
-        container.revalidate();
-        container.repaint();
+        ApplicationFrame.tabbedPaneCustom1.remove(this);
+        ApplicationFrame.showPainelCriarFornecedores();
 
         labelCodigoFornecedores.setText(String.valueOf(fornecedor.getIdFornecedores()));
         labelDataFornecedores.setText(fornecedor.getDataCadastroFornecedores());
