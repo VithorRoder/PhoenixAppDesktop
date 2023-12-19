@@ -247,12 +247,12 @@
                   <Component id="jLabelContador" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jTextAreaClientes" min="-2" pref="100" max="-2" attributes="0"/>
+              <Component id="jTextAreaClientes" min="-2" pref="77" max="-2" attributes="0"/>
               <EmptySpace min="-2" max="-2" attributes="0"/>
               <Component id="jPanelBotoes" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="12" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
-          <Component id="kGradientPanel1" alignment="1" pref="608" max="32767" attributes="0"/>
+          <Component id="kGradientPanel1" alignment="1" pref="580" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>

@@ -34,7 +34,7 @@ import table.FornecedoresTabelaRenderer;
 import static paineis.PainelCriarCadastroFornecedores.comboBoxGrupo1Fornecedores;
 import static paineis.PainelCriarCadastroFornecedores.comboBoxTipoFornecedores;
 import static paineis.PainelEntradaDeMaterial.textFieldFornecedor;
-import testeFrame.ApplicationFrame;
+import application.ApplicationFrame;
 
 public class PainelListaDeFornecedores extends javax.swing.JPanel {
 

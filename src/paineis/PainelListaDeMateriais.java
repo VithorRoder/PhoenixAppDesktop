@@ -13,6 +13,7 @@ public class PainelListaDeMateriais extends javax.swing.JPanel {
     public PainelListaDeMateriais() {
         initComponents();
         refreshTable();
+
     }
 
     @SuppressWarnings("unchecked")
@@ -20,11 +21,11 @@ public class PainelListaDeMateriais extends javax.swing.JPanel {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTableMateriais = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
 
-        jTable1.setAutoCreateRowSorter(true);
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTableMateriais.setAutoCreateRowSorter(true);
+        jTableMateriais.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -32,8 +33,8 @@ public class PainelListaDeMateriais extends javax.swing.JPanel {
 
             }
         ));
-        jTable1.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(jTable1);
+        jTableMateriais.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(jTableMateriais);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 30)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -60,15 +61,15 @@ public class PainelListaDeMateriais extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    public static javax.swing.JTable jTableMateriais;
     // End of variables declaration//GEN-END:variables
 
     private void refreshTable() {
 
         insumosList = new MateriaisInsumosController().findInsumos();
         if (insumosList != null) {
-            jTable1.setModel(new MateriaisInsumosTabela(insumosList));
-            jTable1.setDefaultRenderer(Object.class, new MateriaisInsumosTabelaRenderer());
+            jTableMateriais.setModel(new MateriaisInsumosTabela(insumosList));
+            jTableMateriais.setDefaultRenderer(Object.class, new MateriaisInsumosTabelaRenderer());
 
         }
     }

@@ -1,6 +1,6 @@
 package paineis;
 
-import controller.LoginController;
+import application.ApplicationFrame;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
@@ -13,16 +13,17 @@ import java.util.logging.Logger;
 import javax.swing.JComponent;
 import javax.swing.JFormattedTextField;
 import javax.swing.JPasswordField;
+import controller.LoginController;
 
 public class PainelPrincipalLogin extends javax.swing.JPanel {
 
     public LoginController controller;
+    public ApplicationFrame tabed;
 
     public PainelPrincipalLogin() {
         initComponents();
 
-        PainelBemVindo panelBemVindo = new PainelBemVindo();
-        controller = new LoginController(this, panelBemVindo);
+        controller = new LoginController(this, tabed);
 
         jPanelCamponentes.setPreferredSize(new Dimension(getWidth(), getHeight()));
 

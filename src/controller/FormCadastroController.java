@@ -1,5 +1,6 @@
 package controller;
 
+import application.ApplicationFrame;
 import paineis.PainelPrincipalLogin;
 import dao.UsuarioDAO;
 import java.sql.Connection;
@@ -18,6 +19,7 @@ import java.awt.Container;
 public class FormCadastroController {
 
     private final PainelCadastroDeUsuario view;
+    public ApplicationFrame tabed;
 
     public FormCadastroController(PainelCadastroDeUsuario view) {
         this.view = view;

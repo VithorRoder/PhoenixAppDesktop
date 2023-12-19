@@ -27,7 +27,7 @@ import paineisAbas.PainelProducaoClientes;
 import controller.ClientesController;
 import javax.swing.JOptionPane;
 import model.Clientes;
-import testeFrame.ApplicationFrame;
+import application.ApplicationFrame;
 
 public class PainelCriarCadastroClientes extends javax.swing.JPanel {
 

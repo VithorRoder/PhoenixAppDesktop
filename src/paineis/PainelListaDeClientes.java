@@ -33,7 +33,7 @@ import model.Clientes;
 import static paineis.PainelCriarOrcamento.jTextFieldNomeCliente;
 import table.ClientesTabela;
 import table.ClientesTabelaRenderer;
-import testeFrame.ApplicationFrame;
+import application.ApplicationFrame;
 
 public class PainelListaDeClientes extends javax.swing.JPanel {
 

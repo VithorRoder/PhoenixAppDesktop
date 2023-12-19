@@ -1,6 +1,5 @@
-package testeFrame;
+package application;
 
-import application.ProgramFrame;
 import controller.Controladorjmenubar;
 import java.awt.CardLayout;
 import java.awt.Color;
@@ -25,7 +24,8 @@ import paineis.PainelOrdemDeServico;
 import paineis.PainelSubstratosAcabamentos;
 import paineis.PainelTipoDeOrcamento;
 import tabbedPaneRaven.ButtonTabComponent;
-import tabbedPaneRaven.TabbedPaneCustom;
+import controller.LoginController;
+import paineis.PainelPrincipalLogin;
 
 /**
  *
@@ -35,27 +35,27 @@ public class ApplicationFrame extends javax.swing.JFrame {
 
     private static final int MAX_GLOBAL_PANEL_TABS = 1;
     private static final int MAX_GLOBAL_TABS = 8;
-    public LoginController2 controller2;
-    public ProgramFrame newjframe;
-    private final PainelPrincipalLogin2 painelPrincipalLogin2;
+    public LoginController controller2;
+    public ApplicationFrame newjframe;
+    private final PainelPrincipalLogin painelPrincipalLogin2;
 
     public ApplicationFrame() {
         initComponents();
         updateButtonTab();
         addSelectedTabComponent();
 
-        this.painelPrincipalLogin2 = new PainelPrincipalLogin2(this);
-        this.controller2 = new LoginController2(painelPrincipalLogin2, this);
+        this.painelPrincipalLogin2 = new PainelPrincipalLogin();
+        this.controller2 = new LoginController(painelPrincipalLogin2, this);
 
         Image icon = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/png/iconePhoenix.png"));
         setIconImage(icon);
         setTitle("Phoenix Gráfica");
-        setExtendedState(ProgramFrame.MAXIMIZED_BOTH);
+        setExtendedState(ApplicationFrame.MAXIMIZED_BOTH);
 
         getContentPane().removeAll();
         CardLayout card = new CardLayout();
         getContentPane().setLayout(card);
-        getContentPane().add(new PainelPrincipalLogin2(this), "PainelPrincipal2");
+        getContentPane().add(new PainelPrincipalLogin(), "PainelPrincipal2");
         card.show(getContentPane(), "PainelPrincipal2");
         getContentPane().revalidate();
         getContentPane().repaint();
@@ -588,10 +588,6 @@ public class ApplicationFrame extends javax.swing.JFrame {
     public static tabbedPaneRaven.TabbedPaneCustom tabbedPaneCustom1;
     // End of variables declaration//GEN-END:variables
 
-    public TabbedPaneCustom getTabbedPaneCustom1() {
-        return tabbedPaneCustom1;
-    }
-
     private void addSelectedTabComponent() {
         int selectedTabIndex = tabbedPaneCustom1.getSelectedIndex();
         if (selectedTabIndex != -1) {
@@ -749,7 +745,7 @@ public class ApplicationFrame extends javax.swing.JFrame {
             } else {
                 // Cria uma nova instância de PainelListaDeFornecedores para cada aba
                 PainelCriarCadastroFornecedores novoPainelCadastroDeFornecedores = new PainelCriarCadastroFornecedores();
-                tabbedPaneCustom1.addTab("Cadastro de Fornecedores", null, novoPainelCadastroDeFornecedores, "Cadastro de Fornecedores");
+                tabbedPaneCustom1.addTab("Fornecedores", null, novoPainelCadastroDeFornecedores, "Fornecedores");
                 tabbedPaneCustom1.setSelectedComponent(novoPainelCadastroDeFornecedores);
 
                 // Salva o nome associado ao índice da aba
@@ -819,7 +815,7 @@ public class ApplicationFrame extends javax.swing.JFrame {
             } else {
                 // Cria uma nova instância de PainelCriarCadastroClientes para cada aba
                 PainelCriarCadastroClientes novoPainelCriarCadastroClientes = new PainelCriarCadastroClientes();
-                tabbedPaneCustom1.addTab("Cadastro de Cliente", null, novoPainelCriarCadastroClientes, "Cadastro de Clientes");
+                tabbedPaneCustom1.addTab("Clientes", null, novoPainelCriarCadastroClientes, "Clientes");
                 tabbedPaneCustom1.setSelectedComponent(novoPainelCriarCadastroClientes);
 
                 // Salva o nome associado ao índice da aba

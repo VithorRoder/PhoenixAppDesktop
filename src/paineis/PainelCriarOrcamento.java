@@ -19,20 +19,20 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
 public class PainelCriarOrcamento extends javax.swing.JPanel {
-
+    
     public static List<PainelTabelaCriarOrcDef> listaPaineis;
     private int proximoNumeroAba = 2;
-
+    PainelTabelaCriarOrcDef teste = new PainelTabelaCriarOrcDef();
+    
     public PainelCriarOrcamento() {
         initComponents();
-        PainelTabelaCriarOrcDef teste = new PainelTabelaCriarOrcDef();
         teste.preencherColunaZero();
         addRemovePainel();
         KeyF1();
         showDataHora();
-
+        
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -165,7 +165,7 @@ public class PainelCriarOrcamento extends javax.swing.JPanel {
         );
         jPanelTABLayout.setVerticalGroup(
             jPanelTABLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 305, Short.MAX_VALUE)
+            .addGap(0, 287, Short.MAX_VALUE)
         );
 
         jTabbedPaneOrc.addTab("Tab DEF", jPanelTAB);
@@ -224,7 +224,7 @@ public class PainelCriarOrcamento extends javax.swing.JPanel {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(BotaoGerarPreco, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jLabelPreco, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
+                                .addGap(41, 41, 41)
                                 .addComponent(jButtonSalvarOrc)
                                 .addGap(18, 18, 18)
                                 .addComponent(jButtonLimparCampos, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -283,13 +283,13 @@ public class PainelCriarOrcamento extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelTituloOrcc, javax.swing.GroupLayout.DEFAULT_SIZE, 62, Short.MAX_VALUE)
+                            .addComponent(jLabelTituloOrcc, javax.swing.GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE)
                             .addComponent(jLabelNomeCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -306,27 +306,29 @@ public class PainelCriarOrcamento extends javax.swing.JPanel {
                     .addComponent(jButtonRemoverItem, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonAdicionarItem, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTabbedPaneOrc, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(jTabbedPaneOrc, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jLabelPrecoTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButtonSalvarOrc, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButtonLimparCampos, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jLabelTipoDoPreco, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabelPrecoDeVenda, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(BotaoGerarPreco, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabelPreco, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(16, 16, 16))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabelTipoDoPreco, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelPrecoTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabelPrecoDeVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jButtonSalvarOrc, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButtonLimparCampos, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(BotaoGerarPreco, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabelPreco, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(20, 20, 20))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -356,6 +358,9 @@ public class PainelCriarOrcamento extends javax.swing.JPanel {
 
     private void jTabbedPaneOrcStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jTabbedPaneOrcStateChanged
         jLabelPreco.setText("");
+        if (listaPaineis != null) {
+            atualizarTranferenciaToOrc();
+        }
     }//GEN-LAST:event_jTabbedPaneOrcStateChanged
 
 
@@ -392,10 +397,9 @@ public class PainelCriarOrcamento extends javax.swing.JPanel {
         jTabbedPaneOrc.addTab("Tab " + proximoNumeroAba, novoPainel);
         jTabbedPaneOrc.setSelectedIndex(jTabbedPaneOrc.getTabCount() - 1);
         proximoNumeroAba++;
-        novoPainel.preencherColunaZero();
-
+        
     }
-
+    
     public void removerAbaSelecionada() {
         int confirm = JOptionPane.showConfirmDialog(this, "Deseja Remover o item Selecionado ?", "Excluir Item", JOptionPane.YES_NO_OPTION);
         if (confirm == JOptionPane.YES_OPTION) {
@@ -407,50 +411,61 @@ public class PainelCriarOrcamento extends javax.swing.JPanel {
             }
         }
     }
-
+    
     public void atualizarLimparCampos() {
         int abaSelecionada = jTabbedPaneOrc.getSelectedIndex();
         if (abaSelecionada >= 0 && abaSelecionada < listaPaineis.size()) {
             PainelTabelaCriarOrcDef painelSelecionado = listaPaineis.get(abaSelecionada);
             painelSelecionado.limparCamposTabelaDEF();
             painelSelecionado.refreshComboBox();
-
+            
         }
     }
-
+    
+    public void atualizarTranferenciaToOrc() {
+        int abaSelecionada = jTabbedPaneOrc.getSelectedIndex();
+        if (abaSelecionada >= 0 && abaSelecionada < listaPaineis.size()) {
+            PainelTabelaCriarOrcDef painelSelecionado = listaPaineis.get(abaSelecionada);
+            JDialog dialog = new JDialog();
+            painelSelecionado.editorColunaMaterial(painelSelecionado);
+            painelSelecionado.mouseTableMaterial(dialog);
+            painelSelecionado.mouseTableMaquinas(dialog);
+        }
+    }
+    
     public void setNomeCliente(String nomeCliente) {
         jTextFieldNomeCliente.setText(nomeCliente);
     }
-
+    
     class hora implements ActionListener {
-
+        
         @Override
         public void actionPerformed(ActionEvent e) {
             Calendar now = Calendar.getInstance();
             jLabelHoraOrc.setText(String.format("%1$tH:%1$tM %1$Tp", now));
         }
     }
-
+    
     private void KeyF1() {
         KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher(new KeyEventDispatcher() {
             @Override
             public boolean dispatchKeyEvent(KeyEvent e) {
                 if (e.getID() == KeyEvent.KEY_PRESSED && e.getKeyCode() == KeyEvent.VK_F1) {
-
+                    
                     BotaoGerarPreco.requestFocusInWindow();
                     CalculoOrcamento.calculaTudoMaquinaImpressoras();
-
+                    
                     return true; // Impede que o evento seja enviado a outros componentes
                 }
                 return false; // Deixe outros eventos de teclado serem processados normalmente
             }
         });
     }
-
+    
     public void ShowListClientes() {
-
+        
         PainelListaDeClientes customPanelClientes = new paineis.PainelListaDeClientes();
-
+        
         JDialog dialog = new JDialog();
         dialog.setTitle("Lista de Clientes");
         customPanelClientes.jButtonAlterarClientes.setVisible(false);
@@ -462,47 +477,47 @@ public class PainelCriarOrcamento extends javax.swing.JPanel {
         dialog.setModal(true);
         PainelListaDeClientes.passarClienteParaOrc(dialog);
         dialog.setVisible(true);
-
+        
         jTextFieldNomeCliente.getDocument().addDocumentListener(new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent e) {
                 dialog.dispose();
             }
-
+            
             @Override
             public void removeUpdate(DocumentEvent e) {
                 dialog.dispose();
             }
-
+            
             @Override
             public void changedUpdate(DocumentEvent e) {
                 dialog.dispose();
             }
         });
     }
-
+    
     private void showDataHora() {
         Date dataSistema = new Date();
         SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
         jLabelDataOrc.setText(formato.format(dataSistema));
-
+        
         Timer timer = new Timer(1000, new hora());
         timer.start();
     }
-
+    
     private void addRemovePainel() {
         listaPaineis = new ArrayList<>();
-        PainelTabelaCriarOrcDef novoPainel = new PainelTabelaCriarOrcDef();
-        novoPainel.preencherColunaZero();
-
-        listaPaineis.add(novoPainel);
-
-        jTabbedPaneOrc.addTab("Tab 1", novoPainel);
-
+        
+        teste.preencherColunaZero();
+        
+        listaPaineis.add(teste);
+        
+        jTabbedPaneOrc.addTab("Tab 1", teste);
+        
         int index = jTabbedPaneOrc.indexOfTab("Tab DEF");
         if (index != -1) {
             jTabbedPaneOrc.remove(index);
         }
     }
-
+    
 }

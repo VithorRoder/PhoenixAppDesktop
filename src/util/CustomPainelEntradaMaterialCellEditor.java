@@ -9,7 +9,7 @@ import javax.swing.table.TableCellEditor;
 
 public class CustomPainelEntradaMaterialCellEditor extends DefaultCellEditor implements TableCellEditor {
 
-    private final paineis.PainelListaEstoque customPanel;
+    private paineis.PainelListaEstoque customPanel;
 
     public CustomPainelEntradaMaterialCellEditor(javax.swing.event.TableModelListener tableModelListener) {
         super(new JTextField());

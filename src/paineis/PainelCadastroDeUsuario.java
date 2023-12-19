@@ -11,6 +11,7 @@ import javax.swing.JTextField;
 public class PainelCadastroDeUsuario extends javax.swing.JPanel {
 
     private final FormCadastroController controller;
+   
 
     public PainelCadastroDeUsuario() {
         initComponents();

@@ -102,5 +102,7 @@ public class MateriaisInsumosTabela extends AbstractTableModel {
     public MateriaisInsumos get(int row) {
         return valores.get(row);
     }
+    
+    
 
 }

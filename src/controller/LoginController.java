@@ -1,8 +1,7 @@
 package controller;
 
-import static application.ProgramFrame.jMenuCadastroDeFornecedores;
-import static application.ProgramFrame.jMenuEstoque;
-import paineis.PainelBemVindo;
+import paineis.PainelPrincipalLogin;
+import application.ApplicationFrame;
 import dao.ConexaoSingleton;
 import dao.UsuarioDAO;
 import java.awt.Container;
@@ -10,37 +9,34 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import model.Usuario;
-import static application.ProgramFrame.jMenuSubstratosAcabamentos;
-import static application.ProgramFrame.jMenuMaquinasImpressoras;
-import static application.ProgramFrame.jMenuMateriaisInsumos;
-import static application.ProgramFrame.jMenuOrdemServico;
-import static application.ProgramFrame.jMenuTipoOrcamento;
-import static application.ProgramFrame.jMenuCriarOrcamento;
-import static application.ProgramFrame.jMenuListaOrcamento;
-import static application.ProgramFrame.jMenuOrcamento;
-import static application.ProgramFrame.jMenuClientes;
-import static application.ProgramFrame.jMenuCriarCadastroDeFornecedores;
-import static application.ProgramFrame.jMenuEntradaMaterial;
-import static application.ProgramFrame.jMenuListaDeFornecedores;
-import static application.ProgramFrame.jMenuListaEntradaMaterial;
-import static application.ProgramFrame.jMenuListaEstoque;
-import paineis.PainelPrincipalLogin;
+import static application.ApplicationFrame.jMenuCadastroDeFornecedores;
+import static application.ApplicationFrame.jMenuClientes;
+import static application.ApplicationFrame.jMenuCriarCadastroDeFornecedores;
+import static application.ApplicationFrame.jMenuCriarOrcamento;
+import static application.ApplicationFrame.jMenuEntradaMaterial;
+import static application.ApplicationFrame.jMenuEstoque;
+import static application.ApplicationFrame.jMenuListaDeFornecedores;
+import static application.ApplicationFrame.jMenuListaEntradaMaterial;
+import static application.ApplicationFrame.jMenuListaEstoque;
+import static application.ApplicationFrame.jMenuListaOrcamento;
+import static application.ApplicationFrame.jMenuMaquinasImpressoras;
+import static application.ApplicationFrame.jMenuMateriaisInsumos;
+import static application.ApplicationFrame.jMenuOrcamento;
+import static application.ApplicationFrame.jMenuOrdemServico;
+import static application.ApplicationFrame.jMenuSubstratosAcabamentos;
+import static application.ApplicationFrame.jMenuTipoOrcamento;
+import static application.ApplicationFrame.tabbedPaneCustom1;
+//import static testeFrame.ApplicationFrame.tabbedPaneCustom1;
 
 public class LoginController {
 
     private final PainelPrincipalLogin painelPrincipal;
-    private PainelBemVindo panelBemVindo;
+    private final ApplicationFrame tabbed;
 
     @SuppressWarnings("LeakingThisInConstructor")
-    public LoginController(PainelPrincipalLogin painelPrincipal, PainelBemVindo panelBemVindo) {
+    public LoginController(PainelPrincipalLogin painelPrincipal, ApplicationFrame tabbed) {
         this.painelPrincipal = painelPrincipal;
-        this.panelBemVindo = panelBemVindo;
-        this.panelBemVindo.setController(this);
-
-    }
-
-    public void setPanelBemVindo(PainelBemVindo panelBemVindo) {
-        this.panelBemVindo = panelBemVindo;
+        this.tabbed = tabbed;
     }
 
     public void autenticar() throws SQLException {
@@ -59,7 +55,6 @@ public class LoginController {
         if (existe) {
             Controladorjmenubar.usuarioAutenticado = true;
             Controladorjmenubar.nomeUsuarioAutenticado = usuario;
-            panelBemVindo.getLabelUsuario().setText(Controladorjmenubar.nomeUsuarioAutenticado);
             JOptionPane.showMessageDialog(null, "Usuário autenticado", "Autenticação", JOptionPane.INFORMATION_MESSAGE);
 
             jMenuOrcamento.setEnabled(true);
@@ -81,7 +76,7 @@ public class LoginController {
 
             Container parent = painelPrincipal.getParent();
             parent.remove(painelPrincipal);
-            parent.add(panelBemVindo);
+            parent.add(tabbedPaneCustom1);
             parent.revalidate();
             parent.repaint();
 
@@ -95,7 +90,6 @@ public class LoginController {
 
         Controladorjmenubar.usuarioAutenticado = false;
         Controladorjmenubar.nomeUsuarioAutenticado = null;
-        panelBemVindo.getLabelUsuario().setText("");
 
         jMenuOrcamento.setEnabled(false);
         jMenuListaOrcamento.setEnabled(false);

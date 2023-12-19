@@ -6,6 +6,8 @@ import util.CustomCellEditor;
 import dao.ConexaoSingleton;
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -14,6 +16,7 @@ import java.util.Arrays;
 import javax.swing.BorderFactory;
 import javax.swing.DefaultCellEditor;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JDialog;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
@@ -22,16 +25,26 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
+import static paineis.PainelCriarOrcamento.jTabbedPaneOrc;
+import static paineis.PainelCriarOrcamento.listaPaineis;
+import static paineis.PainelListaDeMaquinas.TabelaMaquinasImpressoras;
+import static paineis.PainelListaDeMateriais.jTableMateriais;
+import util.CustomCellEditorMaquinas;
+import util.CustomCellEditorMaterial;
 
 public final class PainelTabelaCriarOrcDef extends javax.swing.JPanel {
 
     private static final String SQL_FIND_PRECOMIN = "SELECT descricao_interna, valor_min FROM tipo_orcamento ORDER BY descricao_interna";
+    private int linhaSelecionadaTabelaCriarOrc = -1;
 
     public PainelTabelaCriarOrcDef() {
         initComponents();
+
         preencherColunaZero();
         refreshComboBox();
         editorCelulasColor();
+        editorColunaMaterial(this);
+
     }
 
     @SuppressWarnings("unchecked")
@@ -218,8 +231,8 @@ public final class PainelTabelaCriarOrcDef extends javax.swing.JPanel {
                     .addComponent(QuantidadeTextField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
                     .addComponent(TipoOrcComboBox, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
-                .addComponent(ScrollTabelaModOrc, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(ScrollTabelaModOrc, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -314,7 +327,9 @@ public final class PainelTabelaCriarOrcDef extends javax.swing.JPanel {
 
         TabelaCriarOrc.clearSelection();
         QuantidadeTextField.setText("");
-        jLabelPreco.setText("");
+        if (jLabelPreco != null) {
+            jLabelPreco.setText("");
+        }
         int rowCount = TabelaCriarOrc.getRowCount();
         int colCount = TabelaCriarOrc.getColumnCount();
 
@@ -490,4 +505,72 @@ public final class PainelTabelaCriarOrcDef extends javax.swing.JPanel {
         preencherColunaZero();
     }
 
+    public void editorColunaMaterial(PainelTabelaCriarOrcDef painelTabelaCriarOrcDef) {
+        TabelaCriarOrc.getColumnModel().getColumn(6).setCellEditor(new CustomCellEditorMaterial(null, this));
+        TabelaCriarOrc.getColumnModel().getColumn(7).setCellEditor(new CustomCellEditorMaquinas(null, this));
+    }
+
+    public void mouseTableMaterial(JDialog dialog) {
+
+        TabelaCriarOrc.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (e.getClickCount() == 1) {
+                    linhaSelecionadaTabelaCriarOrc = TabelaCriarOrc.getSelectedRow();
+                }
+            }
+        });
+
+        jTableMateriais.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (e.getClickCount() == 2) {
+                    int selectedRowMat = jTableMateriais.getSelectedRow();
+                    Object valorColuna1 = jTableMateriais.getValueAt(selectedRowMat, 1);
+                    Object valorColuna2 = jTableMateriais.getValueAt(selectedRowMat, 3);
+
+                    String valorConcatenado = valorColuna1.toString() + " - " + valorColuna2.toString();
+
+                    if (linhaSelecionadaTabelaCriarOrc != -1) {
+                        // Obtém a linha selecionada previamente na TabelaCriarOrc
+                        int linhaCriarOrc = linhaSelecionadaTabelaCriarOrc;
+
+                        TabelaCriarOrc.setValueAt(valorConcatenado, linhaCriarOrc, 6);
+                        dialog.dispose();
+                    }
+                }
+            }
+        });
+    }
+
+    public void mouseTableMaquinas(JDialog dialog) {
+
+        TabelaCriarOrc.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (e.getClickCount() == 1) {
+                    linhaSelecionadaTabelaCriarOrc = TabelaCriarOrc.getSelectedRow();
+                }
+            }
+        });
+
+        TabelaMaquinasImpressoras.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (e.getClickCount() == 2) {
+                    int selectedRowMat = TabelaMaquinasImpressoras.getSelectedRow();
+                    Object valorColuna1 = TabelaMaquinasImpressoras.getValueAt(selectedRowMat, 1);
+                    //Object valorColuna2 = TabelaMaquinasImpressoras.getValueAt(selectedRowMat, 3);
+
+                    if (linhaSelecionadaTabelaCriarOrc != -1) {
+                        // Obtém a linha selecionada previamente na TabelaCriarOrc
+                        int linhaCriarOrc = linhaSelecionadaTabelaCriarOrc;
+
+                        TabelaCriarOrc.setValueAt(valorColuna1, linhaCriarOrc, 7);
+                        dialog.dispose();
+                    }
+                }
+            }
+        });
+    }
 }
