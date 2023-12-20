@@ -729,6 +729,11 @@ public class ApplicationFrame extends javax.swing.JFrame {
                 }
             }
             JOptionPane.showMessageDialog(null, "Limite de abas do Painel Lista de Fornecedores.", "Aviso", JOptionPane.WARNING_MESSAGE);
+            int indexAbaARemover = tabbedPaneCustom1.getSelectedIndex();
+            tabbedPaneCustom1.remove(indexAbaARemover);
+            PainelListaDeFornecedores novoPainelListaDeFornecedores = new PainelListaDeFornecedores();
+            tabbedPaneCustom1.addTab("Lista de Fornecedores", null, novoPainelListaDeFornecedores, "Lista de Fornecedores");
+            tabbedPaneCustom1.setSelectedComponent(novoPainelListaDeFornecedores);
         }
     }
 
@@ -881,6 +886,11 @@ public class ApplicationFrame extends javax.swing.JFrame {
                 }
             }
             JOptionPane.showMessageDialog(null, "Limite de abas do Painel Lista de Clientes.", "Aviso", JOptionPane.WARNING_MESSAGE);
+            int indexAbaARemover = tabbedPaneCustom1.getSelectedIndex();
+            tabbedPaneCustom1.remove(indexAbaARemover);
+            PainelListaDeClientes novoPaineListaDeClientes = new PainelListaDeClientes();
+            tabbedPaneCustom1.addTab("Lista de Cliente", null, novoPaineListaDeClientes, "Lista de Clientes");
+            tabbedPaneCustom1.setSelectedComponent(novoPaineListaDeClientes);
         }
     }
 

@@ -37,7 +37,9 @@ public class PainelJmenuBar extends javax.swing.JPanel {
         labelUsuario.setForeground(new java.awt.Color(255, 255, 255));
         labelUsuario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
+        botaoLogoff.setBackground(new java.awt.Color(173, 173, 173));
         botaoLogoff.setText("Logout");
+        botaoLogoff.setBorder(null);
         botaoLogoff.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botaoLogoffActionPerformed(evt);
