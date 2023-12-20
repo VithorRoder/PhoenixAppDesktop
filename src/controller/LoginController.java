@@ -2,6 +2,7 @@ package controller;
 
 import paineis.PainelPrincipalLogin;
 import application.ApplicationFrame;
+import static application.ApplicationFrame.chama;
 import dao.ConexaoSingleton;
 import dao.UsuarioDAO;
 import java.awt.Container;
@@ -26,7 +27,8 @@ import static application.ApplicationFrame.jMenuOrdemServico;
 import static application.ApplicationFrame.jMenuSubstratosAcabamentos;
 import static application.ApplicationFrame.jMenuTipoOrcamento;
 import static application.ApplicationFrame.tabbedPaneCustom1;
-//import static testeFrame.ApplicationFrame.tabbedPaneCustom1;
+import paineis.PainelJmenuBar;
+import static paineis.PainelJmenuBar.labelUsuario;
 
 public class LoginController {
 
@@ -53,6 +55,7 @@ public class LoginController {
 
         // se existir, desbloquear as funcionalidades do programa.
         if (existe) {
+
             Controladorjmenubar.usuarioAutenticado = true;
             Controladorjmenubar.nomeUsuarioAutenticado = usuario;
             JOptionPane.showMessageDialog(null, "Usuário autenticado", "Autenticação", JOptionPane.INFORMATION_MESSAGE);
@@ -77,6 +80,8 @@ public class LoginController {
             Container parent = painelPrincipal.getParent();
             parent.remove(painelPrincipal);
             parent.add(tabbedPaneCustom1);
+            chama();
+            PainelJmenuBar.botaoLogoff.setVisible(true);
             parent.revalidate();
             parent.repaint();
 
@@ -88,6 +93,7 @@ public class LoginController {
 
     public void fazerLogout() {
 
+        tabbedPaneCustom1.removeAll();
         Controladorjmenubar.usuarioAutenticado = false;
         Controladorjmenubar.nomeUsuarioAutenticado = null;
 
@@ -107,6 +113,15 @@ public class LoginController {
         jMenuCadastroDeFornecedores.setEnabled(false);
         jMenuCriarCadastroDeFornecedores.setEnabled(false);
         jMenuListaDeFornecedores.setEnabled(false);
+
+        labelUsuario.setText("");
+
+        Container parent = tabbedPaneCustom1.getParent();
+        parent.remove(tabbedPaneCustom1);
+        parent.add(painelPrincipal);
+        PainelJmenuBar.botaoLogoff.setVisible(false);
+        parent.revalidate();
+        parent.repaint();
 
         painelPrincipal.getjFormattedTextField1usuariologin().setText("");
         painelPrincipal.getjPasswordField1senhalogin().setText("");

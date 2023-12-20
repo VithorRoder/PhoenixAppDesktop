@@ -25,6 +25,8 @@ import paineis.PainelSubstratosAcabamentos;
 import paineis.PainelTipoDeOrcamento;
 import tabbedPaneRaven.ButtonTabComponent;
 import controller.LoginController;
+import paineis.PainelJmenuBar;
+import static paineis.PainelJmenuBar.labelUsuario;
 import paineis.PainelPrincipalLogin;
 
 /**
@@ -32,26 +34,31 @@ import paineis.PainelPrincipalLogin;
  * @author VithorRoder
  */
 public class ApplicationFrame extends javax.swing.JFrame {
-
+    
     private static final int MAX_GLOBAL_PANEL_TABS = 1;
     private static final int MAX_GLOBAL_TABS = 8;
     public LoginController controller2;
     public ApplicationFrame newjframe;
     private final PainelPrincipalLogin painelPrincipalLogin2;
-
+    private final PainelJmenuBar painelJmenuBar;
+    
     public ApplicationFrame() {
         initComponents();
         updateButtonTab();
         addSelectedTabComponent();
-
+        
         this.painelPrincipalLogin2 = new PainelPrincipalLogin();
         this.controller2 = new LoginController(painelPrincipalLogin2, this);
-
+        this.painelJmenuBar = new PainelJmenuBar(controller2);
+        
+        teste();
+        PainelJmenuBar.botaoLogoff.setVisible(false);
+        
         Image icon = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/png/iconePhoenix.png"));
         setIconImage(icon);
         setTitle("Phoenix Gráfica");
         setExtendedState(ApplicationFrame.MAXIMIZED_BOTH);
-
+        
         getContentPane().removeAll();
         CardLayout card = new CardLayout();
         getContentPane().setLayout(card);
@@ -59,7 +66,7 @@ public class ApplicationFrame extends javax.swing.JFrame {
         card.show(getContentPane(), "PainelPrincipal2");
         getContentPane().revalidate();
         getContentPane().repaint();
-
+        
         jMenuOrcamento.setEnabled(false);
         jMenuListaOrcamento.setEnabled(false);
         jMenuCriarOrcamento.setEnabled(false);
@@ -77,7 +84,7 @@ public class ApplicationFrame extends javax.swing.JFrame {
         jMenuCriarCadastroDeFornecedores.setEnabled(false);
         jMenuListaDeFornecedores.setEnabled(false);
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -109,8 +116,9 @@ public class ApplicationFrame extends javax.swing.JFrame {
         jMenuBar1.setBorder(null);
         jMenuBar1.setForeground(new java.awt.Color(255, 255, 255));
         jMenuBar1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jMenuBar1.setMinimumSize(new java.awt.Dimension(912, 68));
         jMenuBar1.setOpaque(true);
-        jMenuBar1.setPreferredSize(new java.awt.Dimension(1173, 60));
+        jMenuBar1.setPreferredSize(new java.awt.Dimension(1173, 68));
 
         jMenuCadastroDeFornecedores.setBackground(new java.awt.Color(51, 51, 51));
         jMenuCadastroDeFornecedores.setBorder(null);
@@ -365,7 +373,7 @@ public class ApplicationFrame extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(tabbedPaneCustom1, javax.swing.GroupLayout.DEFAULT_SIZE, 425, Short.MAX_VALUE)
+            .addComponent(tabbedPaneCustom1, javax.swing.GroupLayout.DEFAULT_SIZE, 565, Short.MAX_VALUE)
         );
 
         pack();
@@ -373,9 +381,9 @@ public class ApplicationFrame extends javax.swing.JFrame {
 
     private void jMenuCriarCadastroDeFornecedoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuCriarCadastroDeFornecedoresMouseClicked
         if (!Controladorjmenubar.usuarioAutenticado) {
-
+            
             JOptionPane.showMessageDialog(null, "Você precisa fazer login antes de acessar esta opção", "Erro de autenticação", JOptionPane.ERROR_MESSAGE);
-
+            
             return;
         }
         showPainelCriarFornecedores();
@@ -383,9 +391,9 @@ public class ApplicationFrame extends javax.swing.JFrame {
 
     private void jMenuListaDeFornecedoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuListaDeFornecedoresMouseClicked
         if (!Controladorjmenubar.usuarioAutenticado) {
-
+            
             JOptionPane.showMessageDialog(null, "Você precisa fazer login antes de acessar esta opção", "Erro de autenticação", JOptionPane.ERROR_MESSAGE);
-
+            
             return;
         }
         showPainelListaFornecedores();
@@ -393,17 +401,17 @@ public class ApplicationFrame extends javax.swing.JFrame {
 
     private void jMenuCadastroDeFornecedoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuCadastroDeFornecedoresMouseClicked
         if (!Controladorjmenubar.usuarioAutenticado) {
-
+            
             JOptionPane.showMessageDialog(null, "Você precisa fazer login antes de acessar esta opção", "Erro de autenticação", JOptionPane.ERROR_MESSAGE);
-
+            
         }
     }//GEN-LAST:event_jMenuCadastroDeFornecedoresMouseClicked
 
     private void jMenuCriarCadClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuCriarCadClientesMouseClicked
         if (!Controladorjmenubar.usuarioAutenticado) {
-
+            
             JOptionPane.showMessageDialog(null, "Você precisa fazer login antes de acessar esta opção", "Erro de autenticação", JOptionPane.ERROR_MESSAGE);
-
+            
             return;
         }
         showPainelCriarCadastroClientes();
@@ -411,9 +419,9 @@ public class ApplicationFrame extends javax.swing.JFrame {
 
     private void jMenuListaClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuListaClientesMouseClicked
         if (!Controladorjmenubar.usuarioAutenticado) {
-
+            
             JOptionPane.showMessageDialog(null, "Você precisa fazer login antes de acessar esta opção", "Erro de autenticação", JOptionPane.ERROR_MESSAGE);
-
+            
             return;
         }
         showPainelListaDeClientes();
@@ -421,17 +429,17 @@ public class ApplicationFrame extends javax.swing.JFrame {
 
     private void jMenuClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuClientesMouseClicked
         if (!Controladorjmenubar.usuarioAutenticado) {
-
+            
             JOptionPane.showMessageDialog(null, "Você precisa fazer login antes de acessar esta opção", "Erro de autenticação", JOptionPane.ERROR_MESSAGE);
-
+            
         }
     }//GEN-LAST:event_jMenuClientesMouseClicked
 
     private void jMenuCriarOrcamentoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuCriarOrcamentoMouseClicked
         if (!Controladorjmenubar.usuarioAutenticado) {
-
+            
             JOptionPane.showMessageDialog(null, "Você precisa fazer login antes de acessar esta opção", "Erro de autenticação", JOptionPane.ERROR_MESSAGE);
-
+            
             return;
         }
         showPainelCriarOrcamento();
@@ -439,9 +447,9 @@ public class ApplicationFrame extends javax.swing.JFrame {
 
     private void jMenuListaOrcamentoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuListaOrcamentoMouseClicked
         if (!Controladorjmenubar.usuarioAutenticado) {
-
+            
             JOptionPane.showMessageDialog(null, "Você precisa fazer login antes de acessar esta opção", "Erro de autenticação", JOptionPane.ERROR_MESSAGE);
-
+            
             return;
         }
         showPainelListaDeOrcamento();
@@ -449,9 +457,9 @@ public class ApplicationFrame extends javax.swing.JFrame {
 
     private void jMenuTipoOrcamentoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuTipoOrcamentoMouseClicked
         if (!Controladorjmenubar.usuarioAutenticado) {
-
+            
             JOptionPane.showMessageDialog(null, "Você precisa fazer login antes de acessar esta opção", "Erro de autenticação", JOptionPane.ERROR_MESSAGE);
-
+            
             return;
         }
         showPainelTipoDeOrcamento();
@@ -459,17 +467,17 @@ public class ApplicationFrame extends javax.swing.JFrame {
 
     private void jMenuOrcamentoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuOrcamentoMouseClicked
         if (!Controladorjmenubar.usuarioAutenticado) {
-
+            
             JOptionPane.showMessageDialog(null, "Você precisa fazer login antes de acessar esta opção", "Erro de autenticação", JOptionPane.ERROR_MESSAGE);
-
+            
         }
     }//GEN-LAST:event_jMenuOrcamentoMouseClicked
 
     private void jMenuOrdemServicoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuOrdemServicoMouseClicked
         if (!Controladorjmenubar.usuarioAutenticado) {
-
+            
             JOptionPane.showMessageDialog(null, "Você precisa fazer login antes de acessar esta opção", "Erro de autenticação", JOptionPane.ERROR_MESSAGE);
-
+            
             return;
         }
         showPainelOrdemDeServico();
@@ -477,9 +485,9 @@ public class ApplicationFrame extends javax.swing.JFrame {
 
     private void jMenuMaquinasImpressorasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuMaquinasImpressorasMouseClicked
         if (!Controladorjmenubar.usuarioAutenticado) {
-
+            
             JOptionPane.showMessageDialog(null, "Você precisa fazer login antes de acessar esta opção", "Erro de autenticação", JOptionPane.ERROR_MESSAGE);
-
+            
             return;
         }
         showPainelMaquinasImpressoras();
@@ -487,9 +495,9 @@ public class ApplicationFrame extends javax.swing.JFrame {
 
     private void jMenuMateriaisInsumosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuMateriaisInsumosMouseClicked
         if (!Controladorjmenubar.usuarioAutenticado) {
-
+            
             JOptionPane.showMessageDialog(null, "Você precisa fazer login antes de acessar esta opção", "Erro de autenticação", JOptionPane.ERROR_MESSAGE);
-
+            
             return;
         }
         showPainelMateriaisInsumos();
@@ -497,9 +505,9 @@ public class ApplicationFrame extends javax.swing.JFrame {
 
     private void jMenuSubstratosAcabamentosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuSubstratosAcabamentosMouseClicked
         if (!Controladorjmenubar.usuarioAutenticado) {
-
+            
             JOptionPane.showMessageDialog(null, "Você precisa fazer login antes de acessar esta opção", "Erro de autenticação", JOptionPane.ERROR_MESSAGE);
-
+            
             return;
         }
         showPainelSubstratosAcabamentos();
@@ -507,9 +515,9 @@ public class ApplicationFrame extends javax.swing.JFrame {
 
     private void jMenuEntradaMaterialMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuEntradaMaterialMouseClicked
         if (!Controladorjmenubar.usuarioAutenticado) {
-
+            
             JOptionPane.showMessageDialog(null, "Você precisa fazer login antes de acessar esta opção", "Erro de autenticação", JOptionPane.ERROR_MESSAGE);
-
+            
             return;
         }
         showPainelEntradaDeMaterial();
@@ -517,9 +525,9 @@ public class ApplicationFrame extends javax.swing.JFrame {
 
     private void jMenuListaEstoqueMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuListaEstoqueMouseClicked
         if (!Controladorjmenubar.usuarioAutenticado) {
-
+            
             JOptionPane.showMessageDialog(null, "Você precisa fazer login antes de acessar esta opção", "Erro de autenticação", JOptionPane.ERROR_MESSAGE);
-
+            
             return;
         }
         showPainelListaEstoque();
@@ -527,9 +535,9 @@ public class ApplicationFrame extends javax.swing.JFrame {
 
     private void jMenuListaEntradaMaterialMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuListaEntradaMaterialMouseClicked
         if (!Controladorjmenubar.usuarioAutenticado) {
-
+            
             JOptionPane.showMessageDialog(null, "Você precisa fazer login antes de acessar esta opção", "Erro de autenticação", JOptionPane.ERROR_MESSAGE);
-
+            
             return;
         }
         showPainelListaEntradaMaterial();
@@ -537,32 +545,32 @@ public class ApplicationFrame extends javax.swing.JFrame {
 
     private void jMenuEstoqueMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuEstoqueMouseClicked
         if (!Controladorjmenubar.usuarioAutenticado) {
-
+            
             JOptionPane.showMessageDialog(null, "Você precisa fazer login antes de acessar esta opção", "Erro de autenticação", JOptionPane.ERROR_MESSAGE);
-
+            
         }
 
     }//GEN-LAST:event_jMenuEstoqueMouseClicked
-
+    
     public static void main(String args[]) {
-
+        
         try {
             for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
-
+                    
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
-
+                    
                     UIManager.put("MenuBar[Enabled].backgroundPainter", new Color(0, 0, 0));
-
+                    
                     break;
                 }
             }
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e) {
         }
-
+        
         ApplicationFrame frame = new ApplicationFrame();
         frame.setVisible(true);
-
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -598,7 +606,7 @@ public class ApplicationFrame extends javax.swing.JFrame {
             }
         }
     }
-
+    
     private void updateButtonTab() {
         tabbedPaneCustom1.addChangeListener(e -> {
             int selectedTabIndex = tabbedPaneCustom1.getSelectedIndex();
@@ -623,9 +631,9 @@ public class ApplicationFrame extends javax.swing.JFrame {
             }
         });
     }
-
+    
     public static void showPainelCriarOrcamento() {
-
+        
         int quantidadeAbasPainelCriarOrcamento = 0;
 
         // Conta a quantidade de abas do Painel Criar Orçamento abertas
@@ -652,9 +660,9 @@ public class ApplicationFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Limite de abas do Panel Orçamento atingido.", "Aviso", JOptionPane.WARNING_MESSAGE);
         }
     }
-
+    
     public static void showPainelOrdemDeServico() {
-
+        
         int quantidadeAbasPainelOrdemDeServico = 0;
 
         // Conta a quantidade de abas do Painel Orem de Serviço abertas
@@ -681,9 +689,9 @@ public class ApplicationFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Limite de abas do Painel Ordem de Serviço atingido.", "Aviso", JOptionPane.WARNING_MESSAGE);
         }
     }
-
+    
     public static void showPainelListaFornecedores() {
-
+        
         int quantidadeAbasPainelListaFornecedores = 0;
         String nomeAba = "PainelListaFornecedores_1"; // Nome padrão para a primeira aba
 
@@ -722,9 +730,9 @@ public class ApplicationFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Limite de abas do Painel Lista de Fornecedores.", "Aviso", JOptionPane.WARNING_MESSAGE);
         }
     }
-
+    
     public static void showPainelCriarFornecedores() {
-
+        
         int quantidadeAbasPainelCriarFornecedores = 0;
         String nomeAba = "PainelCriarFornecedores_1"; // Nome padrão para a primeira aba
 
@@ -763,9 +771,9 @@ public class ApplicationFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Limite de abas do Painel Cadastro de Fornecedores.", "Aviso", JOptionPane.WARNING_MESSAGE);
         }
     }
-
+    
     public static void showPainelTipoDeOrcamento() {
-
+        
         int quantidadeAbasPainelTipoDeOrcamento = 0;
 
         // Conta a quantidade de abas do Painel Tipos de Orçamento abertas
@@ -792,9 +800,9 @@ public class ApplicationFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Limite de abas do Painel Tipos de Orçamento.", "Aviso", JOptionPane.WARNING_MESSAGE);
         }
     }
-
+    
     public static void showPainelCriarCadastroClientes() {
-
+        
         int quantidadeAbasPainelCriarCadastroClientes = 0;
         String nomeAba = "PainelCriarCadastroClientes_1"; // Nome padrão para a primeira aba
 
@@ -833,9 +841,9 @@ public class ApplicationFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Limite de abas do Painel Criar Cadastro de Clientes.", "Aviso", JOptionPane.WARNING_MESSAGE);
         }
     }
-
+    
     public static void showPainelListaDeClientes() {
-
+        
         int quantidadeAbasPainelCriarListaClientes = 0;
         String nomeAba = "PainelCriarListaClientes_1"; // Nome padrão para a primeira aba
 
@@ -874,9 +882,9 @@ public class ApplicationFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Limite de abas do Painel Lista de Clientes.", "Aviso", JOptionPane.WARNING_MESSAGE);
         }
     }
-
+    
     public static void showPainelListaDeOrcamento() {
-
+        
         int quantidadeAbasPainelListaDeOrcamento = 0;
 
         // Conta a quantidade de abas do Painel Lista de Orçamentos abertas
@@ -903,9 +911,9 @@ public class ApplicationFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Limite de abas do Painel Lista de Orçamentos.", "Aviso", JOptionPane.WARNING_MESSAGE);
         }
     }
-
+    
     public static void showPainelMaquinasImpressoras() {
-
+        
         int quantidadeAbasPainelMaquinasImpressoras = 0;
 
         // Conta a quantidade de abas do Painel Máquinas e Impressoras abertas
@@ -932,9 +940,9 @@ public class ApplicationFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Limite de abas do Painel Lista de Máquinas.", "Aviso", JOptionPane.WARNING_MESSAGE);
         }
     }
-
+    
     public static void showPainelMateriaisInsumos() {
-
+        
         int quantidadeAbasPainelMateriaisInsumos = 0;
 
         // Conta a quantidade de abas do Painel Materiais e Insumos abertas
@@ -961,9 +969,9 @@ public class ApplicationFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Limite de abas do Painel Lista de Materiais.", "Aviso", JOptionPane.WARNING_MESSAGE);
         }
     }
-
+    
     public static void showPainelSubstratosAcabamentos() {
-
+        
         int quantidadeAbasPainelSubstratosAcabamentos = 0;
 
         // Conta a quantidade de abas do Painel Substratos e Acabamentos abertas
@@ -990,9 +998,9 @@ public class ApplicationFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Limite de abas do Painel Substratos e Acabamentos.", "Aviso", JOptionPane.WARNING_MESSAGE);
         }
     }
-
+    
     public static void showPainelEntradaDeMaterial() {
-
+        
         int quantidadeAbasPainelEntradaDeMaterial = 0;
 
         // Conta a quantidade de abas do Painel Entrada de Material abertas
@@ -1019,9 +1027,9 @@ public class ApplicationFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Limite de abas do Painel Entrada De Material.", "Aviso", JOptionPane.WARNING_MESSAGE);
         }
     }
-
+    
     public static void showPainelListaEstoque() {
-
+        
         int quantidadeAbasPainelListaDeEstoque = 0;
 
         // Conta a quantidade de abas do Painel Lista de Estoque abertas
@@ -1048,9 +1056,9 @@ public class ApplicationFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Limite de abas do Painel Lista de Estoque.", "Aviso", JOptionPane.WARNING_MESSAGE);
         }
     }
-
+    
     public static void showPainelListaEntradaMaterial() {
-
+        
         int quantidadeAbasPainelListaEntMaterial = 0;
 
         // Conta a quantidade de abas do Painel Entrada de Material abertas
@@ -1077,5 +1085,13 @@ public class ApplicationFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Limite de abas do Painel Lista Ent. De Material.", "Aviso", JOptionPane.WARNING_MESSAGE);
         }
     }
-
+    
+    public final void teste() {
+        jMenuBar1.add(painelJmenuBar);
+    }
+    
+    public static void chama() {
+        labelUsuario.setText(Controladorjmenubar.nomeUsuarioAutenticado);
+    }
+    
 }
