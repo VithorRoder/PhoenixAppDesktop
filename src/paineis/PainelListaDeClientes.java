@@ -34,6 +34,7 @@ import static paineis.PainelCriarOrcamento.jTextFieldNomeCliente;
 import table.ClientesTabela;
 import table.ClientesTabelaRenderer;
 import application.ApplicationFrame;
+import static paineis.PainelCriarOrcamento.labelCodigoClien00;
 
 public class PainelListaDeClientes extends javax.swing.JPanel {
 
@@ -175,11 +176,18 @@ public class PainelListaDeClientes extends javax.swing.JPanel {
                     JTable target = (JTable) e.getSource();
                     int row = target.getSelectedRow();
                     int column = 1;
+                    int column0 = 0;
 
                     if (row != -1) {
-                        Object value = target.getValueAt(row, column);
-                        if (value != null) {
-                            jTextFieldNomeCliente.setText(value.toString());
+                        Object value1 = target.getValueAt(row, column);
+                        Object value2 = target.getValueAt(row, column0);
+
+                        if (value1 != null) {
+                            jTextFieldNomeCliente.setText(value1.toString());
+                            dialog.dispose();
+                        }
+                        if (value2 != null) {
+                            labelCodigoClien00.setText(value2.toString());
                             dialog.dispose();
                         }
                     }

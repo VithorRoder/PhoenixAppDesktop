@@ -35,6 +35,7 @@ import static paineis.PainelCriarCadastroFornecedores.comboBoxGrupo1Fornecedores
 import static paineis.PainelCriarCadastroFornecedores.comboBoxTipoFornecedores;
 import static paineis.PainelEntradaDeMaterial.textFieldFornecedor;
 import application.ApplicationFrame;
+import static paineis.PainelEntradaDeMaterial.labelCodigoForn02;
 
 public class PainelListaDeFornecedores extends javax.swing.JPanel {
 
@@ -231,12 +232,19 @@ public class PainelListaDeFornecedores extends javax.swing.JPanel {
                 if (e.getClickCount() == 2) {
                     JTable target = (JTable) e.getSource();
                     int row = target.getSelectedRow();
+                    int column0 = 0;
                     int column = 1;
 
                     if (row != -1) {
-                        Object value = target.getValueAt(row, column);
-                        if (value != null) {
-                            textFieldFornecedor.setText(value.toString());
+                        Object value1 = target.getValueAt(row, column0);
+                        Object value2 = target.getValueAt(row, column);
+                        if (value1 != null) {
+                            labelCodigoForn02.setText(value1.toString());
+                            dialog.dispose();
+
+                        }
+                        if (value2 != null) {
+                            textFieldFornecedor.setText(value2.toString());
                             dialog.dispose();
 
                         }
