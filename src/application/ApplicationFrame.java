@@ -2,13 +2,9 @@ package application;
 
 import controller.Controladorjmenubar;
 import java.awt.CardLayout;
-import java.awt.Color;
 import java.awt.Image;
 import java.awt.Toolkit;
 import javax.swing.JOptionPane;
-import javax.swing.UIManager;
-import javax.swing.UIManager.LookAndFeelInfo;
-import javax.swing.UnsupportedLookAndFeelException;
 import paineis.PainelCriarCadastroClientes;
 import paineis.PainelCriarCadastroFornecedores;
 import paineis.PainelCriarOrcamento;
@@ -552,27 +548,6 @@ public class ApplicationFrame extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_jMenuEstoqueMouseClicked
-
-    public static void main(String args[]) {
-
-        try {
-            for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-
-                    UIManager.put("MenuBar[Enabled].backgroundPainter", new Color(0, 0, 0));
-
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e) {
-        }
-
-        ApplicationFrame frame = new ApplicationFrame();
-        frame.setVisible(true);
-
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JMenuBar jMenuBar1;
