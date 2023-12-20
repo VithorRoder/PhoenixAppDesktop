@@ -2,7 +2,6 @@ package controller;
 
 import paineis.PainelPrincipalLogin;
 import application.ApplicationFrame;
-import static application.ApplicationFrame.chama;
 import dao.ConexaoSingleton;
 import dao.UsuarioDAO;
 import java.awt.Container;
@@ -80,7 +79,8 @@ public class LoginController {
             Container parent = painelPrincipal.getParent();
             parent.remove(painelPrincipal);
             parent.add(tabbedPaneCustom1);
-            chama();
+            ApplicationFrame.chamarLabelUsuario();
+             PainelJmenuBar.labelUs.setVisible(true);
             PainelJmenuBar.botaoLogoff.setVisible(true);
             parent.revalidate();
             parent.repaint();
@@ -119,6 +119,7 @@ public class LoginController {
         Container parent = tabbedPaneCustom1.getParent();
         parent.remove(tabbedPaneCustom1);
         parent.add(painelPrincipal);
+        PainelJmenuBar.labelUs.setVisible(false);
         PainelJmenuBar.botaoLogoff.setVisible(false);
         parent.revalidate();
         parent.repaint();

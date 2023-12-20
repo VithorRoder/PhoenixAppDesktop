@@ -18,47 +18,69 @@ public class PainelJmenuBar extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        labelUs = new javax.swing.JLabel();
         labelUsuario = new javax.swing.JLabel();
         botaoLogoff = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(0, 0, 0));
         setForeground(new java.awt.Color(0, 0, 0));
         setOpaque(false);
-        setLayout(new java.awt.GridLayout(1, 0));
 
-        jLabel1.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Usuário");
-        add(jLabel1);
+        labelUs.setBackground(new java.awt.Color(0, 0, 0));
+        labelUs.setFont(new java.awt.Font("Square721 BT", 0, 16)); // NOI18N
+        labelUs.setForeground(new java.awt.Color(255, 255, 255));
+        labelUs.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelUs.setText("Usuário:");
 
         labelUsuario.setBackground(new java.awt.Color(0, 0, 0));
-        labelUsuario.setForeground(new java.awt.Color(0, 0, 0));
+        labelUsuario.setFont(new java.awt.Font("Square721 BT", 1, 16)); // NOI18N
+        labelUsuario.setForeground(new java.awt.Color(255, 255, 255));
         labelUsuario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        add(labelUsuario);
 
-        botaoLogoff.setText("0");
+        botaoLogoff.setText("Logout");
         botaoLogoff.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botaoLogoffActionPerformed(evt);
             }
         });
-        add(botaoLogoff);
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(labelUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelUs, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addComponent(botaoLogoff, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(labelUs)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(labelUsuario))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(botaoLogoff, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(25, Short.MAX_VALUE))
+        );
     }// </editor-fold>//GEN-END:initComponents
 
     private void botaoLogoffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoLogoffActionPerformed
-        if (Controladorjmenubar.usuarioAutenticado != false) {
-            loggof();
-        } else {
-            JOptionPane.showMessageDialog(null, "Você ainda Não Fez Login !", "Aviso", JOptionPane.WARNING_MESSAGE);
-        }
+        acaoBotaoLogout();
     }//GEN-LAST:event_botaoLogoffActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JButton botaoLogoff;
-    private javax.swing.JLabel jLabel1;
+    public static javax.swing.JLabel labelUs;
     public static javax.swing.JLabel labelUsuario;
     // End of variables declaration//GEN-END:variables
 
@@ -68,6 +90,13 @@ public class PainelJmenuBar extends javax.swing.JPanel {
 
     public final void setController(LoginController controller) {
         this.controller = controller;
+    }
+
+    public void acaoBotaoLogout() {
+        int confirm = JOptionPane.showConfirmDialog(null, "Deseja Sair ?", "Logout", JOptionPane.YES_NO_OPTION);
+        if (confirm == JOptionPane.YES_OPTION && Controladorjmenubar.usuarioAutenticado != false) {
+            loggof();
+        }
     }
 
 }
