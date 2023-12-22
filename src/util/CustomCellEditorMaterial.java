@@ -6,18 +6,18 @@ import javax.swing.JDialog;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.TableCellEditor;
-import paineis.PainelListaDeMateriais;
+import paineis.PainelListaDeMateriaisDialog;
 import paineisAbas.PainelTabelaCriarOrcDef;
 
 public class CustomCellEditorMaterial extends DefaultCellEditor implements TableCellEditor {
 
-    private final PainelListaDeMateriais customPainel;
+    private final PainelListaDeMateriaisDialog customPainel;
     private final PainelTabelaCriarOrcDef painelTabelaCriarOrcDef;
 
     public CustomCellEditorMaterial(javax.swing.event.TableModelListener tableModelListener, PainelTabelaCriarOrcDef painelTabelaCriarOrcDef) {
         super(new JTextField());
 
-        customPainel = new PainelListaDeMateriais();
+        customPainel = new PainelListaDeMateriaisDialog();
         this.painelTabelaCriarOrcDef = painelTabelaCriarOrcDef;
         JDialog dialog = new JDialog();
         painelTabelaCriarOrcDef.mouseTableMaterial(dialog);

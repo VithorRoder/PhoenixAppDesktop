@@ -6,18 +6,18 @@ import javax.swing.JDialog;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.TableCellEditor;
-import paineis.PainelListaDeMaquinas;
+import paineis.PainelListaDeMaquinasDialog;
 import paineisAbas.PainelTabelaCriarOrcDef;
 
 public class CustomCellEditorMaquinas extends DefaultCellEditor implements TableCellEditor {
 
-    private final PainelListaDeMaquinas customPainel;
+    private final PainelListaDeMaquinasDialog customPainel;
     private final PainelTabelaCriarOrcDef painelTabelaCriarOrcDef;
 
     public CustomCellEditorMaquinas(javax.swing.event.TableModelListener tableModelListener, PainelTabelaCriarOrcDef painelTabelaCriarOrcDef) {
         super(new JTextField());
 
-        customPainel = new PainelListaDeMaquinas();
+        customPainel = new PainelListaDeMaquinasDialog();
         this.painelTabelaCriarOrcDef = painelTabelaCriarOrcDef;
         JDialog dialog = new JDialog();
         painelTabelaCriarOrcDef.mouseTableMaquinas(dialog);

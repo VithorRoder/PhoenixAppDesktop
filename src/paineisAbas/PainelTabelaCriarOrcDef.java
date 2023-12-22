@@ -28,7 +28,10 @@ import javax.swing.table.TableColumnModel;
 import static paineis.PainelCriarOrcamento.jTabbedPaneOrc;
 import static paineis.PainelCriarOrcamento.listaPaineis;
 import static paineis.PainelListaDeMaquinas.TabelaMaquinasImpressoras;
+import static paineis.PainelListaDeMaquinasDialog.TabelaMaquinasImpressorasDialog;
 import static paineis.PainelListaDeMateriais.jTableMateriais;
+import paineis.PainelListaDeMateriaisDialog;
+import static paineis.PainelListaDeMateriaisDialog.jTableMateriaisDialog;
 import util.CustomCellEditorMaquinas;
 import util.CustomCellEditorMaterial;
 
@@ -521,13 +524,13 @@ public final class PainelTabelaCriarOrcDef extends javax.swing.JPanel {
             }
         });
 
-        jTableMateriais.addMouseListener(new MouseAdapter() {
+        jTableMateriaisDialog.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 if (e.getClickCount() == 2) {
-                    int selectedRowMat = jTableMateriais.getSelectedRow();
-                    Object valorColuna1 = jTableMateriais.getValueAt(selectedRowMat, 1);
-                    Object valorColuna2 = jTableMateriais.getValueAt(selectedRowMat, 3);
+                    int selectedRowMat = jTableMateriaisDialog.getSelectedRow();
+                    Object valorColuna1 = jTableMateriaisDialog.getValueAt(selectedRowMat, 1);
+                    Object valorColuna2 = jTableMateriaisDialog.getValueAt(selectedRowMat, 3);
 
                     String valorConcatenado = valorColuna1.toString() + " - " + valorColuna2.toString();
 
@@ -554,13 +557,12 @@ public final class PainelTabelaCriarOrcDef extends javax.swing.JPanel {
             }
         });
 
-        TabelaMaquinasImpressoras.addMouseListener(new MouseAdapter() {
+        TabelaMaquinasImpressorasDialog.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 if (e.getClickCount() == 2) {
-                    int selectedRowMat = TabelaMaquinasImpressoras.getSelectedRow();
-                    Object valorColuna1 = TabelaMaquinasImpressoras.getValueAt(selectedRowMat, 1);
-                    //Object valorColuna2 = TabelaMaquinasImpressoras.getValueAt(selectedRowMat, 3);
+                    int selectedRowMat = TabelaMaquinasImpressorasDialog.getSelectedRow();
+                    Object valorColuna1 = TabelaMaquinasImpressorasDialog.getValueAt(selectedRowMat, 1);
 
                     if (linhaSelecionadaTabelaCriarOrc != -1) {
                         // Obtém a linha selecionada previamente na TabelaCriarOrc
