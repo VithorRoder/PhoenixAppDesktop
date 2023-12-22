@@ -6,11 +6,11 @@ import model.Estoque;
 import table.EstoqueTabela;
 import table.EstoqueTabelaRenderer;
 
-public class PainelListaEstoque extends javax.swing.JPanel {
+public class PainelListaEstoqueDialog extends javax.swing.JPanel {
 
     private List<Estoque> estoqueList;
 
-    public PainelListaEstoque() {
+    public PainelListaEstoqueDialog() {
         initComponents();
         refreshTable();
 
@@ -21,11 +21,11 @@ public class PainelListaEstoque extends javax.swing.JPanel {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        TableListaEstoque = new javax.swing.JTable();
+        TableListaEstoqueDialog = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
 
-        TableListaEstoque.setAutoCreateRowSorter(true);
-        TableListaEstoque.setModel(new javax.swing.table.DefaultTableModel(
+        TableListaEstoqueDialog.setAutoCreateRowSorter(true);
+        TableListaEstoqueDialog.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
                 {},
@@ -73,7 +73,7 @@ public class PainelListaEstoque extends javax.swing.JPanel {
 
             }
         ));
-        jScrollPane1.setViewportView(TableListaEstoque);
+        jScrollPane1.setViewportView(TableListaEstoqueDialog);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 30)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -97,7 +97,7 @@ public class PainelListaEstoque extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public static javax.swing.JTable TableListaEstoque;
+    public static javax.swing.JTable TableListaEstoqueDialog;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
@@ -106,8 +106,8 @@ public class PainelListaEstoque extends javax.swing.JPanel {
 
         estoqueList = new EstoqueController().findEstoque();
         if (estoqueList != null) {
-            TableListaEstoque.setModel(new EstoqueTabela(estoqueList));
-            TableListaEstoque.setDefaultRenderer(Object.class, new EstoqueTabelaRenderer());
+            TableListaEstoqueDialog.setModel(new EstoqueTabela(estoqueList));
+            TableListaEstoqueDialog.setDefaultRenderer(Object.class, new EstoqueTabelaRenderer());
         }
     }
 }

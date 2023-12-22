@@ -1033,7 +1033,7 @@ public class ApplicationFrame extends javax.swing.JFrame {
             if (totalAbas >= MAX_GLOBAL_TABS) {
                 JOptionPane.showMessageDialog(null, "Limite máximo de abas atingido.", "Aviso", JOptionPane.WARNING_MESSAGE);
             } else {
-                // Cria uma nova instância de PainelListaEstoque para cada aba
+                // Cria uma nova instância de PainelListaEstoqueDialog para cada aba
                 PainelListaEstoque novoPainelListaDeEstoque = new PainelListaEstoque();
                 tabbedPaneCustom1.addTab("Estoque", null, novoPainelListaDeEstoque, "Estoque");
                 tabbedPaneCustom1.setSelectedComponent(novoPainelListaDeEstoque);

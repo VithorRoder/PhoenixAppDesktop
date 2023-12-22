@@ -6,17 +6,20 @@ import javax.swing.JDialog;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.TableCellEditor;
+import paineis.PainelEntradaDeMaterial;
 
 public class CustomPainelEntradaMaterialCellEditor extends DefaultCellEditor implements TableCellEditor {
 
-    private paineis.PainelListaEstoque customPanel;
+    private final paineis.PainelListaEstoqueDialog customPanel;
+    private final paineis.PainelEntradaDeMaterial entradaMat;
 
-    public CustomPainelEntradaMaterialCellEditor(javax.swing.event.TableModelListener tableModelListener) {
+    public CustomPainelEntradaMaterialCellEditor(javax.swing.event.TableModelListener tableModelListener, PainelEntradaDeMaterial entradaMat) {
         super(new JTextField());
 
-        customPanel = new paineis.PainelListaEstoque();
+        customPanel = new paineis.PainelListaEstoqueDialog();
+        this.entradaMat = entradaMat;
         JDialog dialog = new JDialog();
-        customPanel.configurarDoubleClick(dialog);
+        entradaMat.passarEstoqueToEntMat(dialog);
 
     }
 
@@ -30,7 +33,7 @@ public class CustomPainelEntradaMaterialCellEditor extends DefaultCellEditor imp
         dialog.pack();
         dialog.setLocationRelativeTo(null);
         dialog.setModal(true);
-        customPanel.configurarDoubleClick(dialog);
+        entradaMat.passarEstoqueToEntMat(dialog);
         dialog.setVisible(true);
 
         return null;

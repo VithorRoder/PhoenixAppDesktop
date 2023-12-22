@@ -12,6 +12,8 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.Arrays;
 import javax.swing.BorderFactory;
 import javax.swing.DefaultCellEditor;
@@ -20,8 +22,11 @@ import javax.swing.JTextField;
 import javax.swing.border.Border;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.TableCellEditor;
+import static paineis.PainelListaEstoqueDialog.TableListaEstoqueDialog;
 
 public class PainelEntradaDeMaterial extends javax.swing.JPanel {
+
+    private int linhaSelecionada = -1;
 
     public PainelEntradaDeMaterial() {
         initComponents();
@@ -452,7 +457,7 @@ public class PainelEntradaDeMaterial extends javax.swing.JPanel {
 
     private void editorCedulas() {
 
-        TableEntradaMat.getColumnModel().getColumn(1).setCellEditor(new CustomPainelEntradaMaterialCellEditor(null));
+        TableEntradaMat.getColumnModel().getColumn(1).setCellEditor(new CustomPainelEntradaMaterialCellEditor(null,this));
 
         // altera a cor quando a celula é selecionada
         TableEntradaMat.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
@@ -606,6 +611,39 @@ public class PainelEntradaDeMaterial extends javax.swing.JPanel {
                 }
             }
         }
+    }
+
+    public void passarEstoqueToEntMat(JDialog dialog) {
+
+        TableEntradaMat.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (e.getClickCount() == 1) {
+                    linhaSelecionada = TableEntradaMat.getSelectedRow();
+                }
+            }
+        });
+
+        TableListaEstoqueDialog.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (e.getClickCount() == 2) {
+                    int selectedRowMat = TableListaEstoqueDialog.getSelectedRow();
+                    Object valorColuna1 = TableListaEstoqueDialog.getValueAt(selectedRowMat, 1);
+                    Object valorColuna2 = TableListaEstoqueDialog.getValueAt(selectedRowMat, 3);
+
+                    String valorConcatenado = valorColuna1.toString() + " - " + valorColuna2.toString();
+
+                    if (linhaSelecionada != -1) {
+                        // Obtém a linha selecionada previamente na TabelaCriarOrc
+                        int linhaCriarOrc = linhaSelecionada;
+
+                        TableEntradaMat.setValueAt(valorConcatenado, linhaCriarOrc, 1);
+                        dialog.dispose();
+                    }
+                }
+            }
+        });
     }
 
 }
