@@ -77,7 +77,17 @@ public class Estoque {
 
     @Override
     public String toString() {
-        return "Estoque{" + "id_estoque=" + id_estoque + ", descricao_estoque=" + descricao_estoque + ", tipo_material=" + tipo_material + ", tipo_substrato=" + tipo_substrato + ", quantidade_estoque=" + quantidade_estoque + ", unidade_uso=" + unidade_uso + ", quantidade_empenho=" + quantidade_empenho + ", estoque_empenho=" + estoque_empenho + '}';
+        String formattedId = String.format("%03d", id_estoque);
+        return "Estoque{"
+                + "id_estoque=" + formattedId
+                + ", descricao_estoque=" + descricao_estoque
+                + ", tipo_material=" + tipo_material
+                + ", tipo_substrato=" + tipo_substrato
+                + ", quantidade_estoque=" + quantidade_estoque
+                + ", unidade_uso=" + unidade_uso
+                + ", quantidade_empenho=" + quantidade_empenho
+                + ", estoque_empenho=" + estoque_empenho
+                + '}';
     }
 
 }

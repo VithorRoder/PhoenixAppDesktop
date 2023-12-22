@@ -11,9 +11,9 @@ import java.util.logging.Logger;
 import model.Estoque;
 
 public class EstoqueDAO2 implements EstoqueDAO {
-
+    
     private static final String SQL_FIND_ALL = "select * from estoque ORDER BY id ASC";
-
+    
     @Override
     public List<Estoque> findAll() {
         try {
@@ -34,7 +34,7 @@ public class EstoqueDAO2 implements EstoqueDAO {
                     estoque.setUnidade_uso(rs.getString("unidade_uso"));
                     estoque.setQuantidade_empenho(rs.getString("quantidade_empenho"));
                     estoque.setEstoque_empenho(rs.getString("estoque_empenho"));
-
+                    
                     Estoque.add(estoque);
                 }
             } catch (SQLException ex) {
@@ -46,5 +46,5 @@ public class EstoqueDAO2 implements EstoqueDAO {
         }
         return null;
     }
-
+    
 }

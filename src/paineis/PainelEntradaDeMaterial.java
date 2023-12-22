@@ -457,7 +457,7 @@ public class PainelEntradaDeMaterial extends javax.swing.JPanel {
 
     private void editorCedulas() {
 
-        TableEntradaMat.getColumnModel().getColumn(1).setCellEditor(new CustomPainelEntradaMaterialCellEditor(null,this));
+        TableEntradaMat.getColumnModel().getColumn(1).setCellEditor(new CustomPainelEntradaMaterialCellEditor(null, this));
 
         // altera a cor quando a celula é selecionada
         TableEntradaMat.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
@@ -629,16 +629,18 @@ public class PainelEntradaDeMaterial extends javax.swing.JPanel {
             public void mouseClicked(MouseEvent e) {
                 if (e.getClickCount() == 2) {
                     int selectedRowMat = TableListaEstoqueDialog.getSelectedRow();
-                    Object valorColuna1 = TableListaEstoqueDialog.getValueAt(selectedRowMat, 1);
-                    Object valorColuna2 = TableListaEstoqueDialog.getValueAt(selectedRowMat, 3);
+                    Object valorColuna1 = TableListaEstoqueDialog.getValueAt(selectedRowMat, 0);
+                    Object valorColuna2 = TableListaEstoqueDialog.getValueAt(selectedRowMat, 1);
 
-                    String valorConcatenado = valorColuna1.toString() + " - " + valorColuna2.toString();
+                    String valor01 = valorColuna1.toString();
+                    String valor02 = valorColuna2.toString();
 
                     if (linhaSelecionada != -1) {
-                        // Obtém a linha selecionada previamente na TabelaCriarOrc
-                        int linhaCriarOrc = linhaSelecionada;
+                        // Obtém a linha selecionada previamente na TableEntradaMat
+                        int linhaEntradaMat = linhaSelecionada;
 
-                        TableEntradaMat.setValueAt(valorConcatenado, linhaCriarOrc, 1);
+                        TableEntradaMat.setValueAt(valor01, linhaEntradaMat, 1);
+                        TableEntradaMat.setValueAt(valor02, linhaEntradaMat, 2);
                         dialog.dispose();
                     }
                 }
