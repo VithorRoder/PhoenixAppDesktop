@@ -73,6 +73,11 @@ public class PainelListaEstoque extends javax.swing.JPanel {
 
             }
         ));
+        TableListaEstoque.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                TableListaEstoqueFocusLost(evt);
+            }
+        });
         jScrollPane1.setViewportView(TableListaEstoque);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 30)); // NOI18N
@@ -94,6 +99,10 @@ public class PainelListaEstoque extends javax.swing.JPanel {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 493, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void TableListaEstoqueFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TableListaEstoqueFocusLost
+        refreshTable();
+    }//GEN-LAST:event_TableListaEstoqueFocusLost
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -33,7 +33,13 @@ public class PainelListaDeMateriais extends javax.swing.JPanel {
 
             }
         ));
+        jTableMateriais.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jTableMateriais.getTableHeader().setReorderingAllowed(false);
+        jTableMateriais.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTableMateriaisFocusLost(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTableMateriais);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 30)); // NOI18N
@@ -56,6 +62,10 @@ public class PainelListaDeMateriais extends javax.swing.JPanel {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 448, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jTableMateriaisFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTableMateriaisFocusLost
+        refreshTable();
+    }//GEN-LAST:event_jTableMateriaisFocusLost
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

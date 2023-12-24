@@ -42,6 +42,11 @@ public class PainelListaDeMaquinas extends javax.swing.JPanel {
             }
         ));
         TabelaMaquinasImpressoras.getTableHeader().setReorderingAllowed(false);
+        TabelaMaquinasImpressoras.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                TabelaMaquinasImpressorasFocusLost(evt);
+            }
+        });
         jScrollPane1.setViewportView(TabelaMaquinasImpressoras);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -59,6 +64,10 @@ public class PainelListaDeMaquinas extends javax.swing.JPanel {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 448, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void TabelaMaquinasImpressorasFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TabelaMaquinasImpressorasFocusLost
+        refreshTable();
+    }//GEN-LAST:event_TabelaMaquinasImpressorasFocusLost
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

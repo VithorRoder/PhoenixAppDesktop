@@ -34,6 +34,11 @@ public class PainelListaDeMateriaisDialog extends javax.swing.JPanel {
             }
         ));
         jTableMateriaisDialog.getTableHeader().setReorderingAllowed(false);
+        jTableMateriaisDialog.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTableMateriaisDialogFocusLost(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTableMateriaisDialog);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 30)); // NOI18N
@@ -56,6 +61,10 @@ public class PainelListaDeMateriaisDialog extends javax.swing.JPanel {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 448, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jTableMateriaisDialogFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTableMateriaisDialogFocusLost
+        refreshTable();
+    }//GEN-LAST:event_jTableMateriaisDialogFocusLost
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
