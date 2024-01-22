@@ -19,8 +19,9 @@ public class ClientesDAO2 implements ClientesDAO {
 
     @Override
     public int save(Clientes clientes) {
+        Connection conexao = null;
         try {
-            Connection conexao = ConexaoSingleton.getConnection();
+            conexao = ConexaoSingleton.getConnection();
             PreparedStatement pstm = null;
             int result = 0;
             try {
@@ -73,14 +74,17 @@ public class ClientesDAO2 implements ClientesDAO {
         } catch (SQLException ex) {
             System.out.println("Erro ao obter a conexão com o banco de dados: " + ex.getMessage());
             Logger.getLogger(ClientesDAO2.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            ConexaoSingleton.close(conexao, null, null);
         }
         return 0;
     }
 
     @Override
     public int update(Clientes clientes) {
+        Connection conexao = null;
         try {
-            Connection conexao = ConexaoSingleton.getConnection();
+            conexao = ConexaoSingleton.getConnection();
             PreparedStatement pstm = null;
             int result = 0;
             try {
@@ -112,16 +116,19 @@ public class ClientesDAO2 implements ClientesDAO {
                 Logger.getLogger(ClientesDAO2.class.getName()).log(Level.SEVERE, null, e);
             }
             return result;
-        } catch (SQLException ex) {
-            Logger.getLogger(ClientesDAO2.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException e) {
+            Logger.getLogger(ClientesDAO2.class.getName()).log(Level.SEVERE, null, e);
+        } finally {
+            ConexaoSingleton.close(conexao, null, null);
         }
         return 0;
     }
 
     @Override
     public int remove(Long idCliente) {
+        Connection conexao = null;
         try {
-            Connection conexao = ConexaoSingleton.getConnection();
+            conexao = ConexaoSingleton.getConnection();
             PreparedStatement pstm = null;
             int result = 0;
             try {
@@ -143,21 +150,22 @@ public class ClientesDAO2 implements ClientesDAO {
 
         } catch (SQLException ex) {
             Logger.getLogger(ClientesDAO2.class.getName()).log(Level.SEVERE, null, ex);
-
+        } finally {
+            ConexaoSingleton.close(conexao, null, null);
         }
         return 0;
-
     }
 
     @Override
     public List<Clientes> findAll() {
+        Connection conexao = null;
         try {
-            Connection conn = ConexaoSingleton.getConnection();
+            conexao = ConexaoSingleton.getConnection();
             PreparedStatement pstm = null;
             List<Clientes> Clientes = new ArrayList<>();
             ResultSet rs = null;
             try {
-                pstm = conn.prepareStatement(SQL_FIND_ALL);
+                pstm = conexao.prepareStatement(SQL_FIND_ALL);
                 rs = pstm.executeQuery();
                 while (rs.next()) {
                     Clientes clientes = new Clientes();
@@ -176,13 +184,16 @@ public class ClientesDAO2 implements ClientesDAO {
             return Clientes;
         } catch (SQLException ex) {
             Logger.getLogger(ClientesDAO2.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            ConexaoSingleton.close(conexao, null, null);
         }
         return null;
     }
 
     public Clientes findById(Long id) {
+        Connection conexao = null;
         try {
-            Connection conexao = ConexaoSingleton.getConnection();
+            conexao = ConexaoSingleton.getConnection();
             PreparedStatement pstm = null;
             ResultSet rs = null;
             Clientes clientes = null;
@@ -224,8 +235,10 @@ public class ClientesDAO2 implements ClientesDAO {
             return clientes;
         } catch (SQLException ex) {
             Logger.getLogger(FornecedoresDAO2.class.getName()).log(Level.SEVERE, null, ex);
-            return null;
+        } finally {
+            ConexaoSingleton.close(conexao, null, null);
         }
+        return null;
     }
 
 }

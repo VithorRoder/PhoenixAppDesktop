@@ -1,5 +1,6 @@
 package paineis;
 
+import static application.ApplicationFrame.tabbedPaneCustom1;
 import paineisAbas.PainelTabelaCriarOrcDef;
 import logicaRegrasOrcamento.CalculoOrcamento;
 import java.awt.KeyEventDispatcher;
@@ -19,20 +20,20 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
 public class PainelCriarOrcamento extends javax.swing.JPanel {
-    
+
     public static List<PainelTabelaCriarOrcDef> listaPaineis;
     private int proximoNumeroAba = 2;
     PainelTabelaCriarOrcDef teste = new PainelTabelaCriarOrcDef();
-    
+
     public PainelCriarOrcamento() {
         initComponents();
         teste.preencherColunaZero();
         addRemovePainel();
-        KeyF1();
         showDataHora();
-        
+        addKeyEventDispatcher();
+
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -405,9 +406,9 @@ public class PainelCriarOrcamento extends javax.swing.JPanel {
         jTabbedPaneOrc.addTab("Tab " + proximoNumeroAba, novoPainel);
         jTabbedPaneOrc.setSelectedIndex(jTabbedPaneOrc.getTabCount() - 1);
         proximoNumeroAba++;
-        
+
     }
-    
+
     public void removerAbaSelecionada() {
         int confirm = JOptionPane.showConfirmDialog(this, "Deseja Remover o item Selecionado ?", "Excluir Item", JOptionPane.YES_NO_OPTION);
         if (confirm == JOptionPane.YES_OPTION) {
@@ -419,17 +420,17 @@ public class PainelCriarOrcamento extends javax.swing.JPanel {
             }
         }
     }
-    
+
     public void atualizarLimparCampos() {
         int abaSelecionada = jTabbedPaneOrc.getSelectedIndex();
         if (abaSelecionada >= 0 && abaSelecionada < listaPaineis.size()) {
             PainelTabelaCriarOrcDef painelSelecionado = listaPaineis.get(abaSelecionada);
             painelSelecionado.limparCamposTabelaDEF();
             painelSelecionado.refreshComboBox();
-            
+
         }
     }
-    
+
     public void atualizarTranferenciaToOrc() {
         int abaSelecionada = jTabbedPaneOrc.getSelectedIndex();
         if (abaSelecionada >= 0 && abaSelecionada < listaPaineis.size()) {
@@ -440,40 +441,44 @@ public class PainelCriarOrcamento extends javax.swing.JPanel {
             painelSelecionado.mouseTableMaquinas(dialog);
         }
     }
-    
+
     public void setNomeCliente(String nomeCliente) {
         jTextFieldNomeCliente.setText(nomeCliente);
     }
-    
+
     class hora implements ActionListener {
-        
+
         @Override
         public void actionPerformed(ActionEvent e) {
             Calendar now = Calendar.getInstance();
             jLabelHoraOrc.setText(String.format("%1$tH:%1$tM %1$Tp", now));
         }
     }
-    
-    private void KeyF1() {
+
+    private void addKeyEventDispatcher() {
         KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher(new KeyEventDispatcher() {
             @Override
             public boolean dispatchKeyEvent(KeyEvent e) {
-                if (e.getID() == KeyEvent.KEY_PRESSED && e.getKeyCode() == KeyEvent.VK_F1) {
-                    
-                    BotaoGerarPreco.requestFocusInWindow();
-                    CalculoOrcamento.calculaTudoMaquinaImpressoras();
-                    
-                    return true; // Impede que o evento seja enviado a outros componentes
+                int selectedIndex = tabbedPaneCustom1.getSelectedIndex();
+
+                if (selectedIndex != -1 && e.getID() == KeyEvent.KEY_PRESSED && e.getKeyCode() == KeyEvent.VK_F1) {
+                    String selectedTabTitle = tabbedPaneCustom1.getTitleAt(selectedIndex);
+
+                    if (selectedTabTitle.equals("Orçamento")) {
+                        BotaoGerarPreco.requestFocusInWindow();
+                        CalculoOrcamento.calculaTudoMaquinaImpressoras();
+                        return true; // Impede que o evento seja enviado a outros componentes
+                    }
                 }
                 return false; // Deixe outros eventos de teclado serem processados normalmente
             }
         });
     }
-    
+
     public void ShowListClientes() {
-        
+
         PainelListaDeClientes customPanelClientes = new paineis.PainelListaDeClientes();
-        
+
         JDialog dialog = new JDialog();
         dialog.setTitle("Lista de Clientes");
         customPanelClientes.jButtonAlterarClientes.setVisible(false);
@@ -485,47 +490,47 @@ public class PainelCriarOrcamento extends javax.swing.JPanel {
         dialog.setModal(true);
         PainelListaDeClientes.passarClienteParaOrc(dialog);
         dialog.setVisible(true);
-        
+
         jTextFieldNomeCliente.getDocument().addDocumentListener(new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent e) {
                 dialog.dispose();
             }
-            
+
             @Override
             public void removeUpdate(DocumentEvent e) {
                 dialog.dispose();
             }
-            
+
             @Override
             public void changedUpdate(DocumentEvent e) {
                 dialog.dispose();
             }
         });
     }
-    
+
     private void showDataHora() {
         Date dataSistema = new Date();
         SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
         jLabelDataOrc.setText(formato.format(dataSistema));
-        
+
         Timer timer = new Timer(1000, new hora());
         timer.start();
     }
-    
+
     private void addRemovePainel() {
         listaPaineis = new ArrayList<>();
-        
+
         teste.preencherColunaZero();
-        
+
         listaPaineis.add(teste);
-        
+
         jTabbedPaneOrc.addTab("Tab 1", teste);
-        
+
         int index = jTabbedPaneOrc.indexOfTab("Tab DEF");
         if (index != -1) {
             jTabbedPaneOrc.remove(index);
         }
     }
-    
+
 }

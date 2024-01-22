@@ -1,9 +1,18 @@
 package paineis;
 
+import controller.EntradaMaterialController;
+import java.util.List;
+import model.EntradaMaterial;
+import table.EntradaMaterialTabela;
+import table.EntradaMaterialTabelaRenderer;
+
 public class PainelListaEntradaDeMaterial extends javax.swing.JPanel {
+
+    private List<EntradaMaterial> entradaMaterialList;
 
     public PainelListaEntradaDeMaterial() {
         initComponents();
+        refreshTable();
     }
 
     @SuppressWarnings("unchecked")
@@ -99,4 +108,14 @@ public class PainelListaEntradaDeMaterial extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
+
+    private void refreshTable() {
+
+        entradaMaterialList = new EntradaMaterialController().findEntradaMaterial();
+        if (entradaMaterialList != null) {
+            jTable1.setModel(new EntradaMaterialTabela(entradaMaterialList));
+            jTable1.setDefaultRenderer(Object.class, new EntradaMaterialTabelaRenderer());
+
+        }
+    }
 }
