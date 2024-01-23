@@ -1,6 +1,8 @@
 package paineis;
 
+import application.ApplicationFrame;
 import com.google.gson.Gson;
+import controller.EntradaMaterialController;
 import dao.ConexaoSingleton;
 import util.CustomPainelEntradaMaterialCellEditor;
 import java.awt.event.ActionEvent;
@@ -23,6 +25,7 @@ import java.sql.SQLException;
 import java.util.Arrays;
 import javax.swing.BorderFactory;
 import javax.swing.DefaultCellEditor;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
@@ -51,7 +54,7 @@ public class PainelEntradaDeMaterial extends javax.swing.JPanel {
         labelHora = new javax.swing.JLabel();
         labelData = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        jLabelID = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         textFieldFornecedor = new javax.swing.JFormattedTextField();
         jLabel7 = new javax.swing.JLabel();
@@ -99,9 +102,9 @@ public class PainelEntradaDeMaterial extends javax.swing.JPanel {
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Código:");
 
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jLabelID.setForeground(new java.awt.Color(0, 0, 0));
+        jLabelID.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelID.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
@@ -170,7 +173,7 @@ public class PainelEntradaDeMaterial extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelID, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(28, 28, 28)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -233,7 +236,7 @@ public class PainelEntradaDeMaterial extends javax.swing.JPanel {
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(labelHora, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE)
                                 .addComponent(labelData, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addComponent(jLabelID, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -376,6 +379,11 @@ public class PainelEntradaDeMaterial extends javax.swing.JPanel {
         jButtonRedondoCriarForncecedoresDeletar.setText("Remover");
         jButtonRedondoCriarForncecedoresDeletar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonRedondoCriarForncecedoresDeletar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButtonRedondoCriarForncecedoresDeletar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonRedondoCriarForncecedoresDeletarActionPerformed(evt);
+            }
+        });
 
         jButtonRedondoCriarForncecedoresSalvar.setBackground(new java.awt.Color(160, 160, 160));
         jButtonRedondoCriarForncecedoresSalvar.setForeground(new java.awt.Color(0, 0, 0));
@@ -467,13 +475,16 @@ public class PainelEntradaDeMaterial extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButtonRedondoCriarForncecedoresSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRedondoCriarForncecedoresSalvarActionPerformed
-        fillTableFromPostgres(3, TableEntradaMat);
-        editorCedulas();
+        // TODO add your handling code here:
     }//GEN-LAST:event_jButtonRedondoCriarForncecedoresSalvarActionPerformed
 
     private void jButtonRedondoCriarForncecedoresCancelar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRedondoCriarForncecedoresCancelar2ActionPerformed
-        publi();
+        // TODO add your handling code here:
     }//GEN-LAST:event_jButtonRedondoCriarForncecedoresCancelar2ActionPerformed
+
+    private void jButtonRedondoCriarForncecedoresDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRedondoCriarForncecedoresDeletarActionPerformed
+        removerEntradaMaterial();
+    }//GEN-LAST:event_jButtonRedondoCriarForncecedoresDeletarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -489,11 +500,11 @@ public class PainelEntradaDeMaterial extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabelID;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -832,6 +843,31 @@ public class PainelEntradaDeMaterial extends javax.swing.JPanel {
         Object[][] jsonTableData = gson.fromJson(jsonData, Object[][].class);
 
         return jsonTableData;
+    }
+
+    public void removerEntradaMaterial() {
+        // Ler o ID do campo labelCodigoClientes
+        Long idEntradaMaterial = null;
+        String idTexto = jLabelID.getText();
+        if (!idTexto.isEmpty()) {
+            try {
+                idEntradaMaterial = Long.parseLong(idTexto);
+            } catch (NumberFormatException e) {
+
+            }
+        }
+
+        int confirm = JOptionPane.showConfirmDialog(this, "Confirmar exclusão?", "Excluir Entrada de Material", JOptionPane.YES_NO_OPTION);
+        if (confirm == JOptionPane.YES_OPTION) {
+            if (idEntradaMaterial != null) {
+                new EntradaMaterialController().excluirEntradaMaterial(idEntradaMaterial);
+                JOptionPane.showMessageDialog(this, "Valor removido com sucesso!");
+                ApplicationFrame.tabbedPaneCustom1.remove(this);
+                ApplicationFrame.showPainelListaEntradaMaterial();
+            } else {
+                JOptionPane.showMessageDialog(this, "Código da entrada de Material é Nulo !", "Código Vazio", JOptionPane.ERROR_MESSAGE);
+            }
+        }
     }
 
 }

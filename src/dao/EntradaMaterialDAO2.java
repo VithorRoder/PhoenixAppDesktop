@@ -11,24 +11,53 @@ import java.util.logging.Logger;
 import model.EntradaMaterial;
 
 public class EntradaMaterialDAO2 implements EntradaMaterialDAO {
-    
+
+    private static final String SQL_REMOVE = "delete from entrada_material where id = ?";
     private static final String SQL_FIND_ALL = "select * from entrada_material ORDER BY id ASC";
-    
+
     @Override
     public int save(EntradaMaterial entradaMaterial) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-    
+
     @Override
     public int update(EntradaMaterial entradaMaterial) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-    
+
     @Override
     public int remove(Long idEntradaMat) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        Connection conexao = null;
+        try {
+            conexao = ConexaoSingleton.getConnection();
+            PreparedStatement pstm = null;
+            int result = 0;
+            try {
+                pstm = conexao.prepareStatement(SQL_REMOVE);
+                pstm.setLong(1, idEntradaMat);
+                result = pstm.executeUpdate();
+
+            } catch (SQLException e) {
+                try {
+                    if (conexao != null) {
+                        conexao.rollback();
+                    }
+                } catch (SQLException ex) {
+                    ex.getMessage();
+                }
+                e.getMessage();
+            }
+            return result;
+
+        } catch (SQLException ex) {
+            Logger.getLogger(EntradaMaterialDAO2.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            ConexaoSingleton.close(conexao, null, null);
+        }
+        return 0;
+
     }
-    
+
     @Override
     public List<EntradaMaterial> findAll() {
         Connection conexao = null;
@@ -48,9 +77,9 @@ public class EntradaMaterialDAO2 implements EntradaMaterialDAO {
                     entradaMaterial.setNumeroNf(rs.getString("numero_nf"));
                     entradaMaterial.setDataEmissaoNf(rs.getString("data_emissao"));
                     entradaMaterial.setTotalNf(rs.getString("total_nf"));
-                    
+
                     EntradaMaterial.add(entradaMaterial);
-                    
+
                 }
             } catch (SQLException ex) {
                 ex.getMessage();
@@ -63,5 +92,5 @@ public class EntradaMaterialDAO2 implements EntradaMaterialDAO {
         }
         return null;
     }
-    
+
 }
