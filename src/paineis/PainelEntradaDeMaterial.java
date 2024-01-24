@@ -41,7 +41,9 @@ public class PainelEntradaDeMaterial extends javax.swing.JPanel {
     public PainelEntradaDeMaterial() {
         initComponents();
         editorCedulas();
-        dataHoraLocal();
+        if (jLabelID.getText() == null || jLabelID.getText().isEmpty()) {
+            dataHoraLocal();
+        }
 
     }
 
@@ -59,11 +61,11 @@ public class PainelEntradaDeMaterial extends javax.swing.JPanel {
         textFieldFornecedor = new javax.swing.JFormattedTextField();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jFormattedTextField2 = new javax.swing.JFormattedTextField();
+        jFormattedTextFieldNNF = new javax.swing.JFormattedTextField();
         jFormattedTextFieldDataENF = new javax.swing.JFormattedTextField();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        jFormattedTextField5 = new javax.swing.JFormattedTextField();
+        jFormattedTextFieldObservacoes = new javax.swing.JFormattedTextField();
         jButton1 = new javax.swing.JButton();
         jformatedTextFieldPreco1 = new util.JformatedTextFieldPreco();
         labelCodigoForn02 = new javax.swing.JLabel();
@@ -123,8 +125,8 @@ public class PainelEntradaDeMaterial extends javax.swing.JPanel {
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel8.setText("Data Emissão NF");
 
-        jFormattedTextField2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
-        jFormattedTextField2.setFocusLostBehavior(javax.swing.JFormattedTextField.PERSIST);
+        jFormattedTextFieldNNF.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
+        jFormattedTextFieldNNF.setFocusLostBehavior(javax.swing.JFormattedTextField.PERSIST);
 
         jFormattedTextFieldDataENF.setColumns(3);
         try {
@@ -191,7 +193,7 @@ public class PainelEntradaDeMaterial extends javax.swing.JPanel {
                         .addGap(1, 1, 1)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jFormattedTextField5))
+                    .addComponent(jFormattedTextFieldObservacoes))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(23, 23, 23)
@@ -201,7 +203,7 @@ public class PainelEntradaDeMaterial extends javax.swing.JPanel {
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jFormattedTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jFormattedTextFieldNNF, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(jFormattedTextFieldDataENF, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(18, 18, 18)
@@ -245,7 +247,7 @@ public class PainelEntradaDeMaterial extends javax.swing.JPanel {
                             .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jFormattedTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jFormattedTextFieldNNF, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jFormattedTextFieldDataENF, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jformatedTextFieldPreco1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(18, 18, 18)
@@ -253,7 +255,7 @@ public class PainelEntradaDeMaterial extends javax.swing.JPanel {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jFormattedTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jFormattedTextFieldObservacoes, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(12, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -494,9 +496,9 @@ public class PainelEntradaDeMaterial extends javax.swing.JPanel {
     private util.JButtonRedondoCriarForncecedores jButtonRedondoCriarForncecedoresCancelar2;
     private util.JButtonRedondoCriarForncecedores jButtonRedondoCriarForncecedoresDeletar;
     private util.JButtonRedondoCriarForncecedores jButtonRedondoCriarForncecedoresSalvar;
-    private javax.swing.JFormattedTextField jFormattedTextField2;
-    private javax.swing.JFormattedTextField jFormattedTextField5;
-    private javax.swing.JFormattedTextField jFormattedTextFieldDataENF;
+    public static javax.swing.JFormattedTextField jFormattedTextFieldDataENF;
+    public static javax.swing.JFormattedTextField jFormattedTextFieldNNF;
+    public static javax.swing.JFormattedTextField jFormattedTextFieldObservacoes;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
@@ -504,15 +506,15 @@ public class PainelEntradaDeMaterial extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JLabel jLabelID;
+    public static javax.swing.JLabel jLabelID;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private util.JformatedTextFieldPreco jformatedTextFieldPreco1;
+    public static util.JformatedTextFieldPreco jformatedTextFieldPreco1;
     public static javax.swing.JLabel labelCodigoForn02;
-    private javax.swing.JLabel labelData;
-    private javax.swing.JLabel labelHora;
+    public static javax.swing.JLabel labelData;
+    public static javax.swing.JLabel labelHora;
     public static javax.swing.JFormattedTextField textFieldFornecedor;
     // End of variables declaration//GEN-END:variables
 
@@ -660,11 +662,9 @@ public class PainelEntradaDeMaterial extends javax.swing.JPanel {
     }
 
     private void dataHoraLocal() {
-
         Date dataSistema = new Date();
         SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
         labelData.setText(formato.format(dataSistema));
-
         Timer timer = new Timer(1000, new hora());
         timer.start();
 
@@ -674,8 +674,10 @@ public class PainelEntradaDeMaterial extends javax.swing.JPanel {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            Calendar now = Calendar.getInstance();
-            labelHora.setText(String.format("%1$tH:%1$tM %1$Tp", now));
+            if (jLabelID.getText() == null || jLabelID.getText().isEmpty()) {
+                Calendar now = Calendar.getInstance();
+                labelHora.setText(String.format("%1$tH:%1$tM %1$Tp", now));
+            }
         }
     }
 

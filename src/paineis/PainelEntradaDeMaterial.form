@@ -80,7 +80,7 @@
                           <Component id="jButton1" min="-2" pref="30" max="-2" attributes="0"/>
                       </Group>
                       <Component id="jLabel10" alignment="0" max="32767" attributes="0"/>
-                      <Component id="jFormattedTextField5" alignment="0" max="32767" attributes="0"/>
+                      <Component id="jFormattedTextFieldObservacoes" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
@@ -92,7 +92,7 @@
                                   <Component id="jLabel8" min="-2" pref="119" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
-                                  <Component id="jFormattedTextField2" min="-2" pref="251" max="-2" attributes="0"/>
+                                  <Component id="jFormattedTextFieldNNF" min="-2" pref="251" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="jFormattedTextFieldDataENF" min="-2" pref="119" max="-2" attributes="0"/>
                               </Group>
@@ -152,7 +152,7 @@
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jFormattedTextField2" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                              <Component id="jFormattedTextFieldNNF" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
                               <Component id="jFormattedTextFieldDataENF" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
                               <Component id="jformatedTextFieldPreco1" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                           </Group>
@@ -163,7 +163,7 @@
                       <Group type="102" attributes="0">
                           <Component id="jLabel10" min="-2" pref="31" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jFormattedTextField5" min="-2" pref="34" max="-2" attributes="0"/>
+                          <Component id="jFormattedTextFieldObservacoes" min="-2" pref="34" max="-2" attributes="0"/>
                           <EmptySpace pref="12" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
@@ -200,6 +200,9 @@
               </Border>
             </Property>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="labelData">
           <Properties>
@@ -213,6 +216,9 @@
               </Border>
             </Property>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel2">
           <Properties>
@@ -235,6 +241,9 @@
               </Border>
             </Property>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel6">
           <Properties>
@@ -280,13 +289,16 @@
             <Property name="text" type="java.lang.String" value="Data Emiss&#xe3;o NF"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JFormattedTextField" name="jFormattedTextField2">
+        <Component class="javax.swing.JFormattedTextField" name="jFormattedTextFieldNNF">
           <Properties>
             <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
               <Format format="#0" subtype="-1" type="0"/>
             </Property>
             <Property name="focusLostBehavior" type="int" value="3"/>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JFormattedTextField" name="jFormattedTextFieldDataENF">
           <Properties>
@@ -295,6 +307,9 @@
               <Format format="##/##/####" subtype="-1" type="5"/>
             </Property>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel9">
           <Properties>
@@ -320,7 +335,10 @@
             <Property name="text" type="java.lang.String" value="Observa&#xe7;&#xf5;es"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JFormattedTextField" name="jFormattedTextField5">
+        <Component class="javax.swing.JFormattedTextField" name="jFormattedTextFieldObservacoes">
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JButton" name="jButton1">
           <Properties>
@@ -342,6 +360,9 @@
           </Events>
         </Component>
         <Component class="util.JformatedTextFieldPreco" name="jformatedTextFieldPreco1">
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="labelCodigoForn02">
           <Properties>
