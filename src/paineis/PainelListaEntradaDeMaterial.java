@@ -1,10 +1,14 @@
 package paineis;
 
 import application.ApplicationFrame;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.node.ArrayNode;
 import controller.EntradaMaterialController;
 import dao.EntradaMaterialDAO2;
 import java.util.List;
+import javax.swing.table.DefaultTableModel;
 import model.EntradaMaterial;
+import static paineis.PainelEntradaDeMaterial.TableEntradaMat;
 import static paineis.PainelEntradaDeMaterial.jFormattedTextFieldDataENF;
 import static paineis.PainelEntradaDeMaterial.jFormattedTextFieldNNF;
 import static paineis.PainelEntradaDeMaterial.jFormattedTextFieldObservacoes;
@@ -18,14 +22,15 @@ import table.EntradaMaterialTabela;
 import table.EntradaMaterialTabelaRenderer;
 
 public class PainelListaEntradaDeMaterial extends javax.swing.JPanel {
-    
+
     private List<EntradaMaterial> entradaMaterialList;
-    
+    PainelEntradaDeMaterial painelEntrada = new PainelEntradaDeMaterial();
+
     public PainelListaEntradaDeMaterial() {
         initComponents();
         refreshTable();
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -142,17 +147,17 @@ public class PainelListaEntradaDeMaterial extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     private void refreshTable() {
-        
+
         entradaMaterialList = new EntradaMaterialController().findEntradaMaterial();
         if (entradaMaterialList != null) {
             jTable1.setModel(new EntradaMaterialTabela(entradaMaterialList));
             jTable1.setDefaultRenderer(Object.class, new EntradaMaterialTabelaRenderer());
-            
+
         }
     }
-    
+
     private void duploClickEntradaMaterial() {
-        
+
         int rowIndex = jTable1.getSelectedRow();
         if (rowIndex != -1) {
             Long idEntradaMaterialSelecionado = (Long) jTable1.getValueAt(rowIndex, 0);
@@ -164,12 +169,12 @@ public class PainelListaEntradaDeMaterial extends javax.swing.JPanel {
             }
         }
     }
-    
+
     private void preencherEntradaDeMaterial(EntradaMaterial entrada) {
-        
+
         ApplicationFrame.tabbedPaneCustom1.remove(this);
         ApplicationFrame.showPainelEntradaDeMaterial();
-        
+
         jLabelID.setText(String.valueOf(entrada.getIdEntradaMat()));
         labelData.setText(String.valueOf(entrada.getDataCadastroEntrada()));
         labelHora.setText(String.valueOf(entrada.getHoraEntrada()));
@@ -179,5 +184,41 @@ public class PainelListaEntradaDeMaterial extends javax.swing.JPanel {
         jFormattedTextFieldDataENF.setText(String.valueOf(entrada.getDataEmissaoNf()));
         jformatedTextFieldPreco1.setText(String.valueOf(entrada.getTotalNf()));
         jFormattedTextFieldObservacoes.setText(String.valueOf(entrada.getObservacoesEntrada()));
+
+        // Adicione a lógica para processar o JSON
+        JsonNode jsonData = entrada.getJsonDataAsJsonNode();
+        if (jsonData != null && jsonData.isArray()) {
+            ArrayNode arrayNode = (ArrayNode) jsonData;
+
+            // Configurar o modelo da tabela
+            DefaultTableModel model = (DefaultTableModel) TableEntradaMat.getModel();
+            model.setRowCount(arrayNode.size());
+            model.setColumnCount(arrayNode.get(0).size());
+
+            // Preencher a tabela
+            for (int i = 0; i < arrayNode.size(); i++) {
+                JsonNode rowNode = arrayNode.get(i);
+                for (int j = 0; j < rowNode.size(); j++) {
+                    Object cellValue = convertJsonValueToObject(rowNode.get(j));
+                    TableEntradaMat.setValueAt(cellValue, i, j);
+                }
+            }
+        }
+
+        painelEntrada.editorCedulas();
+    }
+
+    private Object convertJsonValueToObject(JsonNode jsonNode) {
+        if (jsonNode.isTextual()) {
+            return jsonNode.asText();
+        } else if (jsonNode.isNumber()) {
+            return jsonNode.numberValue();
+        } else if (jsonNode.isBoolean()) {
+            return jsonNode.asBoolean();
+        } else if (jsonNode.isObject() || jsonNode.isArray()) {
+            return jsonNode.toString(); // Ou você pode implementar uma lógica específica para objetos ou arrays
+        } else {
+            return null;
+        }
     }
 }

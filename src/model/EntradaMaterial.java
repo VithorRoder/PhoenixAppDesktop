@@ -1,5 +1,8 @@
 package model;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 public class EntradaMaterial {
 
     private Long idEntradaMat;
@@ -96,6 +99,16 @@ public class EntradaMaterial {
     @Override
     public String toString() {
         return "EntradaDeMaterial{" + "idEntradaMat=" + idEntradaMat + ", dataCadastroEntrada=" + dataCadastroEntrada + ", horaEntrada=" + horaEntrada + ", idFornecedorEntrada=" + idFornecedorEntrada + ", nomeFornecedorEntrada=" + nomeFornecedorEntrada + ", numeroNf=" + numeroNf + ", dataEmissaoNf=" + dataEmissaoNf + ", totalNf=" + totalNf + ", observacoesEntrada=" + observacoesEntrada + ", tableEntradaJson=" + tableEntradaJson + '}';
+    }
+
+    public JsonNode getJsonDataAsJsonNode() {
+        try {
+            ObjectMapper objectMapper = new ObjectMapper();
+            return objectMapper.readTree(tableEntradaJson);
+        } catch (Exception e) {
+            e.printStackTrace(); // Trate exceções adequadamente
+            return null;
+        }
     }
 
 }

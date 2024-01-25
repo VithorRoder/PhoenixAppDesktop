@@ -1,9 +1,7 @@
 package paineis;
 
 import application.ApplicationFrame;
-import com.google.gson.Gson;
 import controller.EntradaMaterialController;
-import dao.ConexaoSingleton;
 import util.CustomPainelEntradaMaterialCellEditor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -18,10 +16,6 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.Arrays;
 import javax.swing.BorderFactory;
 import javax.swing.DefaultCellEditor;
@@ -30,7 +24,6 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
 import javax.swing.table.DefaultTableCellRenderer;
-import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellEditor;
 import static paineis.PainelListaEstoqueDialog.TableListaEstoqueDialog;
 
@@ -518,7 +511,7 @@ public class PainelEntradaDeMaterial extends javax.swing.JPanel {
     public static javax.swing.JFormattedTextField textFieldFornecedor;
     // End of variables declaration//GEN-END:variables
 
-    private void editorCedulas() {
+    public void editorCedulas() {
 
         TableEntradaMat.getColumnModel().getColumn(1).setCellEditor(new CustomPainelEntradaMaterialCellEditor(null, this));
 
@@ -749,102 +742,6 @@ public class PainelEntradaDeMaterial extends javax.swing.JPanel {
                 }
             }
         });
-    }
-
-    public String convertJTableDataToJson(JTable table) {
-        int rows = table.getRowCount();
-        int cols = table.getColumnCount();
-        Object[][] data = new Object[rows][cols];
-
-        // Captura os dados da JTable
-        for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < cols; j++) {
-                data[i][j] = table.getValueAt(i, j);
-            }
-        }
-
-        // Converte para JSON usando Gson
-        Gson gson = new Gson();
-        String jsonData = gson.toJson(data);
-        return jsonData;
-    }
-
-    public void saveDataToPostgreSQL(String jsonData) {
-        Connection conexao = null;
-
-        try {
-            conexao = ConexaoSingleton.getConnection();
-            String sql = "INSERT INTO entrada_material (table_entrada_mat) VALUES (?::json)";
-            PreparedStatement statement = conexao.prepareStatement(sql);
-
-            statement.setString(1, jsonData);
-
-            statement.executeUpdate();
-
-            System.out.println("Dados inseridos no PostgreSQL com sucesso!");
-        } catch (SQLException e) {
-            System.out.println("Erro ao inserir dados no PostgreSQL: " + e.getMessage());
-        } finally {
-            ConexaoSingleton.close(conexao, null, null);
-        }
-    }
-
-    public void publi() {
-        String jsonData = convertJTableDataToJson(TableEntradaMat);
-
-        System.out.println(jsonData);
-        saveDataToPostgreSQL(jsonData);
-    }
-
-    public String retrieveDataFromPostgreSQL(int id) {
-        String jsonData = null;
-        Connection conexao = null;
-
-        try {
-            conexao = ConexaoSingleton.getConnection();
-            String sql = "SELECT table_entrada_mat FROM entrada_material WHERE id = ?";
-            PreparedStatement statement = conexao.prepareStatement(sql);
-
-            statement.setInt(1, 9);
-
-            ResultSet resultSet = statement.executeQuery();
-            if (resultSet.next()) {
-                jsonData = resultSet.getString("table_entrada_mat");
-            }
-        } catch (SQLException e) {
-            System.out.println("Erro ao recuperar dados do PostgreSQL: " + e.getMessage());
-        } finally {
-            ConexaoSingleton.close(conexao, null, null);
-        }
-
-        return jsonData;
-    }
-
-    public void fillTableFromPostgres(int id, JTable table) {
-        String jsonData = retrieveDataFromPostgreSQL(id);
-
-        if (jsonData != null) {
-            Object[][] data = convertJsonToData(jsonData);
-
-            DefaultTableModel model = (DefaultTableModel) TableEntradaMat.getModel();
-            model.setRowCount(data.length);
-            model.setColumnCount(data[0].length);
-
-            for (int i = 0; i < data.length; i++) {
-                for (int j = 0; j < data[0].length; j++) {
-                    table.setValueAt(data[i][j], i, j);
-                }
-            }
-        }
-    }
-
-    public Object[][] convertJsonToData(String jsonData) {
-        Gson gson = new Gson();
-
-        // Converte o JSON de volta para uma matriz de objetos
-        Object[][] jsonTableData = gson.fromJson(jsonData, Object[][].class);
-
-        return jsonTableData;
     }
 
     public void removerEntradaMaterial() {
