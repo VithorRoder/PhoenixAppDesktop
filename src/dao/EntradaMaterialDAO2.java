@@ -151,6 +151,24 @@ public class EntradaMaterialDAO2 implements EntradaMaterialDAO {
         return jsonData;
     }
 
+    public void fillTableFromPostgres(int id, JTable table) {
+        String jsonData = retrieveDataFromPostgreSQL(id);
+
+        if (jsonData != null) {
+            Object[][] data = convertJsonToData(jsonData);
+
+            DefaultTableModel model = (DefaultTableModel) TableEntradaMat.getModel();
+            model.setRowCount(data.length);
+            model.setColumnCount(data[0].length);
+
+            for (int i = 0; i < data.length; i++) {
+                for (int j = 0; j < data[0].length; j++) {
+                    table.setValueAt(data[i][j], i, j);
+                }
+            }
+        }
+    }
+
     public void saveDataToPostgreSQL(String jsonData) {
         Connection conexao = null;
 
@@ -200,24 +218,6 @@ public class EntradaMaterialDAO2 implements EntradaMaterialDAO {
         }
 
         return jsonData;
-    }
-
-    public void fillTableFromPostgres(int id, JTable table) {
-        String jsonData = retrieveDataFromPostgreSQL(id);
-
-        if (jsonData != null) {
-            Object[][] data = convertJsonToData(jsonData);
-
-            DefaultTableModel model = (DefaultTableModel) TableEntradaMat.getModel();
-            model.setRowCount(data.length);
-            model.setColumnCount(data[0].length);
-
-            for (int i = 0; i < data.length; i++) {
-                for (int j = 0; j < data[0].length; j++) {
-                    table.setValueAt(data[i][j], i, j);
-                }
-            }
-        }
     }
 
     public Object[][] convertJsonToData(String jsonData) {
