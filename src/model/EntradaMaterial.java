@@ -106,7 +106,7 @@ public class EntradaMaterial {
             ObjectMapper objectMapper = new ObjectMapper();
             return objectMapper.readTree(tableEntradaJson);
         } catch (Exception e) {
-            e.printStackTrace(); // Trate exceções adequadamente
+            e.printStackTrace();
             return null;
         }
     }

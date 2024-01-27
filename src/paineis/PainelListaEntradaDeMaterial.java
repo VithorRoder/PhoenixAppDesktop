@@ -6,7 +6,6 @@ import com.fasterxml.jackson.databind.node.ArrayNode;
 import controller.EntradaMaterialController;
 import dao.EntradaMaterialDAO2;
 import java.util.List;
-import javax.swing.table.DefaultTableModel;
 import model.EntradaMaterial;
 import static paineis.PainelEntradaDeMaterial.TableEntradaMat;
 import static paineis.PainelEntradaDeMaterial.jFormattedTextFieldDataENF;
@@ -24,7 +23,6 @@ import table.EntradaMaterialTabelaRenderer;
 public class PainelListaEntradaDeMaterial extends javax.swing.JPanel {
 
     private List<EntradaMaterial> entradaMaterialList;
-    PainelEntradaDeMaterial painelEntrada = new PainelEntradaDeMaterial();
 
     public PainelListaEntradaDeMaterial() {
         initComponents();
@@ -36,12 +34,12 @@ public class PainelListaEntradaDeMaterial extends javax.swing.JPanel {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTableListaEntMaterial = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
 
-        jTable1.setAutoCreateRowSorter(true);
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTableListaEntMaterial.setAutoCreateRowSorter(true);
+        jTableListaEntMaterial.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
@@ -93,10 +91,10 @@ public class PainelListaEntradaDeMaterial extends javax.swing.JPanel {
                 "Código", "Data De Entrada", "Nome Fornecedor", "Nro NF", "Data Emissão NF", "Total NF"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setMaxWidth(90);
-            jTable1.getColumnModel().getColumn(2).setMinWidth(350);
+        jScrollPane1.setViewportView(jTableListaEntMaterial);
+        if (jTableListaEntMaterial.getColumnModel().getColumnCount() > 0) {
+            jTableListaEntMaterial.getColumnModel().getColumn(0).setMaxWidth(90);
+            jTableListaEntMaterial.getColumnModel().getColumn(2).setMinWidth(350);
         }
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 30)); // NOI18N
@@ -117,7 +115,7 @@ public class PainelListaEntradaDeMaterial extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1251, Short.MAX_VALUE)
             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
@@ -143,24 +141,24 @@ public class PainelListaEntradaDeMaterial extends javax.swing.JPanel {
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    public static javax.swing.JTable jTableListaEntMaterial;
     // End of variables declaration//GEN-END:variables
 
     private void refreshTable() {
 
         entradaMaterialList = new EntradaMaterialController().findEntradaMaterial();
         if (entradaMaterialList != null) {
-            jTable1.setModel(new EntradaMaterialTabela(entradaMaterialList));
-            jTable1.setDefaultRenderer(Object.class, new EntradaMaterialTabelaRenderer());
+            jTableListaEntMaterial.setModel(new EntradaMaterialTabela(entradaMaterialList));
+            jTableListaEntMaterial.setDefaultRenderer(Object.class, new EntradaMaterialTabelaRenderer());
 
         }
     }
 
     private void duploClickEntradaMaterial() {
 
-        int rowIndex = jTable1.getSelectedRow();
+        int rowIndex = jTableListaEntMaterial.getSelectedRow();
         if (rowIndex != -1) {
-            Long idEntradaMaterialSelecionado = (Long) jTable1.getValueAt(rowIndex, 0);
+            Long idEntradaMaterialSelecionado = (Long) jTableListaEntMaterial.getValueAt(rowIndex, 0);
             EntradaMaterialDAO2 entradaMaterialDAO2 = new EntradaMaterialDAO2();
             EntradaMaterial entrada = entradaMaterialDAO2.findById(idEntradaMaterialSelecionado);
             if (entrada != null) {
@@ -185,27 +183,23 @@ public class PainelListaEntradaDeMaterial extends javax.swing.JPanel {
         jformatedTextFieldPreco1.setText(String.valueOf(entrada.getTotalNf()));
         jFormattedTextFieldObservacoes.setText(String.valueOf(entrada.getObservacoesEntrada()));
 
-        // Adicione a lógica para processar o JSON
+        // Lógica para processar o JSON
         JsonNode jsonData = entrada.getJsonDataAsJsonNode();
         if (jsonData != null && jsonData.isArray()) {
             ArrayNode arrayNode = (ArrayNode) jsonData;
-
-            // Configurar o modelo da tabela
-            DefaultTableModel model = (DefaultTableModel) TableEntradaMat.getModel();
-            model.setRowCount(arrayNode.size());
-            model.setColumnCount(arrayNode.get(0).size());
 
             // Preencher a tabela
             for (int i = 0; i < arrayNode.size(); i++) {
                 JsonNode rowNode = arrayNode.get(i);
                 for (int j = 0; j < rowNode.size(); j++) {
                     Object cellValue = convertJsonValueToObject(rowNode.get(j));
-                    TableEntradaMat.setValueAt(cellValue, i, j);
+
+                    // Acesso Direto para Tabela Teeeyyyylaa
+                    TableEntradaMat.getModel().setValueAt(cellValue, i, j);
                 }
             }
-        }
 
-        painelEntrada.editorCedulas();
+        }
     }
 
     private Object convertJsonValueToObject(JsonNode jsonNode) {
@@ -216,9 +210,10 @@ public class PainelListaEntradaDeMaterial extends javax.swing.JPanel {
         } else if (jsonNode.isBoolean()) {
             return jsonNode.asBoolean();
         } else if (jsonNode.isObject() || jsonNode.isArray()) {
-            return jsonNode.toString(); // Ou você pode implementar uma lógica específica para objetos ou arrays
+            return jsonNode.toString();
         } else {
             return null;
         }
     }
+
 }

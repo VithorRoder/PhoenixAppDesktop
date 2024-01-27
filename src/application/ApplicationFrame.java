@@ -988,6 +988,7 @@ public class ApplicationFrame extends javax.swing.JFrame {
     public static void showPainelEntradaDeMaterial() {
 
         int quantidadeAbasPainelEntradaDeMaterial = 0;
+        String nomeAba = "PainelEntradaDeMaterial_1"; // Nome padrão para a primeira aba
 
         // Conta a quantidade de abas do Painel Entrada de Material abertas
         for (int i = 0; i < tabbedPaneCustom1.getTabCount(); i++) {
@@ -996,7 +997,7 @@ public class ApplicationFrame extends javax.swing.JFrame {
             }
         }
 
-        // Verifica se o limite de abas do Painel Entrada de Material foi atingido
+        // Verifica se o limite de abas do Painel Entrada de Material foi atingido.
         if (quantidadeAbasPainelEntradaDeMaterial < MAX_GLOBAL_PANEL_TABS) {
             int totalAbas = tabbedPaneCustom1.getTabCount();
 
@@ -1004,13 +1005,24 @@ public class ApplicationFrame extends javax.swing.JFrame {
             if (totalAbas >= MAX_GLOBAL_TABS) {
                 JOptionPane.showMessageDialog(null, "Limite máximo de abas atingido.", "Aviso", JOptionPane.WARNING_MESSAGE);
             } else {
-                // Cria uma nova instância de PainelSubstratosAcabamentos para cada aba
+                // Cria uma nova instância de PainelEntradaDeMaterial para cada aba
                 PainelEntradaDeMaterial novoPainelEntradaDeMaterial = new PainelEntradaDeMaterial();
                 tabbedPaneCustom1.addTab("Entrada de Material", null, novoPainelEntradaDeMaterial, "Entrada de Material");
                 tabbedPaneCustom1.setSelectedComponent(novoPainelEntradaDeMaterial);
+
+                // Salva o nome associado ao índice da aba
+                int indexNovaAba = tabbedPaneCustom1.indexOfComponent(novoPainelEntradaDeMaterial);
+                nomeAba = "PainelEntradaDeMaterial_" + (indexNovaAba + 1);
             }
         } else {
-            JOptionPane.showMessageDialog(null, "Limite de abas do Painel Entrada De Material.", "Aviso", JOptionPane.WARNING_MESSAGE);
+            // Se atingiu o limite de abas, seleciona uma aba existente
+            for (int i = 0; i < tabbedPaneCustom1.getTabCount(); i++) {
+                if (tabbedPaneCustom1.getComponentAt(i) instanceof PainelEntradaDeMaterial) {
+                    tabbedPaneCustom1.setSelectedIndex(i);
+                    break;
+                }
+            }
+            JOptionPane.showMessageDialog(null, "Limite de abas do Painel Entrada de Material.", "Aviso", JOptionPane.WARNING_MESSAGE);
         }
     }
 
@@ -1045,30 +1057,47 @@ public class ApplicationFrame extends javax.swing.JFrame {
 
     public static void showPainelListaEntradaMaterial() {
 
-        int quantidadeAbasPainelListaEntMaterial = 0;
+        int quantidadeAbasPainelListaEntradaMaterial = 0;
+        String nomeAba = "PainelListaEntradaMaterial_1"; // Nome padrão para a primeira aba
 
-        // Conta a quantidade de abas do Painel Entrada de Material abertas
+        // Conta a quantidade de abas do Painel lISTA DE eNTRADA DE mATERIAL abertas
         for (int i = 0; i < tabbedPaneCustom1.getTabCount(); i++) {
             if (tabbedPaneCustom1.getComponentAt(i) instanceof PainelListaEntradaDeMaterial) {
-                quantidadeAbasPainelListaEntMaterial++;
+                quantidadeAbasPainelListaEntradaMaterial++;
             }
         }
 
-        // Verifica se o limite de abas do Painel Lista Entrada de Material foi atingido
-        if (quantidadeAbasPainelListaEntMaterial < MAX_GLOBAL_PANEL_TABS) {
+        // Verifica se o limite de abas do Painel Lista Entrada de Material foi atingido.
+        if (quantidadeAbasPainelListaEntradaMaterial < MAX_GLOBAL_PANEL_TABS) {
             int totalAbas = tabbedPaneCustom1.getTabCount();
 
             // Verifica se o limite global de abas foi atingido
             if (totalAbas >= MAX_GLOBAL_TABS) {
                 JOptionPane.showMessageDialog(null, "Limite máximo de abas atingido.", "Aviso", JOptionPane.WARNING_MESSAGE);
             } else {
-                // Cria uma nova instância de PainelSubstratosAcabamentos para cada aba
+                // Cria uma nova instância de PainelListaEntradaMaterial para cada aba
                 PainelListaEntradaDeMaterial novoPainelListaEntradaDeMaterial = new PainelListaEntradaDeMaterial();
-                tabbedPaneCustom1.addTab("Lista Ent. Material", null, novoPainelListaEntradaDeMaterial, "Lista Ent. Material");
+                tabbedPaneCustom1.addTab("Lista de Entrada de Material", null, novoPainelListaEntradaDeMaterial, "Lista de Entrada de Material");
                 tabbedPaneCustom1.setSelectedComponent(novoPainelListaEntradaDeMaterial);
+
+                // Salva o nome associado ao índice da aba
+                int indexNovaAba = tabbedPaneCustom1.indexOfComponent(novoPainelListaEntradaDeMaterial);
+                nomeAba = "PainelListaEntradaMaterial_" + (indexNovaAba + 1);
             }
         } else {
-            JOptionPane.showMessageDialog(null, "Limite de abas do Painel Lista Ent. De Material.", "Aviso", JOptionPane.WARNING_MESSAGE);
+            // Se atingiu o limite de abas, seleciona uma aba existente
+            for (int i = 0; i < tabbedPaneCustom1.getTabCount(); i++) {
+                if (tabbedPaneCustom1.getComponentAt(i) instanceof PainelListaEntradaDeMaterial) {
+                    tabbedPaneCustom1.setSelectedIndex(i);
+                    break;
+                }
+            }
+            JOptionPane.showMessageDialog(null, "Limite de abas do Painel Lista de Entrada de Material.", "Aviso", JOptionPane.WARNING_MESSAGE);
+            int indexAbaARemover = tabbedPaneCustom1.getSelectedIndex();
+            tabbedPaneCustom1.remove(indexAbaARemover);
+            PainelListaEntradaDeMaterial novoPainelListaEntradaDeMaterial = new PainelListaEntradaDeMaterial();
+            tabbedPaneCustom1.addTab("Lista de Entrada de Material", null, novoPainelListaEntradaDeMaterial, "Lista de Entrada de Material");
+            tabbedPaneCustom1.setSelectedComponent(novoPainelListaEntradaDeMaterial);
         }
     }
 
