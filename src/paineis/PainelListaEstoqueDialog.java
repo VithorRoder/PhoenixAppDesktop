@@ -73,6 +73,7 @@ public class PainelListaEstoqueDialog extends javax.swing.JPanel {
 
             }
         ));
+        TableListaEstoqueDialog.getTableHeader().setReorderingAllowed(false);
         TableListaEstoqueDialog.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 TableListaEstoqueDialogFocusLost(evt);
