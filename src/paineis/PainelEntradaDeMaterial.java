@@ -1,6 +1,7 @@
 package paineis;
 
 import application.ApplicationFrame;
+import com.google.gson.Gson;
 import controller.EntradaMaterialController;
 import util.CustomPainelEntradaMaterialCellEditor;
 import java.awt.event.ActionEvent;
@@ -16,7 +17,9 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import javax.swing.BorderFactory;
 import javax.swing.DefaultCellEditor;
 import javax.swing.JOptionPane;
@@ -25,6 +28,7 @@ import javax.swing.JTextField;
 import javax.swing.border.Border;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.TableCellEditor;
+import model.EntradaMaterial;
 import static paineis.PainelListaEstoqueDialog.TableListaEstoqueDialog;
 
 public class PainelEntradaDeMaterial extends javax.swing.JPanel {
@@ -470,11 +474,11 @@ public class PainelEntradaDeMaterial extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButtonRedondoCriarForncecedoresSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRedondoCriarForncecedoresSalvarActionPerformed
-        // TODO add your handling code here:
+        saveUpdateEntradaMaterial();
     }//GEN-LAST:event_jButtonRedondoCriarForncecedoresSalvarActionPerformed
 
     private void jButtonRedondoCriarForncecedoresCancelar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRedondoCriarForncecedoresCancelar2ActionPerformed
-        // TODO add your handling code here:
+        cancelarEntradaMaterial();
     }//GEN-LAST:event_jButtonRedondoCriarForncecedoresCancelar2ActionPerformed
 
     private void jButtonRedondoCriarForncecedoresDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRedondoCriarForncecedoresDeletarActionPerformed
@@ -511,7 +515,7 @@ public class PainelEntradaDeMaterial extends javax.swing.JPanel {
     public static javax.swing.JFormattedTextField textFieldFornecedor;
     // End of variables declaration//GEN-END:variables
 
-    public void editorCedulas() {
+    public final void editorCedulas() {
 
         TableEntradaMat.getColumnModel().getColumn(1).setCellEditor(new CustomPainelEntradaMaterialCellEditor(null, this));
 
@@ -769,4 +773,91 @@ public class PainelEntradaDeMaterial extends javax.swing.JPanel {
         }
     }
 
+    public void cancelarEntradaMaterial() {
+
+        int opcao = JOptionPane.showConfirmDialog(this, "Deseja Cancelar Inserção/Alteração de Entrada de Material ?", "Cancelar", JOptionPane.YES_NO_OPTION);
+        if (opcao == JOptionPane.YES_OPTION) {
+            ApplicationFrame.tabbedPaneCustom1.remove(this);
+            ApplicationFrame.showPainelListaEntradaMaterial();
+        }
+    }
+
+    public void saveUpdateEntradaMaterial() {
+
+        EntradaMaterial entradaMaterial = new EntradaMaterial();
+        String tabelaJson = convertTableDataToJson();
+
+        if (labelData.getText().length() > 0
+                && labelHora.getText().length() > 0
+                && labelCodigoForn02.getText().length() > 0
+                && textFieldFornecedor.getText().length() > 0
+                && jFormattedTextFieldNNF.getText().length() > 0
+                && jFormattedTextFieldDataENF.getText().length() > 0
+                && jformatedTextFieldPreco1.getText().length() > 0) {
+
+            entradaMaterial.setDataCadastroEntrada(labelData.getText());
+            entradaMaterial.setHoraEntrada(labelHora.getText());
+            entradaMaterial.setIdFornecedorEntrada(labelCodigoForn02.getText());
+            entradaMaterial.setNomeFornecedorEntrada(textFieldFornecedor.getText());
+            entradaMaterial.setNumeroNf(jFormattedTextFieldNNF.getText());
+            entradaMaterial.setDataEmissaoNf(jFormattedTextFieldDataENF.getText());
+            entradaMaterial.setTotalNf(jformatedTextFieldPreco1.getText());
+            entradaMaterial.setObservacoesEntrada(jFormattedTextFieldObservacoes.getText());
+            entradaMaterial.setTableEntradaJson(tabelaJson);
+        } else {
+            JOptionPane.showMessageDialog(this, "Todos os campos são obrigatórios!", "Código Vazio", JOptionPane.ERROR_MESSAGE);
+            return;
+
+        }
+
+        // Ler o ID do campo labelCodigoFornecedores
+        Long idEntradaMaterial = null;
+        String idTexto = jLabelID.getText();
+        if (!idTexto.isEmpty()) {
+            try {
+                idEntradaMaterial = Long.parseLong(idTexto);
+            } catch (NumberFormatException e) {
+
+            }
+        }
+        int result = 0;
+
+        if (idEntradaMaterial == null) {
+            result = new EntradaMaterialController().addEntradaMaterial(entradaMaterial);
+            JOptionPane.showMessageDialog(this, result == 1 ? "Valor inserido com sucesso!" : "Falha ao inserir valor!");
+
+            ApplicationFrame.tabbedPaneCustom1.remove(this);
+            ApplicationFrame.showPainelListaEntradaMaterial();
+        } else {
+            entradaMaterial.setIdEntradaMat(idEntradaMaterial);
+            result = new EntradaMaterialController().alterarEntradaMaterial(entradaMaterial);
+            JOptionPane.showMessageDialog(this, result == 1 ? "Valor Alterado Com Sucesso!" : "Falha ao alterar valor!");
+            idEntradaMaterial = null;
+
+            ApplicationFrame.tabbedPaneCustom1.remove(this);
+            ApplicationFrame.showPainelListaEntradaMaterial();
+        }
+    }
+
+    public String convertTableDataToJson() {
+        int rowCount = TableEntradaMat.getRowCount();
+        int colCount = TableEntradaMat.getColumnCount();
+
+        List<List<Object>> data = new ArrayList<>();
+
+        // Iterar sobre as linhas e colunas da tabela
+        for (int i = 0; i < rowCount; i++) {
+            List<Object> row = new ArrayList<>();
+            for (int j = 0; j < colCount; j++) {
+                Object cellValue = TableEntradaMat.getValueAt(i, j);
+                row.add(cellValue);
+            }
+            data.add(row);
+        }
+
+        // Converte para JSON usando Gson
+        Gson gson = new Gson();
+        String jsonData = gson.toJson(data);
+        return jsonData;
+    }
 }

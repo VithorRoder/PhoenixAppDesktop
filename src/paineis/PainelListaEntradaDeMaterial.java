@@ -41,51 +41,7 @@ public class PainelListaEntradaDeMaterial extends javax.swing.JPanel {
         jTableListaEntMaterial.setAutoCreateRowSorter(true);
         jTableListaEntMaterial.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+
             },
             new String [] {
                 "Código", "Data De Entrada", "Nome Fornecedor", "Nro NF", "Data Emissão NF", "Total NF"
@@ -194,16 +150,17 @@ public class PainelListaEntradaDeMaterial extends javax.swing.JPanel {
                 for (int j = 0; j < rowNode.size(); j++) {
                     Object cellValue = convertJsonValueToObject(rowNode.get(j));
 
-                    // Acesso Direto para Tabela Teeeyyyylaa
+                    // Acesso Direto para Tabela
                     TableEntradaMat.getModel().setValueAt(cellValue, i, j);
                 }
             }
-
         }
     }
 
     private Object convertJsonValueToObject(JsonNode jsonNode) {
-        if (jsonNode.isTextual()) {
+        if (jsonNode == null || jsonNode.isNull()) {
+            return "";
+        } else if (jsonNode.isTextual()) {
             return jsonNode.asText();
         } else if (jsonNode.isNumber()) {
             return jsonNode.numberValue();
@@ -215,5 +172,4 @@ public class PainelListaEntradaDeMaterial extends javax.swing.JPanel {
             return null;
         }
     }
-
 }

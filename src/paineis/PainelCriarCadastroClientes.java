@@ -69,7 +69,7 @@ public class PainelCriarCadastroClientes extends javax.swing.JPanel {
     }
 
     public void cancelarAlteraçãoClientes() {
-        int opcao = JOptionPane.showConfirmDialog(null, "Deseja Cancelar Alteração ?", "Cancelar Alteração", JOptionPane.YES_NO_OPTION);
+        int opcao = JOptionPane.showConfirmDialog(null, "Deseja Cancelar Inserção/Alteração de Clientes ?", "Cancelar Alteração", JOptionPane.YES_NO_OPTION);
         if (opcao == JOptionPane.YES_OPTION) {
             ApplicationFrame.tabbedPaneCustom1.remove(this);
             ApplicationFrame.showPainelListaDeClientes();

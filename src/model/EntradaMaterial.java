@@ -1,5 +1,6 @@
 package model;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -105,7 +106,7 @@ public class EntradaMaterial {
         try {
             ObjectMapper objectMapper = new ObjectMapper();
             return objectMapper.readTree(tableEntradaJson);
-        } catch (Exception e) {
+        } catch (JsonProcessingException e) {
             e.printStackTrace();
             return null;
         }
