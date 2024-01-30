@@ -702,8 +702,13 @@ public class PainelCriarCadastroFornecedores extends javax.swing.JPanel {
     }
 
     private void cancelarAlteraçãoFornecedores() {
-
-        int opcao = JOptionPane.showConfirmDialog(this, "Deseja Cancelar Inserção/Alteração de Fornecedores ?", "Cancelar Alteração", JOptionPane.YES_NO_OPTION);
+        Object[] optionBr = {"  Sim  ", "  Não  "};
+        int opcao = JOptionPane.showOptionDialog(this, "Deseja Cancelar Inserção/Alteração de Fornecedores ?",
+                "Cancelar Alteração",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE,
+                null,
+                optionBr, optionBr[0]);
         if (opcao == JOptionPane.YES_OPTION) {
             ApplicationFrame.tabbedPaneCustom1.remove(this);
             ApplicationFrame.showPainelListaFornecedores();
