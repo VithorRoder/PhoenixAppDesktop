@@ -158,9 +158,7 @@ public class PainelListaEntradaDeMaterial extends javax.swing.JPanel {
     }
 
     private Object convertJsonValueToObject(JsonNode jsonNode) {
-        if (jsonNode == null || jsonNode.isNull()) {
-            return "";
-        } else if (jsonNode.isTextual()) {
+        if (jsonNode.isTextual()) {
             return jsonNode.asText();
         } else if (jsonNode.isNumber()) {
             return jsonNode.numberValue();
