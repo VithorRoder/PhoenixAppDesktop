@@ -12,7 +12,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import javax.swing.BorderFactory;
 import javax.swing.DefaultCellEditor;
 import javax.swing.DefaultComboBoxModel;
@@ -58,7 +60,7 @@ public final class PainelTabelaCriarOrcDef extends javax.swing.JPanel {
         ScrollTabelaModOrc = new javax.swing.JScrollPane();
         TabelaCriarOrc = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        jTextFieldTituloItem = new javax.swing.JTextField();
 
         PainelTabelaCriarOrc.setBackground(new java.awt.Color(180, 180, 180));
         PainelTabelaCriarOrc.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
@@ -189,7 +191,7 @@ public final class PainelTabelaCriarOrcDef extends javax.swing.JPanel {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Titulo do Item");
 
-        jTextField1.setPreferredSize(new java.awt.Dimension(64, 18));
+        jTextFieldTituloItem.setPreferredSize(new java.awt.Dimension(64, 18));
 
         javax.swing.GroupLayout PainelTabelaCriarOrcLayout = new javax.swing.GroupLayout(PainelTabelaCriarOrc);
         PainelTabelaCriarOrc.setLayout(PainelTabelaCriarOrcLayout);
@@ -212,7 +214,7 @@ public final class PainelTabelaCriarOrcDef extends javax.swing.JPanel {
                             .addGroup(PainelTabelaCriarOrcLayout.createSequentialGroup()
                                 .addComponent(QuantidadeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(50, 50, 50)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 415, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jTextFieldTituloItem, javax.swing.GroupLayout.PREFERRED_SIZE, 415, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -228,7 +230,7 @@ public final class PainelTabelaCriarOrcDef extends javax.swing.JPanel {
                 .addGroup(PainelTabelaCriarOrcLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(QuantidadeTextField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
                     .addComponent(TipoOrcComboBox, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jTextFieldTituloItem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(ScrollTabelaModOrc, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE)
                 .addContainerGap())
@@ -289,7 +291,7 @@ public final class PainelTabelaCriarOrcDef extends javax.swing.JPanel {
     private javax.swing.JLabel TipoOrcLabel;
     public static javax.swing.border.EmptyBorder emptyBorder1;
     public static javax.swing.JLabel jLabel1;
-    public static javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextFieldTituloItem;
     // End of variables declaration//GEN-END:variables
 
     @SuppressWarnings("unchecked")
@@ -569,5 +571,44 @@ public final class PainelTabelaCriarOrcDef extends javax.swing.JPanel {
                 }
             }
         });
+    }
+
+    public String getValorDoComboBox() {
+        Object selectedObject = TipoOrcComboBox.getSelectedItem();
+
+        if (selectedObject instanceof OrcamentoItemPrecoMin) {
+            return ((OrcamentoItemPrecoMin) selectedObject).toString();
+        } else if (selectedObject != null) {
+            return selectedObject.toString();
+        } else {
+            return null;
+        }
+    }
+
+    public String getValorDoTextField1() {
+        return jTextFieldTituloItem.getText();
+    }
+
+    public String getValorDoTextField2() {
+        return QuantidadeTextField.getText();
+    }
+
+    public List<Object> getValoresDaTabela() {
+
+        List<Object> valoresDaTabela = new ArrayList<>();
+
+        // Iterando pelas linhas da tabela
+        for (int row = 0; row < TabelaCriarOrc.getRowCount(); row++) {
+            // Iterando pelas colunas da tabela
+            for (int col = 0; col < TabelaCriarOrc.getColumnCount(); col++) {
+                // Obtendo o valor da célula na linha e coluna específicas
+                Object valorCelula = TabelaCriarOrc.getValueAt(row, col);
+
+                // Adicionando o valor à lista geral
+                valoresDaTabela.add(valorCelula);
+            }
+        }
+
+        return valoresDaTabela;
     }
 }

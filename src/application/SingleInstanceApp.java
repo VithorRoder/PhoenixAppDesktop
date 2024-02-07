@@ -65,9 +65,9 @@ public class SingleInstanceApp {
 
     private static void bringToFront() {
         if (mainFrame != null) {
-            mainFrame.setState(JFrame.ICONIFIED); 
-            mainFrame.setExtendedState(mainFrame.getExtendedState() & ~JFrame.ICONIFIED); 
-            mainFrame.toFront(); 
+            mainFrame.setState(JFrame.ICONIFIED);
+            mainFrame.setExtendedState(mainFrame.getExtendedState() & ~JFrame.ICONIFIED);
+            mainFrame.toFront();
         }
     }
 }

@@ -1,6 +1,10 @@
 package paineis;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import static application.ApplicationFrame.tabbedPaneCustom1;
+import dao.ConexaoSingleton;
 import paineisAbas.PainelTabelaCriarOrcDef;
 import logicaRegrasOrcamento.CalculoOrcamento;
 import java.awt.KeyEventDispatcher;
@@ -9,8 +13,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.ZoneId;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import javax.swing.JDialog;
@@ -357,7 +363,7 @@ public class PainelCriarOrcamento extends javax.swing.JPanel {
     }//GEN-LAST:event_jButtonRemoverItemActionPerformed
 
     private void jButtonSalvarOrcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarOrcActionPerformed
-        //MetodoDeSalvarOrc
+        salvarDadosNoBanco();
     }//GEN-LAST:event_jButtonSalvarOrcActionPerformed
 
     private void jButtonSelectClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSelectClientActionPerformed
@@ -446,12 +452,14 @@ public class PainelCriarOrcamento extends javax.swing.JPanel {
         jTextFieldNomeCliente.setText(nomeCliente);
     }
 
-    class hora implements ActionListener {
+    public class Hora implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            Calendar now = Calendar.getInstance();
-            jLabelHoraOrc.setText(String.format("%1$tH:%1$tM %1$Tp", now));
+            LocalTime now = LocalTime.now(ZoneId.of("America/Sao_Paulo"));
+            SimpleDateFormat formatoHora = new SimpleDateFormat("HH:mm a");
+            Date horaDate = Date.from(now.atDate(LocalDate.now(ZoneId.of("America/Sao_Paulo"))).atZone(ZoneId.of("America/Sao_Paulo")).toInstant());
+            jLabelHoraOrc.setText(formatoHora.format(horaDate));
         }
     }
 
@@ -510,11 +518,11 @@ public class PainelCriarOrcamento extends javax.swing.JPanel {
     }
 
     private void showDataHora() {
-        Date dataSistema = new Date();
-        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
-        jLabelDataOrc.setText(formato.format(dataSistema));
+        LocalDate now = LocalDate.now(ZoneId.of("America/Sao_Paulo"));
+        SimpleDateFormat formatoData = new SimpleDateFormat("dd/MM/yyyy");
+        jLabelDataOrc.setText(formatoData.format(Date.from(now.atStartOfDay(ZoneId.of("America/Sao_Paulo")).toInstant())));
 
-        Timer timer = new Timer(1000, new hora());
+        Timer timer = new Timer(100, new Hora());
         timer.start();
     }
 
@@ -530,6 +538,58 @@ public class PainelCriarOrcamento extends javax.swing.JPanel {
         int index = jTabbedPaneOrc.indexOfTab("Tab DEF");
         if (index != -1) {
             jTabbedPaneOrc.remove(index);
+        }
+    }
+
+    public void salvarDadosNoBanco() {
+        Connection conexao = null;
+        try {
+            conexao = ConexaoSingleton.getConnection();
+            PreparedStatement pstm = null;
+
+            // Criar uma única instrução SQL para inserir todos os dados
+            String sql = "INSERT INTO teste (coluna_combo, coluna_textfield1, coluna_textfield2, coluna_tabela) VALUES (?, ?, ?, ?)";
+
+            pstm = conexao.prepareStatement(sql);
+
+            // Criar uma lista para armazenar os valores dos combobox de todas as abas
+            List<String> listaValoresCombobox = new ArrayList<>();
+            List<String> listaValoresTextFieldQuantidade = new ArrayList<>();
+            List<String> listaValoresTextFieldTitulo = new ArrayList<>();
+            List<String> listaValoresTabela = new ArrayList<>();
+
+            // Iterar sobre cada aba
+            for (PainelTabelaCriarOrcDef painel : listaPaineis) {
+                // Extrair dados do combobox do seu PainelTabelaCriarOrcDef
+                String valorDoComboBox = painel.getValorDoComboBox();
+                String valorTextFieldQuant = painel.getValorDoTextField1();
+                String valorTextFieldTitulo = painel.getValorDoTextField2();
+                List valorTabela = painel.getValoresDaTabela();
+
+                // Adicionar o valor do combobox à lista
+                listaValoresCombobox.add(valorDoComboBox);
+                listaValoresTextFieldQuantidade.add(valorTextFieldQuant);
+                listaValoresTextFieldTitulo.add(valorTextFieldTitulo);
+                listaValoresTabela.add(valorTabela.toString());
+            }
+
+            // Converter a lista de valores em uma única string separada por vírgulas
+            String valoresComboboxString = String.join(" } { ", listaValoresCombobox);
+            String valoresTextFieldQuantString = String.join(" } { ", listaValoresTextFieldQuantidade);
+            String valoresTextFieldTituloString = String.join(" } { ", listaValoresTextFieldTitulo);
+            String valoresTabelaString = String.join(" } { ", listaValoresTabela);
+
+            // Substituir o placeholder pelos valores reais
+            pstm.setString(1, valoresComboboxString);
+            pstm.setString(2, valoresTextFieldQuantString);
+            pstm.setString(3, valoresTextFieldTituloString);
+            pstm.setString(4, valoresTabelaString);
+
+            // Executar a instrução SQL
+            pstm.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 
