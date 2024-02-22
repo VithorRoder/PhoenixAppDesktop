@@ -1,5 +1,6 @@
 package application;
 
+import Teste.PainelOrcamento;
 import controller.Controladorjmenubar;
 import java.awt.CardLayout;
 import java.awt.Image;
@@ -614,7 +615,7 @@ public class ApplicationFrame extends javax.swing.JFrame {
 
         // Conta a quantidade de abas do Painel Criar Orçamento abertas
         for (int i = 0; i < tabbedPaneCustom1.getTabCount(); i++) {
-            if (tabbedPaneCustom1.getComponentAt(i) instanceof PainelCriarOrcamento) {
+            if (tabbedPaneCustom1.getComponentAt(i) instanceof PainelOrcamento) {
                 quantidadeAbasPainelCriarOrcamento++;
             }
         }
@@ -628,7 +629,7 @@ public class ApplicationFrame extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Limite máximo de abas atingido.", "Aviso", JOptionPane.WARNING_MESSAGE);
             } else {
                 // Cria uma nova instância de PainelCriarOrcamento para cada aba
-                PainelCriarOrcamento novoPainelOrc = new PainelCriarOrcamento();
+                PainelOrcamento novoPainelOrc = new PainelOrcamento();
                 tabbedPaneCustom1.addTab("Orçamento", null, novoPainelOrc, "Orçamento");
                 tabbedPaneCustom1.setSelectedComponent(novoPainelOrc);
             }
