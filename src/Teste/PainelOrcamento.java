@@ -9,15 +9,15 @@ import javax.swing.table.DefaultTableCellRenderer;
 
 public class PainelOrcamento extends javax.swing.JPanel {
 
-    PainelDetalhesOrcamento painel = new PainelDetalhesOrcamento();
+    PainelDetalhesOrcamento painelDetalhes = new PainelDetalhesOrcamento();
 
     public PainelOrcamento() {
         initComponents();
         jTabbedPane3.remove(jPanel6);
-        jTabbedPane3.add(painel, "01");
+        jTabbedPane3.add(painelDetalhes, "01");
         editorCelulaOrcamento();
         jTable1.setCellSelectionEnabled(true);
-        jTable1.getColumnModel().getColumn(6).setCellEditor(new ComboBoxCellExample.ComboBoxCellEditor());
+        jTable1.getColumnModel().getColumn(6).setCellEditor(new ComboBoxCellEditorMaterial());
 
     }
 
@@ -541,6 +541,6 @@ public class PainelOrcamento extends javax.swing.JPanel {
                 }
             });
         }
-
     }
+
 }

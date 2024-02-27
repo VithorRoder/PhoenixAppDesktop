@@ -12,6 +12,10 @@ import java.awt.event.MouseMotionAdapter;
 public class PainelDetalhesOrcamento extends JPanel {
 
     private JTable table;
+    Font font = new Font("Arial", Font.PLAIN, 12);
+    Color fontColor = Color.BLACK;
+    CustomCellEditorFont customEditor = new CustomCellEditorFont(font, fontColor);
+    ComboBoxCellEditorDetalhes cell = new ComboBoxCellEditorDetalhes();
 
     public PainelDetalhesOrcamento() {
         // Configuração do JPanel
@@ -41,8 +45,9 @@ public class PainelDetalhesOrcamento extends JPanel {
 
         // Criar a tabela sem cabeçalho
         table = new JTable(model);
-        table.setTableHeader(null); // Remove o cabeçalho da tabela
+        table.setTableHeader(null);
         table.setShowGrid(true);
+        table.setCellSelectionEnabled(true);
         table.addFocusListener(new FocusAdapter() {
             @Override
             public void focusLost(FocusEvent e) {
@@ -75,15 +80,10 @@ public class PainelDetalhesOrcamento extends JPanel {
             }
         });
 
-        Font font = new Font("Arial", Font.PLAIN, 12);
-        Color fontColor = Color.BLACK;
-        CustomCellEditorFont customEditor = new CustomCellEditorFont(font, fontColor);
         for (int i = 0; i < table.getColumnCount(); i++) {
             table.getColumnModel().getColumn(i).setCellEditor(customEditor);
-
         }
 
-        // Configurar um renderizador de célula personalizado para a célula na linha 0 e coluna 1
         table.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
             @Override
             public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
@@ -92,23 +92,27 @@ public class PainelDetalhesOrcamento extends JPanel {
                 if (column % 2 == 0) {
                     setBorder(null);
                     setBackground(new Color(210, 210, 240));
-                    table.clearSelection();
+                    setForeground(Color.BLACK);
                 } else if (row == 0 && column == 1) {
                     setBorder(null);
                     setBackground(new Color(210, 210, 210));
-                    table.clearSelection();
+                    setForeground(Color.BLACK);
                 } else {
                     setBackground(new Color(255, 255, 255));
+                    setForeground(Color.BLACK);
                     setBorder(null);
                     if (hasFocus) {
                         setBorder(BorderFactory.createLoweredBevelBorder());
                         setBackground(new Color(255, 218, 185));
+                        setForeground(Color.BLACK);
                     }
                 }
 
                 return component;
             }
         });
+
+        table.getColumnModel().getColumn(5).setCellEditor(cell);
 
         // Adicionar a tabela ao JPanel
         JScrollPane scrollPane = new JScrollPane(table);
