@@ -17,6 +17,7 @@ public class ComboBoxCellEditorDetalhes extends AbstractCellEditor implements Ta
     private final JTextField textField;
     private final JButton button;
     private String currentText;
+    private String vem;
 
     public ComboBoxCellEditorDetalhes() {
 
