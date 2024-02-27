@@ -8,15 +8,16 @@ import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
+import keeptoo.KGradientPanel;
 
 public class PainelDetalhesOrcamento extends JPanel {
-
+    
     private JTable table;
     Font font = new Font("Arial", Font.PLAIN, 12);
     Color fontColor = Color.BLACK;
     CustomCellEditorFont customEditor = new CustomCellEditorFont(font, fontColor);
     ComboBoxCellEditorDetalhes cell = new ComboBoxCellEditorDetalhes();
-
+    
     public PainelDetalhesOrcamento() {
         // Configuração do JPanel
         setLayout(new BorderLayout());
@@ -96,13 +97,13 @@ public class PainelDetalhesOrcamento extends JPanel {
             @Override
             public void mouseDragged(MouseEvent e) {
             }
-
+            
             @Override
             public void mouseMoved(MouseEvent e) {
                 Point point = e.getPoint();
                 int row = table.rowAtPoint(point);
                 int column = table.columnAtPoint(point);
-
+                
                 switch (row) {
                     case 0 -> {
                         switch (column) {
@@ -251,20 +252,37 @@ public class PainelDetalhesOrcamento extends JPanel {
                 ToolTipManager.sharedInstance().mouseMoved(e);
             }
         });
-
+        
+        int[] columnWidths = {20, 50, 20, 50, 25, 50, 30, 50}; // Defina as larguras desejadas para cada coluna
+        for (int i = 0; i < columnWidths.length; i++) {
+            table.getColumnModel().getColumn(i).setPreferredWidth(columnWidths[i]);
+        }
+        
+        table.setRowHeight(16);
+        
         for (int i = 0; i < table.getColumnCount(); i++) {
             table.getColumnModel().getColumn(i).setCellEditor(customEditor);
         }
-
+        
         table.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
             @Override
             public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
                 Component component = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
-
+                
                 if (column % 2 == 0) {
-                    setBorder(null);
-                    setBackground(new Color(210, 210, 240));
-                    setForeground(Color.BLACK);
+                    KGradientPanel panel = new KGradientPanel();
+                    panel.setkStartColor(new Color(200, 200, 240));
+                    panel.setkEndColor(new Color(205, 188, 180));
+                    panel.setkGradientFocus(87);
+                    panel.setBorder(null);
+                    panel.setLayout(new BorderLayout());
+
+                    // Adiciona o valor da célula ao painel
+                    JLabel label = new JLabel(value.toString());
+                    label.setHorizontalAlignment(SwingConstants.LEFT);
+                    panel.add(label, BorderLayout.CENTER);
+                    
+                    return panel;
                 } else if (row == 0 && column == 1) {
                     setBorder(null);
                     setBackground(new Color(210, 210, 210));
@@ -279,16 +297,16 @@ public class PainelDetalhesOrcamento extends JPanel {
                         setForeground(Color.BLACK);
                     }
                 }
-
+                
                 return component;
             }
         });
-
+        
         table.getColumnModel().getColumn(5).setCellEditor(cell);
 
         // Adicionar a tabela ao JPanel
         JScrollPane scrollPane = new JScrollPane(table);
         add(scrollPane, BorderLayout.CENTER);
     }
-
+    
 }
