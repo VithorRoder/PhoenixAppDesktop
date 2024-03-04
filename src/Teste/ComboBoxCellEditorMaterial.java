@@ -33,14 +33,15 @@ public class ComboBoxCellEditorMaterial extends AbstractCellEditor implements Ta
         button.setPreferredSize(new Dimension(21, 19));
         button.setBackground(new Color(255, 218, 185));
         button.setBorder(BorderFactory.createLoweredBevelBorder());
-        ImageIcon icon = new ImageIcon(getClass().getResource("/png/budget8p.png"));
+        ImageIcon icon = new ImageIcon(getClass().getResource("/png/icons8-triangle-8pxMod.png"));
         button.setIcon(icon);
+        button.setCursor(new Cursor(Cursor.HAND_CURSOR));
+
         panel.add(button, BorderLayout.EAST);
 
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Implemente aqui a lógica para o clique do botão
                 JOptionPane.showMessageDialog(panel, "Botão pressionado!");
             }
         });
