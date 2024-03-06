@@ -4,8 +4,10 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
 import javax.swing.BorderFactory;
+import javax.swing.JDialog;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
+import paineis.PainelTipoDeOrcamento;
 
 public class PainelOrcamento extends javax.swing.JPanel {
 
@@ -615,6 +617,15 @@ public class PainelOrcamento extends javax.swing.JPanel {
         jLabel5.setText("N° OS");
 
         jComboBox1.setEditable(true);
+        jComboBox1.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
+            public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
+            }
+            public void popupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {
+            }
+            public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
+                jComboBox1PopupMenuWillBecomeVisible(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -727,6 +738,19 @@ public class PainelOrcamento extends javax.swing.JPanel {
     private void tabelaParametrosFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tabelaParametrosFocusLost
         tabelaParametros.putClientProperty("terminateEditOnFocusLost", Boolean.TRUE);
     }//GEN-LAST:event_tabelaParametrosFocusLost
+
+    private void jComboBox1PopupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jComboBox1PopupMenuWillBecomeVisible
+        JDialog dialog = new JDialog();
+        PainelTipoDeOrcamento painel = new PainelTipoDeOrcamento();
+        dialog.setTitle("Tipo de Orçamento");
+        dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+        dialog.getContentPane().add(painel);
+        dialog.pack();
+        dialog.setLocationRelativeTo(null);
+        dialog.setModal(true);
+        dialog.setVisible(true);
+        System.out.println("Clicou !");
+    }//GEN-LAST:event_jComboBox1PopupMenuWillBecomeVisible
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
