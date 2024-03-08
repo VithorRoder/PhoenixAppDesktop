@@ -7,6 +7,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JDialog;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
+import paineis.PainelListaDeClientes;
 import paineis.PainelTipoDeOrcamento;
 
 public class PainelOrcamento extends javax.swing.JPanel {
@@ -137,6 +138,19 @@ public class PainelOrcamento extends javax.swing.JPanel {
         jLabel15.setText(" jLabel15");
 
         jComboBox2.setEditable(true);
+        jComboBox2.setMaximumRowCount(0);
+        jComboBox2.setBorder(null);
+        jComboBox2.setKeySelectionManager(null);
+        jComboBox2.setLightWeightPopupEnabled(false);
+        jComboBox2.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
+            public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
+            }
+            public void popupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {
+            }
+            public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
+                jComboBox2PopupMenuWillBecomeVisible(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -617,6 +631,9 @@ public class PainelOrcamento extends javax.swing.JPanel {
         jLabel5.setText("N° OS");
 
         jComboBox1.setEditable(true);
+        jComboBox1.setMaximumRowCount(0);
+        jComboBox1.setBorder(null);
+        jComboBox1.setLightWeightPopupEnabled(false);
         jComboBox1.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
             public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
             }
@@ -749,8 +766,19 @@ public class PainelOrcamento extends javax.swing.JPanel {
         dialog.setLocationRelativeTo(null);
         dialog.setModal(true);
         dialog.setVisible(true);
-        System.out.println("Clicou !");
     }//GEN-LAST:event_jComboBox1PopupMenuWillBecomeVisible
+
+    private void jComboBox2PopupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jComboBox2PopupMenuWillBecomeVisible
+        JDialog dialog = new JDialog();
+        PainelListaDeClientes painelClientes = new PainelListaDeClientes();
+        dialog.setTitle("Clientes");
+        dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+        dialog.getContentPane().add(painelClientes);
+        dialog.pack();
+        dialog.setLocationRelativeTo(null);
+        dialog.setModal(true);
+        dialog.setVisible(true);
+    }//GEN-LAST:event_jComboBox2PopupMenuWillBecomeVisible
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

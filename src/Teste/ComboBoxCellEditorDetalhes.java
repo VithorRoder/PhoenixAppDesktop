@@ -10,6 +10,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.table.TableCellEditor;
+import paineis.PainelListaDeMaquinas;
 
 public class ComboBoxCellEditorDetalhes extends AbstractCellEditor implements TableCellEditor {
 
@@ -35,7 +36,15 @@ public class ComboBoxCellEditorDetalhes extends AbstractCellEditor implements Ta
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(panel2, "Botão pressionado!");
+                JDialog dialog = new JDialog();
+                PainelListaDeMaquinas painel = new PainelListaDeMaquinas();
+                dialog.setTitle("Lista de Máquinas");
+                dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+                dialog.getContentPane().add(painel);
+                dialog.pack();
+                dialog.setLocationRelativeTo(null);
+                dialog.setModal(true);
+                dialog.setVisible(true);
             }
         });
     }

@@ -10,6 +10,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.table.TableCellEditor;
+import paineis.PainelListaDeMateriaisDialog;
 
 public class ComboBoxCellEditorMaterial extends AbstractCellEditor implements TableCellEditor {
 
@@ -42,7 +43,15 @@ public class ComboBoxCellEditorMaterial extends AbstractCellEditor implements Ta
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(panel, "Botão pressionado!");
+                JDialog dialog = new JDialog();
+                PainelListaDeMateriaisDialog painel = new PainelListaDeMateriaisDialog();
+                dialog.setTitle("Lista de Material");
+                dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+                dialog.getContentPane().add(painel);
+                dialog.pack();
+                dialog.setLocationRelativeTo(null);
+                dialog.setModal(true);
+                dialog.setVisible(true);
             }
         });
     }
