@@ -1,6 +1,10 @@
 package paineis;
 
+import Teste.PainelOrcamento;
+import static Teste.PainelOrcamento.comboBoxTOPainelOrcamento;
 import controller.TiposOrcamentosController;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.List;
 import model.TiposOrcamentos;
 import table.TiposOrcamentosTabela;
@@ -12,8 +16,8 @@ public class PainelTipoDeOrcamento extends javax.swing.JPanel {
 
     public PainelTipoDeOrcamento() {
         initComponents();
-
         refreshTable();
+        mouseTable();
 
     }
 
@@ -65,13 +69,32 @@ public class PainelTipoDeOrcamento extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     private void refreshTable() {
-
         tiposOrcList = new TiposOrcamentosController().findOrc();
         if (tiposOrcList != null) {
             TabelaTiposOrcamentos.setModel(new TiposOrcamentosTabela(tiposOrcList));
             TabelaTiposOrcamentos.setDefaultRenderer(Object.class, new TiposOrcamentosTabelaRenderer());
 
         }
+    }
+
+    private void passarParaComboBox() {
+        int selectedRow = TabelaTiposOrcamentos.getSelectedRow();
+        if (selectedRow != -1) {
+            Object value = TabelaTiposOrcamentos.getValueAt(selectedRow, 1);
+            comboBoxTOPainelOrcamento.setSelectedItem(value);
+            PainelOrcamento.dialog2.dispose();
+        }
+    }
+
+    private void mouseTable() {
+        TabelaTiposOrcamentos.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (e.getClickCount() == 2) {
+                    passarParaComboBox();
+                }
+            }
+        });
     }
 
 }
