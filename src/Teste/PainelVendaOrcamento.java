@@ -60,6 +60,7 @@ public class PainelVendaOrcamento extends JPanel {
         table = new JTable(model);
         table.setTableHeader(null);
         table.setShowGrid(true);
+        table.setGridColor(new Color(204,204,204));
         table.setCellSelectionEnabled(true);
         table.addFocusListener(new FocusAdapter() {
             @Override
