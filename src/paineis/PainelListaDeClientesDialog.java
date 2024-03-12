@@ -73,7 +73,6 @@ public class PainelListaDeClientesDialog extends javax.swing.JPanel {
         if (clientesList != null) {
             TabelaListaDeClientes.setModel(new ClientesTabela(clientesList));
             TabelaListaDeClientes.setDefaultRenderer(Object.class, new ClientesTabelaRenderer());
-
         }
     }
 
