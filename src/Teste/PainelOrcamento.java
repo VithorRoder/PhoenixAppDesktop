@@ -9,6 +9,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JDialog;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
 import paineis.PainelListaDeClientes;
 import paineis.PainelTipoDeOrcamento;
 
@@ -26,6 +27,7 @@ public class PainelOrcamento extends javax.swing.JPanel {
         editorCelulaOrcamentoTabelaCalculosExtras();
         editorCelulaOrcamentoTabelaAcabamentos();
         editorCelulaOrcamentoTabelaParametros();
+        numeracaoTabelaCalculos();
 
     }
 
@@ -83,6 +85,21 @@ public class PainelOrcamento extends javax.swing.JPanel {
         jPanel4 = new javax.swing.JPanel();
         jScrollPane5 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
+        jPanel3 = new javax.swing.JPanel();
+        jTextField2 = new javax.swing.JTextField();
+        jTextField6 = new javax.swing.JTextField();
+        jTextField18 = new javax.swing.JTextField();
+        jTextField19 = new javax.swing.JTextField();
+        jTextField20 = new javax.swing.JTextField();
+        jTextField21 = new javax.swing.JTextField();
+        jTextField22 = new javax.swing.JTextField();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jTabbedPaneDetalhes = new javax.swing.JTabbedPane();
         jPanel6 = new javax.swing.JPanel();
@@ -501,7 +518,7 @@ public class PainelOrcamento extends javax.swing.JPanel {
             .addGroup(PainelAcabamentoMontagemLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(PainelAcabamentoMontagemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 415, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 435, Short.MAX_VALUE)
                     .addGroup(PainelAcabamentoMontagemLayout.createSequentialGroup()
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -514,55 +531,219 @@ public class PainelOrcamento extends javax.swing.JPanel {
 
         jTabbedPane2.addTab("Acabamentos/Montagem", PainelAcabamentoMontagem);
 
+        jPanel4.setBackground(new java.awt.Color(222, 229, 231));
+
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"01", null, null, null, null, null, null, null, null},
-                {"02", null, null, null, null, null, null, null, null},
-                {"03", null, null, null, null, null, null, null, null},
-                {"04", null, null, null, null, null, null, null, null},
-                {"05", null, null, null, null, null, null, null, null},
-                {"06", null, null, null, null, null, null, null, null},
-                {"07", null, null, null, null, null, null, null, null},
-                {"08", null, null, null, null, null, null, null, null},
-                {"09", null, null, null, null, null, null, null, null},
-                {"10", null, null, null, null, null, null, null, null},
-                {"11", null, null, null, null, null, null, null, null},
-                {"12", null, null, null, null, null, null, null, null},
-                {"13", null, null, null, null, null, null, null, null},
-                {"14", null, null, null, null, null, null, null, null},
-                {"15", null, null, null, null, null, null, null, null},
-                {"16", null, null, null, null, null, null, null, null},
-                {"17", null, null, null, null, null, null, null, null},
-                {"18", null, null, null, null, null, null, null, null},
-                {"19", null, null, null, null, null, null, null, null},
-                {"20", null, null, null, null, null, null, null, null},
-                {"21", null, null, null, null, null, null, null, null},
-                {"22", null, null, null, null, null, null, null, null},
-                {"23", null, null, null, null, null, null, null, null},
-                {"24", null, null, null, null, null, null, null, null},
-                {"25", null, null, null, null, null, null, null, null},
-                {"26", null, null, null, null, null, null, null, null},
-                {"27", null, null, null, null, null, null, null, null},
-                {"28", null, null, null, null, null, null, null, null},
-                {"29", null, null, null, null, null, null, null, null},
-                {"30", null, null, null, null, null, null, null, null}
+                {"", null, null, null, null, null, null, null, null},
+                {"", null, null, null, null, null, null, null, null},
+                {"", null, null, null, null, null, null, null, null},
+                {"", null, null, null, null, null, null, null, null},
+                {"", null, null, null, null, null, null, null, null},
+                {"", null, null, null, null, null, null, null, null},
+                {"", null, null, null, null, null, null, null, null},
+                {"", null, null, null, null, null, null, null, null},
+                {"", null, null, null, null, null, null, null, null},
+                {"", null, null, null, null, null, null, null, null},
+                {"", null, null, null, null, null, null, null, null},
+                {"", null, null, null, null, null, null, null, null},
+                {"", null, null, null, null, null, null, null, null},
+                {"", null, null, null, null, null, null, null, null},
+                {"", null, null, null, null, null, null, null, null},
+                {"", null, null, null, null, null, null, null, null},
+                {"", null, null, null, null, null, null, null, null},
+                {"", null, null, null, null, null, null, null, null},
+                {"", null, null, null, null, null, null, null, null},
+                {"", null, null, null, null, null, null, null, null},
+                {"", null, null, null, null, null, null, null, null},
+                {"", null, null, null, null, null, null, null, null},
+                {"", null, null, null, null, null, null, null, null},
+                {"", null, null, null, null, null, null, null, null},
+                {"", null, null, null, null, null, null, null, null},
+                {"", null, null, null, null, null, null, null, null},
+                {"", null, null, null, null, null, null, null, null},
+                {"", null, null, null, null, null, null, null, null},
+                {"", null, null, null, null, null, null, null, null},
+                {"", null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "", "Pl", "Processos calculados", "Quantidade", "Unid", "Pr. Unit.", "Custo", "*", "Tipo"
+                "", "Pl", "Processos calculados", "Quantidade", "Unid", "Pr. Unit.", "Custo", " *", "Tipo"
             }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, true, true, true, true, true, true, true, true
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
+        ));
         jScrollPane5.setViewportView(jTable2);
         if (jTable2.getColumnModel().getColumnCount() > 0) {
-            jTable2.getColumnModel().getColumn(0).setResizable(false);
+            jTable2.getColumnModel().getColumn(0).setMinWidth(25);
+            jTable2.getColumnModel().getColumn(0).setPreferredWidth(25);
+            jTable2.getColumnModel().getColumn(0).setMaxWidth(26);
+            jTable2.getColumnModel().getColumn(1).setMinWidth(25);
+            jTable2.getColumnModel().getColumn(1).setPreferredWidth(25);
+            jTable2.getColumnModel().getColumn(1).setMaxWidth(25);
+            jTable2.getColumnModel().getColumn(2).setMinWidth(150);
+            jTable2.getColumnModel().getColumn(2).setPreferredWidth(180);
+            jTable2.getColumnModel().getColumn(2).setMaxWidth(250);
+            jTable2.getColumnModel().getColumn(3).setMinWidth(85);
+            jTable2.getColumnModel().getColumn(3).setPreferredWidth(85);
+            jTable2.getColumnModel().getColumn(3).setMaxWidth(85);
+            jTable2.getColumnModel().getColumn(4).setMinWidth(65);
+            jTable2.getColumnModel().getColumn(4).setPreferredWidth(65);
+            jTable2.getColumnModel().getColumn(4).setMaxWidth(5);
+            jTable2.getColumnModel().getColumn(5).setMinWidth(78);
+            jTable2.getColumnModel().getColumn(5).setPreferredWidth(78);
+            jTable2.getColumnModel().getColumn(5).setMaxWidth(78);
+            jTable2.getColumnModel().getColumn(6).setMinWidth(92);
+            jTable2.getColumnModel().getColumn(6).setPreferredWidth(92);
+            jTable2.getColumnModel().getColumn(6).setMaxWidth(92);
+            jTable2.getColumnModel().getColumn(7).setMinWidth(24);
+            jTable2.getColumnModel().getColumn(7).setPreferredWidth(24);
+            jTable2.getColumnModel().getColumn(7).setMaxWidth(24);
+            jTable2.getColumnModel().getColumn(8).setMinWidth(40);
+            jTable2.getColumnModel().getColumn(8).setPreferredWidth(40);
+            jTable2.getColumnModel().getColumn(8).setMaxWidth(40);
         }
+
+        jPanel3.setOpaque(false);
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jTextField2.setEditable(false);
+        jTextField2.setBackground(new java.awt.Color(221, 222, 222));
+        jTextField2.setForeground(new java.awt.Color(153, 153, 153));
+        jTextField2.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        jTextField2.setText("0,00");
+        jTextField2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jTextField2.setFocusable(false);
+        jPanel3.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 100, 28));
+
+        jTextField6.setEditable(false);
+        jTextField6.setBackground(new java.awt.Color(221, 222, 222));
+        jTextField6.setForeground(new java.awt.Color(153, 153, 153));
+        jTextField6.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        jTextField6.setText("0,00");
+        jTextField6.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jTextField6.setFocusable(false);
+        jPanel3.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, 80, 28));
+
+        jTextField18.setEditable(false);
+        jTextField18.setBackground(new java.awt.Color(221, 222, 222));
+        jTextField18.setForeground(new java.awt.Color(153, 153, 153));
+        jTextField18.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        jTextField18.setText("0,00");
+        jTextField18.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jTextField18.setFocusable(false);
+        jPanel3.add(jTextField18, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 20, 90, 28));
+
+        jTextField19.setEditable(false);
+        jTextField19.setBackground(new java.awt.Color(255, 255, 0));
+        jTextField19.setForeground(new java.awt.Color(153, 153, 153));
+        jTextField19.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        jTextField19.setText("0,00");
+        jTextField19.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jTextField19.setFocusable(false);
+        jPanel3.add(jTextField19, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 20, 100, 28));
+
+        jTextField20.setEditable(false);
+        jTextField20.setBackground(new java.awt.Color(221, 222, 222));
+        jTextField20.setForeground(new java.awt.Color(153, 153, 153));
+        jTextField20.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        jTextField20.setText("0,00");
+        jTextField20.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jTextField20.setFocusable(false);
+        jPanel3.add(jTextField20, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 20, 90, 28));
+
+        jTextField21.setEditable(false);
+        jTextField21.setBackground(new java.awt.Color(221, 222, 222));
+        jTextField21.setForeground(new java.awt.Color(153, 153, 153));
+        jTextField21.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        jTextField21.setText("0,00");
+        jTextField21.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jTextField21.setFocusable(false);
+        jPanel3.add(jTextField21, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 20, 110, 28));
+
+        jTextField22.setEditable(false);
+        jTextField22.setBackground(new java.awt.Color(221, 222, 222));
+        jTextField22.setForeground(new java.awt.Color(153, 153, 153));
+        jTextField22.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        jTextField22.setText("0,00");
+        jTextField22.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jTextField22.setFocusable(false);
+        jPanel3.add(jTextField22, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 20, 120, 28));
+
+        jLabel18.setFont(new java.awt.Font("sansserif", 0, 11)); // NOI18N
+        jLabel18.setText("Matéria Prima");
+        jPanel3.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(4, 5, 80, -1));
+
+        jLabel19.setFont(new java.awt.Font("sansserif", 0, 11)); // NOI18N
+        jLabel19.setText("  Serviços 3os");
+        jPanel3.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(97, 5, 80, -1));
+
+        jLabel20.setFont(new java.awt.Font("sansserif", 0, 11)); // NOI18N
+        jLabel20.setText("  Produção");
+        jPanel3.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(179, 5, 80, -1));
+
+        jLabel21.setFont(new java.awt.Font("sansserif", 0, 11)); // NOI18N
+        jLabel21.setText("Custo Total");
+        jPanel3.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(274, 5, 70, -1));
+
+        jLabel22.setFont(new java.awt.Font("sansserif", 0, 11)); // NOI18N
+        jLabel22.setText(" Comissões");
+        jPanel3.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 5, 60, -1));
+
+        jLabel23.setFont(new java.awt.Font("sansserif", 0, 11)); // NOI18N
+        jLabel23.setText(" C. Marginal 0%");
+        jPanel3.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(462, 5, 90, -1));
+
+        jLabel24.setFont(new java.awt.Font("sansserif", 0, 11)); // NOI18N
+        jLabel24.setText(" CF atingido 34,7%");
+        jPanel3.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 5, 100, -1));
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -570,14 +751,18 @@ public class PainelOrcamento extends javax.swing.JPanel {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 693, Short.MAX_VALUE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 693, Short.MAX_VALUE)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 574, Short.MAX_VALUE)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 540, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -591,7 +776,7 @@ public class PainelOrcamento extends javax.swing.JPanel {
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 586, Short.MAX_VALUE)
+            .addGap(0, 606, Short.MAX_VALUE)
         );
 
         jTabbedPane2.addTab("Gravar", jPanel5);
@@ -843,7 +1028,14 @@ public class PainelOrcamento extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -853,6 +1045,7 @@ public class PainelOrcamento extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
@@ -877,9 +1070,16 @@ public class PainelOrcamento extends javax.swing.JPanel {
     private javax.swing.JTextField jTextField15;
     private javax.swing.JTextField jTextField16;
     private javax.swing.JTextField jTextField17;
+    private javax.swing.JTextField jTextField18;
+    private javax.swing.JTextField jTextField19;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField20;
+    private javax.swing.JTextField jTextField21;
+    private javax.swing.JTextField jTextField22;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
+    private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
@@ -1015,6 +1215,14 @@ public class PainelOrcamento extends javax.swing.JPanel {
                 return component;
             }
         });
+    }
+
+    private void numeracaoTabelaCalculos() {
+        DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
+        int rowCount = model.getRowCount();
+        for (int i = 0; i < rowCount; i++) {
+            model.setValueAt(String.format("%02d", i + 1), i, 0);
+        }
     }
 
 }
