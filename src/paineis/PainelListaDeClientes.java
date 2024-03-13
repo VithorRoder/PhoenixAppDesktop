@@ -1,5 +1,7 @@
 package paineis;
 
+import static Teste.PainelOrcamento.comboBoxClientes;
+import static Teste.PainelOrcamento.jLabelClienteOrcamento;
 import static paineisAbas.PainelDadosClientes.comboBoxGrupo1Clientes;
 import static paineisAbas.PainelDadosClientes.comboBoxGrupo2Clientes;
 import static paineisAbas.PainelDadosClientes.jTextAreaClientes;
@@ -183,11 +185,11 @@ public class PainelListaDeClientes extends javax.swing.JPanel {
                         Object value2 = target.getValueAt(row, column0);
 
                         if (value1 != null) {
-                            jTextFieldNomeCliente.setText(value1.toString());
+                            comboBoxClientes.getEditor().setItem(value1.toString());
                             dialog.dispose();
                         }
                         if (value2 != null) {
-                            labelCodigoClien00.setText(value2.toString());
+                            jLabelClienteOrcamento.setText(String.format(" Clientes (%s)", value2));
                             dialog.dispose();
                         }
                     }

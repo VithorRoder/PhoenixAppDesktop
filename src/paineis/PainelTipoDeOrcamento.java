@@ -1,11 +1,13 @@
 package paineis;
 
-import Teste.PainelOrcamento;
 import static Teste.PainelOrcamento.comboBoxTOPainelOrcamento;
+import static Teste.PainelOrcamento.jLabelTipoOrcamento;
 import controller.TiposOrcamentosController;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.List;
+import javax.swing.JDialog;
+import javax.swing.JTable;
 import model.TiposOrcamentos;
 import table.TiposOrcamentosTabela;
 import table.TiposOrcamentosTabelaRenderer;
@@ -17,7 +19,6 @@ public class PainelTipoDeOrcamento extends javax.swing.JPanel {
     public PainelTipoDeOrcamento() {
         initComponents();
         refreshTable();
-        mouseTable();
 
     }
 
@@ -63,7 +64,7 @@ public class PainelTipoDeOrcamento extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTable TabelaTiposOrcamentos;
+    public static javax.swing.JTable TabelaTiposOrcamentos;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
@@ -77,21 +78,29 @@ public class PainelTipoDeOrcamento extends javax.swing.JPanel {
         }
     }
 
-    private void passarParaComboBox() {
-        int selectedRow = TabelaTiposOrcamentos.getSelectedRow();
-        if (selectedRow != -1) {
-            Object value = TabelaTiposOrcamentos.getValueAt(selectedRow, 1);
-            comboBoxTOPainelOrcamento.setSelectedItem(value);
-            PainelOrcamento.dialogTipoOrcamento.dispose();
-        }
-    }
-
-    private void mouseTable() {
+    public static final void passarTipoOrcamentoParaOrc(JDialog dialog) {
         TabelaTiposOrcamentos.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 if (e.getClickCount() == 2) {
-                    passarParaComboBox();
+                    JTable target = (JTable) e.getSource();
+                    int row = target.getSelectedRow();
+                    int column = 1;
+                    int column0 = 0;
+
+                    if (row != -1) {
+                        Object value1 = target.getValueAt(row, column);
+                        Object value2 = target.getValueAt(row, column0);
+
+                        if (value1 != null) {
+                            comboBoxTOPainelOrcamento.getEditor().setItem(value1.toString());
+                            dialog.dispose();
+                        }
+                        if (value2 != null) {
+                            jLabelTipoOrcamento.setText(String.format(" Tipo de Orçamento (%s)", value2));
+                            dialog.dispose();
+                        }
+                    }
                 }
             }
         });
