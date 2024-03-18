@@ -171,10 +171,22 @@ public class PainelOrcamento extends javax.swing.JPanel {
 
         jLabel13.setText("Email");
         jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(952, 6, 70, -1));
+
+        jTextField14.setEditable(false);
+        jTextField14.setBackground(new java.awt.Color(236, 236, 236));
+        jTextField14.setForeground(new java.awt.Color(120, 120, 120));
+        jTextField14.setText("14/03/2024-09:32");
+        jTextField14.setFocusable(false);
         jPanel1.add(jTextField14, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 70, 122, 28));
 
         jLabel14.setText(" Últ. Movimento");
         jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(1150, 50, -1, 30));
+
+        jTextField15.setEditable(false);
+        jTextField15.setBackground(new java.awt.Color(236, 236, 236));
+        jTextField15.setForeground(new java.awt.Color(120, 120, 120));
+        jTextField15.setText("14/03/2024-09:32");
+        jTextField15.setFocusable(false);
         jPanel1.add(jTextField15, new org.netbeans.lib.awtextra.AbsoluteConstraints(1150, 70, 130, 28));
 
         jLabel15.setText(" Inclusão");
@@ -304,7 +316,6 @@ public class PainelOrcamento extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        tabelaAcabamentos.setColumnSelectionAllowed(false);
         tabelaAcabamentos.setGridColor(new java.awt.Color(204, 204, 204));
         tabelaAcabamentos.setRowHeight(21);
         tabelaAcabamentos.setShowGrid(true);
@@ -349,7 +360,6 @@ public class PainelOrcamento extends javax.swing.JPanel {
                 "Parâmetros", "Valor"
             }
         ));
-        tabelaParametros.setColumnSelectionAllowed(false);
         tabelaParametros.setGridColor(new java.awt.Color(204, 204, 204));
         tabelaParametros.setRowHeight(21);
         tabelaParametros.setShowGrid(true);
@@ -629,7 +639,7 @@ public class PainelOrcamento extends javax.swing.JPanel {
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jTextField2.setEditable(false);
-        jTextField2.setBackground(new java.awt.Color(221, 222, 222));
+        jTextField2.setBackground(new java.awt.Color(236, 236, 236));
         jTextField2.setForeground(new java.awt.Color(153, 153, 153));
         jTextField2.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         jTextField2.setText("0,00");
@@ -638,7 +648,7 @@ public class PainelOrcamento extends javax.swing.JPanel {
         jPanel3.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 100, 28));
 
         jTextField6.setEditable(false);
-        jTextField6.setBackground(new java.awt.Color(221, 222, 222));
+        jTextField6.setBackground(new java.awt.Color(236, 236, 236));
         jTextField6.setForeground(new java.awt.Color(153, 153, 153));
         jTextField6.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         jTextField6.setText("0,00");
@@ -647,7 +657,7 @@ public class PainelOrcamento extends javax.swing.JPanel {
         jPanel3.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, 80, 28));
 
         jTextField18.setEditable(false);
-        jTextField18.setBackground(new java.awt.Color(221, 222, 222));
+        jTextField18.setBackground(new java.awt.Color(236, 236, 236));
         jTextField18.setForeground(new java.awt.Color(153, 153, 153));
         jTextField18.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         jTextField18.setText("0,00");
@@ -665,7 +675,7 @@ public class PainelOrcamento extends javax.swing.JPanel {
         jPanel3.add(jTextField19, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 20, 100, 28));
 
         jTextField20.setEditable(false);
-        jTextField20.setBackground(new java.awt.Color(221, 222, 222));
+        jTextField20.setBackground(new java.awt.Color(236, 236, 236));
         jTextField20.setForeground(new java.awt.Color(153, 153, 153));
         jTextField20.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         jTextField20.setText("0,00");
@@ -674,7 +684,7 @@ public class PainelOrcamento extends javax.swing.JPanel {
         jPanel3.add(jTextField20, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 20, 90, 28));
 
         jTextField21.setEditable(false);
-        jTextField21.setBackground(new java.awt.Color(221, 222, 222));
+        jTextField21.setBackground(new java.awt.Color(236, 236, 236));
         jTextField21.setForeground(new java.awt.Color(153, 153, 153));
         jTextField21.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         jTextField21.setText("0,00");
@@ -683,7 +693,7 @@ public class PainelOrcamento extends javax.swing.JPanel {
         jPanel3.add(jTextField21, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 20, 110, 28));
 
         jTextField22.setEditable(false);
-        jTextField22.setBackground(new java.awt.Color(221, 222, 222));
+        jTextField22.setBackground(new java.awt.Color(236, 236, 236));
         jTextField22.setForeground(new java.awt.Color(153, 153, 153));
         jTextField22.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         jTextField22.setText("0,00");
@@ -793,12 +803,13 @@ public class PainelOrcamento extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
 
         jLabel25.setText(" Itens a imprimir");
@@ -808,19 +819,19 @@ public class PainelOrcamento extends javax.swing.JPanel {
         jTextField24.setText("13/03/2024");
 
         jTextField25.setEditable(false);
-        jTextField25.setBackground(new java.awt.Color(215, 215, 215));
+        jTextField25.setBackground(new java.awt.Color(236, 236, 236));
         jTextField25.setForeground(new java.awt.Color(102, 102, 102));
         jTextField25.setText("Qua");
         jTextField25.setFocusable(false);
 
         jTextField26.setEditable(false);
-        jTextField26.setBackground(new java.awt.Color(215, 215, 215));
+        jTextField26.setBackground(new java.awt.Color(236, 236, 236));
         jTextField26.setForeground(new java.awt.Color(102, 102, 102));
         jTextField26.setText("Vithor");
         jTextField26.setFocusable(false);
 
         jTextField27.setEditable(false);
-        jTextField27.setBackground(new java.awt.Color(215, 215, 215));
+        jTextField27.setBackground(new java.awt.Color(236, 236, 236));
         jTextField27.setForeground(new java.awt.Color(102, 102, 102));
         jTextField27.setText("Vithor");
         jTextField27.setFocusable(false);
@@ -902,10 +913,11 @@ public class PainelOrcamento extends javax.swing.JPanel {
             .addComponent(painelDetalhesOrcamento1, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
         );
 
-        jTabbedPaneDetalhes.addTab("tab1", jPanel6);
+        jTabbedPaneDetalhes.addTab("01", jPanel6);
 
         jButtonPrecoOrc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/png/budget.png"))); // NOI18N
         jButtonPrecoOrc.setText("F1");
+        jButtonPrecoOrc.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonPrecoOrc.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonPrecoOrc.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
@@ -1052,6 +1064,8 @@ public class PainelOrcamento extends javax.swing.JPanel {
                     .addComponent(jTabbedPane2))
                 .addContainerGap())
         );
+
+        jTabbedPaneDetalhes.getAccessibleContext().setAccessibleName("01");
 
         jTabbedPane1.addTab("01", jPanel2);
 

@@ -28,6 +28,9 @@ public class MateriaisInsumosTabelaRenderer extends DefaultTableCellRenderer {
         jTableMateriaisInsumos.getColumnModel().getColumn(5).setMaxWidth(350);
         jTableMateriaisInsumos.getColumnModel().getColumn(5).setMinWidth(200);
         
+        jTableMateriaisInsumos.getColumnModel().getColumn(6).setMaxWidth(250);
+        jTableMateriaisInsumos.getColumnModel().getColumn(6).setMinWidth(200);
+        
         return this;
 
     }

@@ -11,9 +11,9 @@ import java.util.logging.Logger;
 import model.MateriaisInsumos;
 
 public class MateriaisInsumosDAO2 implements MateriaisInsumosDAO {
-
+    
     private static final String SQL_FIND_ALL = "select * from materiais_insumos ORDER BY id ASC";
-
+    
     @Override
     public List<MateriaisInsumos> findAll() {
         try {
@@ -32,7 +32,8 @@ public class MateriaisInsumosDAO2 implements MateriaisInsumosDAO {
                     materiaisInsumos.setGramaturaInsumos(rs.getString("gramatura"));
                     materiaisInsumos.setPreco(rs.getString("preco"));
                     materiaisInsumos.setTipoPreco(rs.getString("tipo_preco"));
-
+                    materiaisInsumos.setCodinome(rs.getString("codinome"));
+                    
                     MateriaisInsumos.add(materiaisInsumos);
                 }
             } catch (SQLException ex) {

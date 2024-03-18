@@ -8,6 +8,7 @@ public class MateriaisInsumos {
     private String gramaturaInsumos;
     private String preco;
     private String tipoPreco;
+    private String codinome;
 
     public Long getIdInsumos() {
         return idInsumos;
@@ -57,9 +58,17 @@ public class MateriaisInsumos {
         this.tipoPreco = tipoPreco;
     }
 
+    public String getCodinome() {
+        return codinome;
+    }
+
+    public void setCodinome(String codinome) {
+        this.codinome = codinome;
+    }
+
     @Override
     public String toString() {
-        return "MateriaisInsumos{" + "idInsumos=" + idInsumos + ", nomeInsumos=" + nomeInsumos + ", tipoInsumos=" + tipoInsumos + ", gramaturaInsumos=" + gramaturaInsumos + ", preco=" + preco + ", tipoPreco=" + tipoPreco + '}';
+        return "MateriaisInsumos{" + "idInsumos=" + idInsumos + ", nomeInsumos=" + nomeInsumos + ", tipoInsumos=" + tipoInsumos + ", gramaturaInsumos=" + gramaturaInsumos + ", preco=" + preco + ", tipoPreco=" + tipoPreco + ", codinome=" + codinome + '}';
     }
 
 }

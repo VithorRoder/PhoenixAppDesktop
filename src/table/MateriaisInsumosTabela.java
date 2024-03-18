@@ -12,6 +12,7 @@ public class MateriaisInsumosTabela extends AbstractTableModel {
     private static final int COL_GRAMATURA_INSUMOS = 3;
     private static final int COL_PRECO = 4;
     private static final int COL_TIPO_PRECO = 5;
+    private static final int COL_CODINOME = 6;
 
     private List<MateriaisInsumos> valores;
 
@@ -26,7 +27,7 @@ public class MateriaisInsumosTabela extends AbstractTableModel {
 
     @Override
     public int getColumnCount() {
-        return 6;
+        return 7;
     }
 
     @Override
@@ -44,6 +45,8 @@ public class MateriaisInsumosTabela extends AbstractTableModel {
             return materiaisInsumos.getPreco();
         } else if (columnIndex == COL_TIPO_PRECO) {
             return materiaisInsumos.getTipoPreco();
+        } else if (columnIndex == COL_CODINOME) {
+            return materiaisInsumos.getCodinome();
         }
         return null;
 
@@ -71,6 +74,9 @@ public class MateriaisInsumosTabela extends AbstractTableModel {
             case COL_TIPO_PRECO:
                 coluna = "Tipo de Preço";
                 break;
+            case COL_CODINOME:
+                coluna = "COD";
+                break;
 
             default:
                 throw new IllegalArgumentException("Coluna Inválida");
@@ -94,6 +100,8 @@ public class MateriaisInsumosTabela extends AbstractTableModel {
             return String.class;
         } else if (columnIndex == COL_TIPO_PRECO) {
             return String.class;
+        } else if (columnIndex == COL_CODINOME) {
+            return String.class;
         }
         return null;
 
@@ -102,7 +110,5 @@ public class MateriaisInsumosTabela extends AbstractTableModel {
     public MateriaisInsumos get(int row) {
         return valores.get(row);
     }
-    
-    
 
 }
