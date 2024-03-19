@@ -14,6 +14,7 @@ public class MaquinasImpressorasTabela extends AbstractTableModel {
     private static final int COL_FORMATO_MIN_MAX_MAQ = 5;
     private static final int COL_GRAMATURA_MIN_MAX_MAQ = 6;
     private static final int COL_INSUMO_UTILIZADO = 7;
+    private static final int COL_CODINOME = 8;
 
     private List<MaquinasImpressoras> valores;
 
@@ -28,7 +29,7 @@ public class MaquinasImpressorasTabela extends AbstractTableModel {
 
     @Override
     public int getColumnCount() {
-        return 8;
+        return 9;
     }
 
     @Override
@@ -50,6 +51,8 @@ public class MaquinasImpressorasTabela extends AbstractTableModel {
             return maquinasImpressoras.getGramaturaMinMaxMaq();
         } else if (columnIndex == COL_INSUMO_UTILIZADO) {
             return maquinasImpressoras.getInsumoMaq();
+        } else if (columnIndex == COL_CODINOME) {
+            return maquinasImpressoras.getCodinome();
         }
         return null;
 
@@ -83,6 +86,9 @@ public class MaquinasImpressorasTabela extends AbstractTableModel {
             case COL_INSUMO_UTILIZADO:
                 coluna = "Insumo Utilizado";
                 break;
+            case COL_CODINOME:
+                coluna = "COD";
+                break;
 
             default:
                 throw new IllegalArgumentException("Coluna Inválida");
@@ -109,6 +115,8 @@ public class MaquinasImpressorasTabela extends AbstractTableModel {
         } else if (columnIndex == COL_GRAMATURA_MIN_MAX_MAQ) {
             return String.class;
         } else if (columnIndex == COL_INSUMO_UTILIZADO) {
+            return String.class;
+        } else if (columnIndex == COL_CODINOME) {
             return String.class;
         }
         return null;

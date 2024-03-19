@@ -11,9 +11,9 @@ import java.util.logging.Logger;
 import model.MaquinasImpressoras;
 
 public class MaquinasImpressorasDAO2 implements MaquinasImpressorasDAO {
-
+    
     private static final String SQL_FIND_ALL = "select * from maquinas_impressoras ORDER BY id ASC";
-
+    
     @Override
     public List<MaquinasImpressoras> findAll() {
         try {
@@ -34,7 +34,8 @@ public class MaquinasImpressorasDAO2 implements MaquinasImpressorasDAO {
                     maquinasImpressoras.setFormatoMinMaxMaq(rs.getString("formato_min_max"));
                     maquinasImpressoras.setGramaturaMinMaxMaq(rs.getString("gramatura_min_max"));
                     maquinasImpressoras.setInsumoMaq(rs.getString("insumo_utilizado"));
-
+                    maquinasImpressoras.setCodinome(rs.getString("codinome"));
+                    
                     MaquinasImpressoras.add(maquinasImpressoras);
                 }
             } catch (SQLException ex) {

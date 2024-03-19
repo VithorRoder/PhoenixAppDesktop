@@ -10,6 +10,7 @@ public class MaquinasImpressoras {
     private String formatoMinMaxMaq;
     private String gramaturaMinMaxMaq;
     private String insumoMaq;
+    private String codinome;
 
     public Long getIdMaq() {
         return idMaq;
@@ -75,9 +76,17 @@ public class MaquinasImpressoras {
         this.insumoMaq = insumoMaq;
     }
 
+    public String getCodinome() {
+        return codinome;
+    }
+
+    public void setCodinome(String codinome) {
+        this.codinome = codinome;
+    }
+
     @Override
     public String toString() {
-        return "MaquinasImpressoras{" + "idMaq=" + idMaq + ", nomeMaq=" + nomeMaq + ", descricaoMaq=" + descricaoMaq + ", tipoMaq=" + tipoMaq + ", coresMaq=" + coresMaq + ", formatoMinMaxMaq=" + formatoMinMaxMaq + ", gramaturaMinMaxMaq=" + gramaturaMinMaxMaq + ", insumoMaq=" + insumoMaq + '}';
+        return "MaquinasImpressoras{" + "idMaq=" + idMaq + ", nomeMaq=" + nomeMaq + ", descricaoMaq=" + descricaoMaq + ", tipoMaq=" + tipoMaq + ", coresMaq=" + coresMaq + ", formatoMinMaxMaq=" + formatoMinMaxMaq + ", gramaturaMinMaxMaq=" + gramaturaMinMaxMaq + ", insumoMaq=" + insumoMaq + ", codinome=" + codinome + '}';
     }
 
 }
