@@ -12,7 +12,7 @@ import keeptoo.KGradientPanel;
 
 public class PainelDetalhesOrcamento extends JPanel {
 
-    private JTable table;
+    public static JTable table;
     Font font = new Font("Arial", Font.PLAIN, 12);
     Color fontColor = Color.BLACK;
     CustomCellEditorFont customEditor = new CustomCellEditorFont(font, fontColor);

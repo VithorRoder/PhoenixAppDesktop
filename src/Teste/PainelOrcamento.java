@@ -1,5 +1,6 @@
 package Teste;
 
+import static Teste.ComboBoxCellEditorDetalhes.dialogSimpleBro;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
@@ -13,12 +14,14 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import paineis.PainelListaDeClientes;
+import paineis.PainelListaDeMaquinas;
 import paineis.PainelTipoDeOrcamento;
 
 public class PainelOrcamento extends javax.swing.JPanel {
 
     public static JDialog dialogClientes = new JDialog();
     public static JDialog dialogTipoOrcamento = new JDialog();
+    PainelListaDeMaquinas panel = new PainelListaDeMaquinas();
 
     public PainelOrcamento() {
         initComponents();
@@ -30,6 +33,7 @@ public class PainelOrcamento extends javax.swing.JPanel {
         editorCelulaOrcamentoTabelaParametros();
         editorCelulaOrcamentoCalculos();
         numeracaoTabelaCalculos();
+        panel.mouseTableMaquinas(dialogSimpleBro);
 
     }
 
@@ -1263,7 +1267,7 @@ public class PainelOrcamento extends javax.swing.JPanel {
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
-    private Teste.PainelDetalhesOrcamento painelDetalhesOrcamento1;
+    public static Teste.PainelDetalhesOrcamento painelDetalhesOrcamento1;
     private javax.swing.JPanel painelMontagem;
     private Teste.PainelVendaOrcamento painelVendaOrcamento1;
     private javax.swing.JTable tabelaAcabamentos;

@@ -10,14 +10,17 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.table.TableCellEditor;
+import javax.swing.table.TableCellRenderer;
 import paineis.PainelListaDeMaquinas;
 
 public class ComboBoxCellEditorDetalhes extends AbstractCellEditor implements TableCellEditor {
 
-    private JPanel panel2;
-    private final JTextField textField;
+    public static JPanel panel2;
+    public static JTextField textField;
     private final JButton button;
     private String currentText;
+    public static JDialog dialogSimpleBro = new JDialog();
+    PainelListaDeMaquinas painel = new PainelListaDeMaquinas();
 
     public ComboBoxCellEditorDetalhes() {
 
@@ -36,15 +39,14 @@ public class ComboBoxCellEditorDetalhes extends AbstractCellEditor implements Ta
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JDialog dialog = new JDialog();
-                PainelListaDeMaquinas painel = new PainelListaDeMaquinas();
-                dialog.setTitle("Lista de Máquinas");
-                dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-                dialog.getContentPane().add(painel);
-                dialog.pack();
-                dialog.setLocationRelativeTo(null);
-                dialog.setModal(true);
-                dialog.setVisible(true);
+                dialogSimpleBro.setTitle("Lista de Máquinas");
+                dialogSimpleBro.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+                dialogSimpleBro.getContentPane().add(painel);
+                dialogSimpleBro.pack();
+                dialogSimpleBro.setLocationRelativeTo(null);
+                dialogSimpleBro.setModal(true);
+                dialogSimpleBro.setVisible(true);
+                painel.mouseTableMaquinas(dialogSimpleBro);
             }
         });
     }
@@ -106,6 +108,19 @@ public class ComboBoxCellEditorDetalhes extends AbstractCellEditor implements Ta
             } else {
                 fb.replace(offset, length, text.toUpperCase(), attrs);
             }
+        }
+    }
+
+    class ButtonRenderer extends JButton implements TableCellRenderer {
+
+        public ButtonRenderer() {
+            setOpaque(true);
+        }
+
+        @Override
+        public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+            setText((value == null) ? "" : value.toString());
+            return this;
         }
     }
 }
