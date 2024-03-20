@@ -53,12 +53,8 @@ public class ComboBoxCellEditorDetalhes extends AbstractCellEditor implements Ta
 
     @Override
     public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column) {
-        if (row == 0 || row == 5) {
+        if (row == 0) {
             ((PlainDocument) textField.getDocument()).setDocumentFilter(new UppercaseDocumentFilter(true));
-        } else {
-            ((PlainDocument) textField.getDocument()).setDocumentFilter(new UppercaseDocumentFilter(false));
-        }
-        if (row == 0 || row == 5 || row == 6) {
             currentText = (value == null) ? "" : value.toString();
             if (isSelected == true) {
                 textField.setText(currentText);
@@ -70,6 +66,7 @@ public class ComboBoxCellEditorDetalhes extends AbstractCellEditor implements Ta
                 return panel2;
             }
         } else {
+            ((PlainDocument) textField.getDocument()).setDocumentFilter(new UppercaseDocumentFilter(false));
             currentText = (value == null) ? "" : value.toString();
             if (isSelected == true) {
                 textField.setText(currentText);
