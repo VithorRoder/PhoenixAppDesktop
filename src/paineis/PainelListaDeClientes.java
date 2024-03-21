@@ -32,11 +32,9 @@ import java.util.List;
 import javax.swing.JDialog;
 import javax.swing.JTable;
 import model.Clientes;
-import static paineis.PainelCriarOrcamento.jTextFieldNomeCliente;
 import table.ClientesTabela;
 import table.ClientesTabelaRenderer;
 import application.ApplicationFrame;
-import static paineis.PainelCriarOrcamento.labelCodigoClien00;
 
 public class PainelListaDeClientes extends javax.swing.JPanel {
 

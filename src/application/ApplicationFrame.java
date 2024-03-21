@@ -8,7 +8,6 @@ import java.awt.Toolkit;
 import javax.swing.JOptionPane;
 import paineis.PainelCriarCadastroClientes;
 import paineis.PainelCriarCadastroFornecedores;
-import paineis.PainelCriarOrcamento;
 import paineis.PainelEntradaDeMaterial;
 import paineis.PainelListaDeClientes;
 import paineis.PainelListaDeFornecedores;
