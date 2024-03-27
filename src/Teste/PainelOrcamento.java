@@ -1,7 +1,5 @@
 package Teste;
 
-import static Teste.ComboBoxCellEditorDetalhes.dialogSimpleBro;
-import static Teste.ComboBoxCellEditorMaterial.dialogCriarOrcPrincipal;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
@@ -18,16 +16,12 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.text.JTextComponent;
 import paineis.PainelListaDeClientes;
-import paineis.PainelListaDeMaquinasDialog;
-import paineis.PainelListaDeMateriaisDialog;
 import paineis.PainelTipoDeOrcamento;
 
 public class PainelOrcamento extends javax.swing.JPanel {
 
     public static JDialog dialogClientes = new JDialog();
     public static JDialog dialogTipoOrcamento = new JDialog();
-    PainelListaDeMaquinasDialog panelMaquinasDialog = new PainelListaDeMaquinasDialog();
-    PainelListaDeMateriaisDialog painelMateriaisDialog = new PainelListaDeMateriaisDialog();
 
     public PainelOrcamento() {
         initComponents();
@@ -41,8 +35,6 @@ public class PainelOrcamento extends javax.swing.JPanel {
         editorCelulaOrcamentoTabelaParametros();
         editorCelulaOrcamentoCalculos();
         numeracaoTabelaCalculos();
-        panelMaquinasDialog.mouseTableMaquinas(dialogSimpleBro);
-        painelMateriaisDialog.mouseTableMaquinas(dialogCriarOrcPrincipal);
         atualizarLabelClientes();
         atualizarLabelTiposDeOrc();
 

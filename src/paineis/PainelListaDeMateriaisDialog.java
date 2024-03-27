@@ -5,6 +5,8 @@ import static Teste.PainelOrcamento.tabelaOrcPrincipal;
 import controller.MateriaisInsumosController;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.List;
 import javax.swing.JDialog;
 import model.MateriaisInsumos;
@@ -76,11 +78,10 @@ public class PainelListaDeMateriaisDialog extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    public static javax.swing.JTable jTableMateriaisDialog;
+    private javax.swing.JTable jTableMateriaisDialog;
     // End of variables declaration//GEN-END:variables
 
     private void refreshTable() {
-
         insumosList = new MateriaisInsumosController().findInsumos();
         if (insumosList != null) {
             jTableMateriaisDialog.setModel(new MateriaisInsumosTabela(insumosList));
@@ -117,6 +118,13 @@ public class PainelListaDeMateriaisDialog extends javax.swing.JPanel {
                         dialog.dispose();
                     }
                 }
+            }
+        });
+
+        dialog.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                linhaSelecionadaTabelaCriarOrcPrincipal = -1;
             }
         });
     }

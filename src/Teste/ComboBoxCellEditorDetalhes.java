@@ -18,7 +18,7 @@ public class ComboBoxCellEditorDetalhes extends AbstractCellEditor implements Ta
     public static JTextField textField;
     private final JButton button;
     private String currentText;
-    public static JDialog dialogSimpleBro = new JDialog();
+    private JDialog dialogSimpleBro = new JDialog();
     PainelListaDeMaquinasDialog painelMaquinaDialog = new PainelListaDeMaquinasDialog();
 
     public ComboBoxCellEditorDetalhes() {

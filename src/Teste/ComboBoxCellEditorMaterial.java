@@ -18,7 +18,7 @@ public class ComboBoxCellEditorMaterial extends AbstractCellEditor implements Ta
     public static JTextField textField;
     private final JButton button;
     private String currentText;
-    public static JDialog dialogCriarOrcPrincipal = new JDialog();
+    private JDialog dialogCriarOrcPrincipal = new JDialog();
     PainelListaDeMateriaisDialog painel = new PainelListaDeMateriaisDialog();
 
     public ComboBoxCellEditorMaterial() {

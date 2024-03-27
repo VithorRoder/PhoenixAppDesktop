@@ -77,7 +77,7 @@ public class PainelListaDeMaquinasDialog extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public static javax.swing.JTable TabelaMaquinasImpressorasDialog;
+    private javax.swing.JTable TabelaMaquinasImpressorasDialog;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
