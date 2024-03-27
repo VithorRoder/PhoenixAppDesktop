@@ -12,20 +12,23 @@ import java.awt.event.WindowEvent;
 import javax.swing.BorderFactory;
 import javax.swing.JDialog;
 import javax.swing.JTable;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.text.JTextComponent;
 import paineis.PainelListaDeClientes;
 import paineis.PainelListaDeMaquinasDialog;
 import paineis.PainelListaDeMateriaisDialog;
 import paineis.PainelTipoDeOrcamento;
 
 public class PainelOrcamento extends javax.swing.JPanel {
-    
+
     public static JDialog dialogClientes = new JDialog();
     public static JDialog dialogTipoOrcamento = new JDialog();
     PainelListaDeMaquinasDialog panelMaquinasDialog = new PainelListaDeMaquinasDialog();
     PainelListaDeMateriaisDialog painelMateriaisDialog = new PainelListaDeMateriaisDialog();
-    
+
     public PainelOrcamento() {
         initComponents();
         jTabbedPaneDetalhes.remove(painelDetalhes01);
@@ -40,9 +43,11 @@ public class PainelOrcamento extends javax.swing.JPanel {
         numeracaoTabelaCalculos();
         panelMaquinasDialog.mouseTableMaquinas(dialogSimpleBro);
         painelMateriaisDialog.mouseTableMaquinas(dialogCriarOrcPrincipal);
-        
+        atualizarLabelClientes();
+        atualizarLabelTiposDeOrc();
+
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -863,6 +868,9 @@ public class PainelOrcamento extends javax.swing.JPanel {
 
         jLabel28.setText("Últ. mov. por");
 
+        jPanel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
+        jPanel6.setOpaque(false);
+
         jCheckBox8.setSelected(true);
         jCheckBox8.setText("Imprimir Carta Proposta");
 
@@ -902,7 +910,7 @@ public class PainelOrcamento extends javax.swing.JPanel {
                 .addComponent(jCheckBox11)
                 .addGap(12, 12, 12)
                 .addComponent(jCheckBox12)
-                .addContainerGap(241, Short.MAX_VALUE))
+                .addContainerGap(239, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
@@ -1077,7 +1085,7 @@ public class PainelOrcamento extends javax.swing.JPanel {
                             .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 705, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 473, Short.MAX_VALUE))
+                        .addGap(0, 467, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
@@ -1145,8 +1153,9 @@ public class PainelOrcamento extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane1))
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jTabbedPane1)
+                .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1176,7 +1185,7 @@ public class PainelOrcamento extends javax.swing.JPanel {
 
     private void comboBoxTOPainelOrcamentoPopupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_comboBoxTOPainelOrcamentoPopupMenuWillBecomeVisible
         PainelTipoDeOrcamento customPanelTipoOrcamento = new PainelTipoDeOrcamento();
-        
+
         JDialog dialogOrc = new JDialog();
         dialogOrc.setTitle("Lista de Clientes");
         dialogOrc.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
@@ -1186,14 +1195,14 @@ public class PainelOrcamento extends javax.swing.JPanel {
         dialogOrc.setModal(true);
         PainelTipoDeOrcamento.passarTipoOrcamentoParaOrc(dialogOrc);
         dialogOrc.setVisible(true);
-        
+
         dialogOrc.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosed(WindowEvent e) {
                 comboBoxTOPainelOrcamento.requestFocus();
             }
         });
-        
+
         comboBoxTOPainelOrcamento.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -1204,7 +1213,7 @@ public class PainelOrcamento extends javax.swing.JPanel {
 
     private void comboBoxClientesPopupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_comboBoxClientesPopupMenuWillBecomeVisible
         PainelListaDeClientes customPanelClientes = new PainelListaDeClientes();
-        
+
         JDialog dialogClientes = new JDialog();
         dialogClientes.setTitle("Lista de Clientes");
         customPanelClientes.jButtonAlterarClientes.setVisible(false);
@@ -1216,14 +1225,14 @@ public class PainelOrcamento extends javax.swing.JPanel {
         dialogClientes.setModal(true);
         PainelListaDeClientes.passarClienteParaOrc(dialogClientes);
         dialogClientes.setVisible(true);
-        
+
         dialogClientes.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosed(WindowEvent e) {
                 comboBoxClientes.requestFocus();
             }
         });
-        
+
         comboBoxClientes.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -1348,14 +1357,14 @@ public class PainelOrcamento extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     private void editorCelulaOrcamentoTabelaMedidas() {
-        
+
         Font font = new Font("Arial", Font.PLAIN, 12);
         Color fontColor = Color.BLACK;
         CustomCellEditorFont customEditor = new CustomCellEditorFont(font, fontColor);
         for (int i = 0; i < tabelaOrcPrincipal.getColumnCount(); i++) {
             tabelaOrcPrincipal.getColumnModel().getColumn(i).setCellEditor(customEditor);
         }
-        
+
         tabelaOrcPrincipal.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
             @Override
             public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
@@ -1368,11 +1377,11 @@ public class PainelOrcamento extends javax.swing.JPanel {
                     setBackground(new Color(245, 245, 245));
                     setForeground(Color.BLACK);
                 }
-                
+
                 return component;
             }
         });
-        
+
         int[] columnNotSelectable = {0};
         for (int columnIndex : columnNotSelectable) {
             tabelaOrcPrincipal.getColumnModel().getColumn(columnIndex).setCellRenderer(new DefaultTableCellRenderer() {
@@ -1384,14 +1393,14 @@ public class PainelOrcamento extends javax.swing.JPanel {
             });
         }
     }
-    
+
     private void editorCelulaOrcamentoTabelaCalculosExtras() {
-        
+
         Font font = new Font("Arial", Font.PLAIN, 12);
         Color fontColor = Color.BLACK;
         CustomCellEditorFont customEditor = new CustomCellEditorFont(font, fontColor);
         tabelaCalculosExtras.getColumnModel().getColumn(0).setCellEditor(customEditor);
-        
+
         tabelaCalculosExtras.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
             @Override
             public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
@@ -1408,16 +1417,16 @@ public class PainelOrcamento extends javax.swing.JPanel {
             }
         });
     }
-    
+
     private void editorCelulaOrcamentoTabelaAcabamentos() {
-        
+
         Font font = new Font("Arial", Font.PLAIN, 12);
         Color fontColor = Color.BLACK;
         CustomCellEditorFont customEditor = new CustomCellEditorFont(font, fontColor);
         for (int i = 0; i < tabelaAcabamentos.getColumnCount(); i++) {
             tabelaAcabamentos.getColumnModel().getColumn(i).setCellEditor(customEditor);
         }
-        
+
         tabelaAcabamentos.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
             @Override
             public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
@@ -1430,11 +1439,11 @@ public class PainelOrcamento extends javax.swing.JPanel {
                     setBackground(new Color(245, 245, 245));
                     setForeground(Color.BLACK);
                 }
-                
+
                 return component;
             }
         });
-        
+
         int[] columnNotSelectable = {0};
         for (int columnIndex : columnNotSelectable) {
             tabelaAcabamentos.getColumnModel().getColumn(columnIndex).setCellRenderer(new DefaultTableCellRenderer() {
@@ -1446,14 +1455,14 @@ public class PainelOrcamento extends javax.swing.JPanel {
             });
         }
     }
-    
+
     private void editorCelulaOrcamentoTabelaParametros() {
-        
+
         Font font = new Font("Arial", Font.PLAIN, 12);
         Color fontColor = Color.BLACK;
         CustomCellEditorFont customEditor = new CustomCellEditorFont(font, fontColor);
         tabelaParametros.getColumnModel().getColumn(0).setCellEditor(customEditor);
-        
+
         tabelaParametros.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
             @Override
             public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
@@ -1470,16 +1479,16 @@ public class PainelOrcamento extends javax.swing.JPanel {
             }
         });
     }
-    
+
     private void editorCelulaOrcamentoCalculos() {
-        
+
         Font font = new Font("Arial", Font.PLAIN, 12);
         Color fontColor = Color.BLACK;
         CustomCellEditorFont customEditor = new CustomCellEditorFont(font, fontColor);
         for (int i = 0; i < tabelaCalculos.getColumnCount(); i++) {
             tabelaCalculos.getColumnModel().getColumn(i).setCellEditor(customEditor);
         }
-        
+
         tabelaCalculos.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
             @Override
             public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
@@ -1492,11 +1501,11 @@ public class PainelOrcamento extends javax.swing.JPanel {
                     setBackground(new Color(245, 245, 245));
                     setForeground(Color.BLACK);
                 }
-                
+
                 return component;
             }
         });
-        
+
         int[] columnNotSelectable = {0};
         for (int columnIndex : columnNotSelectable) {
             tabelaCalculos.getColumnModel().getColumn(columnIndex).setCellRenderer(new DefaultTableCellRenderer() {
@@ -1508,7 +1517,7 @@ public class PainelOrcamento extends javax.swing.JPanel {
             });
         }
     }
-    
+
     private void numeracaoTabelaCalculos() {
         DefaultTableModel model = (DefaultTableModel) tabelaCalculos.getModel();
         int rowCount = model.getRowCount();
@@ -1516,5 +1525,50 @@ public class PainelOrcamento extends javax.swing.JPanel {
             model.setValueAt(String.format("%02d", i + 1), i, 0);
         }
     }
-    
+
+    private void atualizarLabelClientes() {
+        ((JTextComponent) comboBoxClientes.getEditor().getEditorComponent()).getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                updateLabel();
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                updateLabel();
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                updateLabel();
+            }
+
+            private void updateLabel() {
+                jLabelClienteOrcamento.setText(" Clientes ()");
+            }
+        });
+    }
+
+    private void atualizarLabelTiposDeOrc() {
+        ((JTextComponent) comboBoxTOPainelOrcamento.getEditor().getEditorComponent()).getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                updateLabel();
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                updateLabel();
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                updateLabel();
+            }
+
+            private void updateLabel() {
+                jLabelTipoOrcamento.setText(" Tipo de Orçamento ()");
+            }
+        });
+    }
 }
