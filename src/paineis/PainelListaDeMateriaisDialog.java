@@ -130,12 +130,4 @@ public class PainelListaDeMateriaisDialog extends javax.swing.JPanel {
         });
     }
 
-    public JTable getjTableMateriaisDialog() {
-        return jTableMateriaisDialog;
-    }
-
-    public void setjTableMateriaisDialog(JTable jTableMateriaisDialog) {
-        this.jTableMateriaisDialog = jTableMateriaisDialog;
-    }
-
 }
