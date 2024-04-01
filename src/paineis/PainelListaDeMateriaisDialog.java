@@ -9,6 +9,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.List;
 import javax.swing.JDialog;
+import javax.swing.JTable;
 import model.MateriaisInsumos;
 import table.MateriaisInsumosTabela;
 import table.MateriaisInsumosTabelaRenderer;
@@ -90,7 +91,7 @@ public class PainelListaDeMateriaisDialog extends javax.swing.JPanel {
         }
     }
 
-    public void mouseTableMaquinas(JDialog dialog) {
+    public void mouseTableMateriais(JDialog dialog) {
         tabelaOrcPrincipal.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -128,4 +129,13 @@ public class PainelListaDeMateriaisDialog extends javax.swing.JPanel {
             }
         });
     }
+
+    public JTable getjTableMateriaisDialog() {
+        return jTableMateriaisDialog;
+    }
+
+    public void setjTableMateriaisDialog(JTable jTableMateriaisDialog) {
+        this.jTableMateriaisDialog = jTableMateriaisDialog;
+    }
+
 }

@@ -18,7 +18,7 @@ public class ComboBoxCellEditorDetalhes extends AbstractCellEditor implements Ta
     public static JTextField textField;
     private final JButton button;
     private String currentText;
-    private JDialog dialogSimpleBro = new JDialog();
+    private JDialog dialogDetalhesMaquinas = new JDialog();
     PainelListaDeMaquinasDialog painelMaquinaDialog = new PainelListaDeMaquinasDialog();
 
     public ComboBoxCellEditorDetalhes() {
@@ -38,14 +38,14 @@ public class ComboBoxCellEditorDetalhes extends AbstractCellEditor implements Ta
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                dialogSimpleBro.setTitle("Lista de Máquinas");
-                dialogSimpleBro.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-                dialogSimpleBro.getContentPane().add(painelMaquinaDialog);
-                dialogSimpleBro.pack();
-                dialogSimpleBro.setLocationRelativeTo(null);
-                dialogSimpleBro.setModal(true);
-                dialogSimpleBro.setVisible(true);
-                painelMaquinaDialog.mouseTableMaquinas(dialogSimpleBro);
+                dialogDetalhesMaquinas.setTitle("Lista de Máquinas");
+                dialogDetalhesMaquinas.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+                dialogDetalhesMaquinas.getContentPane().add(painelMaquinaDialog);
+                dialogDetalhesMaquinas.pack();
+                dialogDetalhesMaquinas.setLocationRelativeTo(null);
+                dialogDetalhesMaquinas.setModal(true);
+                dialogDetalhesMaquinas.setVisible(true);
+                painelMaquinaDialog.mouseTableMaquinas(dialogDetalhesMaquinas);
             }
         });
     }

@@ -18,7 +18,7 @@ public class ComboBoxCellEditorMaterial extends AbstractCellEditor implements Ta
     public static JTextField textField;
     private final JButton button;
     private String currentText;
-    private JDialog dialogCriarOrcPrincipal = new JDialog();
+    private JDialog dialogMaterial = new JDialog();
     PainelListaDeMateriaisDialog painel = new PainelListaDeMateriaisDialog();
 
     public ComboBoxCellEditorMaterial() {
@@ -45,14 +45,14 @@ public class ComboBoxCellEditorMaterial extends AbstractCellEditor implements Ta
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                dialogCriarOrcPrincipal.setTitle("Lista de Material");
-                dialogCriarOrcPrincipal.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-                dialogCriarOrcPrincipal.getContentPane().add(painel);
-                dialogCriarOrcPrincipal.pack();
-                dialogCriarOrcPrincipal.setLocationRelativeTo(null);
-                dialogCriarOrcPrincipal.setModal(true);
-                dialogCriarOrcPrincipal.setVisible(true);
-                painel.mouseTableMaquinas(dialogCriarOrcPrincipal);
+                dialogMaterial.setTitle("Lista de Material");
+                dialogMaterial.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+                dialogMaterial.getContentPane().add(painel);
+                dialogMaterial.pack();
+                dialogMaterial.setLocationRelativeTo(null);
+                dialogMaterial.setModal(true);
+                dialogMaterial.setVisible(true);
+                painel.mouseTableMateriais(dialogMaterial);
             }
         });
     }
