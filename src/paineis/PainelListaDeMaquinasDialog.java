@@ -115,7 +115,7 @@ public class PainelListaDeMaquinasDialog extends javax.swing.JPanel {
                         // Obtém a linha selecionada previamente na TabelaCriarOrc
                         int linhaCriarOrc = linhaSelecionadaTabelaCriarOrc;
 
-                        table.setValueAt(valorColuna1, linhaCriarOrc, 5);
+                        table.setValueAt(valorColuna1, 0, 5);
                         ComboBoxCellEditorDetalhes.textField.setText("" + valorColuna1);
                         dialog.dispose();
                     }
