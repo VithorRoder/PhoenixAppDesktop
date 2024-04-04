@@ -16,7 +16,6 @@ public class PainelDetalhesOrcamento extends JPanel {
     Font font = new Font("Arial", Font.PLAIN, 12);
     Color fontColor = Color.BLACK;
     CustomCellEditorFont customEditor = new CustomCellEditorFont(font, fontColor);
-    ComboBoxCellEditorDetalhes cell = new ComboBoxCellEditorDetalhes();
 
     public PainelDetalhesOrcamento() {
         // Configuração do JPanel
@@ -305,6 +304,7 @@ public class PainelDetalhesOrcamento extends JPanel {
             }
         });
 
+        ComboBoxCellEditorDetalhes cell = new ComboBoxCellEditorDetalhes();
         table.getColumnModel().getColumn(5).setCellEditor(cell);
 
         // Adicionar a tabela ao JPanel

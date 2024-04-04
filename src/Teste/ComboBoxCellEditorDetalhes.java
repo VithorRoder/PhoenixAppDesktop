@@ -45,9 +45,10 @@ public class ComboBoxCellEditorDetalhes extends AbstractCellEditor implements Ta
                 dialogDetalhesMaquinas.setLocationRelativeTo(null);
                 dialogDetalhesMaquinas.setModal(true);
                 dialogDetalhesMaquinas.setVisible(true);
-                painelMaquinaDialog.mouseTableMaquinas(dialogDetalhesMaquinas);
             }
         });
+
+        painelMaquinaDialog.mouseTableMaquinas(dialogDetalhesMaquinas);
     }
 
     @Override
