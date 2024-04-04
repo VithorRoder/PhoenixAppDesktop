@@ -52,9 +52,10 @@ public class ComboBoxCellEditorMaterial extends AbstractCellEditor implements Ta
                 dialogMaterial.setLocationRelativeTo(null);
                 dialogMaterial.setModal(true);
                 dialogMaterial.setVisible(true);
-                painel.mouseTableMateriais(dialogMaterial);
             }
         });
+
+        painel.mouseTableMateriais(dialogMaterial);
     }
 
     @Override
