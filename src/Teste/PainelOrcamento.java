@@ -1059,6 +1059,18 @@ public class PainelOrcamento extends javax.swing.JPanel {
             }
         });
 
+        jTextField4.setEditable(false);
+        jTextField4.setBackground(new java.awt.Color(236, 236, 236));
+        jTextField4.setForeground(new java.awt.Color(120, 120, 120));
+        jTextField4.setText("002846.001");
+        jTextField4.setFocusable(false);
+
+        jTextField5.setEditable(false);
+        jTextField5.setBackground(new java.awt.Color(236, 236, 236));
+        jTextField5.setForeground(new java.awt.Color(120, 120, 120));
+        jTextField5.setText("002455");
+        jTextField5.setFocusable(false);
+
         jLabel4.setText(" N° Orç + Item");
 
         jLabel5.setText(" N° OS");
