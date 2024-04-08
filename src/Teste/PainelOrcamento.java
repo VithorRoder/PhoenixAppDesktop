@@ -7,9 +7,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import javax.swing.BorderFactory;
 import javax.swing.JDialog;
 import javax.swing.JTable;
+import javax.swing.Timer;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -37,6 +41,9 @@ public class PainelOrcamento extends javax.swing.JPanel {
         numeracaoTabelaCalculos();
         atualizarLabelClientes();
         atualizarLabelTiposDeOrc();
+        if (jTextField4.getText() == null || jTextField4.getText().isEmpty() == true) {
+            atualizarTimeInclusao();
+        }
 
     }
 
@@ -1062,13 +1069,11 @@ public class PainelOrcamento extends javax.swing.JPanel {
         jTextField4.setEditable(false);
         jTextField4.setBackground(new java.awt.Color(236, 236, 236));
         jTextField4.setForeground(new java.awt.Color(120, 120, 120));
-        jTextField4.setText("002846.001");
         jTextField4.setFocusable(false);
 
         jTextField5.setEditable(false);
         jTextField5.setBackground(new java.awt.Color(236, 236, 236));
         jTextField5.setForeground(new java.awt.Color(120, 120, 120));
-        jTextField5.setText("002455");
         jTextField5.setFocusable(false);
 
         jLabel4.setText(" N° Orç + Item");
@@ -1574,5 +1579,30 @@ public class PainelOrcamento extends javax.swing.JPanel {
                 jLabelTipoOrcamento.setText(" Tipo de Orçamento ()");
             }
         });
+    }
+
+    private void atualizarTimeInclusao() {
+        Date dataSistema = new Date();
+        SimpleDateFormat formatoData = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat formatoHora = new SimpleDateFormat("HH:mm");
+        String dataFormatada = formatoData.format(dataSistema);
+        String horaFormatada = formatoHora.format(dataSistema);
+        jTextField14.setText(dataFormatada + " - " + horaFormatada);
+
+        Timer timer = new Timer(1000, new hora());
+        timer.start();
+    }
+
+    class hora implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            if (jTextField4.getText().isEmpty()) {
+                Calendar now = Calendar.getInstance();
+                SimpleDateFormat formatoHora = new SimpleDateFormat("HH:mm");
+                String horaFormatada = formatoHora.format(now.getTime());
+                jTextField14.setText(jTextField14.getText().split(" - ")[0] + " - " + horaFormatada);
+            }
+        }
     }
 }
