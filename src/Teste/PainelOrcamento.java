@@ -21,6 +21,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.text.JTextComponent;
 import paineis.PainelListaDeClientes;
 import paineis.PainelTipoDeOrcamento;
+import util.JformatedTextFieldPreco;
 
 public class PainelOrcamento extends javax.swing.JPanel {
 
@@ -144,10 +145,10 @@ public class PainelOrcamento extends javax.swing.JPanel {
         jPanel7 = new javax.swing.JPanel();
         jButtonPrecoOrc = new javax.swing.JButton();
         jLabel16 = new javax.swing.JLabel();
-        jTextField16 = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
-        jTextField17 = new javax.swing.JTextField();
         painelVendaOrcamento1 = new Teste.PainelVendaOrcamento();
+        jformatedTextFieldPrecoVenda = new util.JformatedTextFieldPreco();
+        jformatedTextFieldPrecoUnitario = new util.JformatedTextFieldPreco();
         comboBoxTOPainelOrcamento = new javax.swing.JComboBox<>();
         jTextField23 = new javax.swing.JTextField();
         jTextField4 = new javax.swing.JTextField();
@@ -364,7 +365,7 @@ public class PainelOrcamento extends javax.swing.JPanel {
         );
         painelMontagemLayout.setVerticalGroup(
             painelMontagemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 153, Short.MAX_VALUE)
+            .addGap(0, 156, Short.MAX_VALUE)
         );
 
         tabelaParametros.setBackground(new java.awt.Color(245, 245, 245));
@@ -511,7 +512,7 @@ public class PainelOrcamento extends javax.swing.JPanel {
             .addGroup(PainelAcabamentoMontagemLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(PainelAcabamentoMontagemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 417, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 414, Short.MAX_VALUE)
                     .addGroup(PainelAcabamentoMontagemLayout.createSequentialGroup()
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1002,14 +1003,16 @@ public class PainelOrcamento extends javax.swing.JPanel {
         jLabel16.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
         jLabel16.setText("Preço Venda");
 
-        jTextField16.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        jTextField16.setBorder(null);
-
         jLabel17.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
         jLabel17.setText("Preço Unitário");
 
-        jTextField17.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        jTextField17.setBorder(null);
+        jformatedTextFieldPrecoVenda.setBorder(null);
+        jformatedTextFieldPrecoVenda.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        jformatedTextFieldPrecoVenda.setPreferredSize(new java.awt.Dimension(64, 25));
+
+        jformatedTextFieldPrecoUnitario.setBorder(null);
+        jformatedTextFieldPrecoUnitario.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        jformatedTextFieldPrecoUnitario.setPreferredSize(new java.awt.Dimension(64, 25));
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -1018,13 +1021,13 @@ public class PainelOrcamento extends javax.swing.JPanel {
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addComponent(jButtonPrecoOrc, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE)
-                    .addComponent(jLabel16, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextField16, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField17))
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel17, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE)
+                    .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jformatedTextFieldPrecoVenda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jformatedTextFieldPrecoUnitario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(painelVendaOrcamento1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addComponent(painelVendaOrcamento1, javax.swing.GroupLayout.PREFERRED_SIZE, 441, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1033,12 +1036,12 @@ public class PainelOrcamento extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField16, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jformatedTextFieldPrecoVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField17, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jformatedTextFieldPrecoUnitario, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
             .addComponent(painelVendaOrcamento1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
         );
 
@@ -1092,9 +1095,9 @@ public class PainelOrcamento extends javax.swing.JPanel {
                             .addComponent(jTabbedPaneDetalhes, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 705, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 467, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
@@ -1118,7 +1121,7 @@ public class PainelOrcamento extends javax.swing.JPanel {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addContainerGap(491, Short.MAX_VALUE))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1335,8 +1338,6 @@ public class PainelOrcamento extends javax.swing.JPanel {
     private javax.swing.JTextField jTextField13;
     private javax.swing.JTextField jTextField14;
     private javax.swing.JTextField jTextField15;
-    private javax.swing.JTextField jTextField16;
-    private javax.swing.JTextField jTextField17;
     private javax.swing.JTextField jTextField18;
     private javax.swing.JTextField jTextField19;
     private javax.swing.JTextField jTextField2;
@@ -1355,6 +1356,8 @@ public class PainelOrcamento extends javax.swing.JPanel {
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
+    private util.JformatedTextFieldPreco jformatedTextFieldPrecoUnitario;
+    private util.JformatedTextFieldPreco jformatedTextFieldPrecoVenda;
     private javax.swing.JPanel painelDetalhes01;
     private javax.swing.JPanel painelMontagem;
     private Teste.PainelVendaOrcamento painelVendaOrcamento1;

@@ -93,7 +93,6 @@ public class PainelDetalhesOrcamento extends JPanel {
             }
         });
 
-        // Adiciona um MouseMotionListener para exibir a dica de ferramenta instantaneamente e seguir o cursor do mouse
         table.addMouseMotionListener(new MouseMotionAdapter() {
             @Override
             public void mouseDragged(MouseEvent e) {
@@ -254,7 +253,7 @@ public class PainelDetalhesOrcamento extends JPanel {
             }
         });
 
-        int[] columnWidths = {18, 54, 15, 50, 25, 50, 30, 50}; // Defina as larguras desejadas para cada coluna
+        int[] columnWidths = {18, 54, 15, 50, 25, 50, 30, 50};
         for (int i = 0; i < columnWidths.length; i++) {
             table.getColumnModel().getColumn(i).setPreferredWidth(columnWidths[i]);
         }
@@ -307,7 +306,6 @@ public class PainelDetalhesOrcamento extends JPanel {
         ComboBoxCellEditorDetalhes cell = new ComboBoxCellEditorDetalhes();
         table.getColumnModel().getColumn(5).setCellEditor(cell);
 
-        // Adicionar a tabela ao JPanel
         JScrollPane scrollPane = new JScrollPane(table);
         add(scrollPane, BorderLayout.CENTER);
     }
