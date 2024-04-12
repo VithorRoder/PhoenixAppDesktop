@@ -60,7 +60,7 @@ public class PainelVendaOrcamento extends JPanel {
         table = new JTable(model);
         table.setTableHeader(null);
         table.setShowGrid(true);
-        table.setGridColor(new Color(204,204,204));
+        table.setGridColor(new Color(204, 204, 204));
         table.setCellSelectionEnabled(true);
         table.addFocusListener(new FocusAdapter() {
             @Override
@@ -69,7 +69,6 @@ public class PainelVendaOrcamento extends JPanel {
             }
         });
 
-        // Adiciona um MouseMotionListener para exibir a dica de ferramenta instantaneamente e seguir o cursor do mouse
         table.addMouseMotionListener(new MouseMotionAdapter() {
             @Override
             public void mouseDragged(MouseEvent e) {

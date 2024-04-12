@@ -18,27 +18,21 @@ public class PainelDetalhesOrcamento extends JPanel {
     CustomCellEditorFont customEditor = new CustomCellEditorFont(font, fontColor);
 
     public PainelDetalhesOrcamento() {
-        // Configuração do JPanel
         setLayout(new BorderLayout());
         setPreferredSize(new Dimension(569, 163));
         setBackground(new Color(255, 255, 255));
 
-        // Dados da tabela
         Object[][] data = new Object[10][8];
 
-        // Cabeçalhos das colunas
         String[] columnNames = {"01", "02", "03", "04", "05", "06", "07", "08"};
 
-        // Modelo da tabela
         DefaultTableModel model = new DefaultTableModel(data, columnNames) {
             @Override
             public boolean isCellEditable(int row, int column) {
-                // Desabilita a edição da célula na linha 0 e coluna 1
                 return !(row == 0 && column == 1) && column % 2 != 0;
             }
         };
 
-        // Definir valores específicos para células
         model.setValueAt("Material", 0, 0);
         model.setValueAt("AF", 0, 2);
         model.setValueAt("MI Frente", 0, 4);
@@ -80,7 +74,6 @@ public class PainelDetalhesOrcamento extends JPanel {
         model.setValueAt("POV", 9, 4);
         model.setValueAt("Peso_Mat.", 9, 6);
 
-        // Criar a tabela sem cabeçalho
         table = new JTable(model);
         table.setTableHeader(null);
         table.setShowGrid(true);
@@ -277,7 +270,6 @@ public class PainelDetalhesOrcamento extends JPanel {
                     panel.setBorder(null);
                     panel.setLayout(new BorderLayout());
 
-                    // Adiciona o valor da célula ao painel
                     JLabel label = new JLabel(value.toString());
                     label.setHorizontalAlignment(SwingConstants.LEFT);
                     label.setFont(new Font("Bahnschrift", Font.PLAIN, 12));

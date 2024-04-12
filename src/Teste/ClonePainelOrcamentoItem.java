@@ -1,42 +1,30 @@
 package Teste;
 
+import static Teste.PainelOrcamento.comboBoxClientes;
+import static Teste.PainelOrcamento.jLabelClienteOrcamento;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
 import javax.swing.BorderFactory;
 import javax.swing.JDialog;
-import javax.swing.JOptionPane;
 import javax.swing.JTable;
-import javax.swing.SwingUtilities;
-import javax.swing.Timer;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.text.JTextComponent;
-import paineis.PainelListaDeClientes;
 import paineis.PainelTipoDeOrcamento;
 
-public class PainelOrcamento extends javax.swing.JPanel {
+public class ClonePainelOrcamentoItem extends javax.swing.JPanel {
 
-    public static JDialog dialogClientes = new JDialog();
-    public static JDialog dialogTipoOrcamento = new JDialog();
-    public static List<ClonePainelOrcamentoItem> listaPaineis = new ArrayList<>();
-    private int proximoNumeroAba = 2;
-
-    public PainelOrcamento() {
+    public ClonePainelOrcamentoItem() {
         initComponents();
+        jTabbedPaneDetalhes.remove(painelDetalhes01);
+        jTabbedPaneDetalhes.add(new PainelDetalhesOrcamento(), "01");
         editorCelulaOrcamentoTabelaMedidas();
         tabelaOrcPrincipal.setCellSelectionEnabled(true);
         tabelaOrcPrincipal.getColumnModel().getColumn(6).setCellEditor(new ComboBoxCellEditorMaterial());
@@ -47,39 +35,12 @@ public class PainelOrcamento extends javax.swing.JPanel {
         numeracaoTabelaCalculos();
         atualizarLabelClientes();
         atualizarLabelTiposDeOrc();
-        if (jTextField4.getText() == null || jTextField4.getText().isEmpty() == true) {
-            atualizarTimeInclusao();
-        }
-        clickPainelTabbed();
-
     }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
-        jLabelClienteOrcamento = new javax.swing.JLabel();
-        jTextField8 = new javax.swing.JTextField();
-        jTextField9 = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jTextField10 = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
-        jTextField11 = new javax.swing.JTextField();
-        jLabel11 = new javax.swing.JLabel();
-        jTextField12 = new javax.swing.JTextField();
-        jLabel12 = new javax.swing.JLabel();
-        jTextField13 = new javax.swing.JTextField();
-        jLabel13 = new javax.swing.JLabel();
-        jTextField14 = new javax.swing.JTextField();
-        jLabel14 = new javax.swing.JLabel();
-        jTextField15 = new javax.swing.JTextField();
-        jLabel15 = new javax.swing.JLabel();
-        comboBoxClientes = new javax.swing.JComboBox<>();
-        jTabbedPane1 = new javax.swing.JTabbedPane();
         painelItemOrcamento = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelaOrcPrincipal = new javax.swing.JTable();
@@ -148,7 +109,6 @@ public class PainelOrcamento extends javax.swing.JPanel {
         jCheckBox12 = new javax.swing.JCheckBox();
         jTabbedPaneDetalhes = new javax.swing.JTabbedPane();
         painelDetalhes01 = new javax.swing.JPanel();
-        painelDetalhesOrcamento1 = new Teste.PainelDetalhesOrcamento();
         jPanel7 = new javax.swing.JPanel();
         jButtonPrecoOrc = new javax.swing.JButton();
         jLabel16 = new javax.swing.JLabel();
@@ -162,80 +122,6 @@ public class PainelOrcamento extends javax.swing.JPanel {
         jTextField5 = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-
-        jPanel1.setBackground(new java.awt.Color(176, 176, 176));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel6.setText(" Vendedor");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 50, 60, 30));
-        jPanel1.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 70, 210, 28));
-
-        jLabelClienteOrcamento.setText(" Clientes ()");
-        jPanel1.add(jLabelClienteOrcamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, 20));
-        jPanel1.add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 20, 210, 28));
-        jPanel1.add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 70, 210, 28));
-
-        jLabel8.setText(" Contato");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 0, -1, 30));
-
-        jLabel9.setText(" Agência");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 50, 60, 30));
-
-        jTextField10.setMinimumSize(new java.awt.Dimension(77, 22));
-        jPanel1.add(jTextField10, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 20, 150, 28));
-
-        jLabel10.setText(" Fone");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 6, -1, 20));
-        jPanel1.add(jTextField11, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 70, 170, 28));
-
-        jLabel11.setText(" Orçamento para");
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 50, 100, 30));
-        jPanel1.add(jTextField12, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 20, 150, 28));
-
-        jLabel12.setText(" Celular/Watsapp");
-        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 0, 100, 30));
-        jPanel1.add(jTextField13, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 20, 330, 28));
-
-        jLabel13.setText("Email");
-        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(952, 6, 70, -1));
-
-        jTextField14.setEditable(false);
-        jTextField14.setBackground(new java.awt.Color(236, 236, 236));
-        jTextField14.setForeground(new java.awt.Color(120, 120, 120));
-        jTextField14.setText("14/03/2024-09:32");
-        jTextField14.setFocusable(false);
-        jPanel1.add(jTextField14, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 70, 122, 28));
-
-        jLabel14.setText(" Últ. Movimento");
-        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(1150, 50, -1, 30));
-
-        jTextField15.setEditable(false);
-        jTextField15.setBackground(new java.awt.Color(236, 236, 236));
-        jTextField15.setForeground(new java.awt.Color(120, 120, 120));
-        jTextField15.setText("14/03/2024-09:32");
-        jTextField15.setFocusable(false);
-        jPanel1.add(jTextField15, new org.netbeans.lib.awtextra.AbsoluteConstraints(1150, 70, 130, 28));
-
-        jLabel15.setText(" Inclusão");
-        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 50, 50, 30));
-
-        comboBoxClientes.setEditable(true);
-        comboBoxClientes.setMaximumRowCount(0);
-        comboBoxClientes.setBorder(null);
-        comboBoxClientes.setKeySelectionManager(null);
-        comboBoxClientes.setLightWeightPopupEnabled(false);
-        comboBoxClientes.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
-            public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
-            }
-            public void popupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {
-            }
-            public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
-                comboBoxClientesPopupMenuWillBecomeVisible(evt);
-            }
-        });
-        jPanel1.add(comboBoxClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 410, 30));
-
-        jTabbedPane1.setBackground(new java.awt.Color(176, 176, 176));
 
         painelItemOrcamento.setBackground(new java.awt.Color(176, 176, 176));
 
@@ -284,20 +170,6 @@ public class PainelOrcamento extends javax.swing.JPanel {
             }
         });
         jScrollPane1.setViewportView(tabelaOrcPrincipal);
-        if (tabelaOrcPrincipal.getColumnModel().getColumnCount() > 0) {
-            tabelaOrcPrincipal.getColumnModel().getColumn(0).setMinWidth(25);
-            tabelaOrcPrincipal.getColumnModel().getColumn(0).setPreferredWidth(25);
-            tabelaOrcPrincipal.getColumnModel().getColumn(0).setMaxWidth(26);
-            tabelaOrcPrincipal.getColumnModel().getColumn(3).setMinWidth(40);
-            tabelaOrcPrincipal.getColumnModel().getColumn(3).setPreferredWidth(45);
-            tabelaOrcPrincipal.getColumnModel().getColumn(3).setMaxWidth(60);
-            tabelaOrcPrincipal.getColumnModel().getColumn(4).setMinWidth(40);
-            tabelaOrcPrincipal.getColumnModel().getColumn(4).setPreferredWidth(45);
-            tabelaOrcPrincipal.getColumnModel().getColumn(4).setMaxWidth(60);
-            tabelaOrcPrincipal.getColumnModel().getColumn(5).setMinWidth(40);
-            tabelaOrcPrincipal.getColumnModel().getColumn(5).setPreferredWidth(45);
-            tabelaOrcPrincipal.getColumnModel().getColumn(5).setMaxWidth(60);
-        }
 
         TextFieldQuantidade.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
 
@@ -353,14 +225,6 @@ public class PainelOrcamento extends javax.swing.JPanel {
             }
         });
         jScrollPane2.setViewportView(tabelaAcabamentos);
-        if (tabelaAcabamentos.getColumnModel().getColumnCount() > 0) {
-            tabelaAcabamentos.getColumnModel().getColumn(0).setMinWidth(25);
-            tabelaAcabamentos.getColumnModel().getColumn(0).setPreferredWidth(25);
-            tabelaAcabamentos.getColumnModel().getColumn(0).setMaxWidth(30);
-            tabelaAcabamentos.getColumnModel().getColumn(2).setMinWidth(60);
-            tabelaAcabamentos.getColumnModel().getColumn(2).setPreferredWidth(60);
-            tabelaAcabamentos.getColumnModel().getColumn(2).setMaxWidth(60);
-        }
 
         painelMontagem.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -436,11 +300,6 @@ public class PainelOrcamento extends javax.swing.JPanel {
             }
         });
         jScrollPane4.setViewportView(tabelaCalculosExtras);
-        if (tabelaCalculosExtras.getColumnModel().getColumnCount() > 0) {
-            tabelaCalculosExtras.getColumnModel().getColumn(1).setMinWidth(17);
-            tabelaCalculosExtras.getColumnModel().getColumn(1).setPreferredWidth(17);
-            tabelaCalculosExtras.getColumnModel().getColumn(1).setMaxWidth(17);
-        }
 
         jPanel9.setBackground(new java.awt.Color(240, 240, 240));
 
@@ -519,7 +378,7 @@ public class PainelOrcamento extends javax.swing.JPanel {
             .addGroup(PainelAcabamentoMontagemLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(PainelAcabamentoMontagemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 414, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 574, Short.MAX_VALUE)
                     .addGroup(PainelAcabamentoMontagemLayout.createSequentialGroup()
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -640,35 +499,6 @@ public class PainelOrcamento extends javax.swing.JPanel {
             }
         });
         jScrollPane5.setViewportView(tabelaCalculos);
-        if (tabelaCalculos.getColumnModel().getColumnCount() > 0) {
-            tabelaCalculos.getColumnModel().getColumn(0).setMinWidth(25);
-            tabelaCalculos.getColumnModel().getColumn(0).setPreferredWidth(25);
-            tabelaCalculos.getColumnModel().getColumn(0).setMaxWidth(26);
-            tabelaCalculos.getColumnModel().getColumn(1).setMinWidth(25);
-            tabelaCalculos.getColumnModel().getColumn(1).setPreferredWidth(25);
-            tabelaCalculos.getColumnModel().getColumn(1).setMaxWidth(25);
-            tabelaCalculos.getColumnModel().getColumn(2).setMinWidth(150);
-            tabelaCalculos.getColumnModel().getColumn(2).setPreferredWidth(180);
-            tabelaCalculos.getColumnModel().getColumn(2).setMaxWidth(250);
-            tabelaCalculos.getColumnModel().getColumn(3).setMinWidth(85);
-            tabelaCalculos.getColumnModel().getColumn(3).setPreferredWidth(85);
-            tabelaCalculos.getColumnModel().getColumn(3).setMaxWidth(85);
-            tabelaCalculos.getColumnModel().getColumn(4).setMinWidth(65);
-            tabelaCalculos.getColumnModel().getColumn(4).setPreferredWidth(65);
-            tabelaCalculos.getColumnModel().getColumn(4).setMaxWidth(5);
-            tabelaCalculos.getColumnModel().getColumn(5).setMinWidth(78);
-            tabelaCalculos.getColumnModel().getColumn(5).setPreferredWidth(78);
-            tabelaCalculos.getColumnModel().getColumn(5).setMaxWidth(78);
-            tabelaCalculos.getColumnModel().getColumn(6).setMinWidth(92);
-            tabelaCalculos.getColumnModel().getColumn(6).setPreferredWidth(92);
-            tabelaCalculos.getColumnModel().getColumn(6).setMaxWidth(92);
-            tabelaCalculos.getColumnModel().getColumn(7).setMinWidth(24);
-            tabelaCalculos.getColumnModel().getColumn(7).setPreferredWidth(24);
-            tabelaCalculos.getColumnModel().getColumn(7).setMaxWidth(24);
-            tabelaCalculos.getColumnModel().getColumn(8).setMinWidth(40);
-            tabelaCalculos.getColumnModel().getColumn(8).setPreferredWidth(40);
-            tabelaCalculos.getColumnModel().getColumn(8).setMaxWidth(40);
-        }
 
         jPanel3.setOpaque(false);
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -678,6 +508,7 @@ public class PainelOrcamento extends javax.swing.JPanel {
         jTextField2.setForeground(new java.awt.Color(153, 153, 153));
         jTextField2.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         jTextField2.setText("0,00");
+        jTextField2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         jTextField2.setFocusable(false);
         jPanel3.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 100, 28));
 
@@ -686,6 +517,7 @@ public class PainelOrcamento extends javax.swing.JPanel {
         jTextField6.setForeground(new java.awt.Color(153, 153, 153));
         jTextField6.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         jTextField6.setText("0,00");
+        jTextField6.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         jTextField6.setFocusable(false);
         jPanel3.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, 80, 28));
 
@@ -694,6 +526,7 @@ public class PainelOrcamento extends javax.swing.JPanel {
         jTextField18.setForeground(new java.awt.Color(153, 153, 153));
         jTextField18.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         jTextField18.setText("0,00");
+        jTextField18.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         jTextField18.setFocusable(false);
         jPanel3.add(jTextField18, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 20, 90, 28));
 
@@ -702,6 +535,7 @@ public class PainelOrcamento extends javax.swing.JPanel {
         jTextField19.setForeground(new java.awt.Color(153, 153, 153));
         jTextField19.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         jTextField19.setText("0,00");
+        jTextField19.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         jTextField19.setFocusable(false);
         jPanel3.add(jTextField19, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 20, 100, 28));
 
@@ -710,6 +544,7 @@ public class PainelOrcamento extends javax.swing.JPanel {
         jTextField20.setForeground(new java.awt.Color(153, 153, 153));
         jTextField20.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         jTextField20.setText("0,00");
+        jTextField20.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         jTextField20.setFocusable(false);
         jPanel3.add(jTextField20, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 20, 90, 28));
 
@@ -718,6 +553,7 @@ public class PainelOrcamento extends javax.swing.JPanel {
         jTextField21.setForeground(new java.awt.Color(153, 153, 153));
         jTextField21.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         jTextField21.setText("0,00");
+        jTextField21.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         jTextField21.setFocusable(false);
         jPanel3.add(jTextField21, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 20, 110, 28));
 
@@ -726,6 +562,7 @@ public class PainelOrcamento extends javax.swing.JPanel {
         jTextField22.setForeground(new java.awt.Color(153, 153, 153));
         jTextField22.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         jTextField22.setText("0,00");
+        jTextField22.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         jTextField22.setFocusable(false);
         jPanel3.add(jTextField22, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 20, 120, 28));
 
@@ -772,7 +609,7 @@ public class PainelOrcamento extends javax.swing.JPanel {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 522, Short.MAX_VALUE)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 682, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -910,7 +747,7 @@ public class PainelOrcamento extends javax.swing.JPanel {
                 .addComponent(jCheckBox11)
                 .addGap(12, 12, 12)
                 .addComponent(jCheckBox12)
-                .addContainerGap(239, Short.MAX_VALUE))
+                .addContainerGap(399, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
@@ -985,11 +822,11 @@ public class PainelOrcamento extends javax.swing.JPanel {
         painelDetalhes01.setLayout(painelDetalhes01Layout);
         painelDetalhes01Layout.setHorizontalGroup(
             painelDetalhes01Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(painelDetalhesOrcamento1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
+            .addGap(0, 600, Short.MAX_VALUE)
         );
         painelDetalhes01Layout.setVerticalGroup(
             painelDetalhes01Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(painelDetalhesOrcamento1, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
+            .addGap(0, 175, Short.MAX_VALUE)
         );
 
         jTabbedPaneDetalhes.addTab("01", painelDetalhes01);
@@ -1097,7 +934,7 @@ public class PainelOrcamento extends javax.swing.JPanel {
                             .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 705, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addGap(0, 518, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelItemOrcamentoLayout.createSequentialGroup()
                         .addGroup(painelItemOrcamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
@@ -1121,7 +958,7 @@ public class PainelOrcamento extends javax.swing.JPanel {
                         .addGroup(painelItemOrcamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(491, Short.MAX_VALUE))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         painelItemOrcamentoLayout.setVerticalGroup(
             painelItemOrcamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1146,7 +983,7 @@ public class PainelOrcamento extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(painelItemOrcamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(painelItemOrcamentoLayout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jTabbedPaneDetalhes, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1155,27 +992,19 @@ public class PainelOrcamento extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        jTabbedPaneDetalhes.getAccessibleContext().setAccessibleName("01");
-
-        jTabbedPane1.addTab("01", painelItemOrcamento);
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jTabbedPane1)
-                .addContainerGap())
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGap(0, 1835, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(painelItemOrcamento, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTabbedPane1)
-                .addContainerGap())
+            .addGap(0, 845, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(painelItemOrcamento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -1187,13 +1016,17 @@ public class PainelOrcamento extends javax.swing.JPanel {
         tabelaAcabamentos.putClientProperty("terminateEditOnFocusLost", Boolean.TRUE);
     }//GEN-LAST:event_tabelaAcabamentosFocusLost
 
+    private void tabelaParametrosFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tabelaParametrosFocusLost
+        tabelaParametros.putClientProperty("terminateEditOnFocusLost", Boolean.TRUE);
+    }//GEN-LAST:event_tabelaParametrosFocusLost
+
     private void tabelaCalculosExtrasFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tabelaCalculosExtrasFocusLost
         tabelaCalculosExtras.putClientProperty("terminateEditOnFocusLost", Boolean.TRUE);
     }//GEN-LAST:event_tabelaCalculosExtrasFocusLost
 
-    private void tabelaParametrosFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tabelaParametrosFocusLost
-        tabelaParametros.putClientProperty("terminateEditOnFocusLost", Boolean.TRUE);
-    }//GEN-LAST:event_tabelaParametrosFocusLost
+    private void tabelaCalculosFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tabelaCalculosFocusLost
+        tabelaCalculos.putClientProperty("terminateEditOnFocusLost", Boolean.TRUE);
+    }//GEN-LAST:event_tabelaCalculosFocusLost
 
     private void comboBoxTOPainelOrcamentoPopupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_comboBoxTOPainelOrcamentoPopupMenuWillBecomeVisible
         PainelTipoDeOrcamento customPanelTipoOrcamento = new PainelTipoDeOrcamento();
@@ -1223,40 +1056,6 @@ public class PainelOrcamento extends javax.swing.JPanel {
         });
     }//GEN-LAST:event_comboBoxTOPainelOrcamentoPopupMenuWillBecomeVisible
 
-    private void comboBoxClientesPopupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_comboBoxClientesPopupMenuWillBecomeVisible
-        PainelListaDeClientes customPanelClientes = new PainelListaDeClientes();
-
-        JDialog dialogClientes = new JDialog();
-        dialogClientes.setTitle("Lista de Clientes");
-        customPanelClientes.jButtonAlterarClientes.setVisible(false);
-        customPanelClientes.jButtonAlterarClientes.setEnabled(false);
-        dialogClientes.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-        dialogClientes.getContentPane().add(customPanelClientes);
-        dialogClientes.pack();
-        dialogClientes.setLocationRelativeTo(null);
-        dialogClientes.setModal(true);
-        PainelListaDeClientes.passarClienteParaOrc(dialogClientes);
-        dialogClientes.setVisible(true);
-
-        dialogClientes.addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowClosed(WindowEvent e) {
-                comboBoxClientes.requestFocus();
-            }
-        });
-
-        comboBoxClientes.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                dialogClientes.dispose();
-            }
-        });
-    }//GEN-LAST:event_comboBoxClientesPopupMenuWillBecomeVisible
-
-    private void tabelaCalculosFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tabelaCalculosFocusLost
-        tabelaCalculos.putClientProperty("terminateEditOnFocusLost", Boolean.TRUE);
-    }//GEN-LAST:event_tabelaCalculosFocusLost
-
     private void jTextField23MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField23MouseClicked
         TextFieldQuantidade.requestFocus();
     }//GEN-LAST:event_jTextField23MouseClicked
@@ -1265,8 +1064,7 @@ public class PainelOrcamento extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel PainelAcabamentoMontagem;
     private javax.swing.JTextField TextFieldQuantidade;
-    public static javax.swing.JComboBox<String> comboBoxClientes;
-    public static javax.swing.JComboBox<String> comboBoxTOPainelOrcamento;
+    private javax.swing.JComboBox<String> comboBoxTOPainelOrcamento;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton3;
@@ -1287,12 +1085,6 @@ public class PainelOrcamento extends javax.swing.JPanel {
     private javax.swing.JCheckBox jCheckBox8;
     private javax.swing.JCheckBox jCheckBox9;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
@@ -1309,12 +1101,7 @@ public class PainelOrcamento extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    public static javax.swing.JLabel jLabelClienteOrcamento;
-    public static javax.swing.JLabel jLabelTipoOrcamento;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel jLabelTipoOrcamento;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
@@ -1327,16 +1114,9 @@ public class PainelOrcamento extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTabbedPane jTabbedPaneDetalhes;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField10;
-    private javax.swing.JTextField jTextField11;
-    private javax.swing.JTextField jTextField12;
-    private javax.swing.JTextField jTextField13;
-    private javax.swing.JTextField jTextField14;
-    private javax.swing.JTextField jTextField15;
     private javax.swing.JTextField jTextField18;
     private javax.swing.JTextField jTextField19;
     private javax.swing.JTextField jTextField2;
@@ -1352,20 +1132,16 @@ public class PainelOrcamento extends javax.swing.JPanel {
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
     private util.JformatedTextFieldPreco jformatedTextFieldPrecoUnitario;
     private util.JformatedTextFieldPreco jformatedTextFieldPrecoVenda;
     private javax.swing.JPanel painelDetalhes01;
-    private Teste.PainelDetalhesOrcamento painelDetalhesOrcamento1;
     private javax.swing.JPanel painelItemOrcamento;
     private javax.swing.JPanel painelMontagem;
     private Teste.PainelVendaOrcamento painelVendaOrcamento1;
     private javax.swing.JTable tabelaAcabamentos;
     private javax.swing.JTable tabelaCalculos;
     private javax.swing.JTable tabelaCalculosExtras;
-    public static javax.swing.JTable tabelaOrcPrincipal;
+    private javax.swing.JTable tabelaOrcPrincipal;
     private javax.swing.JTable tabelaParametros;
     // End of variables declaration//GEN-END:variables
 
@@ -1585,51 +1361,4 @@ public class PainelOrcamento extends javax.swing.JPanel {
         });
     }
 
-    private void atualizarTimeInclusao() {
-        Date dataSistema = new Date();
-        SimpleDateFormat formatoData = new SimpleDateFormat("dd/MM/yyyy");
-        SimpleDateFormat formatoHora = new SimpleDateFormat("HH:mm");
-        String dataFormatada = formatoData.format(dataSistema);
-        String horaFormatada = formatoHora.format(dataSistema);
-        jTextField14.setText(dataFormatada + " - " + horaFormatada);
-
-        Timer timer = new Timer(1000, new hora());
-        timer.start();
-    }
-
-    class hora implements ActionListener {
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            if (jTextField4.getText().isEmpty()) {
-                Calendar now = Calendar.getInstance();
-                SimpleDateFormat formatoHora = new SimpleDateFormat("HH:mm");
-                String horaFormatada = formatoHora.format(now.getTime());
-                jTextField14.setText(jTextField14.getText().split(" - ")[0] + " - " + horaFormatada);
-            }
-        }
-    }
-
-    public void addAbaItem() {
-        ClonePainelOrcamentoItem novoPainel = new ClonePainelOrcamentoItem();
-        listaPaineis.add(novoPainel);
-        jTabbedPane1.addTab("0" + proximoNumeroAba, novoPainel);
-        jTabbedPane1.setSelectedIndex(jTabbedPane1.getTabCount() - 1);
-        proximoNumeroAba++;
-    }
-
-    private void clickPainelTabbed() {
-        jTabbedPane1.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                int tabIndex = jTabbedPane1.indexAtLocation(e.getX(), e.getY());
-                if (tabIndex != -1 && SwingUtilities.isRightMouseButton(e) && e.getClickCount() == 1) {
-                    int option = JOptionPane.showConfirmDialog(null, "Desejar Adicionar outro Item ?", "Confirmação", JOptionPane.YES_NO_OPTION);
-                    if (option == JOptionPane.YES_OPTION) {
-                        addAbaItem();
-                    }
-                }
-            }
-        });
-    }
 }

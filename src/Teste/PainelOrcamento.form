@@ -1726,15 +1726,19 @@
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <EmptySpace min="0" pref="600" max="32767" attributes="0"/>
+                          <Component id="painelDetalhesOrcamento1" alignment="1" pref="600" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <EmptySpace min="0" pref="175" max="32767" attributes="0"/>
+                          <Component id="painelDetalhesOrcamento1" alignment="0" pref="175" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
                   </Layout>
+                  <SubComponents>
+                    <Component class="Teste.PainelDetalhesOrcamento" name="painelDetalhesOrcamento1">
+                    </Component>
+                  </SubComponents>
                 </Container>
               </SubComponents>
             </Container>
@@ -1806,6 +1810,9 @@
                   </Properties>
                 </Component>
                 <Component class="Teste.PainelVendaOrcamento" name="painelVendaOrcamento1">
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_SerializeTo" type="java.lang.String" value="PainelOrcamento_painelVendaOrcamento1"/>
+                  </AuxValues>
                 </Component>
                 <Component class="util.JformatedTextFieldPreco" name="jformatedTextFieldPrecoVenda">
                   <Properties>

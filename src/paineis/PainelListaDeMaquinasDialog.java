@@ -121,5 +121,4 @@ public class PainelListaDeMaquinasDialog extends javax.swing.JPanel {
             }
         });
     }
-
 }
