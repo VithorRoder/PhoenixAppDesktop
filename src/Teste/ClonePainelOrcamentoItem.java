@@ -109,6 +109,7 @@ public class ClonePainelOrcamentoItem extends javax.swing.JPanel {
         jCheckBox12 = new javax.swing.JCheckBox();
         jTabbedPaneDetalhes = new javax.swing.JTabbedPane();
         painelDetalhes01 = new javax.swing.JPanel();
+        painelDetalhesOrcamento1 = new Teste.PainelDetalhesOrcamento();
         jPanel7 = new javax.swing.JPanel();
         jButtonPrecoOrc = new javax.swing.JButton();
         jLabel16 = new javax.swing.JLabel();
@@ -822,11 +823,11 @@ public class ClonePainelOrcamentoItem extends javax.swing.JPanel {
         painelDetalhes01.setLayout(painelDetalhes01Layout);
         painelDetalhes01Layout.setHorizontalGroup(
             painelDetalhes01Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
+            .addComponent(painelDetalhesOrcamento1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
         );
         painelDetalhes01Layout.setVerticalGroup(
             painelDetalhes01Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 175, Short.MAX_VALUE)
+            .addComponent(painelDetalhesOrcamento1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
         );
 
         jTabbedPaneDetalhes.addTab("01", painelDetalhes01);
@@ -1064,7 +1065,7 @@ public class ClonePainelOrcamentoItem extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel PainelAcabamentoMontagem;
     private javax.swing.JTextField TextFieldQuantidade;
-    private javax.swing.JComboBox<String> comboBoxTOPainelOrcamento;
+    public static javax.swing.JComboBox<String> comboBoxTOPainelOrcamento;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton3;
@@ -1101,7 +1102,7 @@ public class ClonePainelOrcamentoItem extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabelTipoOrcamento;
+    public static javax.swing.JLabel jLabelTipoOrcamento;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
@@ -1135,13 +1136,14 @@ public class ClonePainelOrcamentoItem extends javax.swing.JPanel {
     private util.JformatedTextFieldPreco jformatedTextFieldPrecoUnitario;
     private util.JformatedTextFieldPreco jformatedTextFieldPrecoVenda;
     private javax.swing.JPanel painelDetalhes01;
+    private Teste.PainelDetalhesOrcamento painelDetalhesOrcamento1;
     private javax.swing.JPanel painelItemOrcamento;
     private javax.swing.JPanel painelMontagem;
     private Teste.PainelVendaOrcamento painelVendaOrcamento1;
     private javax.swing.JTable tabelaAcabamentos;
     private javax.swing.JTable tabelaCalculos;
     private javax.swing.JTable tabelaCalculosExtras;
-    private javax.swing.JTable tabelaOrcPrincipal;
+    public static javax.swing.JTable tabelaOrcPrincipal;
     private javax.swing.JTable tabelaParametros;
     // End of variables declaration//GEN-END:variables
 

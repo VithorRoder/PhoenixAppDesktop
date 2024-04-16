@@ -678,6 +678,7 @@ public class PainelOrcamento extends javax.swing.JPanel {
         jTextField2.setForeground(new java.awt.Color(153, 153, 153));
         jTextField2.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         jTextField2.setText("0,00");
+        jTextField2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         jTextField2.setFocusable(false);
         jPanel3.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 100, 28));
 
@@ -686,6 +687,7 @@ public class PainelOrcamento extends javax.swing.JPanel {
         jTextField6.setForeground(new java.awt.Color(153, 153, 153));
         jTextField6.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         jTextField6.setText("0,00");
+        jTextField6.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         jTextField6.setFocusable(false);
         jPanel3.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, 80, 28));
 
@@ -694,6 +696,7 @@ public class PainelOrcamento extends javax.swing.JPanel {
         jTextField18.setForeground(new java.awt.Color(153, 153, 153));
         jTextField18.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         jTextField18.setText("0,00");
+        jTextField18.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         jTextField18.setFocusable(false);
         jPanel3.add(jTextField18, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 20, 90, 28));
 
@@ -702,6 +705,7 @@ public class PainelOrcamento extends javax.swing.JPanel {
         jTextField19.setForeground(new java.awt.Color(153, 153, 153));
         jTextField19.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         jTextField19.setText("0,00");
+        jTextField19.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         jTextField19.setFocusable(false);
         jPanel3.add(jTextField19, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 20, 100, 28));
 
@@ -710,6 +714,7 @@ public class PainelOrcamento extends javax.swing.JPanel {
         jTextField20.setForeground(new java.awt.Color(153, 153, 153));
         jTextField20.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         jTextField20.setText("0,00");
+        jTextField20.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         jTextField20.setFocusable(false);
         jPanel3.add(jTextField20, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 20, 90, 28));
 
@@ -718,6 +723,7 @@ public class PainelOrcamento extends javax.swing.JPanel {
         jTextField21.setForeground(new java.awt.Color(153, 153, 153));
         jTextField21.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         jTextField21.setText("0,00");
+        jTextField21.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         jTextField21.setFocusable(false);
         jPanel3.add(jTextField21, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 20, 110, 28));
 
@@ -726,6 +732,7 @@ public class PainelOrcamento extends javax.swing.JPanel {
         jTextField22.setForeground(new java.awt.Color(153, 153, 153));
         jTextField22.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         jTextField22.setText("0,00");
+        jTextField22.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         jTextField22.setFocusable(false);
         jPanel3.add(jTextField22, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 20, 120, 28));
 
