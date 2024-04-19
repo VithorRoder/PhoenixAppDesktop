@@ -1,12 +1,14 @@
 package paineis;
 
-import static Teste.PainelOrcamento.comboBoxTOPainelOrcamento;
-import static Teste.PainelOrcamento.jLabelTipoOrcamento;
+//import static Teste.PainelOrcamento.comboBoxTOPainelOrcamento;
+//import static Teste.PainelOrcamento.jLabelTipoOrcamento;
 import controller.TiposOrcamentosController;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.List;
+import javax.swing.JComboBox;
 import javax.swing.JDialog;
+import javax.swing.JLabel;
 import javax.swing.JTable;
 import model.TiposOrcamentos;
 import table.TiposOrcamentosTabela;
@@ -78,7 +80,7 @@ public class PainelTipoDeOrcamento extends javax.swing.JPanel {
         }
     }
 
-    public static final void passarTipoOrcamentoParaOrc(JDialog dialog) {
+    public static final void passarTipoOrcamentoParaOrc(JDialog dialog, JComboBox comboBoxTOPainelOrcamento, JLabel jLabelTipoOrcamento) {
         TabelaTiposOrcamentos.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {

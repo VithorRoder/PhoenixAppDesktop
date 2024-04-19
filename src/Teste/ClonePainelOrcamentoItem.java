@@ -46,7 +46,7 @@ public class ClonePainelOrcamentoItem extends javax.swing.JPanel {
         tabelaOrcPrincipal = new javax.swing.JTable();
         TextFieldQuantidade = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        jLabelTipoOrcamento = new javax.swing.JLabel();
+        jLabelTipoOrcamentoClone = new javax.swing.JLabel();
         jTextField3 = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jTabbedPane2 = new javax.swing.JTabbedPane();
@@ -190,7 +190,7 @@ public class ClonePainelOrcamentoItem extends javax.swing.JPanel {
 
         jLabel1.setText(" Quantidade");
 
-        jLabelTipoOrcamento.setText(" Tipo de Orçamento ()");
+        jLabelTipoOrcamentoClone.setText(" Tipo de Orçamento ()");
 
         jLabel3.setText(" Título do serviço");
 
@@ -1002,7 +1002,7 @@ public class ClonePainelOrcamentoItem extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(painelItemOrcamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(comboBoxTOPainelOrcamento, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabelTipoOrcamento, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabelTipoOrcamentoClone, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(painelItemOrcamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 575, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1023,7 +1023,7 @@ public class ClonePainelOrcamentoItem extends javax.swing.JPanel {
                 .addGroup(painelItemOrcamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(painelItemOrcamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabelTipoOrcamento)
+                        .addComponent(jLabelTipoOrcamentoClone)
                         .addComponent(jLabel3)
                         .addComponent(jLabel4)
                         .addComponent(jLabel5))
@@ -1095,7 +1095,7 @@ public class ClonePainelOrcamentoItem extends javax.swing.JPanel {
         dialogOrc.pack();
         dialogOrc.setLocationRelativeTo(null);
         dialogOrc.setModal(true);
-        PainelTipoDeOrcamento.passarTipoOrcamentoParaOrc(dialogOrc);
+        PainelTipoDeOrcamento.passarTipoOrcamentoParaOrc(dialogOrc,comboBoxTOPainelOrcamento,jLabelTipoOrcamentoClone);
         dialogOrc.setVisible(true);
 
         dialogOrc.addWindowListener(new WindowAdapter() {
@@ -1121,7 +1121,7 @@ public class ClonePainelOrcamentoItem extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel PainelAcabamentoMontagem;
     private javax.swing.JTextField TextFieldQuantidade;
-    public static javax.swing.JComboBox<String> comboBoxTOPainelOrcamento;
+    public javax.swing.JComboBox<String> comboBoxTOPainelOrcamento;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton3;
@@ -1158,7 +1158,7 @@ public class ClonePainelOrcamentoItem extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    public static javax.swing.JLabel jLabelTipoOrcamento;
+    public javax.swing.JLabel jLabelTipoOrcamentoClone;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
@@ -1414,7 +1414,7 @@ public class ClonePainelOrcamentoItem extends javax.swing.JPanel {
             }
 
             private void updateLabel() {
-                jLabelTipoOrcamento.setText(" Tipo de Orçamento ()");
+                jLabelTipoOrcamentoClone.setText(" Tipo de Orçamento ()");
             }
         });
     }

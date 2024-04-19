@@ -67,7 +67,7 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="comboBoxTOPainelOrcamento" alignment="0" min="-2" pref="350" max="-2" attributes="0"/>
-                              <Component id="jLabelTipoOrcamento" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
+                              <Component id="jLabelTipoOrcamentoClone" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -96,7 +96,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                           <Component id="jLabel1" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                          <Component id="jLabelTipoOrcamento" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelTipoOrcamentoClone" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -254,12 +254,12 @@
             <Property name="text" type="java.lang.String" value=" Quantidade"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabelTipoOrcamento">
+        <Component class="javax.swing.JLabel" name="jLabelTipoOrcamentoClone">
           <Properties>
             <Property name="text" type="java.lang.String" value=" Tipo de Or&#xe7;amento ()"/>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextField3">
@@ -1581,7 +1581,7 @@
           </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextField23">

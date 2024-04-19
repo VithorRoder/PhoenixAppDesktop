@@ -992,7 +992,7 @@ public class PainelOrcamento extends javax.swing.JPanel {
         painelDetalhes01.setLayout(painelDetalhes01Layout);
         painelDetalhes01Layout.setHorizontalGroup(
             painelDetalhes01Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(painelDetalhesOrcamento1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
+            .addComponent(painelDetalhesOrcamento1, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
         );
         painelDetalhes01Layout.setVerticalGroup(
             painelDetalhes01Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1212,7 +1212,7 @@ public class PainelOrcamento extends javax.swing.JPanel {
         dialogOrc.pack();
         dialogOrc.setLocationRelativeTo(null);
         dialogOrc.setModal(true);
-        PainelTipoDeOrcamento.passarTipoOrcamentoParaOrc(dialogOrc);
+        PainelTipoDeOrcamento.passarTipoOrcamentoParaOrc(dialogOrc,comboBoxTOPainelOrcamento,jLabelTipoOrcamento);
         dialogOrc.setVisible(true);
 
         dialogOrc.addWindowListener(new WindowAdapter() {
@@ -1273,7 +1273,7 @@ public class PainelOrcamento extends javax.swing.JPanel {
     private javax.swing.JPanel PainelAcabamentoMontagem;
     private javax.swing.JTextField TextFieldQuantidade;
     public static javax.swing.JComboBox<String> comboBoxClientes;
-    public static javax.swing.JComboBox<String> comboBoxTOPainelOrcamento;
+    public javax.swing.JComboBox<String> comboBoxTOPainelOrcamento;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton3;
@@ -1320,7 +1320,7 @@ public class PainelOrcamento extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     public static javax.swing.JLabel jLabelClienteOrcamento;
-    public static javax.swing.JLabel jLabelTipoOrcamento;
+    public javax.swing.JLabel jLabelTipoOrcamento;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
