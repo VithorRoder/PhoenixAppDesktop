@@ -171,6 +171,20 @@ public class ClonePainelOrcamentoItem extends javax.swing.JPanel {
             }
         });
         jScrollPane1.setViewportView(tabelaOrcPrincipal);
+        if (tabelaOrcPrincipal.getColumnModel().getColumnCount() > 0) {
+            tabelaOrcPrincipal.getColumnModel().getColumn(0).setMinWidth(25);
+            tabelaOrcPrincipal.getColumnModel().getColumn(0).setPreferredWidth(25);
+            tabelaOrcPrincipal.getColumnModel().getColumn(0).setMaxWidth(25);
+            tabelaOrcPrincipal.getColumnModel().getColumn(3).setMinWidth(40);
+            tabelaOrcPrincipal.getColumnModel().getColumn(3).setPreferredWidth(45);
+            tabelaOrcPrincipal.getColumnModel().getColumn(3).setMaxWidth(60);
+            tabelaOrcPrincipal.getColumnModel().getColumn(4).setMinWidth(40);
+            tabelaOrcPrincipal.getColumnModel().getColumn(4).setPreferredWidth(45);
+            tabelaOrcPrincipal.getColumnModel().getColumn(4).setMaxWidth(60);
+            tabelaOrcPrincipal.getColumnModel().getColumn(5).setMinWidth(40);
+            tabelaOrcPrincipal.getColumnModel().getColumn(5).setPreferredWidth(45);
+            tabelaOrcPrincipal.getColumnModel().getColumn(5).setMaxWidth(60);
+        }
 
         TextFieldQuantidade.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
 
@@ -226,6 +240,14 @@ public class ClonePainelOrcamentoItem extends javax.swing.JPanel {
             }
         });
         jScrollPane2.setViewportView(tabelaAcabamentos);
+        if (tabelaAcabamentos.getColumnModel().getColumnCount() > 0) {
+            tabelaAcabamentos.getColumnModel().getColumn(0).setMinWidth(25);
+            tabelaAcabamentos.getColumnModel().getColumn(0).setPreferredWidth(25);
+            tabelaAcabamentos.getColumnModel().getColumn(0).setMaxWidth(30);
+            tabelaAcabamentos.getColumnModel().getColumn(2).setMinWidth(60);
+            tabelaAcabamentos.getColumnModel().getColumn(2).setPreferredWidth(60);
+            tabelaAcabamentos.getColumnModel().getColumn(2).setMaxWidth(60);
+        }
 
         painelMontagem.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -301,6 +323,11 @@ public class ClonePainelOrcamentoItem extends javax.swing.JPanel {
             }
         });
         jScrollPane4.setViewportView(tabelaCalculosExtras);
+        if (tabelaCalculosExtras.getColumnModel().getColumnCount() > 0) {
+            tabelaCalculosExtras.getColumnModel().getColumn(1).setMinWidth(17);
+            tabelaCalculosExtras.getColumnModel().getColumn(1).setPreferredWidth(17);
+            tabelaCalculosExtras.getColumnModel().getColumn(1).setMaxWidth(17);
+        }
 
         jPanel9.setBackground(new java.awt.Color(240, 240, 240));
 
@@ -500,6 +527,35 @@ public class ClonePainelOrcamentoItem extends javax.swing.JPanel {
             }
         });
         jScrollPane5.setViewportView(tabelaCalculos);
+        if (tabelaCalculos.getColumnModel().getColumnCount() > 0) {
+            tabelaCalculos.getColumnModel().getColumn(0).setMinWidth(25);
+            tabelaCalculos.getColumnModel().getColumn(0).setPreferredWidth(25);
+            tabelaCalculos.getColumnModel().getColumn(0).setMaxWidth(26);
+            tabelaCalculos.getColumnModel().getColumn(1).setMinWidth(25);
+            tabelaCalculos.getColumnModel().getColumn(1).setPreferredWidth(25);
+            tabelaCalculos.getColumnModel().getColumn(1).setMaxWidth(25);
+            tabelaCalculos.getColumnModel().getColumn(2).setMinWidth(150);
+            tabelaCalculos.getColumnModel().getColumn(2).setPreferredWidth(180);
+            tabelaCalculos.getColumnModel().getColumn(2).setMaxWidth(250);
+            tabelaCalculos.getColumnModel().getColumn(3).setMinWidth(85);
+            tabelaCalculos.getColumnModel().getColumn(3).setPreferredWidth(85);
+            tabelaCalculos.getColumnModel().getColumn(3).setMaxWidth(85);
+            tabelaCalculos.getColumnModel().getColumn(4).setMinWidth(65);
+            tabelaCalculos.getColumnModel().getColumn(4).setPreferredWidth(65);
+            tabelaCalculos.getColumnModel().getColumn(4).setMaxWidth(5);
+            tabelaCalculos.getColumnModel().getColumn(5).setMinWidth(78);
+            tabelaCalculos.getColumnModel().getColumn(5).setPreferredWidth(78);
+            tabelaCalculos.getColumnModel().getColumn(5).setMaxWidth(78);
+            tabelaCalculos.getColumnModel().getColumn(6).setMinWidth(92);
+            tabelaCalculos.getColumnModel().getColumn(6).setPreferredWidth(92);
+            tabelaCalculos.getColumnModel().getColumn(6).setMaxWidth(92);
+            tabelaCalculos.getColumnModel().getColumn(7).setMinWidth(24);
+            tabelaCalculos.getColumnModel().getColumn(7).setPreferredWidth(24);
+            tabelaCalculos.getColumnModel().getColumn(7).setMaxWidth(24);
+            tabelaCalculos.getColumnModel().getColumn(8).setMinWidth(40);
+            tabelaCalculos.getColumnModel().getColumn(8).setPreferredWidth(40);
+            tabelaCalculos.getColumnModel().getColumn(8).setMaxWidth(40);
+        }
 
         jPanel3.setOpaque(false);
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
