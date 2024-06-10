@@ -1,27 +1,29 @@
 package tabbedPaneRaven;
 
+import Teste.PainelOrcamento;
 import javax.swing.*;
 import javax.swing.plaf.basic.BasicButtonUI;
 import java.awt.*;
 import java.awt.event.*;
 
-public class ButtonTabComponent extends JPanel {
+public class ButtonTabComponentOrcamento extends JPanel {
 
     private final JTabbedPane pane;
+    private final PainelOrcamento painelOrcamento;
 
-    public ButtonTabComponent(final JTabbedPane pane) {
-
+    public ButtonTabComponentOrcamento(final JTabbedPane pane, PainelOrcamento painelOrcamento) {
         super(new FlowLayout(FlowLayout.LEFT, 0, 0));
         if (pane == null) {
             throw new NullPointerException("TabbedPane is null");
         }
         this.pane = pane;
+        this.painelOrcamento = painelOrcamento;
         setOpaque(false);
 
         JLabel label = new JLabel() {
             @Override
             public String getText() {
-                int i = pane.indexOfTabComponent(ButtonTabComponent.this);
+                int i = pane.indexOfTabComponent(ButtonTabComponentOrcamento.this);
                 if (i != -1) {
                     return pane.getTitleAt(i);
                 }
@@ -31,14 +33,12 @@ public class ButtonTabComponent extends JPanel {
 
         Font tabFont = new Font("Arial", Font.BOLD, 14);
         label.setFont(tabFont);
-
         add(label);
 
         label.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 13));
         JButton button = new TabButton();
         add(button);
         setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
-
     }
 
     private class TabButton extends JButton implements ActionListener {
@@ -61,12 +61,17 @@ public class ButtonTabComponent extends JPanel {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            int tome = JOptionPane.showConfirmDialog(null, "Deseja Remover a Aba Selecionada ?", "Excluir Aba", JOptionPane.YES_NO_OPTION);
-            if (tome == JOptionPane.YES_OPTION) {
-                int i = pane.indexOfTabComponent(ButtonTabComponent.this);
-                if (i != -1) {
-                    pane.remove(i);
+            if (pane.getTabCount() > 1) {
+                int tome = JOptionPane.showConfirmDialog(null, "Deseja Remover a Aba Selecionada?", "Excluir Aba", JOptionPane.YES_NO_OPTION);
+                if (tome == JOptionPane.YES_OPTION) {
+                    int i = pane.indexOfTabComponent(ButtonTabComponentOrcamento.this);
+                    if (i != -1) {
+                        pane.remove(i);
+                        painelOrcamento.updateTabTitles(); // Atualiza os títulos das abas
+                    }
                 }
+            } else {
+                showWarningDialog();
             }
         }
 
@@ -94,5 +99,13 @@ public class ButtonTabComponent extends JPanel {
             }
         };
 
+        private void showWarningDialog() {
+            JOptionPane.showMessageDialog(
+                    null,
+                    "Não é possível remover a Aba.",
+                    "Aviso",
+                    JOptionPane.WARNING_MESSAGE
+            );
+        }
     }
 }

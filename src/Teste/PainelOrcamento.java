@@ -27,7 +27,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.text.JTextComponent;
 import paineis.PainelListaDeClientes;
 import paineis.PainelTipoDeOrcamento;
-import tabbedPaneRaven.ButtonTabComponent;
+import tabbedPaneRaven.ButtonTabComponentOrcamento;
 
 public class PainelOrcamento extends javax.swing.JPanel {
 
@@ -54,6 +54,7 @@ public class PainelOrcamento extends javax.swing.JPanel {
             atualizarTimeInclusao();
         }
         clickPainelTabbed();
+        updateButtonTab();
 
     }
 
@@ -1626,6 +1627,7 @@ public class PainelOrcamento extends javax.swing.JPanel {
         jTabbedPaneOrcTotal.addTab("0" + proximoNumeroAba, novoPainel);
         jTabbedPaneOrcTotal.setSelectedIndex(jTabbedPaneOrcTotal.getTabCount() - 1);
         proximoNumeroAba++;
+        addCloseButtonOnJTabbedPane();
     }
 
     private void clickPainelTabbed() {
@@ -1634,7 +1636,7 @@ public class PainelOrcamento extends javax.swing.JPanel {
             public void mouseClicked(MouseEvent e) {
                 int tabIndex = jTabbedPaneOrcTotal.indexAtLocation(e.getX(), e.getY());
                 if (tabIndex != -1 && SwingUtilities.isRightMouseButton(e) && e.getClickCount() == 1) {
-                    int option = JOptionPane.showConfirmDialog(null, "Desejar Adicionar outro Item ?", "Confirmação", JOptionPane.YES_NO_OPTION);
+                    int option = JOptionPane.showConfirmDialog(null, "Desejar Adicionar outro Item?", "Confirmação", JOptionPane.YES_NO_OPTION);
                     if (option == JOptionPane.YES_OPTION) {
                         addAbaItem();
                     }
@@ -1646,10 +1648,10 @@ public class PainelOrcamento extends javax.swing.JPanel {
     private void addCloseButtonOnJTabbedPane() {
         int selectedTabIndex = jTabbedPaneOrcTotal.getSelectedIndex();
         if (selectedTabIndex != -1) {
-            ButtonTabComponent selectedTabComponent = (ButtonTabComponent) jTabbedPaneOrcTotal.getTabComponentAt(selectedTabIndex);
+            ButtonTabComponentOrcamento selectedTabComponent = (ButtonTabComponentOrcamento) jTabbedPaneOrcTotal.getTabComponentAt(selectedTabIndex);
             if (selectedTabComponent == null) {
-                ButtonTabComponent buttonTabComponent = new ButtonTabComponent(jTabbedPaneOrcTotal);
-                jTabbedPaneOrcTotal.setTabComponentAt(selectedTabIndex, buttonTabComponent);
+                ButtonTabComponentOrcamento buttonTabComponentOrcamento = new ButtonTabComponentOrcamento(jTabbedPaneOrcTotal, this);
+                jTabbedPaneOrcTotal.setTabComponentAt(selectedTabIndex, buttonTabComponentOrcamento);
             }
         }
     }
@@ -1661,8 +1663,8 @@ public class PainelOrcamento extends javax.swing.JPanel {
             // Remover o ButtonTabComponent da aba anteriormente selecionada, se houver
             for (int i = 0; i < jTabbedPaneOrcTotal.getTabCount(); i++) {
                 if (i != selectedTabIndex) {
-                    ButtonTabComponent tabComponent = (ButtonTabComponent) jTabbedPaneOrcTotal.getTabComponentAt(i);
-                    if (tabComponent != null) {
+                    ButtonTabComponentOrcamento tabComponentOrcamento = (ButtonTabComponentOrcamento) jTabbedPaneOrcTotal.getTabComponentAt(i);
+                    if (tabComponentOrcamento != null) {
                         jTabbedPaneOrcTotal.setTabComponentAt(i, null);
                     }
                 }
@@ -1670,12 +1672,19 @@ public class PainelOrcamento extends javax.swing.JPanel {
 
             // Adicionar o ButtonTabComponent à aba selecionada
             if (selectedTabIndex != -1) {
-                ButtonTabComponent selectedTabComponent = (ButtonTabComponent) jTabbedPaneOrcTotal.getTabComponentAt(selectedTabIndex);
+                ButtonTabComponentOrcamento selectedTabComponent = (ButtonTabComponentOrcamento) jTabbedPaneOrcTotal.getTabComponentAt(selectedTabIndex);
                 if (selectedTabComponent == null) {
-                    ButtonTabComponent buttonTabComponent = new ButtonTabComponent(jTabbedPaneOrcTotal);
-                    jTabbedPaneOrcTotal.setTabComponentAt(selectedTabIndex, buttonTabComponent);
+                    ButtonTabComponentOrcamento buttonTabComponentOrcamento = new ButtonTabComponentOrcamento(jTabbedPaneOrcTotal, this);
+                    jTabbedPaneOrcTotal.setTabComponentAt(selectedTabIndex, buttonTabComponentOrcamento);
                 }
             }
         });
+    }
+
+    public void updateTabTitles() {
+        for (int i = 0; i < jTabbedPaneOrcTotal.getTabCount(); i++) {
+            jTabbedPaneOrcTotal.setTitleAt(i, "0" + (i + 1));
+        }
+        proximoNumeroAba = jTabbedPaneOrcTotal.getTabCount() + 1;
     }
 }
