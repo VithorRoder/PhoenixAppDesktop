@@ -48,7 +48,7 @@ public class ButtonTabComponentOrcamento extends JPanel {
             ImageIcon icon = new ImageIcon(getClass().getResource("/png/removeTabbed.png"));
             setIcon(icon);
             setPreferredSize(new Dimension(size, size));
-            setToolTipText("close this tab");
+            setToolTipText("Fechar Aba");
             setUI(new BasicButtonUI());
             setContentAreaFilled(false);
             setFocusable(false);
