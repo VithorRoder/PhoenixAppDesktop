@@ -1621,15 +1621,6 @@ public class PainelOrcamento extends javax.swing.JPanel {
         }
     }
 
-    public void addAbaItem() {
-        ClonePainelOrcamentoItem novoPainel = new ClonePainelOrcamentoItem();
-        listaPaineis.add(novoPainel);
-        jTabbedPaneOrcTotal.addTab("0" + proximoNumeroAba, novoPainel);
-        jTabbedPaneOrcTotal.setSelectedIndex(jTabbedPaneOrcTotal.getTabCount() - 1);
-        proximoNumeroAba++;
-        addCloseButtonOnJTabbedPane();
-    }
-
     private void clickPainelTabbed() {
         jTabbedPaneOrcTotal.addMouseListener(new MouseAdapter() {
             @Override
@@ -1681,10 +1672,34 @@ public class PainelOrcamento extends javax.swing.JPanel {
         });
     }
 
+    public void addAbaItem() {
+        ClonePainelOrcamentoItem novoPainel = new ClonePainelOrcamentoItem();
+        listaPaineis.add(novoPainel);
+
+        // Formata o título da aba corretamente
+        String tabTitle;
+        if (proximoNumeroAba < 10) {
+            tabTitle = "0" + proximoNumeroAba;
+        } else {
+            tabTitle = String.valueOf(proximoNumeroAba);
+        }
+
+        jTabbedPaneOrcTotal.addTab(tabTitle, novoPainel);
+        jTabbedPaneOrcTotal.setSelectedIndex(jTabbedPaneOrcTotal.getTabCount() - 1);
+        proximoNumeroAba++;
+        addCloseButtonOnJTabbedPane();
+    }
+
     public void updateTabTitles() {
         for (int i = 0; i < jTabbedPaneOrcTotal.getTabCount(); i++) {
-            jTabbedPaneOrcTotal.setTitleAt(i, "0" + (i + 1));
+            int tabNumber = i + 1;
+            if (tabNumber < 10) {
+                jTabbedPaneOrcTotal.setTitleAt(i, "0" + tabNumber);
+            } else {
+                jTabbedPaneOrcTotal.setTitleAt(i, String.valueOf(tabNumber));
+            }
         }
         proximoNumeroAba = jTabbedPaneOrcTotal.getTabCount() + 1;
     }
+
 }
