@@ -33,7 +33,7 @@ public class PainelOrcamento extends javax.swing.JPanel {
 
     public static JDialog dialogClientes = new JDialog();
     public static JDialog dialogTipoOrcamento = new JDialog();
-    public static List<ClonePainelOrcamentoItem> listaPaineis = new ArrayList<>();
+    public static List<PainelOrcamentoItem> listaPaineis = new ArrayList<>();
     private int proximoNumeroAba = 2;
 
     public PainelOrcamento() {
@@ -1673,7 +1673,7 @@ public class PainelOrcamento extends javax.swing.JPanel {
     }
 
     public void addAbaItem() {
-        ClonePainelOrcamentoItem novoPainel = new ClonePainelOrcamentoItem();
+        PainelOrcamentoItem novoPainel = new PainelOrcamentoItem();
         listaPaineis.add(novoPainel);
 
         // Formata o título da aba corretamente

@@ -19,9 +19,9 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.text.JTextComponent;
 import paineis.PainelTipoDeOrcamento;
 
-public class ClonePainelOrcamentoItem extends javax.swing.JPanel {
+public class PainelOrcamentoItem extends javax.swing.JPanel {
 
-    public ClonePainelOrcamentoItem() {
+    public PainelOrcamentoItem() {
         initComponents();
         jTabbedPaneDetalhes.remove(painelDetalhes01);
         jTabbedPaneDetalhes.add(new PainelDetalhesOrcamento(), "01");
@@ -1199,7 +1199,7 @@ public class ClonePainelOrcamentoItem extends javax.swing.JPanel {
     private javax.swing.JTable tabelaAcabamentos;
     private javax.swing.JTable tabelaCalculos;
     private javax.swing.JTable tabelaCalculosExtras;
-    public static javax.swing.JTable tabelaOrcPrincipal;
+    private javax.swing.JTable tabelaOrcPrincipal;
     private javax.swing.JTable tabelaParametros;
     // End of variables declaration//GEN-END:variables
 
