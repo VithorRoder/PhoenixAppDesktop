@@ -15,6 +15,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import javax.swing.BorderFactory;
+import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -39,6 +40,10 @@ public class PainelOrcamento extends javax.swing.JPanel {
     public PainelOrcamento() {
         initComponents();
         editorCelulaOrcamentoTabelaMedidas();
+        jTabbedPaneOrcTotal.removeAll();
+        PainelOrcamentoItem primeiroPainel = new PainelOrcamentoItem();
+        listaPaineis.add(primeiroPainel);
+        jTabbedPaneOrcTotal.addTab("01", primeiroPainel);
         tabelaOrcPrincipal.setCellSelectionEnabled(true);
         tabelaOrcPrincipal.getColumnModel().getColumn(6).setCellEditor(new ComboBoxCellEditorMaterial());
         editorCelulaOrcamentoTabelaCalculosExtras();
@@ -50,7 +55,7 @@ public class PainelOrcamento extends javax.swing.JPanel {
         atualizarLabelTiposDeOrc();
         addCloseButtonOnJTabbedPane();
         updateButtonTab();
-        if (jTextField4.getText() == null || jTextField4.getText().isEmpty() == true) {
+        if (jTextField4.getText() == null || jTextField4.getText().isEmpty()) {
             atualizarTimeInclusao();
         }
         clickPainelTabbed();
@@ -1190,50 +1195,6 @@ public class PainelOrcamento extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void tabelaOrcPrincipalFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tabelaOrcPrincipalFocusLost
-        tabelaOrcPrincipal.putClientProperty("terminateEditOnFocusLost", Boolean.TRUE);
-    }//GEN-LAST:event_tabelaOrcPrincipalFocusLost
-
-    private void tabelaAcabamentosFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tabelaAcabamentosFocusLost
-        tabelaAcabamentos.putClientProperty("terminateEditOnFocusLost", Boolean.TRUE);
-    }//GEN-LAST:event_tabelaAcabamentosFocusLost
-
-    private void tabelaCalculosExtrasFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tabelaCalculosExtrasFocusLost
-        tabelaCalculosExtras.putClientProperty("terminateEditOnFocusLost", Boolean.TRUE);
-    }//GEN-LAST:event_tabelaCalculosExtrasFocusLost
-
-    private void tabelaParametrosFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tabelaParametrosFocusLost
-        tabelaParametros.putClientProperty("terminateEditOnFocusLost", Boolean.TRUE);
-    }//GEN-LAST:event_tabelaParametrosFocusLost
-
-    private void comboBoxTOPainelOrcamentoPopupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_comboBoxTOPainelOrcamentoPopupMenuWillBecomeVisible
-        PainelTipoDeOrcamento customPanelTipoOrcamento = new PainelTipoDeOrcamento();
-
-        JDialog dialogOrc = new JDialog();
-        dialogOrc.setTitle("Lista de Clientes");
-        dialogOrc.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-        dialogOrc.getContentPane().add(customPanelTipoOrcamento);
-        dialogOrc.pack();
-        dialogOrc.setLocationRelativeTo(null);
-        dialogOrc.setModal(true);
-        PainelTipoDeOrcamento.passarTipoOrcamentoParaOrc(dialogOrc, comboBoxTOPainelOrcamento, jLabelTipoOrcamento);
-        dialogOrc.setVisible(true);
-
-        dialogOrc.addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowClosed(WindowEvent e) {
-                comboBoxTOPainelOrcamento.requestFocus();
-            }
-        });
-
-        comboBoxTOPainelOrcamento.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                dialogOrc.dispose();
-            }
-        });
-    }//GEN-LAST:event_comboBoxTOPainelOrcamentoPopupMenuWillBecomeVisible
-
     private void comboBoxClientesPopupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_comboBoxClientesPopupMenuWillBecomeVisible
         PainelListaDeClientes customPanelClientes = new PainelListaDeClientes();
 
@@ -1264,20 +1225,64 @@ public class PainelOrcamento extends javax.swing.JPanel {
         });
     }//GEN-LAST:event_comboBoxClientesPopupMenuWillBecomeVisible
 
+    private void jTextField23MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField23MouseClicked
+        TextFieldQuantidade.requestFocus();
+    }//GEN-LAST:event_jTextField23MouseClicked
+
+    private void comboBoxTOPainelOrcamentoPopupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_comboBoxTOPainelOrcamentoPopupMenuWillBecomeVisible
+        PainelTipoDeOrcamento customPanelTipoOrcamento = new PainelTipoDeOrcamento();
+
+        JDialog dialogOrc = new JDialog();
+        dialogOrc.setTitle("Lista de Clientes");
+        dialogOrc.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+        dialogOrc.getContentPane().add(customPanelTipoOrcamento);
+        dialogOrc.pack();
+        dialogOrc.setLocationRelativeTo(null);
+        dialogOrc.setModal(true);
+        PainelTipoDeOrcamento.passarTipoOrcamentoParaOrc(dialogOrc, comboBoxTOPainelOrcamento, jLabelTipoOrcamento);
+        dialogOrc.setVisible(true);
+
+        dialogOrc.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosed(WindowEvent e) {
+                comboBoxTOPainelOrcamento.requestFocus();
+            }
+        });
+
+        comboBoxTOPainelOrcamento.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dialogOrc.dispose();
+            }
+        });
+    }//GEN-LAST:event_comboBoxTOPainelOrcamentoPopupMenuWillBecomeVisible
+
     private void tabelaCalculosFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tabelaCalculosFocusLost
         tabelaCalculos.putClientProperty("terminateEditOnFocusLost", Boolean.TRUE);
     }//GEN-LAST:event_tabelaCalculosFocusLost
 
-    private void jTextField23MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField23MouseClicked
-        TextFieldQuantidade.requestFocus();
-    }//GEN-LAST:event_jTextField23MouseClicked
+    private void tabelaCalculosExtrasFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tabelaCalculosExtrasFocusLost
+        tabelaCalculosExtras.putClientProperty("terminateEditOnFocusLost", Boolean.TRUE);
+    }//GEN-LAST:event_tabelaCalculosExtrasFocusLost
+
+    private void tabelaParametrosFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tabelaParametrosFocusLost
+        tabelaParametros.putClientProperty("terminateEditOnFocusLost", Boolean.TRUE);
+    }//GEN-LAST:event_tabelaParametrosFocusLost
+
+    private void tabelaAcabamentosFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tabelaAcabamentosFocusLost
+        tabelaAcabamentos.putClientProperty("terminateEditOnFocusLost", Boolean.TRUE);
+    }//GEN-LAST:event_tabelaAcabamentosFocusLost
+
+    private void tabelaOrcPrincipalFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tabelaOrcPrincipalFocusLost
+        tabelaOrcPrincipal.putClientProperty("terminateEditOnFocusLost", Boolean.TRUE);
+    }//GEN-LAST:event_tabelaOrcPrincipalFocusLost
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel PainelAcabamentoMontagem;
     private javax.swing.JTextField TextFieldQuantidade;
     public static javax.swing.JComboBox<String> comboBoxClientes;
-    public javax.swing.JComboBox<String> comboBoxTOPainelOrcamento;
+    private javax.swing.JComboBox<String> comboBoxTOPainelOrcamento;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton3;
@@ -1324,7 +1329,7 @@ public class PainelOrcamento extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     public static javax.swing.JLabel jLabelClienteOrcamento;
-    public javax.swing.JLabel jLabelTipoOrcamento;
+    private javax.swing.JLabel jLabelTipoOrcamento;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -1376,7 +1381,7 @@ public class PainelOrcamento extends javax.swing.JPanel {
     private javax.swing.JTable tabelaAcabamentos;
     private javax.swing.JTable tabelaCalculos;
     private javax.swing.JTable tabelaCalculosExtras;
-    public static javax.swing.JTable tabelaOrcPrincipal;
+    private javax.swing.JTable tabelaOrcPrincipal;
     private javax.swing.JTable tabelaParametros;
     // End of variables declaration//GEN-END:variables
 
@@ -1673,7 +1678,7 @@ public class PainelOrcamento extends javax.swing.JPanel {
     }
 
     public void addAbaItem() {
-        PainelOrcamentoItem novoPainel = new PainelOrcamentoItem();
+        PainelOrcamentoItem novoPainel = new PainelOrcamentoItem(); // Corrigido aqui
         listaPaineis.add(novoPainel);
 
         // Formata o título da aba corretamente
@@ -1684,7 +1689,7 @@ public class PainelOrcamento extends javax.swing.JPanel {
             tabTitle = String.valueOf(proximoNumeroAba);
         }
 
-        jTabbedPaneOrcTotal.addTab(tabTitle, novoPainel);
+        jTabbedPaneOrcTotal.addTab(tabTitle, novoPainel); // Corrigido aqui
         jTabbedPaneOrcTotal.setSelectedIndex(jTabbedPaneOrcTotal.getTabCount() - 1);
         proximoNumeroAba++;
         addCloseButtonOnJTabbedPane();
@@ -1700,6 +1705,14 @@ public class PainelOrcamento extends javax.swing.JPanel {
             }
         }
         proximoNumeroAba = jTabbedPaneOrcTotal.getTabCount() + 1;
+    }
+
+    public JComboBox<String> getComboBoxClientes() {
+        return comboBoxClientes;
+    }
+
+    public void setComboBoxClientes(JComboBox<String> comboBoxClientes) {
+        this.comboBoxClientes = comboBoxClientes;
     }
 
 }

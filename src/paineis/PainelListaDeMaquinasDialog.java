@@ -1,12 +1,7 @@
 package paineis;
 
-import Teste.ComboBoxCellEditorDetalhes;
-import static Teste.PainelDetalhesOrcamento.table;
 import controller.MaquinasImpressorasController;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.util.List;
-import javax.swing.JDialog;
 import model.MaquinasImpressoras;
 import table.MaquinasImpressorasTabela;
 import table.MaquinasImpressorasTabelaRenderer;
@@ -14,7 +9,6 @@ import table.MaquinasImpressorasTabelaRenderer;
 public class PainelListaDeMaquinasDialog extends javax.swing.JPanel {
 
     private List<MaquinasImpressoras> maquinasList;
-    private int linhaSelecionadaTabelaCriarOrc = -1;
 
     public PainelListaDeMaquinasDialog() {
         initComponents();
@@ -90,35 +84,5 @@ public class PainelListaDeMaquinasDialog extends javax.swing.JPanel {
             TabelaMaquinasImpressorasDialog.setDefaultRenderer(Object.class, new MaquinasImpressorasTabelaRenderer());
 
         }
-    }
-
-    public void mouseTableMaquinas(JDialog dialog) {
-        table.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                if (e.getClickCount() == 1) {
-                    linhaSelecionadaTabelaCriarOrc = table.getSelectedRow();
-
-                }
-            }
-        });
-
-        TabelaMaquinasImpressorasDialog.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                if (e.getClickCount() == 2) {
-                    int selectedRowMat = TabelaMaquinasImpressorasDialog.getSelectedRow();
-                    Object valorColuna1 = TabelaMaquinasImpressorasDialog.getValueAt(selectedRowMat, 8);
-
-                    int linhaSelecionadaTabelaMaquinas = TabelaMaquinasImpressorasDialog.getSelectedRow();
-                    if (linhaSelecionadaTabelaCriarOrc != -1 && linhaSelecionadaTabelaMaquinas != -1) {
-
-                        table.setValueAt(valorColuna1, 0, 5);
-                        ComboBoxCellEditorDetalhes.textField.setText("" + valorColuna1);
-                        dialog.dispose();
-                    }
-                }
-            }
-        });
     }
 }

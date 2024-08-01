@@ -10,16 +10,13 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.table.TableCellEditor;
-import paineis.PainelListaDeMaquinasDialog;
 
 public class ComboBoxCellEditorDetalhes extends AbstractCellEditor implements TableCellEditor {
 
-    public static JPanel panel2;
-    public static JTextField textField;
+    private JPanel panel2;
+    private final JTextField textField;
     private final JButton button;
     private String currentText;
-    private JDialog dialogDetalhesMaquinas = new JDialog();
-    PainelListaDeMaquinasDialog painelMaquinaDialog = new PainelListaDeMaquinasDialog();
 
     public ComboBoxCellEditorDetalhes() {
 
@@ -38,17 +35,9 @@ public class ComboBoxCellEditorDetalhes extends AbstractCellEditor implements Ta
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                dialogDetalhesMaquinas.setTitle("Lista de Máquinas");
-                dialogDetalhesMaquinas.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-                dialogDetalhesMaquinas.getContentPane().add(painelMaquinaDialog);
-                dialogDetalhesMaquinas.pack();
-                dialogDetalhesMaquinas.setLocationRelativeTo(null);
-                dialogDetalhesMaquinas.setModal(true);
-                dialogDetalhesMaquinas.setVisible(true);
+                JOptionPane.showMessageDialog(null, "Parabéns, você clicou no botão!");
             }
         });
-
-        painelMaquinaDialog.mouseTableMaquinas(dialogDetalhesMaquinas);
     }
 
     @Override
@@ -107,5 +96,4 @@ public class ComboBoxCellEditorDetalhes extends AbstractCellEditor implements Ta
             }
         }
     }
-
 }

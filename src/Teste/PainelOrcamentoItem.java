@@ -1,6 +1,5 @@
 package Teste;
 
-import static Teste.PainelOrcamento.comboBoxClientes;
 import static Teste.PainelOrcamento.jLabelClienteOrcamento;
 import java.awt.Color;
 import java.awt.Component;
@@ -1374,7 +1373,7 @@ public class PainelOrcamentoItem extends javax.swing.JPanel {
     }
 
     private void atualizarLabelClientes() {
-        ((JTextComponent) comboBoxClientes.getEditor().getEditorComponent()).getDocument().addDocumentListener(new DocumentListener() {
+        ((JTextComponent) comboBoxTOPainelOrcamento.getEditor().getEditorComponent()).getDocument().addDocumentListener(new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent e) {
                 updateLabel();

@@ -1,14 +1,7 @@
 package paineis;
 
-import Teste.ComboBoxCellEditorMaterial;
-import static Teste.PainelOrcamento.tabelaOrcPrincipal;
 import controller.MateriaisInsumosController;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 import java.util.List;
-import javax.swing.JDialog;
 import model.MateriaisInsumos;
 import table.MateriaisInsumosTabela;
 import table.MateriaisInsumosTabelaRenderer;
@@ -16,12 +9,10 @@ import table.MateriaisInsumosTabelaRenderer;
 public class PainelListaDeMateriaisDialog extends javax.swing.JPanel {
 
     private List<MateriaisInsumos> insumosList;
-    private int linhaSelecionadaTabelaCriarOrcPrincipal = -1;
 
     public PainelListaDeMateriaisDialog() {
         initComponents();
         refreshTable();
-
     }
 
     @SuppressWarnings("unchecked")
@@ -89,44 +80,4 @@ public class PainelListaDeMateriaisDialog extends javax.swing.JPanel {
 
         }
     }
-
-    public void mouseTableMateriais(JDialog dialog) {
-        tabelaOrcPrincipal.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                if (e.getClickCount() == 1) {
-                    linhaSelecionadaTabelaCriarOrcPrincipal = tabelaOrcPrincipal.getSelectedRow();
-
-                }
-            }
-        });
-
-        jTableMateriaisDialog.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                if (e.getClickCount() == 2) {
-                    int selectedRowMat = jTableMateriaisDialog.getSelectedRow();
-                    Object valorColuna1 = jTableMateriaisDialog.getValueAt(selectedRowMat, 6);
-
-                    int linhaSelecionadaTabelaMateriais = jTableMateriaisDialog.getSelectedRow();
-                    if (linhaSelecionadaTabelaCriarOrcPrincipal != -1 && linhaSelecionadaTabelaMateriais != -1) {
-                        // Obtém a linha selecionada previamente na TabelaCriarOrc
-                        int linhaCriarOrc = linhaSelecionadaTabelaCriarOrcPrincipal;
-
-                        tabelaOrcPrincipal.setValueAt(valorColuna1, linhaCriarOrc, 6);
-                        ComboBoxCellEditorMaterial.textField.setText("" + valorColuna1);
-                        dialog.dispose();
-                    }
-                }
-            }
-        });
-
-        dialog.addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowClosing(WindowEvent e) {
-                linhaSelecionadaTabelaCriarOrcPrincipal = -1;
-            }
-        });
-    }
-
 }

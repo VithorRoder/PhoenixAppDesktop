@@ -10,16 +10,13 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.table.TableCellEditor;
-import paineis.PainelListaDeMateriaisDialog;
 
 public class ComboBoxCellEditorMaterial extends AbstractCellEditor implements TableCellEditor {
 
-    private JPanel panel;
-    public static JTextField textField;
+    private final JPanel panel;
+    private final JTextField textField;
     private final JButton button;
     private String currentText;
-    private JDialog dialogMaterial = new JDialog();
-    PainelListaDeMateriaisDialog painel = new PainelListaDeMateriaisDialog();
 
     public ComboBoxCellEditorMaterial() {
         panel = new JPanel();
@@ -30,6 +27,7 @@ public class ComboBoxCellEditorMaterial extends AbstractCellEditor implements Ta
         ((PlainDocument) textField.getDocument()).setDocumentFilter(new UppercaseDocumentFilter());
         textField.setBorder(BorderFactory.createLoweredBevelBorder());
         textField.setBackground(new Color(255, 218, 185));
+
         panel.add(textField, BorderLayout.CENTER);
 
         button = new JButton();
@@ -45,17 +43,10 @@ public class ComboBoxCellEditorMaterial extends AbstractCellEditor implements Ta
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                dialogMaterial.setTitle("Lista de Material");
-                dialogMaterial.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-                dialogMaterial.getContentPane().add(painel);
-                dialogMaterial.pack();
-                dialogMaterial.setLocationRelativeTo(null);
-                dialogMaterial.setModal(true);
-                dialogMaterial.setVisible(true);
+                JOptionPane.showMessageDialog(null, "Parabéns, você clicou no botão!");
             }
         });
 
-        painel.mouseTableMateriais(dialogMaterial);
     }
 
     @Override
