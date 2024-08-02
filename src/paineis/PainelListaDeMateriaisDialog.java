@@ -1,18 +1,27 @@
 package paineis;
 
 import controller.MateriaisInsumosController;
-import java.util.List;
 import model.MateriaisInsumos;
 import table.MateriaisInsumosTabela;
 import table.MateriaisInsumosTabelaRenderer;
+import Teste.ComboBoxCellEditorMaterial;
+
+import javax.swing.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.util.List;
 
 public class PainelListaDeMateriaisDialog extends javax.swing.JPanel {
 
     private List<MateriaisInsumos> insumosList;
+    private ComboBoxCellEditorMaterial cellEditor;
+    private int row;
+    private int column;
 
     public PainelListaDeMateriaisDialog() {
         initComponents();
         refreshTable();
+        setupTableClickListener();
     }
 
     @SuppressWarnings("unchecked")
@@ -69,7 +78,7 @@ public class PainelListaDeMateriaisDialog extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTableMateriaisDialog;
+    public static javax.swing.JTable jTableMateriaisDialog;
     // End of variables declaration//GEN-END:variables
 
     private void refreshTable() {
@@ -77,7 +86,30 @@ public class PainelListaDeMateriaisDialog extends javax.swing.JPanel {
         if (insumosList != null) {
             jTableMateriaisDialog.setModel(new MateriaisInsumosTabela(insumosList));
             jTableMateriaisDialog.setDefaultRenderer(Object.class, new MateriaisInsumosTabelaRenderer());
-
         }
+    }
+
+    public void setCellEditor(ComboBoxCellEditorMaterial cellEditor, int row, int column) {
+        this.cellEditor = cellEditor;
+        this.row = row;
+        this.column = column;
+    }
+
+    private void setupTableClickListener() {
+        jTableMateriaisDialog.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (e.getClickCount() == 2) {
+                    int selectedRow = jTableMateriaisDialog.getSelectedRow();
+                    if (selectedRow != -1) {
+                        String value = jTableMateriaisDialog.getValueAt(selectedRow, 6).toString();
+                        if (cellEditor != null) {
+                            cellEditor.setSelectedValue(value);
+                        }
+                        SwingUtilities.getWindowAncestor(PainelListaDeMateriaisDialog.this).dispose();
+                    }
+                }
+            }
+        });
     }
 }
