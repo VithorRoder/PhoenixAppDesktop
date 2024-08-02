@@ -1,5 +1,6 @@
 package Teste;
 
+import static Teste.PainelOrcamento.comboBoxClientes;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
@@ -1122,7 +1123,7 @@ public class PainelOrcamentoItem extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel PainelAcabamentoMontagem;
     private javax.swing.JTextField TextFieldQuantidade;
-    public javax.swing.JComboBox<String> comboBoxTOPainelOrcamento;
+    private javax.swing.JComboBox<String> comboBoxTOPainelOrcamento;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton3;
@@ -1159,7 +1160,7 @@ public class PainelOrcamentoItem extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    public javax.swing.JLabel jLabelTipoOrcamentoClone;
+    private javax.swing.JLabel jLabelTipoOrcamentoClone;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
@@ -1375,7 +1376,7 @@ public class PainelOrcamentoItem extends javax.swing.JPanel {
     }
 
     private void atualizarLabelClientes() {
-        ((JTextComponent) comboBoxTOPainelOrcamento.getEditor().getEditorComponent()).getDocument().addDocumentListener(new DocumentListener() {
+        ((JTextComponent) comboBoxClientes.getEditor().getEditorComponent()).getDocument().addDocumentListener(new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent e) {
                 updateLabel();

@@ -10,16 +10,19 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.table.TableCellEditor;
+import paineis.PainelListaDeMaquinasDialog;
 
 public class ComboBoxCellEditorDetalhes extends AbstractCellEditor implements TableCellEditor {
 
     private JPanel panel2;
-    private final JTextField textField;
-    private final JButton button;
+    private JTextField textField;
+    private JButton button;
     private String currentText;
+    private JTable table;
+    private int row;
+    private int column;
 
     public ComboBoxCellEditorDetalhes() {
-
         textField = new JTextField();
         textField.setBorder(BorderFactory.createLoweredBevelBorder());
         textField.setBackground(new Color(255, 218, 185));
@@ -35,13 +38,27 @@ public class ComboBoxCellEditorDetalhes extends AbstractCellEditor implements Ta
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(null, "Parabéns, você clicou no botão!");
+                JDialog dialogOrc = new JDialog();
+                PainelListaDeMaquinasDialog painelListaDeMaquinasDialog = new PainelListaDeMaquinasDialog(dialogOrc);
+                painelListaDeMaquinasDialog.setCellEditor(ComboBoxCellEditorDetalhes.this, row, column);
+
+                dialogOrc.setTitle("Lista de Clientes");
+                dialogOrc.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+                dialogOrc.getContentPane().add(painelListaDeMaquinasDialog);
+                dialogOrc.pack();
+                dialogOrc.setLocationRelativeTo(null);
+                dialogOrc.setModal(true);
+                dialogOrc.setVisible(true);
             }
         });
     }
 
     @Override
     public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column) {
+        this.table = table;
+        this.row = row;
+        this.column = column;
+
         if (row == 0) {
             ((PlainDocument) textField.getDocument()).setDocumentFilter(new UppercaseDocumentFilter(true));
             currentText = (value == null) ? "" : value.toString();

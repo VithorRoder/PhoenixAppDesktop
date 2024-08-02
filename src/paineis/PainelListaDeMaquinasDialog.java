@@ -1,7 +1,12 @@
 package paineis;
 
 import controller.MaquinasImpressorasController;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.List;
+import javax.swing.JDialog;
+import javax.swing.JTable;
+import javax.swing.table.TableCellEditor;
 import model.MaquinasImpressoras;
 import table.MaquinasImpressorasTabela;
 import table.MaquinasImpressorasTabelaRenderer;
@@ -9,6 +14,16 @@ import table.MaquinasImpressorasTabelaRenderer;
 public class PainelListaDeMaquinasDialog extends javax.swing.JPanel {
 
     private List<MaquinasImpressoras> maquinasList;
+    private TableCellEditor cellEditor;
+    private int editingRow;
+    private int editingColumn;
+    private JDialog dialog;
+
+    public PainelListaDeMaquinasDialog(JDialog dialog) {
+        this.dialog = dialog;
+        initComponents();
+        refreshTable();
+    }
 
     public PainelListaDeMaquinasDialog() {
         initComponents();
@@ -71,18 +86,42 @@ public class PainelListaDeMaquinasDialog extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTable TabelaMaquinasImpressorasDialog;
+    public static javax.swing.JTable TabelaMaquinasImpressorasDialog;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 
     private void refreshTable() {
-
         maquinasList = new MaquinasImpressorasController().findMaq();
         if (maquinasList != null) {
             TabelaMaquinasImpressorasDialog.setModel(new MaquinasImpressorasTabela(maquinasList));
             TabelaMaquinasImpressorasDialog.setDefaultRenderer(Object.class, new MaquinasImpressorasTabelaRenderer());
 
+            TabelaMaquinasImpressorasDialog.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseClicked(MouseEvent e) {
+                    if (e.getClickCount() == 2) {
+                        JTable target = (JTable) e.getSource();
+                        int row = target.getSelectedRow();
+                        int column = 8;
+                        if (row != -1) {
+                            Object value = target.getValueAt(row, column);
+                            if (cellEditor != null) {
+                                cellEditor.getTableCellEditorComponent(null, value, true, editingRow, editingColumn);
+                                cellEditor.stopCellEditing();
+                                dialog.dispose();
+                            }
+                        }
+                    }
+                }
+            });
         }
     }
+
+    public void setCellEditor(TableCellEditor cellEditor, int editingRow, int editingColumn) {
+        this.cellEditor = cellEditor;
+        this.editingRow = editingRow;
+        this.editingColumn = editingColumn;
+    }
+
 }
