@@ -1,7 +1,6 @@
 package paineis;
 
 import static Teste.PainelOrcamento.comboBoxClientes;
-import static Teste.PainelOrcamento.jLabelClienteOrcamento;
 import static paineisAbas.PainelDadosClientes.comboBoxGrupo1Clientes;
 import static paineisAbas.PainelDadosClientes.comboBoxGrupo2Clientes;
 import static paineisAbas.PainelDadosClientes.jTextAreaClientes;
@@ -35,6 +34,7 @@ import model.Clientes;
 import table.ClientesTabela;
 import table.ClientesTabelaRenderer;
 import application.ApplicationFrame;
+import javax.swing.JLabel;
 
 public class PainelListaDeClientes extends javax.swing.JPanel {
 
@@ -168,7 +168,7 @@ public class PainelListaDeClientes extends javax.swing.JPanel {
         jTextAreaClientes.setText(clientes.getObservacoesClientes());
     }
 
-    public static final void passarClienteParaOrc(JDialog dialog) {
+    public static final void passarClienteParaOrc(JDialog dialog, JLabel jLabelClienteOrcamento) {
         TabelaListaDeClientes.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {

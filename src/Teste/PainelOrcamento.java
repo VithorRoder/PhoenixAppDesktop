@@ -15,8 +15,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import javax.swing.BorderFactory;
-import javax.swing.JComboBox;
 import javax.swing.JDialog;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.SwingUtilities;
@@ -41,7 +41,7 @@ public class PainelOrcamento extends javax.swing.JPanel {
         initComponents();
         editorCelulaOrcamentoTabelaMedidas();
         jTabbedPaneOrcTotal.removeAll();
-        PainelOrcamentoItem primeiroPainel = new PainelOrcamentoItem();
+        PainelOrcamentoItem primeiroPainel = new PainelOrcamentoItem(this);
         listaPaineis.add(primeiroPainel);
         jTabbedPaneOrcTotal.addTab("01", primeiroPainel);
         tabelaOrcPrincipal.setCellSelectionEnabled(true);
@@ -60,7 +60,6 @@ public class PainelOrcamento extends javax.swing.JPanel {
         }
         clickPainelTabbed();
         updateButtonTab();
-
     }
 
     @SuppressWarnings("unchecked")
@@ -1207,7 +1206,7 @@ public class PainelOrcamento extends javax.swing.JPanel {
         dialogClientes.pack();
         dialogClientes.setLocationRelativeTo(null);
         dialogClientes.setModal(true);
-        PainelListaDeClientes.passarClienteParaOrc(dialogClientes);
+        PainelListaDeClientes.passarClienteParaOrc(dialogClientes, jLabelClienteOrcamento);
         dialogClientes.setVisible(true);
 
         dialogClientes.addWindowListener(new WindowAdapter() {
@@ -1282,7 +1281,7 @@ public class PainelOrcamento extends javax.swing.JPanel {
     private javax.swing.JPanel PainelAcabamentoMontagem;
     private javax.swing.JTextField TextFieldQuantidade;
     public static javax.swing.JComboBox<String> comboBoxClientes;
-    private javax.swing.JComboBox<String> comboBoxTOPainelOrcamento;
+    public javax.swing.JComboBox<String> comboBoxTOPainelOrcamento;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton3;
@@ -1328,8 +1327,8 @@ public class PainelOrcamento extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    public static javax.swing.JLabel jLabelClienteOrcamento;
-    private javax.swing.JLabel jLabelTipoOrcamento;
+    private javax.swing.JLabel jLabelClienteOrcamento;
+    public javax.swing.JLabel jLabelTipoOrcamento;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -1678,7 +1677,7 @@ public class PainelOrcamento extends javax.swing.JPanel {
     }
 
     public void addAbaItem() {
-        PainelOrcamentoItem novoPainel = new PainelOrcamentoItem(); // Corrigido aqui
+        PainelOrcamentoItem novoPainel = new PainelOrcamentoItem(this);
         listaPaineis.add(novoPainel);
 
         // Formata o título da aba corretamente
@@ -1689,7 +1688,7 @@ public class PainelOrcamento extends javax.swing.JPanel {
             tabTitle = String.valueOf(proximoNumeroAba);
         }
 
-        jTabbedPaneOrcTotal.addTab(tabTitle, novoPainel); // Corrigido aqui
+        jTabbedPaneOrcTotal.addTab(tabTitle, novoPainel);
         jTabbedPaneOrcTotal.setSelectedIndex(jTabbedPaneOrcTotal.getTabCount() - 1);
         proximoNumeroAba++;
         addCloseButtonOnJTabbedPane();
@@ -1707,12 +1706,8 @@ public class PainelOrcamento extends javax.swing.JPanel {
         proximoNumeroAba = jTabbedPaneOrcTotal.getTabCount() + 1;
     }
 
-    public JComboBox<String> getComboBoxClientes() {
-        return comboBoxClientes;
-    }
-
-    public void setComboBoxClientes(JComboBox<String> comboBoxClientes) {
-        this.comboBoxClientes = comboBoxClientes;
+    public JLabel getjLabelClienteOrcamento() {
+        return jLabelClienteOrcamento;
     }
 
 }

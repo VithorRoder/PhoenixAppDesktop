@@ -1,7 +1,5 @@
 package paineis;
 
-//import static Teste.PainelOrcamento.comboBoxTOPainelOrcamento;
-//import static Teste.PainelOrcamento.jLabelTipoOrcamento;
 import controller.TiposOrcamentosController;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -76,7 +74,6 @@ public class PainelTipoDeOrcamento extends javax.swing.JPanel {
         if (tiposOrcList != null) {
             TabelaTiposOrcamentos.setModel(new TiposOrcamentosTabela(tiposOrcList));
             TabelaTiposOrcamentos.setDefaultRenderer(Object.class, new TiposOrcamentosTabelaRenderer());
-
         }
     }
 

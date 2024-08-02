@@ -1,6 +1,5 @@
 package Teste;
 
-import static Teste.PainelOrcamento.jLabelClienteOrcamento;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
@@ -20,7 +19,10 @@ import paineis.PainelTipoDeOrcamento;
 
 public class PainelOrcamentoItem extends javax.swing.JPanel {
 
-    public PainelOrcamentoItem() {
+    private PainelOrcamento painelOrcamento;
+
+    public PainelOrcamentoItem(PainelOrcamento painelOrcamento) {
+        this.painelOrcamento = painelOrcamento;
         initComponents();
         jTabbedPaneDetalhes.remove(painelDetalhes01);
         jTabbedPaneDetalhes.add(new PainelDetalhesOrcamento(), "01");
@@ -1390,7 +1392,7 @@ public class PainelOrcamentoItem extends javax.swing.JPanel {
             }
 
             private void updateLabel() {
-                jLabelClienteOrcamento.setText(" Clientes ()");
+                painelOrcamento.getjLabelClienteOrcamento().setText("Clientes ()");
             }
         });
     }
