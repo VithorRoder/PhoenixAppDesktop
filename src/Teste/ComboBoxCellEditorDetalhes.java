@@ -15,10 +15,9 @@ import paineis.PainelListaDeMaquinasDialog;
 public class ComboBoxCellEditorDetalhes extends AbstractCellEditor implements TableCellEditor {
 
     private JPanel panel2;
-    private JTextField textField;
-    private JButton button;
+    private final JTextField textField;
+    private final JButton button;
     private String currentText;
-    private JTable table;
     private int row;
     private int column;
 
@@ -55,7 +54,6 @@ public class ComboBoxCellEditorDetalhes extends AbstractCellEditor implements Ta
 
     @Override
     public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column) {
-        this.table = table;
         this.row = row;
         this.column = column;
 

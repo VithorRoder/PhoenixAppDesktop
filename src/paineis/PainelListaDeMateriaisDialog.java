@@ -5,7 +5,6 @@ import model.MateriaisInsumos;
 import table.MateriaisInsumosTabela;
 import table.MateriaisInsumosTabelaRenderer;
 import Teste.ComboBoxCellEditorMaterial;
-
 import javax.swing.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;

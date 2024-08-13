@@ -17,7 +17,6 @@ public class ComboBoxCellEditorMaterial extends AbstractCellEditor implements Ta
     private final JTextField textField;
     private final JButton button;
     private String currentText;
-    private JTable table;
     private int row;
     private int column;
 
@@ -53,7 +52,6 @@ public class ComboBoxCellEditorMaterial extends AbstractCellEditor implements Ta
 
     @Override
     public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column) {
-        this.table = table;
         this.row = row;
         this.column = column;
         currentText = (value == null) ? "" : value.toString();
