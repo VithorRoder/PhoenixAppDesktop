@@ -1,9 +1,9 @@
 package paineis;
 
+import Teste.ComboBoxCellEditorEntradaMat;
 import application.ApplicationFrame;
 import com.google.gson.Gson;
 import controller.EntradaMaterialController;
-import util.CustomPainelEntradaMaterialCellEditor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
@@ -19,6 +19,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.EventObject;
 import java.util.List;
 import javax.swing.BorderFactory;
 import javax.swing.DefaultCellEditor;
@@ -41,7 +42,6 @@ public class PainelEntradaDeMaterial extends javax.swing.JPanel {
         if (jLabelID.getText() == null || jLabelID.getText().isEmpty()) {
             dataHoraLocal();
         }
-
     }
 
     @SuppressWarnings("unchecked")
@@ -458,7 +458,7 @@ public class PainelEntradaDeMaterial extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void TableEntradaMatFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TableEntradaMatFocusLost
-        cancelarCursorTabela();
+        //cancelarCursorTabela();
     }//GEN-LAST:event_TableEntradaMatFocusLost
 
     private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
@@ -517,7 +517,8 @@ public class PainelEntradaDeMaterial extends javax.swing.JPanel {
 
     public final void editorCedulas() {
 
-        TableEntradaMat.getColumnModel().getColumn(1).setCellEditor(new CustomPainelEntradaMaterialCellEditor(null, this));
+        TableEntradaMat.setCellSelectionEnabled(true);
+        TableEntradaMat.getColumnModel().getColumn(1).setCellEditor(new ComboBoxCellEditorEntradaMat());
 
         // altera a cor quando a celula é selecionada
         TableEntradaMat.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
@@ -531,7 +532,6 @@ public class PainelEntradaDeMaterial extends javax.swing.JPanel {
                 } else {
                     component.setBackground(table.getBackground());
                 }
-
                 return component;
             }
         });
@@ -714,7 +714,6 @@ public class PainelEntradaDeMaterial extends javax.swing.JPanel {
     }
 
     public void passarEstoqueToEntMat(JDialog dialog) {
-
         TableEntradaMat.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {

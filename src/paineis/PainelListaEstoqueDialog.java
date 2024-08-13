@@ -1,14 +1,30 @@
 package paineis;
 
 import controller.EstoqueController;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.List;
+import javax.swing.JDialog;
+import javax.swing.JTable;
+import javax.swing.table.TableCellEditor;
 import model.Estoque;
+import static paineis.PainelEntradaDeMaterial.TableEntradaMat;
 import table.EstoqueTabela;
 import table.EstoqueTabelaRenderer;
 
 public class PainelListaEstoqueDialog extends javax.swing.JPanel {
 
     private List<Estoque> estoqueList;
+    private TableCellEditor cellEditor;
+    private int editingRow;
+    private int editingColumn;
+    private JDialog dialog;
+
+    public PainelListaEstoqueDialog(JDialog dialog) {
+        this.dialog = dialog;
+        initComponents();
+        refreshTable();
+    }
 
     public PainelListaEstoqueDialog() {
         initComponents();
@@ -113,11 +129,46 @@ public class PainelListaEstoqueDialog extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     private void refreshTable() {
-
         estoqueList = new EstoqueController().findEstoque();
         if (estoqueList != null) {
             TableListaEstoqueDialog.setModel(new EstoqueTabela(estoqueList));
             TableListaEstoqueDialog.setDefaultRenderer(Object.class, new EstoqueTabelaRenderer());
+
+            TableListaEstoqueDialog.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseClicked(MouseEvent e) {
+                    if (e.getClickCount() == 2) {
+                        JTable target = (JTable) e.getSource();
+                        int selectedRow = target.getSelectedRow();
+                        if (selectedRow != -1) {
+                            // Obtenha os valores das colunas 0 e 1 na linha selecionada da TableListaEstoqueDialog
+                            Object valueCol0 = target.getValueAt(selectedRow, 0);
+                            Object valueCol1 = target.getValueAt(selectedRow, 1);
+
+                            // Supondo que `TableEntradaMat` seja a tabela de destino
+                            int rowEntradaMat = TableEntradaMat.getSelectedRow();  // Pegue a linha selecionada na TableEntradaMat
+                            if (rowEntradaMat != -1) {
+                                // Defina os valores na `TableEntradaMat`
+                                TableEntradaMat.setValueAt(valueCol0, rowEntradaMat, 1); // Define o valor da coluna 0 para a coluna 1
+                                TableEntradaMat.setValueAt(valueCol1, rowEntradaMat, 2); // Define o valor da coluna 1 para a coluna 2
+
+                                if (cellEditor != null) {
+                                    cellEditor.getTableCellEditorComponent(null, valueCol0, true, editingRow, editingColumn);
+                                    cellEditor.stopCellEditing();
+                                }
+
+                                dialog.dispose(); // Fecha o diálogo
+                            }
+                        }
+                    }
+                }
+            });
         }
+    }
+
+    public void setCellEditor(TableCellEditor cellEditor, int editingRow, int editingColumn) {
+        this.cellEditor = cellEditor;
+        this.editingRow = editingRow;
+        this.editingColumn = editingColumn;
     }
 }
