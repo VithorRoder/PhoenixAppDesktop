@@ -1710,4 +1710,11 @@ public class PainelOrcamento extends javax.swing.JPanel {
         return jLabelClienteOrcamento;
     }
 
+    public void refreshClarPainelOrcamento() {
+        jTabbedPaneOrcTotal.removeAll();
+        PainelOrcamentoItem primeiroPainel = new PainelOrcamentoItem(this);
+        listaPaineis.add(primeiroPainel);
+        jTabbedPaneOrcTotal.addTab("01", primeiroPainel);
+    }
+
 }

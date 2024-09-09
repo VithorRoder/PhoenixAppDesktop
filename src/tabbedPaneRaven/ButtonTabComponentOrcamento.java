@@ -71,7 +71,20 @@ public class ButtonTabComponentOrcamento extends JPanel {
                     }
                 }
             } else {
-                showWarningDialog();
+                String[] options = {"Sim", "Não"};
+                int ficaQuieto = JOptionPane.showOptionDialog(
+                        null,
+                        "Não posso excluir o Item 01. DESEJA LIMPAR OS DADOS?",
+                        "Aviso",
+                        JOptionPane.DEFAULT_OPTION,
+                        JOptionPane.WARNING_MESSAGE,
+                        null,
+                        options,
+                        options[0]);
+
+                if (ficaQuieto == 0) {
+                    painelOrcamento.refreshClarPainelOrcamento();
+                }
             }
         }
 
@@ -98,14 +111,5 @@ public class ButtonTabComponentOrcamento extends JPanel {
                 }
             }
         };
-
-        private void showWarningDialog() {
-            JOptionPane.showMessageDialog(
-                    null,
-                    "Não é possível remover a Aba.",
-                    "Aviso",
-                    JOptionPane.WARNING_MESSAGE
-            );
-        }
     }
 }
