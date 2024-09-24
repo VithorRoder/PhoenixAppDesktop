@@ -96,7 +96,15 @@ public class PainelJmenuBar extends javax.swing.JPanel {
     }
 
     public void acaoBotaoLogout() {
-        int confirm = JOptionPane.showConfirmDialog(null, "Deseja Sair ?", "Logout", JOptionPane.YES_NO_OPTION);
+        String[] options = {" Sim ", " Não "};
+        int confirm = JOptionPane.showOptionDialog(null,
+                "Deseja sair do sistema ?",
+                "Logout",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE,
+                null,
+                options,
+                options[0]);
         if (confirm == JOptionPane.YES_OPTION && Controladorjmenubar.usuarioAutenticado != false) {
             loggof();
         }

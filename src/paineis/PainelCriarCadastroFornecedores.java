@@ -688,7 +688,16 @@ public class PainelCriarCadastroFornecedores extends javax.swing.JPanel {
             }
         }
 
-        int confirm = JOptionPane.showConfirmDialog(this, "Confirmar exclusão?", "Excluir Cadastro de Fornecedor", JOptionPane.YES_NO_OPTION);
+        String[] options = {" Sim ", " Não "};
+        int confirm = JOptionPane.showOptionDialog(this,
+                "Confirmar exclusão?",
+                "Excluir Cadastro de Fornecedor",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE,
+                null,
+                options,
+                options[0]);
+
         if (confirm == JOptionPane.YES_OPTION) {
             if (idFornecedores != null) {
                 new FornecedoresController().excluirFornecedores(idFornecedores);

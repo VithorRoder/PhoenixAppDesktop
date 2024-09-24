@@ -61,8 +61,16 @@ public class ButtonTabComponent extends JPanel {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            int tome = JOptionPane.showConfirmDialog(null, "Deseja Remover a Aba Selecionada ?", "Excluir Aba", JOptionPane.YES_NO_OPTION);
-            if (tome == JOptionPane.YES_OPTION) {
+            String[] options = {" Sim ", " Não "};
+            int confirm = JOptionPane.showOptionDialog(null,
+                    "Deseja fechar a aba atual ?",
+                    "Fechar Aba",
+                    JOptionPane.YES_NO_OPTION,
+                    JOptionPane.QUESTION_MESSAGE,
+                    null,
+                    options,
+                    options[0]);
+            if (confirm == JOptionPane.YES_OPTION) {
                 int i = pane.indexOfTabComponent(ButtonTabComponent.this);
                 if (i != -1) {
                     pane.remove(i);
