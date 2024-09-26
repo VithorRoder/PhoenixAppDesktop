@@ -19,7 +19,6 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.EventObject;
 import java.util.List;
 import javax.swing.BorderFactory;
 import javax.swing.DefaultCellEditor;
@@ -759,8 +758,16 @@ public class PainelEntradaDeMaterial extends javax.swing.JPanel {
             }
         }
 
-        int confirm = JOptionPane.showConfirmDialog(this, "Confirmar exclusão?", "Excluir Entrada de Material", JOptionPane.YES_NO_OPTION);
-        if (confirm == JOptionPane.YES_OPTION) {
+        String[] options = {" Sim ", " Não "};
+        int confirm01 = JOptionPane.showOptionDialog(this,
+                "Confirmar exclusão?",
+                "Excluir Cadastro de Fornecedor",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE,
+                null,
+                options,
+                options[0]);
+        if (confirm01 == JOptionPane.YES_OPTION) {
             if (idEntradaMaterial != null) {
                 new EntradaMaterialController().excluirEntradaMaterial(idEntradaMaterial);
                 JOptionPane.showMessageDialog(this, "Valor removido com sucesso!");
@@ -774,8 +781,16 @@ public class PainelEntradaDeMaterial extends javax.swing.JPanel {
 
     public void cancelarEntradaMaterial() {
 
-        int opcao = JOptionPane.showConfirmDialog(this, "Deseja Cancelar Inserção/Alteração de Entrada de Material ?", "Cancelar", JOptionPane.YES_NO_OPTION);
-        if (opcao == JOptionPane.YES_OPTION) {
+        String[] options = {" Sim ", " Não "};
+        int confirm02 = JOptionPane.showOptionDialog(this,
+                "Confirmar exclusão?",
+                "Excluir Cadastro de Fornecedor",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE,
+                null,
+                options,
+                options[0]);
+        if (confirm02 == JOptionPane.YES_OPTION) {
             ApplicationFrame.tabbedPaneCustom1.remove(this);
             ApplicationFrame.showPainelListaEntradaMaterial();
         }

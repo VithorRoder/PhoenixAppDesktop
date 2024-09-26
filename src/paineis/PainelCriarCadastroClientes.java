@@ -69,8 +69,16 @@ public class PainelCriarCadastroClientes extends javax.swing.JPanel {
     }
 
     public void cancelarAlteraçãoClientes() {
-        int opcao = JOptionPane.showConfirmDialog(null, "Deseja Cancelar Inserção/Alteração de Clientes ?", "Cancelar Alteração", JOptionPane.YES_NO_OPTION);
-        if (opcao == JOptionPane.YES_OPTION) {
+        String[] options = {" Sim ", " Não "};
+        int confirm01 = JOptionPane.showOptionDialog(this,
+                "Confirmar exclusão?",
+                "Excluir Cadastro de Fornecedor",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE,
+                null,
+                options,
+                options[0]);
+        if (confirm01 == JOptionPane.YES_OPTION) {
             ApplicationFrame.tabbedPaneCustom1.remove(this);
             ApplicationFrame.showPainelListaDeClientes();
         }
@@ -89,8 +97,16 @@ public class PainelCriarCadastroClientes extends javax.swing.JPanel {
             }
         }
 
-        int confirm = JOptionPane.showConfirmDialog(this, "Confirmar exclusão?", "Excluir Cadastro de Clientes", JOptionPane.YES_NO_OPTION);
-        if (confirm == JOptionPane.YES_OPTION) {
+        String[] options = {" Sim ", " Não "};
+        int confirm02 = JOptionPane.showOptionDialog(this,
+                "Confirmar exclusão?",
+                "Excluir Cadastro de Fornecedor",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE,
+                null,
+                options,
+                options[0]);
+        if (confirm02 == JOptionPane.YES_OPTION) {
             if (idClientes != null) {
                 new ClientesController().excluirClientes(idClientes);
                 JOptionPane.showMessageDialog(this, "Valor removido com sucesso!");
