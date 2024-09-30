@@ -9,6 +9,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -1014,6 +1015,11 @@ public class PainelOrcamento extends javax.swing.JPanel {
         jButtonPrecoOrc.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonPrecoOrc.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonPrecoOrc.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButtonPrecoOrc.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonPrecoOrcMouseClicked(evt);
+            }
+        });
 
         jLabel16.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
         jLabel16.setText("Preço Venda");
@@ -1275,6 +1281,30 @@ public class PainelOrcamento extends javax.swing.JPanel {
     private void tabelaOrcPrincipalFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tabelaOrcPrincipalFocusLost
         tabelaOrcPrincipal.putClientProperty("terminateEditOnFocusLost", Boolean.TRUE);
     }//GEN-LAST:event_tabelaOrcPrincipalFocusLost
+
+    private void jButtonPrecoOrcMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonPrecoOrcMouseClicked
+        try {
+            // Obtenha o valor atual do campo formatado como BigDecimal
+            BigDecimal valor = jformatedTextFieldPrecoUnitario.getValue();
+
+            // Verifique o estado do checkbox e ajuste o valor em 15
+            if (jCheckBox1.isSelected()) {
+                valor = valor.add(BigDecimal.valueOf(15));  // Adiciona 15
+            } else {
+                valor = valor.subtract(BigDecimal.valueOf(15));  // Subtrai 15
+            }
+
+            // Atualize o campo com o novo valor
+            jformatedTextFieldPrecoUnitario.setValue(valor);
+
+            // Adicione uma linha para verificar o valor atualizado
+            System.out.println("Novo valor: " + valor);
+
+        } catch (NumberFormatException e) {
+            // Trate o erro caso o número não seja válido
+            JOptionPane.showMessageDialog(this, "Valor inválido no campo de preço!", "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jButtonPrecoOrcMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

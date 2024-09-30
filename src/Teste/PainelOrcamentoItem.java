@@ -21,6 +21,7 @@ import paineis.PainelTipoDeOrcamento;
 public class PainelOrcamentoItem extends javax.swing.JPanel {
 
     private final PainelOrcamento painelOrcamento;
+    LimitadorCaractersCellTable cell = new LimitadorCaractersCellTable();
 
     public PainelOrcamentoItem(PainelOrcamento painelOrcamento) {
         this.painelOrcamento = painelOrcamento;
@@ -37,6 +38,8 @@ public class PainelOrcamentoItem extends javax.swing.JPanel {
         numeracaoTabelaCalculos();
         atualizarLabelClientes();
         atualizarLabelTiposDeOrc();
+        tabelaOrcPrincipal.getColumnModel().getColumn(5).setCellEditor(cell);
+
     }
 
     @SuppressWarnings("unchecked")
@@ -156,6 +159,7 @@ public class PainelOrcamentoItem extends javax.swing.JPanel {
                 false, true, true, true, true, true, true, true
             };
 
+            @Override
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit[columnIndex];
             }
@@ -168,6 +172,7 @@ public class PainelOrcamentoItem extends javax.swing.JPanel {
         tabelaOrcPrincipal.setShowGrid(true);
         tabelaOrcPrincipal.getTableHeader().setReorderingAllowed(false);
         tabelaOrcPrincipal.addFocusListener(new java.awt.event.FocusAdapter() {
+            @Override
             public void focusLost(java.awt.event.FocusEvent evt) {
                 tabelaOrcPrincipalFocusLost(evt);
             }
@@ -228,6 +233,7 @@ public class PainelOrcamentoItem extends javax.swing.JPanel {
                 false, true, true
             };
 
+            @Override
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit[columnIndex];
             }
@@ -237,6 +243,7 @@ public class PainelOrcamentoItem extends javax.swing.JPanel {
         tabelaAcabamentos.setShowGrid(true);
         tabelaAcabamentos.getTableHeader().setReorderingAllowed(false);
         tabelaAcabamentos.addFocusListener(new java.awt.event.FocusAdapter() {
+            @Override
             public void focusLost(java.awt.event.FocusEvent evt) {
                 tabelaAcabamentosFocusLost(evt);
             }
@@ -281,6 +288,7 @@ public class PainelOrcamentoItem extends javax.swing.JPanel {
         tabelaParametros.setShowGrid(true);
         tabelaParametros.getTableHeader().setReorderingAllowed(false);
         tabelaParametros.addFocusListener(new java.awt.event.FocusAdapter() {
+            @Override
             public void focusLost(java.awt.event.FocusEvent evt) {
                 tabelaParametrosFocusLost(evt);
             }
@@ -309,6 +317,7 @@ public class PainelOrcamentoItem extends javax.swing.JPanel {
                 java.lang.Object.class, java.lang.Boolean.class
             };
 
+            @Override
             public Class getColumnClass(int columnIndex) {
                 return types[columnIndex];
             }
@@ -320,6 +329,7 @@ public class PainelOrcamentoItem extends javax.swing.JPanel {
         tabelaCalculosExtras.setShowGrid(true);
         tabelaCalculosExtras.getTableHeader().setReorderingAllowed(false);
         tabelaCalculosExtras.addFocusListener(new java.awt.event.FocusAdapter() {
+            @Override
             public void focusLost(java.awt.event.FocusEvent evt) {
                 tabelaCalculosExtrasFocusLost(evt);
             }
@@ -516,6 +526,7 @@ public class PainelOrcamentoItem extends javax.swing.JPanel {
                 false, true, true, true, true, true, true, true, true
             };
 
+            @Override
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit[columnIndex];
             }
@@ -524,6 +535,7 @@ public class PainelOrcamentoItem extends javax.swing.JPanel {
         tabelaCalculos.setRowHeight(18);
         tabelaCalculos.setShowGrid(true);
         tabelaCalculos.addFocusListener(new java.awt.event.FocusAdapter() {
+            @Override
             public void focusLost(java.awt.event.FocusEvent evt) {
                 tabelaCalculosFocusLost(evt);
             }
@@ -895,12 +907,6 @@ public class PainelOrcamentoItem extends javax.swing.JPanel {
         jButtonPrecoOrc.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonPrecoOrc.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonPrecoOrc.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jButtonPrecoOrc.addMouseListener(new java.awt.event.MouseAdapter() {
-            @Override
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButtonPrecoOrcMouseClicked(evt);
-            }
-        });
 
         jLabel16.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
         jLabel16.setText("Preço Venda");
@@ -952,12 +958,15 @@ public class PainelOrcamentoItem extends javax.swing.JPanel {
         comboBoxTOPainelOrcamento.setBorder(null);
         comboBoxTOPainelOrcamento.setLightWeightPopupEnabled(false);
         comboBoxTOPainelOrcamento.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
+            @Override
             public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
             }
 
+            @Override
             public void popupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {
             }
 
+            @Override
             public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
                 comboBoxTOPainelOrcamentoPopupMenuWillBecomeVisible(evt);
             }
@@ -968,6 +977,7 @@ public class PainelOrcamentoItem extends javax.swing.JPanel {
         jTextField23.setText("____");
         jTextField23.setFocusable(false);
         jTextField23.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTextField23MouseClicked(evt);
             }
@@ -1126,10 +1136,6 @@ public class PainelOrcamentoItem extends javax.swing.JPanel {
 
     private void jTextField23MouseClicked(java.awt.event.MouseEvent evt) {
         TextFieldQuantidade.requestFocus();
-    }
-
-    private void jButtonPrecoOrcMouseClicked(java.awt.event.MouseEvent evt) {
-
     }
 
     //GEN-BEGIN:variables
