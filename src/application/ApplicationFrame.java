@@ -1,6 +1,6 @@
 package application;
 
-import Teste.PainelOrcamento;
+import painelOrcamento.PainelOrcamento;
 import controller.Controladorjmenubar;
 import java.awt.CardLayout;
 import java.awt.Image;

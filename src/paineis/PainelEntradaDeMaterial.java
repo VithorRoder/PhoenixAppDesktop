@@ -1,6 +1,6 @@
 package paineis;
 
-import Teste.ComboBoxCellEditorEntradaMat;
+import painelOrcamento.ComboBoxCellEditorEntradaMat;
 import application.ApplicationFrame;
 import com.google.gson.Gson;
 import controller.EntradaMaterialController;

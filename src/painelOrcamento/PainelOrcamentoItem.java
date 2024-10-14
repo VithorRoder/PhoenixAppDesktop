@@ -1,6 +1,6 @@
-package Teste;
+package painelOrcamento;
 
-import static Teste.PainelOrcamento.comboBoxClientes;
+import static painelOrcamento.PainelOrcamento.comboBoxClientes;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
@@ -114,12 +114,12 @@ public class PainelOrcamentoItem extends javax.swing.JPanel {
         jCheckBox12 = new javax.swing.JCheckBox();
         jTabbedPaneDetalhes = new javax.swing.JTabbedPane();
         painelDetalhes01 = new javax.swing.JPanel();
-        painelDetalhesOrcamento1 = new Teste.PainelDetalhesOrcamento();
+        painelDetalhesOrcamento1 = new painelOrcamento.PainelDetalhesOrcamento();
         jPanel7 = new javax.swing.JPanel();
         jButtonPrecoOrc = new javax.swing.JButton();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
-        painelVendaOrcamento1 = new Teste.PainelVendaOrcamento();
+        painelVendaOrcamento1 = new painelOrcamento.PainelVendaOrcamento();
         jformatedTextFieldPrecoVenda = new util.JformatedTextFieldPreco();
         jformatedTextFieldPrecoUnitario = new util.JformatedTextFieldPreco();
         comboBoxTOPainelOrcamento = new javax.swing.JComboBox<>();
@@ -1212,10 +1212,10 @@ public class PainelOrcamentoItem extends javax.swing.JPanel {
     private util.JformatedTextFieldPreco jformatedTextFieldPrecoUnitario;
     private util.JformatedTextFieldPreco jformatedTextFieldPrecoVenda;
     private javax.swing.JPanel painelDetalhes01;
-    private Teste.PainelDetalhesOrcamento painelDetalhesOrcamento1;
+    private painelOrcamento.PainelDetalhesOrcamento painelDetalhesOrcamento1;
     private javax.swing.JPanel painelItemOrcamento;
     private javax.swing.JPanel painelMontagem;
-    private Teste.PainelVendaOrcamento painelVendaOrcamento1;
+    private painelOrcamento.PainelVendaOrcamento painelVendaOrcamento1;
     private javax.swing.JTable tabelaAcabamentos;
     private javax.swing.JTable tabelaCalculos;
     private javax.swing.JTable tabelaCalculosExtras;

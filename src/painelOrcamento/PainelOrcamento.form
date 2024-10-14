@@ -1730,7 +1730,7 @@
                     </DimensionLayout>
                   </Layout>
                   <SubComponents>
-                    <Component class="Teste.PainelDetalhesOrcamento" name="painelDetalhesOrcamento1">
+                    <Component class="painelOrcamento.PainelDetalhesOrcamento" name="painelDetalhesOrcamento1">
                     </Component>
                   </SubComponents>
                 </Container>
@@ -1806,7 +1806,7 @@
                     <Property name="text" type="java.lang.String" value="Pre&#xe7;o Unit&#xe1;rio"/>
                   </Properties>
                 </Component>
-                <Component class="Teste.PainelVendaOrcamento" name="painelVendaOrcamento1">
+                <Component class="painelOrcamento.PainelVendaOrcamento" name="painelVendaOrcamento1">
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_SerializeTo" type="java.lang.String" value="PainelOrcamento_painelVendaOrcamento1"/>
                   </AuxValues>

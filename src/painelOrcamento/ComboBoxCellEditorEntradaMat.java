@@ -1,4 +1,4 @@
-package Teste;
+package painelOrcamento;
 
 import java.awt.BorderLayout;
 import java.awt.Color;

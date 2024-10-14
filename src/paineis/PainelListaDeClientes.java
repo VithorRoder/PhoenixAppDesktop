@@ -1,6 +1,6 @@
 package paineis;
 
-import static Teste.PainelOrcamento.comboBoxClientes;
+import static painelOrcamento.PainelOrcamento.comboBoxClientes;
 import static paineisAbas.PainelDadosClientes.comboBoxGrupo1Clientes;
 import static paineisAbas.PainelDadosClientes.comboBoxGrupo2Clientes;
 import static paineisAbas.PainelDadosClientes.jTextAreaClientes;

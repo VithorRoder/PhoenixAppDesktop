@@ -1,6 +1,6 @@
 package tabbedPaneRaven;
 
-import Teste.PainelOrcamento;
+import painelOrcamento.PainelOrcamento;
 import javax.swing.*;
 import javax.swing.plaf.basic.BasicButtonUI;
 import java.awt.*;

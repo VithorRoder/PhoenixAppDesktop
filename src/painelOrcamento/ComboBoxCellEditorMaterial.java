@@ -1,4 +1,4 @@
-package Teste;
+package painelOrcamento;
 
 import javax.swing.*;
 import javax.swing.text.AttributeSet;
