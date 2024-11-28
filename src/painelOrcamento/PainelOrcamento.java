@@ -35,14 +35,14 @@ public class PainelOrcamento extends javax.swing.JPanel {
 
     public static JDialog dialogClientes = new JDialog();
     public static JDialog dialogTipoOrcamento = new JDialog();
-    public static List<PainelOrcamentoItem01> listaPaineis = new ArrayList<>();
+    public static List<PainelOrcamentoItem> listaPaineis = new ArrayList<>();
     private int proximoNumeroAba = 2;
 
     public PainelOrcamento() {
         initComponents();
         editorCelulaOrcamentoTabelaMedidas();
         jTabbedPaneOrcTotal.removeAll();
-        PainelOrcamentoItem01 primeiroPainel = new PainelOrcamentoItem01(this);
+        PainelOrcamentoItem primeiroPainel = new PainelOrcamentoItem(this);
         listaPaineis.add(primeiroPainel);
         jTabbedPaneOrcTotal.addTab("01", primeiroPainel);
         tabelaOrcPrincipal.setCellSelectionEnabled(true);
@@ -1707,7 +1707,7 @@ public class PainelOrcamento extends javax.swing.JPanel {
     }
 
     public void addAbaItem() {
-        PainelOrcamentoItem01 novoPainel = new PainelOrcamentoItem01(this);
+        PainelOrcamentoItem novoPainel = new PainelOrcamentoItem(this);
         listaPaineis.add(novoPainel);
 
         // Formata o título da aba corretamente
@@ -1742,7 +1742,7 @@ public class PainelOrcamento extends javax.swing.JPanel {
 
     public void refreshClarPainelOrcamento() {
         jTabbedPaneOrcTotal.removeAll();
-        PainelOrcamentoItem01 primeiroPainel = new PainelOrcamentoItem01(this);
+        PainelOrcamentoItem primeiroPainel = new PainelOrcamentoItem(this);
         listaPaineis.add(primeiroPainel);
         jTabbedPaneOrcTotal.addTab("01", primeiroPainel);
     }
