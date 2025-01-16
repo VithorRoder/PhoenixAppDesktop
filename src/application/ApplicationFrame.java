@@ -25,10 +25,6 @@ import paineis.PainelJmenuBar;
 import static paineis.PainelJmenuBar.labelUsuario;
 import paineis.PainelPrincipalLogin;
 
-/**
- *
- * @author VithorRoder
- */
 public class ApplicationFrame extends javax.swing.JFrame {
 
     private static final int MAX_GLOBAL_PANEL_TABS = 1;

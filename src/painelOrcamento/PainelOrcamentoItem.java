@@ -25,19 +25,16 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.text.JTextComponent;
 import paineis.PainelTipoDeOrcamento;
 import static painelOrcamento.PainelOrcamento.comboBoxClientes;
-import tiposOrcamento.Banner;
 import util.JformatedTextFieldPreco;
 
 public class PainelOrcamentoItem extends javax.swing.JPanel {
 
     private final PainelOrcamento painelOrcamento;
     LimitadorCaractersCellTable cell = new LimitadorCaractersCellTable();
-    private final tiposOrcamento.Banner banner;
 
     public PainelOrcamentoItem(PainelOrcamento painelOrcamento) {
         this.painelOrcamento = painelOrcamento;
         initComponents();
-        banner = new Banner(this);
         jTabbedPaneDetalhes.remove(painelDetalhes01);
         jTabbedPaneDetalhes.add(new PainelDetalhesOrcamento(), "01");
         editorCelulaOrcamentoTabelaMedidas();
@@ -266,6 +263,9 @@ public class PainelOrcamentoItem extends javax.swing.JPanel {
             tabelaAcabamentos.getColumnModel().getColumn(1).setMinWidth(120);
             tabelaAcabamentos.getColumnModel().getColumn(1).setPreferredWidth(150);
             tabelaAcabamentos.getColumnModel().getColumn(1).setMaxWidth(180);
+            tabelaAcabamentos.getColumnModel().getColumn(2).setMinWidth(30);
+            tabelaAcabamentos.getColumnModel().getColumn(2).setPreferredWidth(95);
+            tabelaAcabamentos.getColumnModel().getColumn(2).setMaxWidth(100);
         }
 
         painelMontagem.setBackground(new java.awt.Color(255, 255, 255));
@@ -1121,10 +1121,7 @@ public class PainelOrcamentoItem extends javax.swing.JPanel {
     }//GEN-LAST:event_tabelaCalculosFocusLost
 
     private void jButtonPrecoOrcMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonPrecoOrcMouseClicked
-
         //Metodo para gerar o preço do item do orçamento.
-        banner.verificar();
-
     }//GEN-LAST:event_jButtonPrecoOrcMouseClicked
 
     private void comboBoxTOPainelOrcamentoPopupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_comboBoxTOPainelOrcamentoPopupMenuWillBecomeVisible

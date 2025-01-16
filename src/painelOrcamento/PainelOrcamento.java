@@ -1262,26 +1262,6 @@ public class PainelOrcamento extends javax.swing.JPanel {
         });
     }//GEN-LAST:event_comboBoxTOPainelOrcamentoPopupMenuWillBecomeVisible
 
-    private void tabelaCalculosFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tabelaCalculosFocusLost
-        tabelaCalculos.putClientProperty("terminateEditOnFocusLost", Boolean.TRUE);
-    }//GEN-LAST:event_tabelaCalculosFocusLost
-
-    private void tabelaCalculosExtrasFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tabelaCalculosExtrasFocusLost
-        tabelaCalculosExtras.putClientProperty("terminateEditOnFocusLost", Boolean.TRUE);
-    }//GEN-LAST:event_tabelaCalculosExtrasFocusLost
-
-    private void tabelaParametrosFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tabelaParametrosFocusLost
-        tabelaParametros.putClientProperty("terminateEditOnFocusLost", Boolean.TRUE);
-    }//GEN-LAST:event_tabelaParametrosFocusLost
-
-    private void tabelaAcabamentosFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tabelaAcabamentosFocusLost
-        tabelaAcabamentos.putClientProperty("terminateEditOnFocusLost", Boolean.TRUE);
-    }//GEN-LAST:event_tabelaAcabamentosFocusLost
-
-    private void tabelaOrcPrincipalFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tabelaOrcPrincipalFocusLost
-        tabelaOrcPrincipal.putClientProperty("terminateEditOnFocusLost", Boolean.TRUE);
-    }//GEN-LAST:event_tabelaOrcPrincipalFocusLost
-
     private void jButtonPrecoOrcMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonPrecoOrcMouseClicked
         try {
             // Obtenha o valor atual do campo formatado como BigDecimal
@@ -1306,12 +1286,32 @@ public class PainelOrcamento extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_jButtonPrecoOrcMouseClicked
 
+    private void tabelaCalculosFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tabelaCalculosFocusLost
+        tabelaCalculos.putClientProperty("terminateEditOnFocusLost", Boolean.TRUE);
+    }//GEN-LAST:event_tabelaCalculosFocusLost
+
+    private void tabelaCalculosExtrasFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tabelaCalculosExtrasFocusLost
+        tabelaCalculosExtras.putClientProperty("terminateEditOnFocusLost", Boolean.TRUE);
+    }//GEN-LAST:event_tabelaCalculosExtrasFocusLost
+
+    private void tabelaParametrosFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tabelaParametrosFocusLost
+        tabelaParametros.putClientProperty("terminateEditOnFocusLost", Boolean.TRUE);
+    }//GEN-LAST:event_tabelaParametrosFocusLost
+
+    private void tabelaAcabamentosFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tabelaAcabamentosFocusLost
+        tabelaAcabamentos.putClientProperty("terminateEditOnFocusLost", Boolean.TRUE);
+    }//GEN-LAST:event_tabelaAcabamentosFocusLost
+
+    private void tabelaOrcPrincipalFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tabelaOrcPrincipalFocusLost
+        tabelaOrcPrincipal.putClientProperty("terminateEditOnFocusLost", Boolean.TRUE);
+    }//GEN-LAST:event_tabelaOrcPrincipalFocusLost
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel PainelAcabamentoMontagem;
     private javax.swing.JTextField TextFieldQuantidade;
     public static javax.swing.JComboBox<String> comboBoxClientes;
-    public javax.swing.JComboBox<String> comboBoxTOPainelOrcamento;
+    private javax.swing.JComboBox<String> comboBoxTOPainelOrcamento;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton3;
@@ -1358,7 +1358,7 @@ public class PainelOrcamento extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabelClienteOrcamento;
-    public javax.swing.JLabel jLabelTipoOrcamento;
+    private javax.swing.JLabel jLabelTipoOrcamento;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -1643,7 +1643,6 @@ public class PainelOrcamento extends javax.swing.JPanel {
     }
 
     class hora implements ActionListener {
-
         @Override
         public void actionPerformed(ActionEvent e) {
             if (jTextField4.getText().isEmpty()) {
