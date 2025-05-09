@@ -19,7 +19,7 @@ public class ConexaoSingleton {
         try {
             if (connn == null || connn.isClosed()) {
                 System.out.println("Conectando ao banco de dados Singleton...");
-                String url = "jdbc:postgresql://localhost:5433/phoenix";
+                String url = "jdbc:postgresql://localhost:5433/phoenixDB";
                 String user = "postgres";
                 String password = "211205";
                 connn = DriverManager.getConnection(url, user, password);
