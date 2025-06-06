@@ -75,12 +75,12 @@ public class PainelListaDeMateriais extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     private void refreshTable() {
-
+        
         insumosList = new MateriaisInsumosController().findInsumos();
         if (insumosList != null) {
             jTableMateriais.setModel(new MateriaisInsumosTabela(insumosList));
             jTableMateriais.setDefaultRenderer(Object.class, new MateriaisInsumosTabelaRenderer());
-
+            
         }
     }
 }

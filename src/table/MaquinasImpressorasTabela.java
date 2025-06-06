@@ -118,7 +118,7 @@ public class MaquinasImpressorasTabela extends AbstractTableModel {
             return String.class;
         } else if (columnIndex == COL_CODINOME) {
             return String.class;
-        }
+        } 
         return null;
 
     }

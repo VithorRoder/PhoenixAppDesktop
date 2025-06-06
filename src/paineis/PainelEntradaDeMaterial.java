@@ -783,8 +783,8 @@ public class PainelEntradaDeMaterial extends javax.swing.JPanel {
 
         String[] options = {" Sim ", " Não "};
         int confirm02 = JOptionPane.showOptionDialog(this,
-                "Confirmar exclusão?",
-                "Excluir Cadastro de Fornecedor",
+                "Cancelar Alteração?",
+                "Cancelar",
                 JOptionPane.YES_NO_OPTION,
                 JOptionPane.QUESTION_MESSAGE,
                 null,
